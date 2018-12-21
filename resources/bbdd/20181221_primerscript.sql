@@ -148,17 +148,3 @@ CONSTRAINT `FK_205` FOREIGN KEY `fkIdx_205` (`dni`, `id_cliente`) REFERENCES `cl
 KEY `fkIdx_35` (`dni`, `id_pista`, `id_instalacion`, `id_clase`, `id_profesor`, `nombre_deporte`),
 CONSTRAINT `FK_35` FOREIGN KEY `fkIdx_35` (`dni`, `id_pista`, `id_instalacion`, `id_clase`, `id_profesor`, `nombre_deporte`) REFERENCES `Clase` (`dni`, `id_pista`, `id_instalacion`, `id_clase`, `id_profesor`, `nombre_deporte`)
 );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
