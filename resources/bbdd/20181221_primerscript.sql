@@ -1,7 +1,16 @@
+drop table if exists 'usuario';
+drop table if exists 'administrador';
+drop table if exists 'cliente';
+drop table if exists 'profesor';
+drop table if exists 'instalacion';
+drop table if exists 'pista';
+drop table if exists 'deporte';
+drop table if exists 'clase';
+drop table if exists 'reserva';
+drop table if exists 'pertenece';
+-- ************************************** `usuario`
 
--- ************************************** `Usuario`
-
-CREATE TABLE `Usuario`
+CREATE TABLE `usuario`
 (
  `dni` varchar(9) NOT NULL ,
 PRIMARY KEY (`dni`)
@@ -19,7 +28,7 @@ CREATE TABLE `administrador`
  `fecha_nacimiento` date NOT NULL ,
 PRIMARY KEY (`dni`, `id_administrador`),
 KEY `fkIdx_193` (`dni`),
-CONSTRAINT `FK_193` FOREIGN KEY `fkIdx_193` (`dni`) REFERENCES `Usuario` (`dni`)
+CONSTRAINT `FK_193` FOREIGN KEY `fkIdx_193` (`dni`) REFERENCES `usuario` (`dni`)
 );
 
 -- ************************************** `cliente`
@@ -34,7 +43,7 @@ CREATE TABLE `cliente`
  `fecha_nacimiento` varchar(45) NOT NULL ,
 PRIMARY KEY (`dni`, `id_cliente`),
 KEY `fkIdx_189` (`dni`),
-CONSTRAINT `FK_189` FOREIGN KEY `fkIdx_189` (`dni`) REFERENCES `Usuario` (`dni`)
+CONSTRAINT `FK_189` FOREIGN KEY `fkIdx_189` (`dni`) REFERENCES `usuario` (`dni`)
 );
 
 
@@ -55,10 +64,10 @@ CREATE TABLE `profesor`
  `descrip`          varchar(200) NOT NULL ,
 PRIMARY KEY (`dni`, `id_profesor`),
 KEY `fkIdx_196` (`dni`),
-CONSTRAINT `FK_196` FOREIGN KEY `fkIdx_196` (`dni`) REFERENCES `Usuario` (`dni`)
+CONSTRAINT `FK_196` FOREIGN KEY `fkIdx_196` (`dni`) REFERENCES `usuario` (`dni`)
 );
 
--- ************************************** `Instalacion`
+-- ************************************** `instalacion`
 
 CREATE TABLE `instalacion`
 (
@@ -77,7 +86,7 @@ CREATE TABLE `pista`
  `n_pista`        varchar(20) NOT NULL ,
 PRIMARY KEY (`id_pista`, `id_instalacion`),
 KEY `fkIdx_166` (`id_instalacion`),
-CONSTRAINT `FK_166` FOREIGN KEY `fkIdx_166` (`id_instalacion`) REFERENCES `Instalacion` (`id_instalacion`)
+CONSTRAINT `FK_166` FOREIGN KEY `fkIdx_166` (`id_instalacion`) REFERENCES `instalacion` (`id_instalacion`)
 );
 
 
@@ -91,9 +100,9 @@ PRIMARY KEY (`nombre_deporte`)
 );
 
 
--- ************************************** `Clase`
+-- ************************************** `clase`
 
-CREATE TABLE `Clase`
+CREATE TABLE `clase`
 (
  `id_clase`       varchar(20) NOT NULL ,
  `id_profesor`    varchar(20) NOT NULL ,
@@ -146,5 +155,5 @@ PRIMARY KEY (`id_pista`, `id_instalacion`, `id_clase`, `id_profesor`, `nombre_de
 KEY `fkIdx_205` (`dni`, `id_cliente`),
 CONSTRAINT `FK_205` FOREIGN KEY `fkIdx_205` (`dni`, `id_cliente`) REFERENCES `cliente` (`dni`, `id_cliente`),
 KEY `fkIdx_35` (`dni`, `id_pista`, `id_instalacion`, `id_clase`, `id_profesor`, `nombre_deporte`),
-CONSTRAINT `FK_35` FOREIGN KEY `fkIdx_35` (`dni`, `id_pista`, `id_instalacion`, `id_clase`, `id_profesor`, `nombre_deporte`) REFERENCES `Clase` (`dni`, `id_pista`, `id_instalacion`, `id_clase`, `id_profesor`, `nombre_deporte`)
+CONSTRAINT `FK_35` FOREIGN KEY `fkIdx_35` (`dni`, `id_pista`, `id_instalacion`, `id_clase`, `id_profesor`, `nombre_deporte`) REFERENCES `clase` (`dni`, `id_pista`, `id_instalacion`, `id_clase`, `id_profesor`, `nombre_deporte`)
 );
