@@ -10,10 +10,10 @@ drop table if exists reserva;
 drop table if exists pertenece;
 -- ************************************** usuario
 
-CREATE TABLE usuario
+CREATE TABLE usuario 
 (
  dni varchar(9) NOT NULL ,
-PRIMARY KEY (dni)
+PRIMARY KEY (dni) 
 ) ENGINE=INNODB;
 
 -- ************************************** administrador
@@ -232,6 +232,8 @@ CONSTRAINT FK_35 FOREIGN KEY fkIdx_35 (id_clase, nombre_deporte, id_pista, id_in
 
 -- ************************************** clase
 
+insert into administrador () 
+values ('ADMIN-1','12345678P','Juan', 'Rodriguez', 'Santos', '1990-10-10');
 
 
 
