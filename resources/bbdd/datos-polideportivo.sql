@@ -64,16 +64,16 @@ insert into horario (fecha,hora_inicio,hora_fin,id_pista)
 values ("2018-12-23", "16:00:00", "16:59:59", "P-01");
 
 insert into horario (fecha,hora_inicio,hora_fin,id_pista)
-values ("2018-12-23", "15:00:00", "16:00:00", "P-02");
+values ("2018-12-23", "16:00:00", "16:59:59", "P-02");
 
 insert into horario (fecha,hora_inicio,hora_fin,id_pista)
-values ("2018-12-23", "15:00:00", "16:00:00", "P-03");
+values ("2018-12-23", "15:00:00", "15:59:59", "P-03");
 
 insert into horario (fecha,hora_inicio,hora_fin,id_pista)
-values ("2018-12-23", "15:00:00", "16:00:00", "P-04");
+values ("2018-12-23", "15:00:00", "15:59:59", "P-04");
 
 insert into horario (fecha,hora_inicio,hora_fin,id_pista)
-values ("2018-12-23", "15:00:00", "16:00:00", "P-05");
+values ("2018-12-23", "15:00:00", "15:59:59", "P-05");
 
 
 
@@ -108,7 +108,7 @@ insert into usuario (
 	"Lopez",
 	"Nico123",
 	"1996-03-30",
-	"0",
+	0,
 	"Boliviana",
 	"AD");
 
@@ -134,7 +134,7 @@ insert into usuario (
 	"Lopez",
 	"Kevin123",
 	"1996-03-30",
-	"0",
+	0,
 	"Boliviana",
 	"AD");
 
@@ -159,7 +159,7 @@ insert into usuario (
 	"Lopez",
 	"Miguel123",
 	"1996-03-30",
-	"0",
+	0,
 	"Española",
 	"AD");
 
@@ -185,11 +185,38 @@ insert into usuario (
 	"Lopez",
 	"Mario123",
 	"1996-03-30",
-	"0",
+	0,
 	"Española",
 	"AD");
 
-	
+-- PROFESORES PROFESORES PROFESORES PROFESORES PROFESORES
+
+insert into usuario (
+	email,
+	contrasena,
+	dni,
+	nombre,
+	apellido_1,
+	apellido_2,
+	nombre_usuario,
+	fecha_nacimiento,
+	sexo,
+	nacionalidad,
+	id_tipo_usuario
+	) values (
+	"alvaro@hotmail.es",
+	"1234",
+	"12345678P",
+	"Alvaro",
+	"Avila",
+	"Lopez",
+	"Alvaro123",
+	"1996-03-30",
+	0,
+	"Española",
+	"PR");
+
+-- CLIENTES CLIENTES CLIENTES CLIENTES CLIENTES 	
 insert into usuario (
 	email,
 	contrasena,
@@ -211,7 +238,7 @@ insert into usuario (
 	"Lopez",
 	"Sergio123",
 	"1996-03-30",
-	"0",
+	0,
 	"Española",
 	"CL");
 
@@ -237,7 +264,82 @@ insert into usuario (
 	"Lopez",
 	"Victor123",
 	"1996-03-30",
-	"0",
+	0,
+	"Española",
+	"CL");
+
+insert into usuario (
+	email,
+	contrasena,
+	dni,
+	nombre,
+	apellido_1,
+	apellido_2,
+	nombre_usuario,
+	fecha_nacimiento,
+	sexo,
+	nacionalidad,
+	id_tipo_usuario
+	) values (
+	"javier@hotmail.es",
+	"1234",
+	"12345678P",
+	"Javier",
+	"Avila",
+	"Lopez",
+	"Javier123",
+	"1996-03-30",
+	0,
+	"Española",
+	"CL");
+
+insert into usuario (
+	email,
+	contrasena,
+	dni,
+	nombre,
+	apellido_1,
+	apellido_2,
+	nombre_usuario,
+	fecha_nacimiento,
+	sexo,
+	nacionalidad,
+	id_tipo_usuario
+	) values (
+	"marta@hotmail.es",
+	"1234",
+	"12345678P",
+	"Marta",
+	"Avila",
+	"Lopez",
+	"Marta123",
+	"1996-03-30",
+	1,
+	"Española",
+	"CL");
+
+insert into usuario (
+	email,
+	contrasena,
+	dni,
+	nombre,
+	apellido_1,
+	apellido_2,
+	nombre_usuario,
+	fecha_nacimiento,
+	sexo,
+	nacionalidad,
+	id_tipo_usuario
+	) values (
+	"lola@hotmail.es",
+	"1234",
+	"12345678P",
+	"Lola",
+	"Avila",
+	"Lopez",
+	"Lola123",
+	"1996-03-30",
+	1,
 	"Española",
 	"CL");
 
@@ -255,19 +357,20 @@ insert into usuario (
 	nacionalidad,
 	id_tipo_usuario
 	) values (
-	"alvaro@hotmail.es",
+	"miriam@hotmail.es",
 	"1234",
 	"12345678P",
-	"Alvaro",
+	"Miriam",
 	"Avila",
 	"Lopez",
-	"Alvaro123",
+	"Miri123",
 	"1996-03-30",
-	"0",
+	1,
 	"Española",
-	"PR");
+	"CL");
 
-	
+-- RESERVAS RESERVAS RESERVAS RESERVAS RESERVAS RESERVAS
+
 	insert into reserva (
 	id_reserva,
 	id_usuario,
@@ -286,4 +389,59 @@ insert into usuario (
 	5.69
 	);
 
+	insert into reserva (
+	id_reserva,
+	id_usuario,
+	fecha,
+	hora_inicio,
+	hora_fin,
+	id_pista,
+	precio_reserva
+	) values (
+	"123456789",
+	7,
+	"2018-12-23",
+	"16:00:00",
+	"16:59:59",
+	"P-02",
+	4.50
+	);
+
+	insert into reserva (
+	id_reserva,
+	id_usuario,
+	fecha,
+	hora_inicio,
+	hora_fin,
+	id_pista,
+	precio_reserva
+	) values (
+	"123456789",
+	8,
+	"2018-12-23",
+	"15:00:00",
+	"15:59:59",
+	"P-03",
+	4.50
+	);
 	
+-- CLASE CLASE CLASE CLASE CLASE CLASE CLASE
+	insert into clase (
+	id_clase,
+	fecha,
+	hora_inicio,
+	hora_fin,
+	id_pista,
+	nombre_clase,
+	precio_clase,
+	id_usuario
+	) values (
+	"CLASS-FUTBOL",
+	"2019-01-01",
+	"17:00:00",
+	"17:59:59",
+	"P-03",
+	"Clase de Futbol",
+	38.50,
+	5
+	);

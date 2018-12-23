@@ -99,7 +99,7 @@ CONSTRAINT FK_384 FOREIGN KEY fkIdx_384 (id_tipo_usuario) REFERENCES tipo_usuari
 CREATE TABLE reserva
 (
  id_reserva     varchar(45) NOT NULL ,
- id_usuario     int NOT NULL ,
+ id_usuario     INT NOT NULL ,
  fecha          date NOT NULL ,
  hora_inicio    time NOT NULL ,
  hora_fin       time NOT NULL ,
@@ -123,15 +123,15 @@ CONSTRAINT FK_330 FOREIGN KEY fkIdx_330 (hora_inicio, hora_fin, id_pista, fecha)
 
 CREATE TABLE clase
 (
- cd_clase     varchar(20) NOT NULL ,
+ id_clase     varchar(20) NOT NULL ,
  fecha        date NOT NULL ,
  hora_inicio  time NOT NULL ,
  hora_fin     time NOT NULL ,
  id_pista     varchar(20) NOT NULL ,
- combre_clase varchar(45) NOT NULL ,
- crecio_clase double NOT NULL ,
+ nombre_clase varchar(45) NOT NULL ,
+ precio_clase double NOT NULL ,
  id_usuario   int NOT NULL ,
-PRIMARY KEY (cd_clase, fecha, hora_inicio, hora_fin, id_pista),
+PRIMARY KEY (id_clase, fecha, hora_inicio, hora_fin, id_pista),
 KEY fkIdx_349 (hora_inicio, hora_fin, id_pista, fecha),
 CONSTRAINT FK_349 FOREIGN KEY fkIdx_349 (hora_inicio, hora_fin, id_pista, fecha) REFERENCES horario (hora_inicio, hora_fin, id_pista, fecha) ON DELETE CASCADE,
 KEY fkIdx_380 (id_usuario),
@@ -148,16 +148,16 @@ CONSTRAINT FK_380 FOREIGN KEY fkIdx_380 (id_usuario) REFERENCES usuario (id_usua
 CREATE TABLE asiste
 (
  id_usuario  int NOT NULL ,
- cd_clase    varchar(20) NOT NULL ,
+ id_clase    varchar(20) NOT NULL ,
  fecha       date NOT NULL ,
  hora_inicio time NOT NULL ,
  hora_fin    time NOT NULL ,
  id_pista    varchar(20) NOT NULL ,
-PRIMARY KEY (id_usuario, cd_clase, fecha, hora_inicio, hora_fin, id_pista),
+PRIMARY KEY (id_usuario, id_clase, fecha, hora_inicio, hora_fin, id_pista),
 KEY fkIdx_338 (id_usuario),
 CONSTRAINT FK_338 FOREIGN KEY fkIdx_338 (id_usuario) REFERENCES usuario (id_usuario) ON DELETE CASCADE,
-KEY fkIdx_343 (cd_clase, fecha, hora_inicio, hora_fin, id_pista),
-CONSTRAINT FK_343 FOREIGN KEY fkIdx_343 (cd_clase, fecha, hora_inicio, hora_fin, id_pista) REFERENCES clase (cd_clase, fecha, hora_inicio, hora_fin, id_pista) ON DELETE CASCADE
+KEY fkIdx_343 (id_clase, fecha, hora_inicio, hora_fin, id_pista),
+CONSTRAINT FK_343 FOREIGN KEY fkIdx_343 (id_clase, fecha, hora_inicio, hora_fin, id_pista) REFERENCES clase (id_clase, fecha, hora_inicio, hora_fin, id_pista) ON DELETE CASCADE
 ) ENGINE=INNODB;
 
 
