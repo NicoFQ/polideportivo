@@ -1,0 +1,10 @@
+.errList{
+    color:red;
+    display: block;
+    margin: 0 auto;
+    width: 25em;
+    background-color: #E2A7A7;
+    box-sizing: border-box;
+}
+.errList>ul>li:last-of-type{padding-bottom: 1em;}
+.errList> h3{text-align: center;padding-top: .5em;}
