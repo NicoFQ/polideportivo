@@ -75,7 +75,8 @@ values ("2018-12-23", "15:00:00", "15:59:59", "P-04");
 insert into horario (fecha,hora_inicio,hora_fin,id_pista)
 values ("2018-12-23", "15:00:00", "15:59:59", "P-05");
 
-
+insert into horario (fecha,hora_inicio,hora_fin,id_pista)
+values ("2019-01-01", "17:00:00", "17:59:59", "P-03");
 
 
 insert into tipo_usuario (id_tipo_usuario,nombre_tipo)
@@ -437,11 +438,64 @@ insert into usuario (
 	id_usuario
 	) values (
 	"CLASS-FUTBOL",
-	"2019-01-01",
-	"17:00:00",
+	"2019-01-01", -- Para añadir una clase es necesario tener 
+	"17:00:00",   -- el horario creado. 
 	"17:59:59",
 	"P-03",
 	"Clase de Futbol",
 	38.50,
 	5
 	);
+
+
+-- ASISTE ASISTE ASISTE ASISTE ASISTE ASISTE ASISTE	
+	insert into asiste (	
+	id_usuario,
+	id_clase,
+	fecha,
+	hora_inicio,
+	hora_fin,
+	id_pista
+	) values (
+	8,
+	"CLASS-FUTBOL",
+	"2019-01-01", -- Para añadir una clase es necesario tener 
+	"17:00:00",   -- el horario creado. 
+	"17:59:59",
+	"P-03"
+	);
+
+	insert into asiste (	
+	id_usuario,
+	id_clase,
+	fecha,
+	hora_inicio,
+	hora_fin,
+	id_pista
+	) values (
+	9,
+	"CLASS-FUTBOL",
+	"2019-01-01", -- Para añadir una clase es necesario tener 
+	"17:00:00",   -- el horario creado. 
+	"17:59:59",
+	"P-03"
+	);
+
+	insert into asiste (	
+	id_usuario,
+	id_clase,
+	fecha,
+	hora_inicio,
+	hora_fin,
+	id_pista
+	) values (
+	10,
+	"CLASS-FUTBOL",
+	"2019-01-01", -- Para añadir una clase es necesario tener 
+	"17:00:00",   -- el horario creado. 
+	"17:59:59",
+	"P-03"
+	);
+
+
+
