@@ -9,7 +9,6 @@ drop table if exists deporte;
 drop table if exists instalacion;
 
 -- ************************************** instalacion
-
 CREATE TABLE instalacion
 (
  id_instalacion varchar(45) NOT NULL ,
@@ -18,7 +17,6 @@ PRIMARY KEY (id_instalacion)
 ) ENGINE=INNODB;
 
 -- ************************************** deporte
-
 CREATE TABLE deporte
 (
  id_deporte     varchar(45) NOT NULL ,
@@ -27,7 +25,6 @@ PRIMARY KEY (id_deporte)
 ) ENGINE=INNODB;
 
 -- ************************************** pista
-
 CREATE TABLE pista
 (
  id_pista       varchar(20) NOT NULL ,
@@ -45,7 +42,6 @@ CONSTRAINT FK_377 FOREIGN KEY fkIdx_377 (id_instalacion) REFERENCES instalacion 
 ) ENGINE=INNODB;
 
 -- ************************************** horario
-
 CREATE TABLE horario
 (
  fecha       date NOT NULL ,
@@ -56,7 +52,6 @@ PRIMARY KEY (hora_inicio, hora_fin, id_pista, fecha),
 KEY fkIdx_364 (id_pista),
 CONSTRAINT FK_364 FOREIGN KEY fkIdx_364 (id_pista) REFERENCES pista (id_pista) ON DELETE CASCADE
 ) ENGINE=INNODB;
-
 -- ************************************** tipo_usuario
 
 CREATE TABLE tipo_usuario
@@ -67,7 +62,6 @@ PRIMARY KEY (id_tipo_usuario)
 ) ENGINE=INNODB;
 
 -- ************************************** usuario
-
 CREATE TABLE usuario
 (
  id_usuario       INT AUTO_INCREMENT NOT NULL ,
@@ -91,13 +85,6 @@ CONSTRAINT FK_384 FOREIGN KEY fkIdx_384 (id_tipo_usuario) REFERENCES tipo_usuari
 ) ENGINE=INNODB;
 
 -- ************************************** reserva
-
--- ****************** SqlDBM: MySQL ******************;
--- ***************************************************;
-
-
--- ************************************** reserva
-
 CREATE TABLE reserva
 (
  id_reserva     varchar(45) NOT NULL ,
@@ -114,15 +101,7 @@ KEY fkIdx_330 (hora_inicio, hora_fin, id_pista, fecha),
 CONSTRAINT FK_330 FOREIGN KEY fkIdx_330 (hora_inicio, hora_fin, id_pista, fecha) REFERENCES horario (hora_inicio, hora_fin, id_pista, fecha) ON DELETE CASCADE
 ) ENGINE=INNODB;
 
-
-
-
--- ****************** SqlDBM: MySQL ******************;
--- ***************************************************;
-
-
 -- ************************************** clase
-
 CREATE TABLE clase
 (
  id_clase     varchar(20) NOT NULL ,
@@ -141,7 +120,6 @@ CONSTRAINT FK_380 FOREIGN KEY fkIdx_380 (id_usuario) REFERENCES usuario (id_usua
 ) ENGINE=INNODB;
 
 -- ************************************** asiste
-
 CREATE TABLE asiste
 (
  id_usuario  int NOT NULL ,
