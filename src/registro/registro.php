@@ -54,7 +54,7 @@ require('./tratamiento_datos_registro.php');
             <label for="fecha_nacimiento">Fecha de nacimiento:</label>
             <input type="date" name="fecha_nacimiento" value="<?= $fecha_nacimiento?>" class="form-control">
 
-            <input type="submit" value="Enviar" class="btn btn-primary btn-block mt-2">
+            <input type="submit" value="Enviar" name="enviar" class="btn btn-primary btn-block mt-2">
         </form>
         </div>
     </div>

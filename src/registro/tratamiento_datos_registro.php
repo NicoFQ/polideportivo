@@ -71,7 +71,7 @@ if (count($_POST) > 0 ) {
     $apellido_2 = strtoupper(clean_input($_POST["apellido_2"]));
     $email = clean_input($_POST["email"]);
     $direccion = strtoupper(clean_input($_POST["direccion"]));
-    $nacionalidad = strtoupper(clean_input($_POST["nacionalidad"]));
+    $nacionalidad = ucwords(clean_input($_POST["nacionalidad"]));
     $fecha_nacimiento = strtoupper(clean_input($_POST["fecha_nacimiento"]));
     $nombre_usuario = clean_input($_POST["nombre_usuario"]);
     $contrasena = clean_input($_POST["contrasena"]);
@@ -81,57 +81,58 @@ if (count($_POST) > 0 ) {
 }
 
 // Conexion e inserción de datos
-// try {
-//     $db = new PDO("mysql:host=localhost;dbname=proyecto_polideportivo", "admin_polideportivo","1234");
-//     // Todos los clientes tendran el Role de cliente (CL), el admin es  
-//     // quien debe cambiar el Role a profesores y demas
-//     $query = "
-//     insert into usuario (
-//         email,
-//         contrasena,
-//         dni,
-//         nombre,
-//         apellido_1,
-//         apellido_2,
-//         direccion,
-//         imagen_perfil,
-//         nombre_usuario,
-//         fecha_nacimiento,
-//         sexo,
-//         nacionalidad,
-//         id_tipo_usuario
-//         ) values (
-//         :email,
-//         :contrasena,
-//         :dni,
-//         :nombre,
-//         :apellido_1,
-//         :apellido_2,
-//         :direccion,
-//         'empty.jpg',
-//         :nombre_usuario,
-//         :fecha_nacimiento,
-//         :valor_sexo,
-//         :nacionalidad,
-//         'CL');
-//     ";
-//     $sentencia = $db->prepare($query);
-//     //  TO DO: Hacer bindparams
-//     $resultado = $sentencia->execute();
-    
-
-//     $resultado = $sentencia->fetchall();
-
-//     echo "<pre>";
-//     print_r($resultado);
-//     echo "</pre>";
-
-//     $db = null;
-// } catch (PDOException $e) {
-//     print "¡Error!: " . $e->getMessage() . "<br/>";
-//     die();
-// }//catch
 $db = Conexion::getInstance();
+$sentencia = $db->conexion();
 
+    // Todos los clientes tendran el Role de cliente (CL), el admin es  
+    // quien debe cambiar el Role a profesores y demas
+    $query = "
+    insert into usuario (
+        email,
+        contrasena,
+        dni,
+        nombre,
+        apellido_1,
+        apellido_2,
+        direccion,
+        imagen_perfil,
+        nombre_usuario,
+        fecha_nacimiento,
+        sexo,
+        nacionalidad,
+        id_tipo_usuario
+        ) values (
+        :email,
+        :contrasena,
+        :dni,
+        :nombre,
+        :apellido_1,
+        :apellido_2,
+        :direccion,
+        NULL,
+        :nombre_usuario,
+        :fecha_nacimiento,
+        :valor_sexo,
+        :nacionalidad,
+        'CL');
+    ";
+$sentencia = $sentencia->prepare($query);
+$sentencia->bindParam(':email',$email);
+$sentencia->bindParam(':contrasena',$contrasena);
+$sentencia->bindParam(':dni',$dni);
+$sentencia->bindParam(':nombre',$nombre);
+$sentencia->bindParam(':apellido_1',$apellido_1);
+$sentencia->bindParam(':apellido_2',$apellido_2);
+$sentencia->bindParam(':direccion',$direccion);
+$sentencia->bindParam(':nombre_usuario',$nombre_usuario);
+$sentencia->bindParam(':fecha_nacimiento',$fecha_nacimiento);
+$sentencia->bindParam(':valor_sexo',$valor_sexo);
+$sentencia->bindParam(':nacionalidad',$nacionalidad);
+
+// Envio de datos a la BBDD
+if (isset($_POST["enviar"]) && count($errList) == 0) {
+    $sentencia->execute();
+    // Redireccion al login
+}//if
 
 ?>
