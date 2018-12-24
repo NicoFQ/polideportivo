@@ -13,11 +13,17 @@
 			}
 			
 		}
-		
+
+		public function conexion()
+		{
+			return $this->bd;
+		}
+
 		public static function getInstance()
 		{
 			if (!isset(static::$instancia)) {
 		        $miclase = __CLASS__;
+		        echo "WEFEF";
 		        self::$instancia = new $miclase;
 			}
         	return self::$instancia;
