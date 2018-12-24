@@ -1,0 +1,25 @@
+.container{
+    margin: .7em auto;
+}
+.container > .row{
+    padding: 1em 0;
+    border-top: 25px solid gray;
+}
+.footer{
+    text-align: center;
+    background-color: darkslategray;
+}
+.footer  span {
+    font-size: 1.5em;
+    color: rgb(56, 141, 56);
+    padding-right: .3em;
+}
+.footer  p{
+    color:white;
+    margin:0;
+}
+/* Iconos */
+.iconos a > i{
+    color:rgba(255, 255, 255, 0.473);
+    font-size: 2em;
+}
