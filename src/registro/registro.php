@@ -45,6 +45,8 @@ require('./tratamiento_datos_registro.php');
             <input type="radio" name="sexo" value="mujer" class="radio-inline" <?php if($sexo == "mujer") echo "checked"?>><br>
             <label for="email">Email:</label>
             <input type="email" name="email" value="<?= $email?>" class="form-control">
+            <label for="nacionalidad">Nacionalidad:</label>
+            <input type="text" name="nacionalidad" value="<?= $nacionalidad?>" class="form-control">
             <label for="nombre_usuario">Nombre usuario:</label>
             <input type="text" name="nombre_usuario" value="<?= $nombre_usuario?>" class="form-control">
             <label for="contrasena">Contraseña:</label>
