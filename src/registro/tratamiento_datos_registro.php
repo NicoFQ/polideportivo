@@ -132,7 +132,6 @@ if (count($_POST) > 0 ) {
 //     die();
 // }//catch
 $db = Conexion::getInstance();
-$query = "select * from usuario";
 
 
 ?>
