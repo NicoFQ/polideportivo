@@ -1,0 +1,37 @@
+#header{
+    margin-top:.5em;
+    text-transform: uppercase;
+}
+
+#logo{
+    border: 1px rgba(128, 128, 128, 0.507);
+    border-radius: 15px;
+    background-image: linear-gradient(42deg, rgb(18, 100, 18), rgb(87, 190, 93));
+    font-size: 1.5em;
+    font-family: sans-serif, helvetica, arial;
+    padding: .3em 0;
+    text-transform: uppercase;
+    text-shadow: -2px 2px rgba(204, 192, 28, 0.541); 
+}
+#logo > span{
+    font-size: 2em;
+    text-shadow: -2px -2px rgba(255, 255, 255, 0.815); 
+}
+.navbar ul{
+    position: relative;
+    top:35px;
+}
+#cols{
+    padding:0 .1em;
+}
+#cols > li{
+    background-color: rgb(61, 58, 58);
+}
+#cols > li > a {
+    color:white;
+}
+#cols > li > a:hover {text-decoration: none;}
+#cols > li:hover {
+    text-decoration: none;
+    background-color: rgba(129, 125, 125, 0.945);
+ }
