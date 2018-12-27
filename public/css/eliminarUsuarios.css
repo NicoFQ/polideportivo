@@ -1,0 +1,9 @@
+thead > tr > th {
+    background-image: linear-gradient(to bottom, #313133, rgb(106, 107, 110));
+}
+form[method="post"]{
+    position: relative;
+    top:-30px;
+    margin:0 auto;
+    width: 15em;
+}

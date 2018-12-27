@@ -1,20 +1,20 @@
 .container{
     margin: .7em auto;
 }
-.container > .row{
+#footer{
     padding: 1em 0;
     border-top: 25px solid gray;
 }
-.footer{
+#footer{
     text-align: center;
     background-color: darkslategray;
 }
-.footer  span {
+#footer  span {
     font-size: 1.5em;
     color: rgb(56, 141, 56);
     padding-right: .3em;
 }
-.footer  p{
+#footer  p{
     color:white;
     margin:0;
 }
@@ -22,4 +22,16 @@
 .iconos a > i{
     color:rgba(255, 255, 255, 0.473);
     font-size: 2em;
+    position: relative;
+    right: 20px;
+}
+.iconos .col-md-3, #footer .col-md-10 .col-md-3,#footer .col-md-10 .col-md-3 span{
+    margin:0;
+    padding: 0;
+}
+#footer .col-md-10 .col-md-3 p{
+    text-align: center;
+    font-size: 1.1em;
+    position: relative;
+    left: 10px;
 }

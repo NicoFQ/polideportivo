@@ -11,13 +11,10 @@ function header_usuarios(string $usuario = 'cliente')
 { 
     // Listado de usuarios con las paginas de navegacion de cada usuario
     $usuarios = ["cliente" => ["Home","Noticias","Localización","Reservas"],
-                 "admin" => ["Home","Deportes","Empleados","Añadir Clases","Enviar Correos"],
+                 "admin" => ["Home","Deportes","Empleados","Añadir Clases","Enviar Correo"],
                  "profesor" => ["Home","Horario"]
                 ];
     ?>
-    <!-- Quitar estos links cuando esten cada uno en su pagina -->
-<link rel="stylesheet" href="../../public/css/header.css">
-<link rel="stylesheet" href="../../public/css/bootstrap/dist/css/bootstrap.min.css">
         <div class="container" id="header">
             <div class="row">
                 <div class="col-md-3 text-center">
@@ -56,7 +53,9 @@ function header_usuarios(string $usuario = 'cliente')
      <ul class="navbar text-center">
      <?php foreach ($arr as $value) { ?>
         <div class="col-md-<?= $n_cols?>" id="cols" >
-        <li class="nav-item active btn btn-block "><a href="#"><?= $value?></a></li>
+        <li class="nav-item active btn btn-block "> 
+            <a href=""><?= $value?></a>
+        </li>
         </div>
       <?php }//forE ?>
       </ul>

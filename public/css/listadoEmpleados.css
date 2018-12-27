@@ -1,0 +1,52 @@
+table {text-align:center; margin-top: 20px;}
+table > caption {
+    font-size:2em;
+    font-weight:bolder;
+    color:black;
+}
+thead > tr > th{
+    text-align:center;
+    text-transform:uppercase;
+    /* background-color: #c0392b;*/
+    background-image: linear-gradient(to bottom, #c0392b, darkred);
+    color:white;
+    font-weight:bolder;
+}
+tbody > tr > td:first-of-type {
+    border-right:1px solid lightgray;
+}
+tbody > tr:nth-of-type(odd) {
+    background-color:#ecf0f1;
+}
+tbody > tr:hover {
+    background-color:#fcdcdc;
+    transition:.5s;
+}
+
+/* Inputs buscador */
+ input[type="submit"]{
+    position:relative;
+    top:25px;
+}
+.container h3 {text-transform: uppercase;}
+label {text-transform: uppercase;}
+input[type="search"] {
+    border:0;
+    border-radius: 0;
+    width: 90%;
+    border-bottom: 1px solid #ce93d8;
+    box-shadow: 0 1px 0 0 aquamarine;
+}
+input[type="search"]:focus {
+    border:0;
+    border-radius: 0;
+    border-bottom: 1px solid #ce93d8;
+    width: 100%;
+    transition: 1.5s;
+    box-shadow: 0 1px 0 0 rgb(38, 177, 219);
+}
+
+/* boton borrar */
+button > a {
+    color:white;
+}
