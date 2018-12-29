@@ -1,4 +1,5 @@
 <?php 
+require('/var/www/html/dwes/GIT/Polideportivo/src/comunes_polideportivo/logo.php');
 /**Funcion Header 
  * params: Necesita un parametro de tipo cadena que pintara un contenido u otro
  * en funcion del tipo de usuario que sea.
@@ -17,11 +18,9 @@ function header_usuarios(string $usuario = 'cliente')
     ?>
         <div class="container" id="header">
             <div class="row">
-                <div class="col-md-3 text-center">
-                    <div id="logo">
-                        <span>P</span>
-                        <p>Polideportivo</p>
-                    </div>
+                <div class="col-md-3">
+                    <?= logo();?>
+                    <h4>Polideportivo</h4>
                 </div>
                 <div class="col-md-9 navbar" id="nav">
                     <div class="row">            

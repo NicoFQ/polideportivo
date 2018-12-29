@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css?family=Racing+Sans+One");
+	:root{
+		--width-logo:100px;
+		--height-logo:100px;
+
+		--width-circle:calc(var(--width-logo) - 20px );
+		--height-circle:calc(var(--height-logo) - 20px );
+
+		--width-circlexsm:calc(var(--width-logo) - 30px );
+		--height-circlexsm:calc(var(--height-logo) - 30px );
+	}
+	.contenedor-logo{
+        font-family: 'Racing Sans One',serif;
+         width: 40%;
+          margin: 0 auto;}
+	.logo{
+		width: var(--width-logo);
+        height: var(--height-logo);
+		border:solid #227093 5px;
+		/*border:solid rgba(32,15,122,.9) 5px;*/
+		border-radius: 50%;
+		box-shadow: 0px 0px 10px aqua;
+	}
+	.circulo-peq{
+		border:10px solid #0a3d62;
+		/*border:10px solid rgba(21,31,124,.8);*/
+		border-radius: 50%;
+		/* width: var(--width-circle);
+        height: var(--width-circle); */
+        width: 90px;
+        height: 90px;
+	}
+	.circulo-extra-peq{
+		border:5px solid #dfe4ea;
+		box-shadow: 0px 0px 15px #dfe4ea;
+		border-radius: 50%;
+		width: var(--width-circlexsm);
+		height: var(--height-circlexsm);	
+	}
+	.envoltorio{
+		background-image: radial-gradient(circle, #686de0 30%, #30336b);
+		/* width: var(--width-circlexsm);
+        height: var(--height-circlexsm); */
+        width: 60px;
+        height: 60px;
+		border-radius: 50%;
+		position: relative;
+	}
+	.contenido{
+		font-size: 4em;
+		text-align: center;
+		position: relative;
+		top:-12.5px;
+		color:#dfe4ea;
+		text-shadow: 8px 8px 4px black;
+	}

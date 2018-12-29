@@ -68,6 +68,7 @@ function buscador()
     <link rel="stylesheet" href="../../public/css/listadoEmpleados.css">
     <link rel="stylesheet" href="../../public/css/header.css">
     <link rel="stylesheet" href="../../public/css/footer.css">
+    <link rel="stylesheet" href="../../public/css/logo.css">
 </head>
 <body>
     <?= header_usuarios('admin')?>
