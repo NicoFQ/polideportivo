@@ -4,6 +4,12 @@ require('./funciones.php');
 require('../comunes_polideportivo/footer.php');
 require('../comunes_polideportivo/header.php');
 
+// Redireccion si no tiene el ID
+if (!isset($_GET["id"])) {
+    header('location: lista_empleados.php');
+    die();
+}
+
 $db = Conexion::getInstance();
 $sentencia = $db->conexion();
 
