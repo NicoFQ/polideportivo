@@ -10,11 +10,13 @@ require('./tratamiento_datos_registro.php');
     <title>Registro</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../../public/css/errList.css">
+    <link rel="stylesheet" href="../../public/css/registro.css">
+    <link rel="stylesheet" href="../../public/css/polideportivo-global.css">
 </head>
 <body>
     <div class="container">
         <h1>Registro</h1>
-        <div class="errList fluid">
+        <div class="errList">
 			<!-- LISTA DE ERRORES -->
 			<?php if (count($errList) > 0) { ?> 
 				<h3>Debe completar los campos</h3>
@@ -26,7 +28,7 @@ require('./tratamiento_datos_registro.php');
 			<?php }//if ?>
         </div>
 			<!-- FIN LISTA ERRORES -->
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-6 col-md-offset-3">
             <form action="#" method="post">
             <label for="dni">Dni:</label>
             <input type="text" name="dni" value="<?= $dni?>" class="form-control" >
@@ -54,7 +56,7 @@ require('./tratamiento_datos_registro.php');
             <label for="fecha_nacimiento">Fecha de nacimiento:</label>
             <input type="date" name="fecha_nacimiento" value="<?= $fecha_nacimiento?>" class="form-control">
 
-            <input type="submit" value="Enviar" name="enviar" class="btn btn-primary btn-block mt-2">
+            <input type="submit" value="Enviar" name="enviar" class="btn btn-primary btn-block mt-4">
         </form>
         </div>
     </div>

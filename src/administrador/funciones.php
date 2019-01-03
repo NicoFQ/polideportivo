@@ -24,7 +24,6 @@ function pintarDatosHTML($datos)
                 <td><?= $valor?></td>
             <?php }//forE ?>
             <td><a href="eliminar_usuarios.php?id=<?= $id?>" class="btn btn-danger btn-block">Borrar</a></td>
-            <td><a href="modificar_datos_usuarios.php?id=<?= $id?>" class="btn btn-warning btn-block">Modificar</a></td>
         </tr>
     <?php }//forE ?>
     </tbody>
@@ -52,6 +51,7 @@ function pintarEncontrados(array $tabla, $thead)
 <?php }//pintarEncontrados
 
 /**
+ * $captionTabla = Encabezado / titulo de la tabla
  * $tabla = Array de datos obtenidos por la query
  * $thead = Cabecera de las tablas, se crea un array a fuego con los elmentos que se 
  *  obtendran de la query
@@ -59,21 +59,20 @@ function pintarEncontrados(array $tabla, $thead)
  *  Sirve para elegir como se quiere que se pinten los datos
  *  -Si se elige 1, pintara los datos SIN botones para poder modificar / eliminar usuarios
  */
-function pintarTablaDatosCompletos(array $tabla, $thead, $limpios = 0)
+function pintarTablaDatosCompletos($captionTabla, array $tabla, $thead, $limpios = 0)
     { ?>
-            <table class="table">
-            <caption class="text-center bg-dark">Lista de empleados</caption>
-                <?= pintarTHEAD($thead)?>
-                <?php 
-                    if ($limpios == 1) {
-                        pintarDatosLimpios($tabla);
-                    }else{
-                        pintarDatosHTML($tabla);
-                    }//else
-                ?>
-                
-            </table>
-
+        <table class="table">
+        <caption class="text-center bg-dark">Lista de <?= $captionTabla?></caption>
+            <?= pintarTHEAD($thead)?>
+            <?php 
+                if ($limpios == 1) {
+                    pintarDatosLimpios($tabla);
+                }else{
+                    pintarDatosHTML($tabla);
+                }//else
+            ?>
+            
+        </table>
 <?php }//pintarTabla
 
 function plantillaBuscadorHTML()

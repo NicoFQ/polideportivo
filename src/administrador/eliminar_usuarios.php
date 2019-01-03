@@ -53,17 +53,15 @@ if (isset($_POST["confirmar"])) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Eliminar Usuario</title>
 
-    <link rel="stylesheet" href="../../public/css/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="../../public/css/listadoEmpleados.css">
     <link rel="stylesheet" href="../../public/css/eliminarUsuarios.css">
-    <link rel="stylesheet" href="../../public/css/header.css">
-    <link rel="stylesheet" href="../../public/css/footer.css">
+    <link rel="stylesheet" href="../../public/css/polideportivo-global.css">
 
 </head>
 <body>
     <?= header_usuarios('admin')?>
     <div class="container">
-        <?= pintarTablaDatosCompletos($resultado,$theadEmpleados,1)?>
+        <?= pintarTablaDatosCompletos("Empleados",$resultado,$theadEmpleados,1)?>
     <form action="#" method="post">
         <input type="submit" value="Eliminar" name="confirmar"class="btn btn-success">
         <input type="submit" value="Cancelar" name="denegar"class="btn btn-danger">

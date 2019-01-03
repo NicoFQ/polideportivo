@@ -2,7 +2,6 @@
 #header{
     margin-top:.5em;
     text-transform: uppercase;
-    
 }
 #h3{
     text-align: center;
@@ -18,16 +17,12 @@
 #cols{
     padding:0 .1em;
 }
-#cols > li{
+#cols  .btn{
     background-color: rgb(61, 58, 58);
-    
-}
-#cols > li > a {
     color:white;
 }
-#cols > li > a:hover {text-decoration: none;}
-#cols > li:hover {
+#cols .btn:hover {
     text-decoration: none;
-    background-color: rgba(128, 124, 124, 0.945);
+    background-color: rgba(32, 30, 30, 0.726);
     transition: .5s;
  }
