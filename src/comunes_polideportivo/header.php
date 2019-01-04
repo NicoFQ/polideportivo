@@ -43,29 +43,29 @@ function header_usuarios(string $usuario = 'cliente')
     { ?>
         <ul class="navbar text-center">
             <div class="col-md-2" id="cols">
-                <a href="main_administrador.php">
-                    <li class="  nav-item active btn btn-block ">Home</li>
-                </a>
+                <li class="  nav-item active ">
+                    <a href="main_administrador.php" class="btn btn-block">Home</a>
+                </li>            
             </div>
             <div class="col-md-2" id="cols">
-                <a href="lista_empleados.php">
-                    <li class=" nav-item active btn btn-block ">Empleados</li>
-                </a>
+                <li class=" nav-item active">
+                    <a href="lista_empleados.php" class="btn btn-block">Empleados</a>
+                </li>
             </div>
             <div class="col-md-2" id="cols">
-                <a href="lista_deportes.php">
-                    <li class="  nav-item active btn btn-block ">Deportes</li>
-                </a>
+                <li class="  nav-item active ">
+                    <a href="lista_deportes.php" class="btn btn-block">Deportes</a>
+                </li>
             </div>
             <div class="col-md-2" id="cols">
-                <a href="anadir_clases.php">
-                    <li class=" nav-item active btn btn-block ">Añadir clases</li>
-                </a>
+                <li class=" nav-item active">
+                    <a href="anadir_clases.php" class="btn btn-block">Añadir clases</a>
+                </li>
             </div>
             <div class="col-md-2" id="cols">
-                <a href="enviar_correo.php">
-                    <li class=" nav-item active btn btn-block ">Enviar correo</li>
-                </a>
+                <li class=" nav-item active">
+                    <a href="enviar_correo.php" class="btn btn-block">Enviar correo</a>
+                </li>
             </div>
         </ul>
     <?php }//navAdmin ?>
@@ -74,24 +74,24 @@ function header_usuarios(string $usuario = 'cliente')
     { ?>
         <ul class="navbar text-center">
             <div class="col-md-3" id="cols">
-                <a href="main_usuario.php">
-                    <li class="nav-item active btn btn-block ">Home</li>
-                </a>
+                <li class="nav-item active ">
+                    <a href="main_usuario.php" class="btn btn-block">Home</a>
+                </li>
             </div>
             <div class="col-md-3" id="cols">
-                <a href="noticias.php">
-                    <li class="nav-item active btn btn-block ">Noticias</li>
-                </a>
+                <li class="nav-item active ">
+                    <a href="noticias.php" class="btn btn-block">Noticias</a>
+                </li>
             </div>
             <div class="col-md-3" id="cols">
-                <a href="localizacion.php">
-                    <li class="nav-item active btn btn-block ">Localizacion</li>
-                </a>
+                <li class="nav-item active  ">
+                    <a href="localizacion.php" class="btn btn-block">Localizacion</a>
+                </li>
             </div>
             <div class="col-md-3" id="cols">
-                <a href="">
-                    <li class="nav-item active btn btn-block ">Reservas</li>
-                </a>
+                <li class="nav-item active ">
+                    <a href="" class="btn btn-block">Reservas</a>
+                </li>
             </div>
         </ul>
     <?php }//navCliente ?>
@@ -101,14 +101,14 @@ function header_usuarios(string $usuario = 'cliente')
     { ?>
     <ul class="navbar text-center">
         <div class="col-md-6" id="cols">
-            <a href="main_profesor.php">
-                <li class="nav-item active btn btn-block ">Home</li>
-            </a>
+        <li class="nav-item active">
+            <a href="main_profesor.php" class="btn btn-block">Home</a>
+        </li>
         </div>
         <div class="col-md-6" id="cols">
-            <a href="horarios_profesor.php">
-                <li class="nav-item active btn btn-block ">Horario</li>
-            </a>
+        <li class="nav-item active "">
+            <a href="horarios_profesor.php" class="btn btn-block ">Horario</a>
+            </li>
         </div>
     </ul>    
     <?php }//navProfesor ?>
