@@ -46,43 +46,14 @@
  					</div>
  					<div class="col-lg-10">
  						<div class="row">
-              <h4>Estado de los pagos</h4>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Fecha</th>
-                    <th>Concepto</th>
-                    <th>Estado</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>20/06/2018</td>
-                    <td>Clase de Tenis</td>
-                    <td>Pagado</td>
-                  </tr>
-                  <tr>
-                    <td>20/06/2018</td>
-                    <td>Clase de Baloncesto</td>
-                    <td>Pagado</td>
-                  </tr>
-                  <tr>
-                    <td>20/06/2018</td>
-                    <td>Clase de Natacion</td>
-                    <td>Pagado</td>
-                  </tr>
-                  <tr>
-                    <td>20/06/2018</td>
-                    <td>Clase de Natacion</td>
-                    <td>Pagado</td>
-                  </tr>
-                  <tr>
-                    <td>20/06/2018</td>
-                    <td>Clase de Natacion</td>
-                    <td>Pagado</td>
-                  </tr>
-                </tbody>
-              </table>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. 
+              <br>
+              <br>
+              Introduce tu contraseña: <input type="password" name="">
+              <button>Eliminar mi cuenta</button>
  						</div>
  					</div>
  				</article>

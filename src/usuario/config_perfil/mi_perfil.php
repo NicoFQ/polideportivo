@@ -2,6 +2,7 @@
 	require ("./../../comunes_polideportivo/footer.php");
 	require ("./../../comunes_polideportivo/header.php");
 	// Base de datos para mi sdeportes favoritos
+	// Falta direccion del domicilio y codifo postal
 ?>
  <!DOCTYPE html>
  <html>
@@ -18,7 +19,7 @@
  	<div class="container">
  		<main>
 	 		<h3>
-	 			Facturacion
+	 			Mi perfil
 	 		</h3>
 	 		<hr>
  			<section>
@@ -46,43 +47,18 @@
  					</div>
  					<div class="col-lg-10">
  						<div class="row">
-              <h4>Estado de los pagos</h4>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Fecha</th>
-                    <th>Concepto</th>
-                    <th>Estado</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>20/06/2018</td>
-                    <td>Clase de Tenis</td>
-                    <td>Pagado</td>
-                  </tr>
-                  <tr>
-                    <td>20/06/2018</td>
-                    <td>Clase de Baloncesto</td>
-                    <td>Pagado</td>
-                  </tr>
-                  <tr>
-                    <td>20/06/2018</td>
-                    <td>Clase de Natacion</td>
-                    <td>Pagado</td>
-                  </tr>
-                  <tr>
-                    <td>20/06/2018</td>
-                    <td>Clase de Natacion</td>
-                    <td>Pagado</td>
-                  </tr>
-                  <tr>
-                    <td>20/06/2018</td>
-                    <td>Clase de Natacion</td>
-                    <td>Pagado</td>
-                  </tr>
-                </tbody>
-              </table>
+  							<h4> Mis deportes favoritos</h4>
+  							Baloncesto, Tenis, Futbol. <a href=""><img src=""></a>
+  							<br>
+  							<br>
+  							<h4> Clases en las que estoy </h4>
+  							Tenis, Baloncesto.
+  							<br>
+  							<br>
+  							<h4> Sobre mi</h4>
+  							Me gusta mucho el deporte... Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+  							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+  							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
  						</div>
  					</div>
  				</article>
