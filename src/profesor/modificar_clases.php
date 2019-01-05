@@ -14,7 +14,10 @@ $hoy = date('l, d M Y');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Inicio Profesor</title>
+    <title>Modificar clases</title>
+
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
     <link rel="stylesheet" href="../../public/css/mainProfesor.css">
     <link rel="stylesheet" href="../../public/css/polideportivo-global.css">
@@ -24,19 +27,8 @@ $hoy = date('l, d M Y');
     <div class="container">
         <div class="row text-uppercase">
             <main>
-                <aside class="perfil col-md-2">
-                    <h2 class="text-center">Perfil</h2>
-                    <article>
-                        <img src="../../public/img/profesor_img.jpg" alt="Foto de perfil">
-                        <div>
-                            <h4 class="text-udnerline">Datos</h4>
-                            <p><span>Nombre:</span>Alvaro Martinez</p>
-                            <p><span>Nombre Usuario:</span>A_Martinez</p>
-                        </div>
-                    </article>
-                </aside>
-                <section class="content-t col-md-9 col-md-offset-1 text-center">
-                    <h2>Horario para el dia: <?= $hoy?></h2>
+            <section class="content-t col-md-12 text-center">
+                    <h2>Modificar horario para el dia: <?= $hoy?></h2>
                     <article>
                         <table class="table">
                             <thead>
@@ -44,6 +36,7 @@ $hoy = date('l, d M Y');
                                     <th>Clases</th>
                                     <th>Pista</th>
                                     <th>Hora</th>
+                                    <th>Accion</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -51,26 +44,46 @@ $hoy = date('l, d M Y');
                                     <td>Clase-Padel</td>
                                     <td>Pista-03</td>
                                     <td>9:00 a 9:59</td>
+                                    <td>
+                                        <i class="fas fa-edit btn btn-warning"></i>
+                                        <i class="fas fa-bell-slash btn btn-danger"></i>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Clase-Padel</td>
                                     <td>Pista-02</td>
                                     <td>10:00 a 10:59</td>
+                                    <td>
+                                        <i class="fas fa-edit btn btn-warning"></i>
+                                        <i class="fas fa-bell-slash btn btn-danger"></i>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Clase-Padel</td>
                                     <td>Pista-03</td>
                                     <td>16:00 a 16:59</td>
+                                    <td>
+                                        <i class="fas fa-edit btn btn-warning"></i>
+                                        <i class="fas fa-bell-slash btn btn-danger"></i>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Clase-Padel</td>
                                     <td>Pista-02</td>
                                     <td>17:00 a 18:30</td>
+                                    <td>
+                                        <i class="fas fa-edit btn btn-warning"></i>
+                                        <i class="fas fa-bell-slash btn btn-danger"></i>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Clase-Padel</td>
                                     <td>Pista-02</td>
                                     <td>19:00 a 20:30</td>
+                                    <td>
+                                        <i class="fas fa-edit btn btn-warning"></i>
+                                        <i class="fas fa-bell-slash btn btn-danger"></i>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

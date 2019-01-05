@@ -1,0 +1,30 @@
+table{
+    font-size:1.5em;
+    text-transform:uppercase;
+}
+table thead >tr > th{text-align:center; }
+thead > tr > th {
+background-color:#303952;
+color:white;
+}
+thead{
+border:2px solid;
+}
+table tbody > tr > td{
+padding:40px 10px !important;
+outline:1px solid black;
+
+}
+td>span{
+position:relative;
+top:-40px;
+}
+thead > tr > th:nth-of-type(6),
+thead > tr > th:nth-of-type(7),
+tbody > tr > td:nth-of-type(6),
+tbody > tr > td:nth-of-type(7)
+{color:red;}
+
+tr > td.dia-clase{
+background-color:#78e08f;
+}

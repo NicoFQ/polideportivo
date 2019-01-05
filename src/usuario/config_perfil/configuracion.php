@@ -1,6 +1,6 @@
 <?php 
-	require ("./../../comunes_polideportivo/footer.php");
-	require ("./../../comunes_polideportivo/header.php");
+	require("./../../comunes_polideportivo/footer.php");
+	require("./../../comunes_polideportivo/header.php");
 	// Base de datos para mi sdeportes favoritos
 ?>
  <!DOCTYPE html>
@@ -10,7 +10,8 @@
  		Configiracion | Polideportivo	
  	</title>
  	<link rel="stylesheet" type="text/css" href="./../../../public/css/bootstrap/dist/css/bootstrap.min.css">
- 	<link rel="stylesheet" type="text/css" href="./../../../public/css/configuracion_perfil.css">
+	 <link rel="stylesheet" type="text/css" href="./../../../public/css/configuracion_perfil.css">
+	 <link rel="stylesheet" href="../../../public/css/polideportivo-global.css">
  </head>
  <body>
 

@@ -44,7 +44,7 @@ function header_usuarios(string $usuario = 'cliente')
         <ul class="navbar text-center">
             <div class="col-md-2" id="cols">
                 <li class="  nav-item active ">
-                    <a href="main_administrador.php" class="btn btn-block">Home</a>
+                    <a href="main_administrador.php" class="btn btn-block">Inicio</a>
                 </li>            
             </div>
             <div class="col-md-2" id="cols">
@@ -75,7 +75,7 @@ function header_usuarios(string $usuario = 'cliente')
         <ul class="navbar text-center">
             <div class="col-md-3" id="cols">
                 <li class="nav-item active ">
-                    <a href="main_usuario.php" class="btn btn-block">Home</a>
+                    <a href="main_usuario.php" class="btn btn-block">Inicio</a>
                 </li>
             </div>
             <div class="col-md-3" id="cols">
@@ -100,14 +100,19 @@ function header_usuarios(string $usuario = 'cliente')
     <?php function navProfesor()
     { ?>
     <ul class="navbar text-center">
-        <div class="col-md-6" id="cols">
+        <div class="col-md-4" id="cols">
         <li class="nav-item active">
-            <a href="main_profesor.php" class="btn btn-block">Home</a>
+            <a href="main_profesor.php" class="btn btn-block">Inicio</a>
         </li>
         </div>
-        <div class="col-md-6" id="cols">
+        <div class="col-md-4" id="cols">
         <li class="nav-item active "">
             <a href="horarios_profesor.php" class="btn btn-block ">Horario</a>
+            </li>
+        </div>
+        <div class="col-md-4" id="cols">
+        <li class="nav-item active "">
+            <a href="modificar_clases.php" class="btn btn-block ">Modificar clases</a>
             </li>
         </div>
     </ul>    
