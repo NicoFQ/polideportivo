@@ -1,5 +1,5 @@
 <?php 
-require('/var/www/html/dwes/GIT/Polideportivo/src/comunes_polideportivo/logo.php');
+require('logo.php');
 /**Funcion Header 
  * params: Necesita un parametro de tipo cadena que pintara un contenido u otro
  * en funcion del tipo de usuario que sea.
@@ -9,33 +9,27 @@ require('/var/www/html/dwes/GIT/Polideportivo/src/comunes_polideportivo/logo.php
  *      -cliente
 */
 function header_usuarios(string $usuario = 'cliente')
-{ 
-    // Listado de usuarios con las paginas de navegacion de cada usuario
-    $usuarios = ["cliente" => ["Home","Noticias","Localización","Reservas"],
-                 "admin" => ["Home","Deportes","Empleados","Añadir Clases","Enviar Correo"],
-                 "profesor" => ["Home","Horario"]
-                ];
-    ?>
+{ ?>
         <div class="container" id="header">
             <div class="row">
                 <div class="col-md-3">
                     <?= logo();?>
-                    <h4>Polideportivo</h4>
+                    <h3 id="h3">Polideportivo</h3>
                 </div>
                 <div class="col-md-9 navbar" id="nav">
                     <div class="row">            
                         <?php 
                             switch ($usuario) {
                                 case 'cliente':
-                                    pintarNav($usuarios["cliente"]);
+                                navCliente();
                                 break;
                                 
                                 case 'admin':
-                                pintarNav($usuarios["admin"]);
+                                navAdmin();
                                 break;
 
                                 case 'profesor':
-                                    pintarNav($usuarios["profesor"]);
+                                navProfesor();
                                 break;
                             }//switch
                         ?>
@@ -45,19 +39,76 @@ function header_usuarios(string $usuario = 'cliente')
         </div>
 <?php }//header_usuarios ?>
  <?php 
- function pintarNav(array $arr)
- {
-    //  Numero de columnas que se aplicaran al estilo de bootstrap
-     $n_cols = round(12/(count($arr))); ?>
-     <ul class="navbar text-center">
-     <?php foreach ($arr as $value) { ?>
-        <div class="col-md-<?= $n_cols?>" id="cols" >
-        <li class="nav-item active btn btn-block "> 
-            <a href=""><?= $value?></a>
+    function navAdmin()
+    { ?>
+        <ul class="navbar text-center">
+            <div class="col-md-2" id="cols">
+                <li class="  nav-item active ">
+                    <a href="main_administrador.php" class="btn btn-block">Home</a>
+                </li>            
+            </div>
+            <div class="col-md-2" id="cols">
+                <li class=" nav-item active">
+                    <a href="lista_empleados.php" class="btn btn-block">Empleados</a>
+                </li>
+            </div>
+            <div class="col-md-2" id="cols">
+                <li class="  nav-item active ">
+                    <a href="lista_deportes.php" class="btn btn-block">Deportes</a>
+                </li>
+            </div>
+            <div class="col-md-2" id="cols">
+                <li class=" nav-item active">
+                    <a href="anadir_clases.php" class="btn btn-block">Añadir clases</a>
+                </li>
+            </div>
+            <div class="col-md-2" id="cols">
+                <li class=" nav-item active">
+                    <a href="enviar_correo.php" class="btn btn-block">Enviar correo</a>
+                </li>
+            </div>
+        </ul>
+    <?php }//navAdmin ?>
+
+    <?php function navCliente()
+    { ?>
+        <ul class="navbar text-center">
+            <div class="col-md-3" id="cols">
+                <li class="nav-item active ">
+                    <a href="main_usuario.php" class="btn btn-block">Home</a>
+                </li>
+            </div>
+            <div class="col-md-3" id="cols">
+                <li class="nav-item active ">
+                    <a href="noticias.php" class="btn btn-block">Noticias</a>
+                </li>
+            </div>
+            <div class="col-md-3" id="cols">
+                <li class="nav-item active  ">
+                    <a href="localizacion.php" class="btn btn-block">Localizacion</a>
+                </li>
+            </div>
+            <div class="col-md-3" id="cols">
+                <li class="nav-item active ">
+                    <a href="" class="btn btn-block">Reservas</a>
+                </li>
+            </div>
+        </ul>
+    <?php }//navCliente ?>
+ 
+
+    <?php function navProfesor()
+    { ?>
+    <ul class="navbar text-center">
+        <div class="col-md-6" id="cols">
+        <li class="nav-item active">
+            <a href="main_profesor.php" class="btn btn-block">Home</a>
         </li>
         </div>
-      <?php }//forE ?>
-      </ul>
-<?php }//pinatrNav ?>
-
- 
+        <div class="col-md-6" id="cols">
+        <li class="nav-item active "">
+            <a href="horarios_profesor.php" class="btn btn-block ">Horario</a>
+            </li>
+        </div>
+    </ul>    
+    <?php }//navProfesor ?>

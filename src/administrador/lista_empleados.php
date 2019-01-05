@@ -9,7 +9,7 @@ $db = Conexion::getInstance();
 $sentencia = $db->conexion();
 
 // Thead comun a todos los empleados
-$theadEmpleados = ["id","nombre","primer apellido","segundo apellido", "email", "nombre usuario", "sexo","id usuario", "eliminar","modificar"];
+$theadEmpleados = ["id","nombre","primer apellido","segundo apellido", "email", "nombre usuario", "sexo","id usuario", "eliminar"];
 
 // Obtencion de todos los datos de los empleados
 $queryEmpleados = 'select id_usuario "id", nombre, 
@@ -64,11 +64,8 @@ function buscador()
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Listado de empleados</title>
 
-    <link rel="stylesheet" href="../../public/css/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="../../public/css/listadoEmpleados.css">
-    <link rel="stylesheet" href="../../public/css/header.css">
-    <link rel="stylesheet" href="../../public/css/footer.css">
-    <link rel="stylesheet" href="../../public/css/logo.css">
+    <link rel="stylesheet" href="../../public/css/polideportivo-global.css">
 </head>
 <body>
     <?= header_usuarios('admin')?>
@@ -78,7 +75,7 @@ function buscador()
             if (buscador()) {
                 pintarEncontrados(buscador(),$theadEmpleados);
             }else {
-                pintarTablaDatosCompletos($resultadoEmpleados,$theadEmpleados);
+                pintarTablaDatosCompletos("Empleados",$resultadoEmpleados,$theadEmpleados);
             }//else
         ?>
     </div>
