@@ -4,7 +4,7 @@
 	// Base de datos para mi sdeportes favoritos
 ?>
  <!DOCTYPE html>
- <html>
+ <html lang="es">
  <head>
  	<title>
  		Configiracion | Polideportivo	
@@ -18,7 +18,7 @@
  	<div class="container">
  		<main>
 	 		<h3>
-	 			Facturacion
+	 			Cofiguracion
 	 		</h3>
 	 		<hr>
  			<section>
@@ -46,43 +46,31 @@
  					</div>
  					<div class="col-lg-10">
  						<div class="row">
-              <h4>Estado de los pagos</h4>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Fecha</th>
-                    <th>Concepto</th>
-                    <th>Estado</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>20/06/2018</td>
-                    <td>Clase de Tenis</td>
-                    <td>Pagado</td>
-                  </tr>
-                  <tr>
-                    <td>20/06/2018</td>
-                    <td>Clase de Baloncesto</td>
-                    <td>Pagado</td>
-                  </tr>
-                  <tr>
-                    <td>20/06/2018</td>
-                    <td>Clase de Natacion</td>
-                    <td>Pagado</td>
-                  </tr>
-                  <tr>
-                    <td>20/06/2018</td>
-                    <td>Clase de Natacion</td>
-                    <td>Pagado</td>
-                  </tr>
-                  <tr>
-                    <td>20/06/2018</td>
-                    <td>Clase de Natacion</td>
-                    <td>Pagado</td>
-                  </tr>
-                </tbody>
-              </table>
+              <h4>Configuracion de mi cuenta</h4>
+              <p><span>Email: </span>usuario@hotmail.es
+                <button type="button" class="btn btn-default btn-sm">
+                  <span class="glyphicon glyphicon-pencil"></span> Editar
+                </button>
+              </p>
+              <p><span>Nombre: </span>NombreUsuario</p>
+              <p><span>Apellidos: </span>ApellidoUno ApellidoDos</p>
+              <p><span>Direccion: </span>Calle Laguna 30 5D 28005
+                <button type="button" class="btn btn-default btn-sm">
+                  <span class="glyphicon glyphicon-pencil"></span> Editar
+                </button>
+              </p>
+
+
+              <p><span>Email: </span>usuario@hotmail.es
+                <button type="button" class="btn btn-default btn-sm">
+                  <span class="glyphicon glyphicon-pencil"></span> Editar
+                </button>
+              <h4>Seguridad</h4>
+              </p>              
+              <p><span>Contraseña: </span><a href="">Cambiar contraseña</a>
+                
+              </p>
+
  						</div>
  					</div>
  				</article>
