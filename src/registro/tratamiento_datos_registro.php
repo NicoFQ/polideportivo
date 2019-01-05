@@ -132,7 +132,8 @@ $sentencia->bindParam(':nacionalidad',$nacionalidad);
 // Envio de datos a la BBDD
 if (isset($_POST["enviar"]) && count($errList) == 0) {
     $sentencia->execute();
-    // Redireccion al login
+    header('location:../../public/index.php');
+    die();
 }//if
 
 ?>

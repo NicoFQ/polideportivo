@@ -31,7 +31,7 @@ require('./tratamiento_datos_registro.php');
         <div class="form-group col-md-6 col-md-offset-3">
             <form action="#" method="post">
             <label for="dni">Dni:</label>
-            <input type="text" name="dni" value="<?= $dni?>" class="form-control" >
+            <input type="text" name="dni" value="<?= $dni?>" class="form-control" pattern="[0-9]{8}[A-Za-z]{1}" maxlenght="9">
             <label for="nombre">Nombre:</label>
             <input type="text" name="nombre" value="<?= $nombre?>" class="form-control">
             <label for="apellido_1">Primer apellido:</label>
