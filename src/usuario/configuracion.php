@@ -78,6 +78,5 @@
  		</main>
  	</div>
  	<?php footer(); ?>
-
  </body>
  </html>
