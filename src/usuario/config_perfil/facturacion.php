@@ -9,7 +9,7 @@
  	<title>
  		Configiracion | Polideportivo	
  	</title>
- 	<link rel="stylesheet" type="text/css" href="./../../../public/css/bootstrap/dist/css/bootstrap.min.css">
+ 	<link rel="stylesheet" href="../../../public/css/polideportivo-global.css">
  	<link rel="stylesheet" type="text/css" href="./../../../public/css/configuracion_perfil.css">
  </head>
  <body>
