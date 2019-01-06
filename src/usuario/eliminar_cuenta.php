@@ -1,6 +1,6 @@
 <?php 
-	require ("./../../comunes_polideportivo/footer.php");
-	require ("./../../comunes_polideportivo/header.php");
+	require ("../comunes_polideportivo/footer.php");
+	require ("../comunes_polideportivo/header.php");
 	// Base de datos para mi sdeportes favoritos
 ?>
  <!DOCTYPE html>
@@ -9,8 +9,9 @@
  	<title>
  		Configiracion | Polideportivo	
  	</title>
- 	<link rel="stylesheet" href="../../../public/css/polideportivo-global.css">
- 	<link rel="stylesheet" type="text/css" href="./../../../public/css/configuracion_perfil.css">
+ 	<link rel="stylesheet" type="text/css" href="../../public/css/configuracion_perfil.css">
+	 <link rel="stylesheet" href="../../public/css/polideportivo-global.css">
+
  </head>
  <body>
 
@@ -29,7 +30,7 @@
  								<a href="">Cambiar foto</a>
  							</caption>
  							<figure>
- 								<img src="./../../../public/img/default_male.png">
+ 								<img src="../../public/img/default_male.png">
  							</figure>
  							<caption>
  								<h4>Nombre usuario</h4>
