@@ -13,15 +13,11 @@ require('../comunes_polideportivo/header.php');
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home Administrador</title>
 
-    <link rel="stylesheet" href="../../public/css/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="../../public/css/listadoEmpleados.css">
     <link rel="stylesheet" href="../../public/css/mainUsuario.css">
-    <link rel="stylesheet" href="../../public/css/header.css">
-    <link rel="stylesheet" href="../../public/css/footer.css">
-    <link rel="stylesheet" href="../../public/css/logo.css">
+    <link rel="stylesheet" href="../../public/css/polideportivo-global.css">
 </head>
 <body>
-    <?= header_usuarios('admin');?>
+    <?= header_usuarios();?>
         <div class="container">
             <div class="contenedor-imagen" id="imgGallary">
                 <h3>Contenido</h3>

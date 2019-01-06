@@ -29,3 +29,7 @@
     background-color: rgba(32, 30, 30, 0.726);
     transition: .5s;
  }
+
+ .icon-user{
+     font-size: 2.5em;
+ }

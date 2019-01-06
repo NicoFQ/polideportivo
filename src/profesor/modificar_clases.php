@@ -46,7 +46,7 @@ $hoy = date('l, d M Y');
                                     <td>9:00 a 9:59</td>
                                     <td>
                                         <i class="fas fa-edit btn btn-warning"></i>
-                                        <i class="fas fa-bell-slash btn btn-danger"></i>
+                                        <i class="fas fa-window-close btn btn-danger"></i>
                                     </td>
                                 </tr>
                                 <tr>
@@ -55,7 +55,7 @@ $hoy = date('l, d M Y');
                                     <td>10:00 a 10:59</td>
                                     <td>
                                         <i class="fas fa-edit btn btn-warning"></i>
-                                        <i class="fas fa-bell-slash btn btn-danger"></i>
+                                        <i class="fas fa-window-close btn btn-danger"></i>
                                     </td>
                                 </tr>
                                 <tr>
@@ -64,7 +64,7 @@ $hoy = date('l, d M Y');
                                     <td>16:00 a 16:59</td>
                                     <td>
                                         <i class="fas fa-edit btn btn-warning"></i>
-                                        <i class="fas fa-bell-slash btn btn-danger"></i>
+                                        <i class="fas fa-window-close btn btn-danger"></i>
                                     </td>
                                 </tr>
                                 <tr>
@@ -73,7 +73,7 @@ $hoy = date('l, d M Y');
                                     <td>17:00 a 18:30</td>
                                     <td>
                                         <i class="fas fa-edit btn btn-warning"></i>
-                                        <i class="fas fa-bell-slash btn btn-danger"></i>
+                                        <i class="fas fa-window-close btn btn-danger"></i>
                                     </td>
                                 </tr>
                                 <tr>
@@ -82,7 +82,7 @@ $hoy = date('l, d M Y');
                                     <td>19:00 a 20:30</td>
                                     <td>
                                         <i class="fas fa-edit btn btn-warning"></i>
-                                        <i class="fas fa-bell-slash btn btn-danger"></i>
+                                        <i class="fas fa-window-close btn btn-danger"></i>
                                     </td>
                                 </tr>
                             </tbody>
