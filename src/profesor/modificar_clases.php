@@ -45,8 +45,13 @@ $hoy = date('l, d M Y');
                                     <td>Pista-03</td>
                                     <td>9:00 a 9:59</td>
                                     <td>
-                                        <i class="fas fa-edit btn btn-warning"></i>
-                                        <i class="fas fa-window-close btn btn-danger"></i>
+                                        <a href="editar_clases.php">
+                                            <i class="fas fa-edit btn btn-warning"></i>
+                                        </a>
+                                        <a href="eliminar_clases">
+                                            <i class="fas fa-window-close btn btn-danger"></i>
+                                        </a>
+                                        
                                     </td>
                                 </tr>
                                 <tr>
