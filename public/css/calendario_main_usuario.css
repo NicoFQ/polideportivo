@@ -137,7 +137,7 @@ tbody tr td {
 
 
 .checkbox {
-   display: none;
+   display: none !important;
 }
 
 .checkbox + label {
@@ -182,22 +182,6 @@ tbody tr td {
 .event.double {
   height: 200%;
 }
-
-/**
-thead {
-    tr {
-      display: block;
-      position: relative;
-    }
-  }
-tbody {
-    display: block;
-    overflow: auto;
-    width: 800px;
-    height: 100%;
-  }
-*/
-
 
 
 td:hover:after {
