@@ -12,7 +12,7 @@ require('../comunes_polideportivo/header.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Home Administrador</title>
+    <title>Inicio</title>
 
     <link rel="stylesheet" href="../../public/css/mainUsuario.css">
     <link rel="stylesheet" href="../../public/css/calendario_main_usuario.css">
@@ -41,7 +41,7 @@ require('../comunes_polideportivo/header.php');
                 </div>
 
                 <div class="col-md-9">
-                    <h3>Andres Lopez Guzman (Andrew)</h3>
+                    <h3>Andres Lopez Guzman (Andrew007)</h3>
                     <span>22 años</span>
                                                 <h4> Clases en las que estoy </h4>
                             Tenis, Baloncesto.
@@ -76,13 +76,13 @@ require('../comunes_polideportivo/header.php');
   <thead>
     <tr>
       <th class="headcol"></th>
-      <th>Mon, 18</th>
-      <th>Tue, 19</th>
-      <th class="today">Wed, 20</th>
-      <th>Thu, 21</th>
-      <th>Fri, 22</th>
-      <th class="secondary">Sat, 23</th>
-      <th class="secondary">Sun, 24</th>
+      <th>Lunes, 7</th>
+      <th>Martes, 8</th>
+      <th class="today">Miercoles, 9</th>
+      <th>Jueves, 10</th>
+      <th>Viernes, 11</th>
+      <th class="secondary">Sabado, 12</th>
+      <th class="secondary">Domingo, 13</th>
     </tr>
   </thead>
   </table>
@@ -157,7 +157,7 @@ require('../comunes_polideportivo/header.php');
       <td></td>
       <td></td>
       <td></td>
-      <td><div class="event double"><input id="check" type="checkbox" class="checkbox" /><label for="check"></label>8:30–9:30 Yoga</div></td>
+      <td><div class="event double"><input id="check" type="checkbox" class="checkbox" /><label for="check"></label>8:30–9:30 Baloncesto</div></td>
       <td></td>
       <td></td>
     </tr>
@@ -185,7 +185,7 @@ require('../comunes_polideportivo/header.php');
       <td class="headcol">10:00</td>
       <td></td>
       <td></td>
-      <td><div class="event double"><input id="check" type="checkbox" class="checkbox" /><label for="check"></label>10:00–11:00 Meeting</div></td>
+      <td><div class="event double"><input id="check" type="checkbox" class="checkbox" /><label for="check"></label>10:00–11:00 Tenis</div></td>
       <td></td>
       <td></td>
       <td></td>
