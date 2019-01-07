@@ -67,7 +67,7 @@ CREATE TABLE usuario
  id_usuario       INT AUTO_INCREMENT NOT NULL ,
  email            varchar(45) NOT NULL ,
  contrasena       varchar(200) NOT NULL ,
- dni              varchar(9) NOT NULL ,
+ dni              varchar(20) NOT NULL ,
  nombre           varchar(45) NOT NULL ,
  apellido_1       varchar(45) NOT NULL ,
  apellido_2       varchar(45) ,
