@@ -27,9 +27,20 @@ $hoy = date('l, d M Y');
     <div class="container">
         <div class="row text-uppercase">
             <main>
-            <section class="content-t col-md-12 text-center">
-                    <h2>Modificar horario para el dia: <?= $hoy?></h2>
-                    
+                <section class="content-t col-md-12 text-center">
+                        <h2>Modificar horario para el dia: <?= $hoy?></h2>
+                        <div class="form-group col-md-4 col-md-offset-4">
+                            <form action="clase_modificada.php" method="post">
+                                <label for="fecha">Fecha:</label>
+                                <input type="date" class="form-control" min="2019-01-06"max="2019-01-15">
+                                <label for="hora">Horas disponibles</label>
+                                <select name="hora" class="form-control">
+                                    <option value="9:00">9:00 a 9:59</option>
+                                    <option value="9:00">16:00 a 17:59</option>
+                                </select>
+                                <input type="submit" value="Enviar" class="btn btn-primary btn-block" style="margin-top:10px;">
+                            </form>
+                        </div>
                 </section>
             </main>
         </div>

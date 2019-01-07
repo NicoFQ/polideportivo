@@ -1,6 +1,5 @@
 .perfil, .content-t{
-    border:solid 2px lightgray;
-    border-radius: 10px;
+    box-shadow: 0px 0px 20px gray;
 }
 /* PERFIL */
 .perfil{

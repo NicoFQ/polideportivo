@@ -13,80 +13,326 @@ require('../comunes_polideportivo/header.php');
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Inicio Profesor</title>
 
-    <link rel="stylesheet" href="../../public/css/horariosProfesor.css">
+    <link rel="stylesheet" href="../../public/css/calendario_main_usuario.css">
     <link rel="stylesheet" href="../../public/css/polideportivo-global.css">
 </head>
 <body>
     <?= header_usuarios('profesor');?>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
+        <div class="container">
+            <div class="row">
+                <h3 class="text-center text-uppercase">Horarios de esta semana</h3>
+                <div class="calendar">
+  
+  <header>
+      <button class="secondary" style="align-self: flex-start; flex: 0 0 1">Today</button>
+      <div class="calendar__title" style="display: flex; justify-content: center; align-items: center">
+        <div class="icon secondary chevron_left">‹</div>
+        <h1 class="" style="flex: 1;"><span></span><strong>18 JAN – 24 JAN</strong> 2016</h1>
+        <div class="icon secondary chevron_left">›</div>
+      </div> 
+      <div style="align-self: flex-start; flex: 0 0 1"></div>
+  </header>
+  
+  <div class="outer">
 
-            <table class="table">
-                <caption class="text-center">ENERO</caption>
-                    <thead>
-                        <tr>
-                            <th>l</th>
-                            <th>M</th>
-                            <th>X</th>
-                            <th>J</th>
-                            <th>V</th>
-                            <th>S</th>
-                            <th>D</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <td><span>1</span></td>
-                        <td class="dia-clase"><span>2</span></td>
-                        <td class="dia-clase"><span>3</span></td>
-                        <td class="dia-clase"><span>4</span></td>
-                        <td><span>5</span></td>
-                        <td ><span>6</span></td>
-                    </tr>
-                    <tr>
-                        <td class="dia-clase"><span>7</span></td>
-                        <td><span>8</span></td>
-                        <td class="dia-clase"><span>9</span></td>
-                        <td class="dia-clase"><span>10</span></td>
-                        <td class="dia-clase"><span>11</span></td>
-                        <td><span>12</span></td>
-                        <td><span>13</span></td>
-                    </tr>
-                    <tr>
-                        <td class="dia-clase"><span>14</span></td>
-                        <td class="dia-clase"><span>15</span></td>
-                        <td><span>16</span></td>
-                        <td><span>17</span></td>
-                        <td class="dia-clase"><span>18</span></td>
-                        <td><span>19</span></td>
-                        <td><span>20</span></td>
-                    </tr>
-                    <tr>
-                        <td><span>21</span></td>
-                        <td class="dia-clase"><span>22</span></td>
-                        <td class="dia-clase"><span>23</span></td>
-                        <td><span>24</span></td>
-                        <td class="dia-clase"><span>25</span></td>
-                        <td><span>26</span></td>
-                        <td><span>27</span></td>
-                    </tr>
-                    <tr>
-                        <td class="dia-clase"><span>28</span></td>
-                        <td class="dia-clase"><span>29</span></td>
-                        <td class="dia-clase"><span>30</span></td>
-                        <td><span>31</span></td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    </tbody>
-                </table>
+  
+  <table>
+  <thead>
+    <tr>
+      <th class="headcol"></th>
+      <th>Mon, 18</th>
+      <th>Tue, 19</th>
+      <th class="today">Wed, 20</th>
+      <th>Thu, 21</th>
+      <th>Fri, 22</th>
+      <th class="secondary">Sat, 23</th>
+      <th class="secondary">Sun, 24</th>
+    </tr>
+  </thead>
+  </table>
+
+<div class="wrap"> 
+  <table class="offset">
+
+  <tbody>
+    <tr>
+      <td class="headcol"></td>
+      <td></td>
+      <td></td>
+      <td class="past"></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="headcol">6:00</td>
+      <td></td>
+      <td></td>
+      <td class="past"></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="headcol"></td>
+      <td></td>
+      <td></td>
+      <td class="past"></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="headcol">7:00</td>
+      <td></td>
+      <td></td>
+      <td class="past"></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="headcol"></td>
+      <td></td>
+      <td></td>
+      <td class="now"></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="headcol">8:00</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="headcol"></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><div class="event double"><input id="check" type="checkbox" class="checkbox" /><label for="check"></label>8:30–9:30 Yoga</div></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="headcol">9:00</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="headcol"></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="headcol">10:00</td>
+      <td></td>
+      <td></td>
+      <td><div class="event double"><input id="check" type="checkbox" class="checkbox" /><label for="check"></label>10:00–11:00 Meeting</div></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="headcol"></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="headcol">11:00</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="headcol"></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="headcol">12:00</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="headcol"></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="headcol">13:00</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="headcol"></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="headcol">14:00</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="headcol"></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="headcol">15:00</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="headcol"></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="headcol">16:00</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="headcol"></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="headcol">17:00</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="headcol"></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="headcol">18:00</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="headcol"></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
 
             </div>
         </div>
-    </div>
-    <?= footer();?>
+    <?=footer()?>
 </body>
 </html>

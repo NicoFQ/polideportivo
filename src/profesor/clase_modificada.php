@@ -46,23 +46,13 @@ $hoy = date('l, d M Y');
                                     <td>9:00 a 9:59</td>
                                     <td>
                                     <i class="fas fa-edit btn btn-warning"></i>
-                                        <a href="eliminar_clases">
+                                        <a href="clase_eliminada.php">
                                             <i class="fas fa-window-close btn btn-danger"></i>
                                         </a>
                                         
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>Clase-Padel</td>
-                                    <td>Pista-02</td>
-                                    <td>10:00 a 10:59</td>
-                                    <td>
-                                        <a href="editar_clases.php">
-                                            <i class="fas fa-edit btn btn-warning"></i>
-                                        </a>
-                                        <i class="fas fa-window-close btn btn-danger"></i>
-                                    </td>
-                                </tr>
+                                <!-- Se ha quitado esta clase por que se ha cambiado de dia -->
                                 <tr>
                                     <td>Clase-Padel</td>
                                     <td>Pista-03</td>
