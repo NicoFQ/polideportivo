@@ -72,7 +72,7 @@ $datosUsuarios = $sentencia->fetchall(PDO::FETCH_ASSOC);
     <?= header_usuarios('admin');?>
         <div class="container">
             <div class="row main-admin">
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <a href="">
                     <div class="contenido-admin">
                             <h4>Numero usuarios</h4>
@@ -86,27 +86,17 @@ $datosUsuarios = $sentencia->fetchall(PDO::FETCH_ASSOC);
                     </div>
                     </a>
                 </div>
-                <div class="col-md-3">
-                    <a href="">
+                <div class="col-md-4">
+                    <a href="editar_pista.php">
                         <div class="contenido-admin">
-                            <h4>Agregar evento</h4>
-                            <span>
-                                <i class="fas fa-notes-medical"></i>
-                            </span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="">
-                        <div class="contenido-admin">
-                            <h4>agregar deporte</h4>
+                            <h4>Editar pista</h4>
                             <span>
                                 <i class="far fa-futbol"></i>
                             </span>
                         </div>
                     </a>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <a href="modificar_noticias.php">
                         <div class="contenido-admin">
                             <h4>Agregar noticias</h4>

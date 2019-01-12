@@ -54,7 +54,7 @@ function header_usuarios(string $usuario = 'cliente')
             </div>
             <div class="col-md-2" id="cols">
                 <li class="  nav-item active ">
-                    <a href="lista_deportes.php" class="btn btn-block">Deportes</a>
+                    <a href="lista_clases.php" class="btn btn-block">Clases</a>
                 </li>
             </div>
             <div class="col-md-2" id="cols">

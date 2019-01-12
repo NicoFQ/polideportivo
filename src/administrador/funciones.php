@@ -20,6 +20,13 @@ function pintarDatosHTML($datos)
                 if ($clave == "id") {
                     $id = $valor;
                 }//if
+                if ($clave == "sexo") {
+                    if ($valor == 0) {
+                        $valor = "Masculino";
+                    }else{
+                        $valor = "Femenino";
+                    }
+                }
             ?>
                 <td><?= $valor?></td>
             <?php }//forE ?>
