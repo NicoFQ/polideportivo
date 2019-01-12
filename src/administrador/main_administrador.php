@@ -62,8 +62,6 @@ $datosUsuarios = $sentencia->fetchall(PDO::FETCH_ASSOC);
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home Administrador</title>
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-
     <link rel="stylesheet" href="../../public/css/listadoEmpleados.css">
     <link rel="stylesheet" href="../../public/css/mainAdmin.css">
     <link rel="stylesheet" href="../../public/css/polideportivo-global.css">
@@ -71,6 +69,7 @@ $datosUsuarios = $sentencia->fetchall(PDO::FETCH_ASSOC);
 <body>
     <?= header_usuarios('admin');?>
         <div class="container">
+        <i class="fas fa-sign-out-alt"></i>
             <div class="row main-admin">
                 <div class="col-md-4">
                     <a href="">
