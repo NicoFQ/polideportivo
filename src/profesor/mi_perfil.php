@@ -15,7 +15,7 @@
  </head>
  <body>
 
- 	<?php header_usuarios(); ?>
+ 	<?php header_usuarios('profesor'); ?>
  	<div class="container">
  		<main>
 	 		<h3>
