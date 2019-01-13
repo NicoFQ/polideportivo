@@ -2,10 +2,9 @@ a input{margin:0 auto; padding:0; display:none;
     position:relative;
     top:0px !important;
 }
-input[type="submit"]{
-    display:inline;
-    width:8em;
-    margin:0 auto;
+#botones{
+    width: 13em;
+    margin:5px auto;
 }
 form{border:double 5px lightgray; padding:10px;}
 form > h3 {text-align:center; text-decoration:underline;}

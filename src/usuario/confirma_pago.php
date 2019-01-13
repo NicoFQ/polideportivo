@@ -13,9 +13,6 @@ require('../comunes_polideportivo/header.php');
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Reservas</title>
 
-    <!-- Iconos -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-
     <link rel="stylesheet" href="../../public/css/reservaClases.css">
     <link rel="stylesheet" href="../../public/css/polideportivo-global.css">
 

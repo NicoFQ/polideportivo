@@ -8,7 +8,7 @@ require('./tratamiento_datos_registro.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Registro</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
     <link rel="stylesheet" href="../../public/css/errList.css">
     <link rel="stylesheet" href="../../public/css/registro.css">
     <link rel="stylesheet" href="../../public/css/polideportivo-global.css">
@@ -56,7 +56,8 @@ require('./tratamiento_datos_registro.php');
             <label for="fecha_nacimiento">Fecha de nacimiento:</label>
             <input type="date" name="fecha_nacimiento" value="<?= $fecha_nacimiento?>" class="form-control">
 
-            <input type="submit" value="Enviar" name="enviar" class="btn btn-primary btn-block mt-4">
+            <input type="submit" value="Enviar" name="enviar" class="btn btn-primary ">
+            <a href="../../public/index.php" class="btn btn-danger">Cancelar</a>
         </form>
         </div>
     </div>

@@ -40,7 +40,8 @@ require('../comunes_polideportivo/header.php');
      
         <!-- Include Editor JS files. -->
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@2.9.1/js/froala_editor.pkgd.min.js"></script>
-     
+
+        <button class="text-uppercase btn btn-primary btn-block" style="margin:10px auto; width:15em;">Agregar noticia</button>
         <!-- Initialize the editor. -->
         <script> $(function() { $('textarea').froalaEditor() }); </script>
     </div>

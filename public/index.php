@@ -47,9 +47,10 @@
                             <input type="password" name="key" id="key" class="form-control" placeholder="Constraseña">
                         </div>
                 		<?=$autentificacion?>
-                        <div class="checkbox">
-                            <span class="character-checkbox" onclick="showPassword()"></span>
-                            <span class="label">Show password</span>
+                        <div class="checkbox" style="margin-left:20px;">
+                            <!-- <span class="character-checkbox" onclick="showPassword()"></span>
+							<span class="label">Show password</span> -->
+							<input type="checkbox" name="" id="">Recuerdame
                         </div>
                         <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" name="Enviar" value="Entrar">
                     </form>
@@ -86,7 +87,7 @@
 	</div> <!-- /.modal-dialog -->
 </div> <!-- /.modal -->
 
-<footer id="footer">
+<!-- <footer id="footer">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
@@ -95,6 +96,6 @@
             </div>
         </div>
     </div>
-</footer>
+</footer> -->
 </body>
 </html>

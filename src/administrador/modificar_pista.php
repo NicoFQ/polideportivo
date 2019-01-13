@@ -55,11 +55,11 @@ if (isset($_POST["actualizar"])) {
     $sentenciaUp = $dbU->conexion();
     $sentenciaUp = $sentenciaUp->prepare($queryActualizarPista);
     $sentenciaUp->execute(array(':id_pista' => $_GET["id"]));
-    header('refresh:2,lista_deportes.php');
+    header('refresh:2,main_administrador.php');
     echo "Se ha actualizado el deporte correctamente";
     die();
 }elseif (isset($_POST["cancelar"])) {
-    header('location: lista_deportes.php');
+    header('location:main_administrador.php');
     die();
 }
 
@@ -99,12 +99,14 @@ if (isset($_POST["actualizar"])) {
                     <label class="form-check-label" for="no_disp">No Disponible</label>
                 </div>
 
-                <a href="#">
-                    <input type="submit" value="Actualizar" name="actualizar" class="btn btn-primary">
-                </a>
-                <a href="#" >
-                    <input type="submit" value="Cancelar" name="cancelar" class="btn btn-danger">
-                </a>
+                <div id="botones">
+                    <a href="#">
+                        <input type="submit" value="Actualizar" name="actualizar" class="btn btn-primary">
+                    </a>
+                    <a href="#" >
+                        <input type="submit" value="Cancelar" name="cancelar" class="btn btn-danger">
+                    </a>
+                </div>
             </form>
             </div>
         </div>

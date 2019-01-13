@@ -62,8 +62,6 @@ $datosUsuarios = $sentencia->fetchall(PDO::FETCH_ASSOC);
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home Administrador</title>
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-
     <link rel="stylesheet" href="../../public/css/listadoEmpleados.css">
     <link rel="stylesheet" href="../../public/css/mainAdmin.css">
     <link rel="stylesheet" href="../../public/css/polideportivo-global.css">
@@ -72,7 +70,7 @@ $datosUsuarios = $sentencia->fetchall(PDO::FETCH_ASSOC);
     <?= header_usuarios('admin');?>
         <div class="container">
             <div class="row main-admin">
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <a href="">
                     <div class="contenido-admin">
                             <h4>Numero usuarios</h4>
@@ -86,27 +84,17 @@ $datosUsuarios = $sentencia->fetchall(PDO::FETCH_ASSOC);
                     </div>
                     </a>
                 </div>
-                <div class="col-md-3">
-                    <a href="">
+                <div class="col-md-4">
+                    <a href="editar_pista.php">
                         <div class="contenido-admin">
-                            <h4>Agregar evento</h4>
-                            <span>
-                                <i class="fas fa-notes-medical"></i>
-                            </span>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3">
-                    <a href="">
-                        <div class="contenido-admin">
-                            <h4>agregar deporte</h4>
+                            <h4>Editar pista</h4>
                             <span>
                                 <i class="far fa-futbol"></i>
                             </span>
                         </div>
                     </a>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <a href="modificar_noticias.php">
                         <div class="contenido-admin">
                             <h4>Agregar noticias</h4>
@@ -117,6 +105,7 @@ $datosUsuarios = $sentencia->fetchall(PDO::FETCH_ASSOC);
                     </a>
                 </div>
             </div>
+            <?= plantillaBuscadorHTML()?>
             <div class="row">
                 <div class="col-md-12">
                     <?= pintarTablaDatosCompletos('Clientes',$datosUsuarios,$theadClientes,1);?>

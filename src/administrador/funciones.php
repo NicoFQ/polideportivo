@@ -20,6 +20,13 @@ function pintarDatosHTML($datos)
                 if ($clave == "id") {
                     $id = $valor;
                 }//if
+                if ($clave == "sexo") {
+                    if ($valor == 0) {
+                        $valor = "Masculino";
+                    }else{
+                        $valor = "Femenino";
+                    }
+                }
             ?>
                 <td><?= $valor?></td>
             <?php }//forE ?>
@@ -78,8 +85,10 @@ function pintarTablaDatosCompletos($captionTabla, array $tabla, $thead, $limpios
 function plantillaBuscadorHTML()
 { ?>
 
-    <h3>Buscador</h3>
+    
         <div class="row">
+            <div class="col-md-11 col-md-offset-1">
+            <h3>Buscador</h3>
             <form action="#" method="get">
                 <div class="col-md-3">
                     <label for="nombre">Nombre: </label>
@@ -97,6 +106,7 @@ function plantillaBuscadorHTML()
                     <input type="submit" name="enviar" value="Buscar" class="btn btn-info btn-block">
                 </div>
             </form>
+            </div>
         </div>
 <?php }//plantillaBuscadorHTML ?>
 

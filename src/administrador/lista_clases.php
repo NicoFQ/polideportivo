@@ -10,6 +10,7 @@ $theadDeportes = ["id","nombre pista", "id instalacion", "id pista","precio","es
     $queryDeportes = "select p.id_deporte,p.n_pista,p.id_instalacion,p.id_pista ,                             p.precio_hora,p.estado, c.id_usuario 
                       from pista p, clase c
                       where c.id_pista = p.id_pista;";
+                    //   Agregar campo fecha a la query
 
 $db = Conexion::getInstance();
 $sentencia = $db->conexion();
@@ -27,6 +28,14 @@ function pintarDatosDeportes($datos)
                 if ($clave == "id_pista") {
                     $id_pista = $valor;
                 }
+                if ($clave == "estado") {
+                    if ($valor == 0) {
+                        $valor = "No Disponible";
+                    }else{
+                        $valor = "Disponible";
+                    }//else
+                }//if
+                
             ?>
                 <td><?= $valor?></td>
             <?php }//forE ?>
@@ -64,9 +73,6 @@ function pintarTablaDatosDeportes($captionTabla, array $tabla, $thead)
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Deportes</title>
 
-    <!-- Iconos -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-
     <link rel="stylesheet" href="../../public/css/listadoEmpleados.css">
     <link rel="stylesheet" href="../../public/css/listaDeportes.css">
     <link rel="stylesheet" href="../../public/css/polideportivo-global.css">
@@ -74,7 +80,7 @@ function pintarTablaDatosDeportes($captionTabla, array $tabla, $thead)
 <body>
     <?= header_usuarios('admin');?>
     <div class="container">
-        <?= pintarTablaDatosDeportes('Deportes',$resultadoDeportes,$theadDeportes);?>
+        <?= pintarTablaDatosDeportes('Clases',$resultadoDeportes,$theadDeportes);?>
     </div>
     <?= footer();?>
 </body>
