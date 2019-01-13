@@ -55,7 +55,7 @@ if (isset($_POST["actualizar"])) {
     $sentenciaUp = $dbU->conexion();
     $sentenciaUp = $sentenciaUp->prepare($queryActualizarPista);
     $sentenciaUp->execute(array(':id_pista' => $_GET["id"]));
-    header('refresh:2,lista_clases.php');
+    header('refresh:2,main_administrador.php');
     echo "Se ha actualizado el deporte correctamente";
     die();
 }elseif (isset($_POST["cancelar"])) {

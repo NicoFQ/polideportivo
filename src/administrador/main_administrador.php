@@ -69,7 +69,6 @@ $datosUsuarios = $sentencia->fetchall(PDO::FETCH_ASSOC);
 <body>
     <?= header_usuarios('admin');?>
         <div class="container">
-        <i class="fas fa-sign-out-alt"></i>
             <div class="row main-admin">
                 <div class="col-md-4">
                     <a href="">
@@ -106,6 +105,7 @@ $datosUsuarios = $sentencia->fetchall(PDO::FETCH_ASSOC);
                     </a>
                 </div>
             </div>
+            <?= plantillaBuscadorHTML()?>
             <div class="row">
                 <div class="col-md-12">
                     <?= pintarTablaDatosCompletos('Clientes',$datosUsuarios,$theadClientes,1);?>

@@ -30,6 +30,12 @@
     transition: .5s;
  }
 
-.icon-user{
+/* Iconos */
+#icon-user{
+     margin-left: 35px;
      font-size: 2.5em;
  }
+#log-out{
+    color:rgb(148, 9, 9);
+    font-size: 2.7em;
+}

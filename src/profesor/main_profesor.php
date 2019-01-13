@@ -30,8 +30,8 @@ $hoy = date('l, d M Y');
                         <img src="../../public/img/profesor_img.jpg" alt="Foto de perfil">
                         <div>
                             <h4 class="text-udnerline">Datos</h4>
-                            <p><span>Nombre:</span>Alvaro Martinez</p>
-                            <p><span>Nombre Usuario:</span>A_Martinez</p>
+                            <p><span>Nombre:</span>Alvaro Perez</p>
+                            <p><span>Nombre Usuario:</span>A_Perez</p>
                         </div>
                     </article>
                 </aside>

@@ -39,10 +39,17 @@ $hoy = date('l, d M Y');
                             <tbody>
                                 <tr>
                                     <td>Clase-Padel</td>
+                                    <td>Pista-02</td>
+                                    <td>10:00 a 10:59</td>
+                                    <td>
+                                        <i class="fas fa-window-close btn btn-danger"></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Clase-Padel</td>
                                     <td>Pista-03</td>
                                     <td>16:00 a 16:59</td>
                                     <td>
-                                        <i class="fas fa-edit btn btn-warning"></i>
                                         <i class="fas fa-window-close btn btn-danger"></i>
                                     </td>
                                 </tr>
@@ -51,7 +58,6 @@ $hoy = date('l, d M Y');
                                     <td>Pista-02</td>
                                     <td>17:00 a 18:30</td>
                                     <td>
-                                        <i class="fas fa-edit btn btn-warning"></i>
                                         <i class="fas fa-window-close btn btn-danger"></i>
                                     </td>
                                 </tr>
@@ -60,7 +66,6 @@ $hoy = date('l, d M Y');
                                     <td>Pista-02</td>
                                     <td>19:00 a 20:30</td>
                                     <td>
-                                        <i class="fas fa-edit btn btn-warning"></i>
                                         <i class="fas fa-window-close btn btn-danger"></i>
                                     </td>
                                 </tr>

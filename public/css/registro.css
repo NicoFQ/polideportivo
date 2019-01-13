@@ -1,3 +1,7 @@
+body{
+    background-image: url('../img/form_bg_2.jpg');
+    background-size: cover;   
+}
 .container{text-transform: uppercase; color:white;}
 .container h1{
     text-align: center;
@@ -10,8 +14,13 @@
 .container form {
     font-size: 1.2em;
 }
-body{
-    background-image: url('../img/form_bg_2.jpg');
-    background-size: cover;
-    
+
+form input[type="submit"], form input[type="submit"] + a{
+    margin:10px auto;
+    text-transform: uppercase;
+    width:10em;
+}
+/* :( srry */
+form input[type="submit"]{
+    margin-left: 120px;
 }

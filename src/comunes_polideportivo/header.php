@@ -67,12 +67,18 @@ function header_usuarios(string $usuario = 'cliente')
                     <a href="enviar_correo.php" class="btn btn-block">Enviar correo</a>
                 </li>
             </div>
+            <div class="col-md-1 col-md-offset-1" id="cols">
+                <li class="nav-item active ">
+                    <a href="../../public/index.php">
+                        <i class="fas fa-sign-out-alt" id="log-out"></i>
+                    </a>
+                </li>
+            </div>
         </ul>
     <?php }//navAdmin ?>
 
     <?php function navCliente()
     { ?>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
         <ul class="navbar text-center">
             <div class="col-md-2" id="cols">
                 <li class="nav-item active ">
@@ -94,10 +100,17 @@ function header_usuarios(string $usuario = 'cliente')
                     <a href="reservas.php" class="btn btn-block">Reservas</a>
                 </li>
             </div>
-            <div class="col-md-1 col-md-offset-1" id="cols">
+            <div class="col-md-1" id="cols">
                 <li class="nav-item active ">
                     <a href="configuracion.php">
-                        <i class="fas fa-user-cog icon-user"></i>
+                        <i class="fas fa-user-cog" id="icon-user"></i>
+                    </a>   
+                </li>
+            </div>
+            <div class="col-md-1" id="cols">
+                <li class="nav-item active ">
+                    <a href="../../public/index.php">
+                        <i class="fas fa-sign-out-alt" id="log-out"></i>
                     </a>
                 </li>
             </div>
@@ -108,20 +121,34 @@ function header_usuarios(string $usuario = 'cliente')
     <?php function navProfesor()
     { ?>
     <ul class="navbar text-center">
-        <div class="col-md-4" id="cols">
-        <li class="nav-item active">
-            <a href="main_profesor.php" class="btn btn-block">Inicio</a>
-        </li>
-        </div>
-        <div class="col-md-4" id="cols">
-        <li class="nav-item active "">
-            <a href="horarios_profesor.php" class="btn btn-block ">Horario</a>
+        <div class="col-md-3" id="cols">
+            <li class="nav-item active">
+                <a href="main_profesor.php" class="btn btn-block">Inicio</a>
             </li>
         </div>
-        <div class="col-md-4" id="cols">
-        <li class="nav-item active "">
-            <a href="modificar_clases.php" class="btn btn-block ">Modificar clases</a>
+        <div class="col-md-3" id="cols">
+            <li class="nav-item active "">
+                <a href="horarios_profesor.php" class="btn btn-block ">Horario</a>
             </li>
         </div>
+        <div class="col-md-3" id="cols">
+            <li class="nav-item active "">
+                <a href="modificar_clases.php" class="btn btn-block ">Modificar clases</a>
+            </li>
+        </div>
+        <div class="col-md-1 col-md-offset-1" id="cols">
+                <li class="nav-item active ">
+                    <a href="configuracion.php">
+                        <i class="fas fa-user-cog" id="icon-user"></i>
+                    </a>   
+                </li>
+            </div>
+            <div class="col-md-1" id="cols">
+                <li class="nav-item active ">
+                    <a href="../../public/index.php">
+                        <i class="fas fa-sign-out-alt" id="log-out"></i>
+                    </a>
+                </li>
+            </div>
     </ul>    
     <?php }//navProfesor ?>
