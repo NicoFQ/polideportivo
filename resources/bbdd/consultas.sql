@@ -32,3 +32,18 @@ where fecha = curdate();
 delete from clase where id_clase = "id_clase obtenido del form";
 
 -- ########## FIN PROFESOR ##########
+
+ -- -------- CONSULTAS USUARIO ---------
+ 
+ -- Consulta INICIO
+	select * from usuario u , asiste a where u.id_usuario = a.id_usuario;
+    
+ -- Consulta NOTICIAS
+ 
+ 	select * from noticias;
+
+ -- Consulta RESERVAS
+ 
+	select * from reserva r, pista p, deporte d where r.fecha > now();
+
+-- -------- FIN CONSULTAS USUARIO ---------
