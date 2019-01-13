@@ -32,7 +32,7 @@
  								<img src="../../public/img/default_male.png">
  							</figure>
  							<caption>
- 								<h4>Nombre usuario</h4>
+ 								<h4>Andres Lopez Guzman</h4>
  							</caption>
  						</figcaption>
  						<div>

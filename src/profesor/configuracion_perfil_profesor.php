@@ -29,18 +29,16 @@
  								<a href="">Cambiar foto</a>
  							</caption>
  							<figure>
- 								<img src="../../public/img/default_male.png">
+ 								<img src="../../public/img/profesor_img.jpg">
  							</figure>
  							<caption>
- 								<h4>Andres Lopez Guzman</h4>
+ 								<h4>Alvaro Perez</h4>
  							</caption>
  						</figcaption>
  						<div>
  							<ul>
  								<li><a href="mi_perfil.php">Mi perfil</a></li>
  								<li><a href="configuracion.php">Configuracion</a></li>
- 								<li><a href="facturacion.php">Facturación</a></li>
- 								<li><a href="eliminar_cuenta.php">Eliminiar mi cuenta</a></li>
  							</ul>
  						</div>
  					</div>

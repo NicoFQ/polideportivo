@@ -30,39 +30,40 @@
  								<a href="">Cambiar foto</a>
  							</caption>
  							<figure>
- 								<img src="../../public/img/default_male.png">
+ 								<img src="../../public/img/profesor_img.jpg">
  							</figure>
  							<caption>
- 								<h4>Andres Lopez Guzman</h4>
+ 								<h4>Alvaro Perez</h4>
  							</caption>
  						</figcaption>
  						<div>
  							<ul>
  								<li><a href="mi_perfil.php">Mi perfil</a></li>
  								<li><a href="configuracion.php">Configuracion</a></li>
- 								<li><a href="facturacion.php">Facturación</a></li>
- 								<li><a href="eliminar_cuenta.php">Eliminiar mi cuenta</a></li>
+ 							
  							</ul>
  						</div>
  					</div>
  					<div class="col-lg-10">
  						<div class="row">
-  							<h4> Mis deportes favoritos</h4>
-  							Baloncesto, Tenis, Futbol. 
-                 <button type="button" class="btn btn-default btn-sm">
+  							<h4> Mis deportes favoritos</h4> 
+                 
+  							Baloncesto, Tenis, Futbol. <button type="button" class="btn btn-default btn-sm">
                   <span class="glyphicon glyphicon-pencil"></span> Editar
                 </button>
+
   							<br>
   							<br>
-  							<h4> Clases en las que estoy </h4>
-  							Tenis, Baloncesto.
+  							<h4> Clases que doy </h4>
+  							Clase de Tenis, Clase de Baloncesto.
   							<br>
   							<br>
   							<h4> Sobre mi</h4>
   							Me gusta mucho el deporte... Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
   							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
   							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                 <button type="button" class="btn btn-default btn-sm">
+                
+                <button type="button" class="btn btn-default btn-sm">
                   <span class="glyphicon glyphicon-pencil"></span> Editar
                 </button>
  						</div>

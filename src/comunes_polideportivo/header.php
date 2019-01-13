@@ -138,7 +138,7 @@ function header_usuarios(string $usuario = 'cliente')
         </div>
         <div class="col-md-1 col-md-offset-1" id="cols">
                 <li class="nav-item active ">
-                    <a href="configuracion.php">
+                    <a href="./../profesor/configuracion_perfil_profesor.php">
                         <i class="fas fa-user-cog" id="icon-user"></i>
                     </a>   
                 </li>
