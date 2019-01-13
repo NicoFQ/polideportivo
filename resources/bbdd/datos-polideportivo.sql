@@ -86,8 +86,88 @@ values ("CL", "Cliente");
 insert into tipo_usuario (id_tipo_usuario,nombre_tipo)
 values ("PR", "Profesor");
 
+-- PRESENTEACION
 
+insert into usuario (
+	email,
+	contrasena,
+	dni,
+	nombre,
+	apellido_1,
+	apellido_2,
+	direccion,
+	nombre_usuario,
+	fecha_nacimiento,
+	sexo,
+	nacionalidad,
+	id_tipo_usuario
+	) values (
+	"administrador@hotmail.es",
+	"1234",
+	"99999999P",
+	"Admin",
+	"Admin",
+	"Admin",
+	"Calle del administrador 19 BJ4",
+	"Admin",
+	"1996-03-30",
+	0,
+	"Española",
+	"AD");
 
+insert into usuario (
+	email,
+	contrasena,
+	dni,
+	nombre,
+	apellido_1,
+	apellido_2,
+	direccion,
+	nombre_usuario,
+	fecha_nacimiento,
+	sexo,
+	nacionalidad,
+	id_tipo_usuario
+	) values (
+	"profesor@hotmail.es",
+	"1234",
+	"99999999P",
+	"Profesor",
+	"Profesor",
+	"Profesor",
+	"Calle del Profesor 19 BJ4",
+	"Profesor",
+	"1996-03-30",
+	0,
+	"Española",
+	"PR");
+
+insert into usuario (
+	email,
+	contrasena,
+	dni,
+	nombre,
+	apellido_1,
+	apellido_2,
+	direccion,
+	nombre_usuario,
+	fecha_nacimiento,
+	sexo,
+	nacionalidad,
+	id_tipo_usuario
+	) values (
+	"cliente@hotmail.es",
+	"1234",
+	"99999999P",
+	"Cliente",
+	"Cliente",
+	"Cliente",
+	"Calle del Cliente 19 BJ4",
+	"Cliente",
+	"1996-03-30",
+	0,
+	"Española",
+	"CL");
 insert into usuario (
 	email,
 	contrasena,

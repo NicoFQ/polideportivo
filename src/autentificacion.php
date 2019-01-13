@@ -17,7 +17,7 @@
 	function autentificar(string $user, string $pass){
 		$encontrado = false;
 		if ($usuario = Usuario::existeUsuario($user)) {
-			if (password_verify($pass, $usuario[0]['contrasena'])) {
+			if ($usuario[0]['contrasena'] === $pass) {
 				$encontrado = true;
 				$usuario = new Usuario($usuario[0]);
 				$usuario->homeUsuario();

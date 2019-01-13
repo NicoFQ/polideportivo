@@ -34,7 +34,6 @@
 			$this->nacionalidad 	= $user['nacionalidad'];
 			$this->fecha_alta 		= $user['fecha_alta'];
 			$this->id_tipo_usuario = $user['id_tipo_usuario'];
-			print_r($user);
 		}
 		
 		public function __get($propiedad){
@@ -52,7 +51,18 @@
 			return $this->reservas;
 		}
 		public function homeUsuario(){
-			header("Location: ./../public/home.php?type=$this->id_tipo_usuario");
+			switch ($this->id_tipo_usuario) {
+			 	case 'AD':
+			 		header("Location: ./../src/administrador/main_administrador.php");
+			 		break;
+			 	case 'PR':
+			 		header("Location: ./../src/profesor/main_profesor.php");
+			 		break;
+			 	case 'CL':
+			 		header("Location: ./../src/usuario/main_usuario.php");
+			 		break;
+			 }
+			
 		}
 		public static function existeUsuario(string $user){
 			$existeUsuario = false;
@@ -63,7 +73,6 @@
 			if ($sentencia->rowCount() > 0) {
 				$existeUsuario = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 			}
-			print_r($existeUsuario);
 			return $existeUsuario;
 		}
 	}
