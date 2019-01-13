@@ -14,7 +14,7 @@ require('../comunes_polideportivo/header.php');
     <title>Reservas</title>
 
     <link rel="stylesheet" href="../../public/css/polideportivo-global.css">
-    <link rel="stylesheet" href="../../public/css/reservas.css">
+    <link rel="stylesheet" href="../../public/css/reserva_pista.css">
 </head>
 <body>
     <?= header_usuarios()?>
