@@ -33,7 +33,8 @@
 <body>
 <section id="login">
     <div class="container">
-    	<div class="row">
+    	<h1 class="text-center" style="font-size: 30px;">Bienvenido al Polideportivo</h1>
+    	<div class="row jumbotron ">
     	    <div class="col-md-6 col-md-offset-3">
                 <h1>Entra con tu email o nombre de usuario</h1>
                 <h1>O puedes <a href="./../src/registro/registro.php">registrarte</a></h1>
