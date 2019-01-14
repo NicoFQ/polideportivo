@@ -1,4 +1,4 @@
-<?php 
+<?php
 // REQUIRES
 require('../Conexion.php');
 require('./funciones.php');
@@ -22,8 +22,8 @@ function selectPista(PDO $obj)
 
 function selectProfesores(PDO $obj)
 {
-    $queryPistas = "Select id_usuario 
-                    from usuario 
+    $queryPistas = "Select nombre
+                    from usuario
                     where id_tipo_usuario = 'PR'
                     order by id_usuario asc";
     $sentencia = $obj->prepare($queryPistas);
@@ -55,7 +55,7 @@ function pintarSelect($name, $arr)
 
     <link rel="stylesheet" href="../../public/css/anadirClases.css">
     <link rel="stylesheet" href="../../public/css/polideportivo-global.css">
-    
+
 </head>
 <body>
     <?= header_usuarios('admin');?>
@@ -98,5 +98,3 @@ function pintarSelect($name, $arr)
     <?= footer();?>
 </body>
 </html>
-
-
