@@ -5,7 +5,7 @@ require('../Conexion.php');
 require('../comunes_polideportivo/footer.php');
 require('../comunes_polideportivo/header.php');
 
-$theadDeportes = ["id","nombre pista", "id instalacion", "id pista","precio","estado", "id usuario (profesor)","acción"];
+$theadDeportes = ["id deporte","nombre pista", "id instalacion", "id pista","precio","estado", "id usuario (profesor)","acción"];
 
     $queryDeportes = "select p.id_deporte,p.n_pista,p.id_instalacion,p.id_pista ,                             p.precio_hora,p.estado, c.id_usuario 
                       from pista p, clase c
