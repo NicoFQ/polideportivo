@@ -1,4 +1,4 @@
-<?php 
+<?php
 // REQUIRES
 require('../Conexion.php');
 require('../comunes_polideportivo/footer.php');
@@ -11,10 +11,11 @@ function noticia($encabezado,$subtitulo,$img)
         <!--<h3><?= $subtitulo?></h3>-->
         <!--<p><?= $hoy?></p>-->
         <div class="contenido-noticia">
-           <a href="confirma_datos_clase.php?actividad=<?= $img?>"><img src="../../public/img/reserva_clases/<?= $img?>.jpg" alt="<?= $img?>"></a> 
+           <a href="confirma_datos_clase.php?actividad=<?= $img?>"><img src="../../public/img/reserva_clases/<?= $img?>.jpg" alt="<?= $img?>"></a>
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio aut esse ipsam nostrum, a accusamus nihil nulla impedit odit velit eligendi itaque minus quas, omnis blanditiis corrupti, magnam cupiditate. Cupiditate?Dignissimos obcaecati numquam corporis, maxime eos quos magnam, est fugiat doloribus ad pariatur, laborum voluptate hic tempora porro minima qui quia! Nesciunt dicta quas neque non excepturi! Nesciunt, autem esse.
             </p>
+            <p> Profesores: <a href="../profesor/mi_perfil.php">Alvaro Péres</a> </p>
         </div>
     </article>
     <hr>
@@ -57,7 +58,7 @@ function noticia($encabezado,$subtitulo,$img)
     <link rel="stylesheet" href="../../public/css/polideportivo-global.css">
 </head>
 <body>
-    
+
     <?= header_usuarios()?>
     <div class="container">
         <h1 class="text-center text-uppercase">Clases disponibles</h1>
