@@ -17,7 +17,7 @@ $queryEmpleados = 'select id_usuario "id", nombre,
                     email, nombre_usuario "nombre usuario",
                     sexo, id_tipo_usuario "id usuario"
                     from usuario
-                    where id_tipo_usuario IN ("AD","PR");';
+                    where id_tipo_usuario IN ("AD","PR") order by id_usuario asc;';
 
 $sentencia = $sentencia->prepare($queryEmpleados);
 $resultadoEmpleados = $sentencia->execute();
@@ -46,7 +46,7 @@ function buscador()
                         sexo, id_tipo_usuario "id usuario"
                         from usuario
                         where id_tipo_usuario IN ("AD","PR") AND
-                        (nombre = :name OR apellido_1 = :surname OR dni = :dni)';
+                        (nombre = :name OR apellido_1 = :surname OR dni = :dni);';
 
         $sentenciaBuscador = $db->prepare($queryBuscador);
         $sentenciaBuscador->execute(array(':name' => $nombre,':surname' => $apellido, ':dni' => $dni));

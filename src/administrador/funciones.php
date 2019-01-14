@@ -40,9 +40,16 @@ function pintarDatosLimpios($datos)
     <tbody>
     <?php foreach ($datos as $value) { ?>
         <tr>
-        <?php foreach ($value as $clave => $valor) { ?>
+        <?php foreach ($value as $clave => $valor) { 
+            if ($clave == "sexo") {
+                if ($valor == 0) {
+                    $valor = "Masculino";
+                }else{
+                    $valor = "Femenino";
+                }
+            } ?>
                 <td><?= $valor?></td>
-            <?php }//forE ?>
+            <?php  }//forE ?>
         </tr>
     <?php }//forE ?>
     </tbody>

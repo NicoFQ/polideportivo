@@ -17263,6 +17263,45 @@ insert into usuario (
 	5
 	);
 
+    insert into clase (
+	id_clase,
+	fecha,
+	hora_inicio,
+	hora_fin,
+	id_pista,
+	nombre_clase,
+	precio_clase,
+	id_usuario
+	) values (
+	"CLASS-TENIS",
+	"2018-12-23", -- Para añadir una clase es necesario tener 
+	"16:00:00",   -- el horario creado. 
+	"16:59:59",
+	"P-01",
+	"Clase de Tenis",
+	18.50,
+	7
+	);
+
+    insert into clase (
+	id_clase,
+	fecha,
+	hora_inicio,
+	hora_fin,
+	id_pista,
+	nombre_clase,
+	precio_clase,
+	id_usuario
+	) values (
+	"CLASS-NAT",
+	"2018-12-23", -- Para añadir una clase es necesario tener 
+	"15:00:00",   -- el horario creado. 
+	"15:59:59",
+	"P-05",
+	"Clase de Natacion",
+	12.50,
+	8
+	);
 
 -- ASISTE ASISTE ASISTE ASISTE ASISTE ASISTE ASISTE	
 	insert into asiste (	
