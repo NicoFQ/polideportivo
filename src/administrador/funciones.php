@@ -31,7 +31,7 @@ function pintarDatosHTML($datos)
                 <td><?= $valor?></td>
             <?php }//forE ?>
             <td>
-                <a href="eliminar_usuarios.php?id=<?= $id?>" class="btn btn-danger btn-block">Borrar</a>
+                <a href="eliminar_usuarios.php?id=<?= $id?>" class="btn btn-danger btn-block" onclick="return confirmarBorrarUsuario(<?=$id?>, <?=$id?>)">Borrar</a>
             </td>
         </tr>
     <?php }//forE ?>

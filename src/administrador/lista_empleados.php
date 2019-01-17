@@ -80,5 +80,8 @@ function buscador()
         ?>
     </div>
     <?= footer();?>
+    <?php 
+        include("../comunes_polideportivo/codigo_javascript.html");
+    ?>
 </body>
 </html>
