@@ -1,8 +1,0 @@
-/* Tabla datos */
-thead > tr > th {
-    background-image: linear-gradient(to top, #0e7913,#105314) ;
-}
-tbody > tr:hover {
-    background-color:rgb(181, 223, 197);
-    transition:.5s;
-}
