@@ -5,7 +5,8 @@ class BaseModel
     protected $db;
     // Lista de atributos que tengo, que se heredaran a mis hijos
     protected static $lista_info = [];
-    protected static $id = "";
+    protected static $idCampo = "";
+    protected static $id = null;
     protected static $tabla = "mitabla";
     private $data;
 
@@ -21,7 +22,7 @@ class BaseModel
         echo "TABLA=> ". static::$tabla;
         print_r(static::$lista_info);
         $campos_para_select = implode(",",static::$lista_info);
-        $campos_para_select = static::$id.",". $campos_para_select;
+        $campos_para_select = static::$idCampo.",". $campos_para_select;
         $resultado = $db->ejecutar("SELECT $campos_para_select FROM $nombre_tabla;");
         $resultado = array_map(function($datos) {
             $nombre_clase = get_called_class();//Obtendra el nombre de mis hijos
@@ -42,7 +43,7 @@ class BaseModel
         //     completo los datos en mi $lista_info, que es mi lista de datos que se
         //     iran metiendo en mi DB
         if (count($data_row) == 0) {
-
+            static::$id =null;
             $this->data = array_fill_keys(static::$lista_info,null);
         }
         // Si no 
@@ -143,7 +144,7 @@ class BaseModel
             }//forE
             $campos_up_completos = substr($campos_up_completos,0, strlen($campos_up_completos) - 1);
             
-            $sql_update = "UPDATE $nombre_tabla set $campos_up_completos where id = ". static::$id;
+            $sql_update = "UPDATE $nombre_tabla set $campos_up_completos where id = ". static::$idCampo;
             echo "sql_update" . $sql_update;
             echo "this->getId()" . $this->getId();
             $resultado = $this->db->ejecutar($sql_update,...array_values(array_slice($this->data,1)));
@@ -157,7 +158,7 @@ class BaseModel
 
     public function toArray()
     {
-
+        array_unshift($this->data, static::$id);
         return $this->data;
     }
     

@@ -35,6 +35,7 @@ class BaseForm
 
     public function __construct($data_row = []) 
     {
+
         $this->errores = false;
 
         //
@@ -53,7 +54,7 @@ class BaseForm
         //   campo1 => new FieldTipo('nombre_de_campo')
         //
         $this->campos = array_combine(static::$lista_info, $campos);
-
+                    
         if(count($data_row)>0){
             //
             // Tengo datos:
@@ -80,10 +81,8 @@ class BaseForm
                     $this->errores = true;
                 }
             }
-                    echo "<pre>";
-                    print_r($data_row);
-                    echo "</pre>";
                     
+
         }
 
         if(count($_POST)>0){
