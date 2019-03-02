@@ -5,28 +5,21 @@ class BaseModel
     protected $db;
     // Lista de atributos que tengo, que se heredaran a mis hijos
     protected static $lista_info = [];
-    protected static $idCampo = "";
-    protected static $id = null;
-    protected static $tabla = "mitabla";
+    protected static $campo_id = "";
+    protected $id = null;
+    protected static $tabla = "";
     private $data;
-
 
     public static function getAll($page = 0, $num = 10)
     {
         $db = App::getDB();//Solo devuelve la DB
 
-        //$nombre_clase = get_called_class();//Obtendra el nombre de mis hijos
-        //$nombre_clase = static::$tabla; 
-        //$nombre_tabla = strtolower(substr($nombre_clase, 5));
         $nombre_tabla = static::$tabla; 
-        echo "TABLA=> ". static::$tabla;
-        print_r(static::$lista_info);
         $campos_para_select = implode(",",static::$lista_info);
-        $campos_para_select = static::$idCampo.",". $campos_para_select;
+        $campos_para_select = static::$campo_id.",". $campos_para_select;
         $resultado = $db->ejecutar("SELECT $campos_para_select FROM $nombre_tabla;");
         $resultado = array_map(function($datos) {
             $nombre_clase = get_called_class();//Obtendra el nombre de mis hijos
-
             return new $nombre_clase($datos);
         },$resultado);
         return $resultado;
@@ -43,7 +36,7 @@ class BaseModel
         //     completo los datos en mi $lista_info, que es mi lista de datos que se
         //     iran metiendo en mi DB
         if (count($data_row) == 0) {
-            static::$id =null;
+            $this->id = null;
             $this->data = array_fill_keys(static::$lista_info,null);
         }
         // Si no 
@@ -53,7 +46,7 @@ class BaseModel
             // print_r($this->data);
             // **Saltaba error por que el array_combine necesita tener el mismo numero de keys, que de values 
             // entre los 2 arrays que se le pasan**
-            static::$id = array_shift($data_row);
+            $this->id = array_shift($data_row);
             $this->data = array_combine(static::$lista_info, $data_row);
         }
     }//construct
@@ -82,7 +75,7 @@ class BaseModel
 
         if ($accion == "get") {
             if (strpos($nombre,"Id")) {
-                return static::$id;
+                return $this->id;
             }else{
                 return $this->data[$dato_pedido];
             }
@@ -115,11 +108,6 @@ class BaseModel
         $nombre_tabla = static::$tabla;
         $campos_para_insert = implode(",",static::$lista_info);
         $parametros_para_insert = implode(",",array_fill(0,(count(static::$lista_info)), "?"));
-/*
-        echo "Nombre tabla => $nombre_tabla \n";
-        echo "Capos insert => $campos_para_insert \n";
-        echo "Parametros insert => $parametros_para_insert \n";
-  */      
         if ($this->getId() == null) {
             $sql_insert = "INSERT INTO $nombre_tabla ($campos_para_insert) VALUES ($parametros_para_insert);";
             echo "<pre>";
@@ -143,22 +131,29 @@ class BaseModel
                 $campos_up_completos  .= "$value=?,";
             }//forE
             $campos_up_completos = substr($campos_up_completos,0, strlen($campos_up_completos) - 1);
-            
-            $sql_update = "UPDATE $nombre_tabla set $campos_up_completos where id = ". static::$idCampo;
-            echo "sql_update" . $sql_update;
-            echo "this->getId()" . $this->getId();
-            $resultado = $this->db->ejecutar($sql_update,...array_values(array_slice($this->data,1)));
+            echo "<pre>";
+            echo "asdasd";
+            echo $this->id;
+            echo "asdasd";
+            print_r($this->data);
+            echo "</pre>";
+            //die();
+            $sql_update = "UPDATE $nombre_tabla set $campos_up_completos where id = " . $this->id;
+
+            $resultado = $this->db->ejecutar($sql_update,...array_values($this->data));
             if (is_array($resultado)) {
                 $this->setId($this->db->getLastId());
                 $resultado []= $this->getId();
             }
+            
+            
             return $resultado;
         }//else
     }//save
 
     public function toArray()
     {
-        array_unshift($this->data, static::$id);
+        $this->data['id'] = $this->id;
         return $this->data;
     }
     

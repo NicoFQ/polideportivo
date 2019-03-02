@@ -12,7 +12,7 @@
 class ModelNoticia extends BaseModel 
 {
         protected static $lista_info = ['titulo','texto','fecha'];
-         protected static $idCampo = 'id';
+         protected static $campo_id = 'id';
          protected static $tabla = 'noticia';
     
     // public static function getAllNoticias($page = 0, $num = 10)
