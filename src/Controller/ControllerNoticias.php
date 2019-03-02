@@ -2,7 +2,7 @@
 
 class ControllerNoticias extends BaseController
 {
-    protected static $requiere_autentificacion = ['edit','add'];
+    protected static $requiere_autentificacion = [];
     public function list()
     {
         // Trabajo con modelos
@@ -59,7 +59,7 @@ class ControllerNoticias extends BaseController
             // print_r($form);
             // echo "</pre>";
             // die();
-            App::getRouter()::redirect('/noticias/list/');
+            //App::getRouter()::redirect('/noticias/list/');
         }
 
         $this->data['form'] = $form->pintar();
@@ -67,10 +67,14 @@ class ControllerNoticias extends BaseController
 
     public function edit($id) {
 
-        if(count($_POST) == 0 ){
+        if(count($_POST) == 0){
             $n = ModelNoticia::getById($id);
+            
+            //$n->getId();
+            
             $form = new ModelNoticiaForm($n->toArray());
         } else {
+
             $form = new ModelNoticiaForm($_POST);
         }
 

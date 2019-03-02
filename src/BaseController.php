@@ -15,11 +15,10 @@ class BaseController
     // Esta funcion rellenara los datos
     public function procesaAccion($metodo, $parametros)
     {
-        if(
-            in_array($metodo, static::$requiere_autentificacion) &&
-            (Session::getInstance())->get('AUTH') != true
-          ) {
-            App::getRouter()::redirect('/usuario/login');
+        $noAutorizado = in_array($metodo, static::$requiere_autentificacion);
+        $haySesion = Session::getInstance()->get('AUTH');
+        if($noAutorizado && !$haySesion){
+            App::getRouter()::redirect(Config::get('ruta.defecto'));
         }
         // Al poner los "..." al principio, hace que los parametros
         // sean variables que se iran pasando 1 a 1

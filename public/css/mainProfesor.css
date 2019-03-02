@@ -1,0 +1,29 @@
+.perfil, .content-t{
+    box-shadow: 0px 0px 20px gray;
+}
+/* PERFIL */
+.perfil{
+    border:solid 2px orange;
+}
+.row img{
+    width: 155px;
+    height: 190px;
+    padding: 0 auto;
+    border: double 4px darkorange;
+}
+.perfil span{
+    font-weight: bold;
+}
+/* TABLA DE DATOS */
+table thead tr > th {
+    text-align:center;
+    background-color:#30336b;
+    color:#dff9fb;
+    text-shadow: 1px 1px 1px rgb(15, 16, 77);
+}
+table tbody>tr:nth-of-type(odd)>td{
+    background-color:#acdce7;
+}
+table tbody>tr:nth-of-type(even)>td{
+    background-color:#9eafd4;
+}

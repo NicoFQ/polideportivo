@@ -80,6 +80,10 @@ class BaseForm
                     $this->errores = true;
                 }
             }
+                    echo "<pre>";
+                    print_r($data_row);
+                    echo "</pre>";
+                    
         }
 
         if(count($_POST)>0){
