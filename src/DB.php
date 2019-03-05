@@ -32,9 +32,9 @@ class DB {
             $sentenciaSQL = $this->connection->prepare($sql);
             
             $sentenciaEjecutada = $sentenciaSQL->execute($params);
-            echo "\n Sentencia ejecutada => ";
-            var_dump($sentenciaEjecutada);
-            
+            //echo "\n Sentencia ejecutada => ";
+            //var_dump($sentenciaEjecutada);
+           
             if (!$sentenciaEjecutada) {
                 print_r($this->connection->errorInfo());
                 print_r($sentenciaSQL->errorInfo());

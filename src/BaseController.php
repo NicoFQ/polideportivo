@@ -29,7 +29,4 @@ class BaseController
     }//procesaAccion
     
 }//BaseController
-
-
 ?>
-

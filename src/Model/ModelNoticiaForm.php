@@ -2,7 +2,6 @@
 
 class ModelNoticiaForm extends BaseForm
 {
-
     protected static $lista_info = ['id', 'titulo', 'texto', 'fecha'];
     protected static $lista_tipo = [
                           'FieldID',
@@ -11,6 +10,7 @@ class ModelNoticiaForm extends BaseForm
                           'FieldText'
                         ];
     protected static $clase_modelo_asociado = 'ModelNoticia';
+
 }
 
 ?>

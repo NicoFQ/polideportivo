@@ -32,11 +32,7 @@ class Router
             // por eso usa el shift para establecer las carpetas y establece
             // que el resto de "carpeta" son los parametros, pero no son params por GET
             if (current($url_partes)) {
-                if (count($url_partes) == 1) {
-                    $this->controlador = Config::get('controlador.defecto');    
-                }else{
-                    $this->controlador = array_shift($url_partes);
-                }
+                $this->controlador = array_shift($url_partes);
             }
             // Obtengo accion si hay
             if (current($url_partes)) {

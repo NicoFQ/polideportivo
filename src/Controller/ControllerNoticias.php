@@ -2,7 +2,7 @@
 
 class ControllerNoticias extends BaseController
 {
-    protected static $requiere_autentificacion = [];
+    protected static $requiere_autentificacion = ['', ''];
     public function list()
     {
         // Trabajo con modelos
@@ -51,31 +51,24 @@ class ControllerNoticias extends BaseController
     }//show
     
     public function add(){
-        $form = new ModelNoticiaForm($_POST);
-
+        $form = new ModelNoticiaForm($_POST); 
         if(count($_POST)>0 && $form->datosValidos()) {
             $form->guardaInformacion();
-            // echo "<pre>";
-            // print_r($form);
-            // echo "</pre>";
-            // die();
             //App::getRouter()::redirect('/noticias/list/');
         }
-
         $this->data['form'] = $form->pintar();
     }//add
+
+
+
 
     public function edit($id) {
 
         if(count($_POST) == 0){
-            $n = ModelNoticia::getById($id);
-            
-            //$n->getId();
-            
+            $n = ModelNoticia::getById($id);          
             $form = new ModelNoticiaForm($n->toArray());
         } else {
-
-            $form = new ModelNoticiaForm($_POST);
+            $form = new ModelNoticiaForm($_POST); 
         }
 
         if(count($_POST)>0 && $form->datosValidos()) {

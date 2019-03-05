@@ -1,0 +1,17 @@
+
+
+<?php foreach ($data as $post) {?>
+	<div class="post">
+		<h2> <?=$post->getTitulo() ?> </h2>
+		<p> <?=$post->getContenido() ?> </p>
+		<div>
+			<span> <?=$post->getValoracion()?> ☆</span> - 
+			<span> <?=$post->getEtiquetas()?> </span>
+		</div>
+		<div>
+			<h4><a href="/foro/ver/<?=$post->getId()?>">Ver post</a></h4>
+		</div>
+	</div>
+<?php } ?>
+
+ <!--['titulo', 'contenido', 'valoracion', 'etiquetas'];-->

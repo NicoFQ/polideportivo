@@ -14,5 +14,6 @@ class ControllerUsuario extends BaseController {
         Session::getInstance()->set('AUTH', false);
         App::getRouter()->redirect('/');
     }
+    
 }
 ?>

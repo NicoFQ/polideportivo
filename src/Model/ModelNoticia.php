@@ -12,6 +12,7 @@
 class ModelNoticia extends BaseModel 
 {
         protected static $lista_info = ['titulo','texto','fecha'];
+        protected static $lista_campos_insert = ['titulo','texto','fecha'];
          protected static $campo_id = 'id';
          protected static $tabla = 'noticia';
     
