@@ -8,6 +8,7 @@ class BaseModel
     protected static $lista_campos_insert = [];
     protected static $campo_id = "";
     protected static $tabla = "";
+    protected static $fk = "";
     protected $id = null;
     private $data;
 
@@ -36,6 +37,7 @@ class BaseModel
         // Si me pasan datos en el constructor
         //     completo los datos en mi $lista_info, que es mi lista de datos que se
         //     iran metiendo en mi DB
+
         if (count($data_row) == 0) {
             $this->id = null;
             $this->data = array_fill_keys(static::$lista_campos_insert,null);
@@ -47,18 +49,25 @@ class BaseModel
             // print_r($this->data);
             // **Saltaba error por que el array_combine necesita tener el mismo numero de keys, que de values 
             // entre los 2 arrays que se le pasan**
+            echo "<pre>";
+            print_r($data_row);
+            echo "-----------------------";
+            print_r(static::$lista_info);
+            echo "-----------------------";
+            print_r(static::$lista_campos_insert);
+            echo "</pre>";
+            if (count($data_row) == count(static::$lista_campos_insert)) {
+                // Si el numero de campos que me pasan en el constructor es igual a 
+                // lista_campos_insert es que van a hacer un insert nuevo con unos campos especificos.
+                $this->data = array_combine(static::$lista_campos_insert, $data_row);
+            }else if(count($data_row)-1 == count(static::$lista_info)){
 
-            if (count($data_row)-1 == count(static::$lista_info)) {
-                // Comporobacion cahpuza (Pendiente mejora)
                 // Si el numero de campos que me pasan en el constructor menos (-1(id))
                 // es igual a los campos de lista info reparto los datos para mostrar o modificar.
                 $this->id = array_shift($data_row);
                 $this->data = array_combine(static::$lista_info, $data_row);
-            }else if(count($data_row) == count(static::$lista_campos_insert)){
-                // Comporobacion cahpuza (Pendiente mejora)
-                // Si el numero de campos que me pasan en el constructor es igual a 
-                // lista_campos_insert es que van a hacer un insert nuevo con unos campos especificos.
-                $this->data = array_combine(static::$lista_campos_insert, $data_row);
+            } else{
+                new Exception("Algo ha salido mal.");
             }
             
         }
@@ -104,25 +113,26 @@ class BaseModel
     public static function getById($id)
     {
         $db = App::getDB();//Solo devuelve la DB
-
         $nombre_clase = get_called_class();//Obtendra el nombre de mis hijos
         $nombre_tabla = static::$tabla;
         $campos_para_select = implode(",",static::$lista_info);
-        $campos_para_select = "id," . $campos_para_select;
-        $resultado = $db->ejecutar("SELECT $campos_para_select FROM $nombre_tabla WHERE id = ?;", $id);
+        $campos_para_select = static::$campo_id . "," . $campos_para_select;
+        $resultado = $db->ejecutar("SELECT $campos_para_select ". static::$fk." FROM $nombre_tabla WHERE " .static::$campo_id ." = ?;", $id);
         return new $nombre_clase($resultado[0]);
         // return $resultado[0];
-
     }//getById
     
     public function save()
     {
+        
         // INSERT
+
         $db = App::getDB(); //Solo devuelve la DB
         $nombre_tabla = static::$tabla;
         $campos_para_insert = implode(",",static::$lista_campos_insert);
         $parametros_para_insert = implode(",",array_fill(0,(count(static::$lista_campos_insert)), "?"));
-        if ($this->getId() == null) {
+        if ($this->id == null) {
+
             $sql_insert = "INSERT INTO $nombre_tabla ($campos_para_insert) VALUES ($parametros_para_insert);";
 
             //print_r(array_values(array_slice($this->data,1)));
@@ -135,21 +145,16 @@ class BaseModel
             return $resultado;
             
         }
+
         // UPDATE
         else{
+
             $campos_up_completos = "";
-            $campos_up = static::$lista_info;
+            $campos_up = static::$lista_campos_insert;
             foreach ($campos_up as $value) {
                 $campos_up_completos  .= "$value=?,";
             }//forE
             $campos_up_completos = substr($campos_up_completos,0, strlen($campos_up_completos) - 1);
-            echo "<pre>";
-            echo "asdasd";
-            echo $this->id;
-            echo "asdasd";
-            print_r($this->data);
-            echo "</pre>";
-            //die();
             $sql_update = "UPDATE $nombre_tabla set $campos_up_completos where id = " . $this->id;
 
             $resultado = $this->db->ejecutar($sql_update,...array_values($this->data));
@@ -157,8 +162,6 @@ class BaseModel
                 $this->setId($this->db->getLastId());
                 $resultado []= $this->getId();
             }
-            
-            
             return $resultado;
         }//else
     }//save

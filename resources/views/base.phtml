@@ -70,6 +70,11 @@
 		 input{
 		 width:100%;
 		 }
+		 
+		 .conf-post{
+		 	display: flex;
+		 	justify-content: space-around;
+		 }
 
     </style>
 </head>
@@ -78,15 +83,16 @@
 		<header>
 			<div>
 				<h1><a href="/foro/index/">FORO MVC</a></h1>
-				<a href="/foro/registro/">Registrate</a>
-				<a href="/foro/entrar/">Entrar</a>
+				<?php if($idUser = Session::getInstance()->get('AUTH')){ ?>
+					<a href="/foro/salir/">Salir</a>
+					<a href="/usuario/posts/<?=$idUser?>">Mis posts</a>	
+				<?php } else{ ?>
+					<a href="/foro/registro/">Registrate</a>
+					<a href="/foro/entrar/">Entrar</a>
+				<?php } ?>
 			</div>
 		</header>
-		<hr>
-		<nav>
-			<h3><a href="/foro/crear/">¡Crea un post!</a></h3>
-		</nav>
-		<hr>
+
 <!-- Al ser el phtml base, se podra agregar el Js aqui, para todas las paginas que lo necesiten (desplegable del nav...) -->
     <?= $data['contenido']?>
 	</main>

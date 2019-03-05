@@ -7,7 +7,7 @@ class FieldTitulo extends BaseField
 {
 	public function validar(): bool {
 		$tamTitulo = strlen($this->dato);
-		if ($tamTitulo < 30 && $tamTitulo > 5) {
+		if ($tamTitulo < 50 && $tamTitulo > 5) {
 			return true;
 		}else{
 			$this->error = "Cumple con los requisitos del campo.";

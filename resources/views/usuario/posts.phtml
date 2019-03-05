@@ -1,7 +1,4 @@
-<hr>
-<nav>
-	<h3><a href="/foro/crear/">¡Crea un post!</a></h3>
-</nav>
+<h3>Estos son tus posts</h3>
 <hr>
 <?php foreach ($data as $post) {?>
 	<div class="post">
@@ -11,10 +8,9 @@
 			<span> <?=$post->getValoracion()?> ☆</span> - 
 			<span> <?=$post->getEtiquetas()?> </span>
 		</div>
-		<div>
-			<h4><a href="/foro/ver/<?=$post->getId()?>">Ver post</a></h4>
+		<div class="conf-post">
+			<h4><a href="/foro/ver/<?=$post->getId()?>">Ver mas...</a></h4>
+			<h4><a align="right" href="/foro/editar/<?=$post->getId()?>">Editar </a></h4>
 		</div>
 	</div>
 <?php } ?>
-
- <!--['titulo', 'contenido', 'valoracion', 'etiquetas'];-->

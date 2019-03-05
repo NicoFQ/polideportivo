@@ -33,7 +33,7 @@ class BaseForm
         return in_array($nombre, static::$lista_info);
     }
 
-    public function __construct($data_row = [], bool $actualizar) 
+    public function __construct($data_row = []) 
     {
 
         $this->errores = false;
@@ -66,6 +66,7 @@ class BaseForm
 
 
         // Si se le pasan datos en el constructor 
+
         if(count($data_row)>0){
             //
             // Tengo datos:
@@ -118,8 +119,8 @@ class BaseForm
                
                 $datos = array_combine(static::$lista_info, $datos);
 
-                var_dump(debug_print_backtrace());
-                $this->modelo = new static::$clase_modelo_asociado($datos, $actualizar); 
+                //debug_print_backtrace();
+                $this->modelo = new static::$clase_modelo_asociado($datos); 
             }
         }
     }
@@ -143,6 +144,10 @@ class BaseForm
 
     function guardaInformacion() {
         $this->modelo->save();
+    }
+
+    function guardaInformacionPost() {
+        $this->modelo->editaPost();
     }
 }
 
