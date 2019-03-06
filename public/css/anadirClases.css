@@ -1,0 +1,7 @@
+.container form {
+    text-transform: uppercase;
+}
+.container form .btn {
+    position: relative;
+    margin-top: 10px;
+}

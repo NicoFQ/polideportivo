@@ -1,0 +1,23 @@
+.contenedor-imagen{
+    position:relative;
+    width:100%;
+    height:500px;
+    overflow:hidden;
+}
+.contenedor-imagen img{
+    width:100%;
+    height:500px;
+    transition: .5s;
+    filter: brightness(.4);
+}
+.contenedor-imagen img:hover{
+    filter: brightness(.9);
+    transition: .5s;
+}
+.container:nth-child(2) > div:first-child{
+    outline: 1px solid lightgray;
+}
+
+.container:nth-child(2) > div > div + div > h3{
+    display: inline-block;
+}
