@@ -34,7 +34,7 @@ class BaseForm
         return in_array($nombre, static::$lista_info);
     }
 
-    public function __construct($data_row = []) 
+        public function __construct($data_row = []) 
     {
 
         $this->errores = false;
@@ -44,17 +44,32 @@ class BaseForm
         //
         $campos = [];
         for($i=0;$i<count(static::$lista_tipo);$i++){
-            $tipo_campo = static::$lista_tipo[$i];
-            $nombre_campo = static::$lista_info[$i];
-            $campos[] = new $tipo_campo($nombre_campo);
+            $nombre_campo = static::$lista_info[$i]; // = ['email', 'contrasena']; 
+            $tipo_campo = static::$lista_tipo[$i]; // = ['FieldTextLogin','FieldTextLogin'];
+            $campos[] = new $tipo_campo($nombre_campo); 
+            // [[0] => FieldTextLogin Object, [1] => FieldTextLogin Object]
+            
         }
+
         //
         // Los meto en el array asociativo
         //   id => new FieldID('id')
         //   campo1 => new FieldTipo('nombre_de_campo')
         //
-        $this->campos = array_combine(static::$lista_info, $campos);
-                    
+
+       
+        $this->campos = array_combine(static::$lista_info, $campos); 
+        /*
+        * $this->campos[
+        *       [titulo] => FieldTitulo Object,
+        *       [contenido] => FieldContenido Object,
+        *       [etiquetas] => FieldEtiquetas Object
+        *              ] 
+        */
+
+
+        // Si se le pasan datos en el constructor 
+
         if(count($data_row)>0){
             //
             // Tengo datos:
@@ -73,23 +88,44 @@ class BaseForm
             //            ->validar()
             //
             // Si alguno da error, establezco que hay errores
-            foreach ($this->campos as $nombre => &$campo) {
-                $campo->estableceInfo(
-                    $data_row[$nombre]
-                );
-                if(!$campo->validar()){
-                    $this->errores = true;
-                }
+
+                                  //[titulo]      FieldTitulo Object
+                                  //[contenido]   FieldContenido Object,
+                                  //[etiquetas]   FieldEtiquetas Object
+            foreach ($this->campos as $nombre => &$campo) { 
+                $campo->estableceInfo($data_row[$nombre]); // Asigna la informacion(BaseField) en $data;
+                // Si la validacion de algun campo no es correcta errores pasa a true;
+                if(!$campo->validar()){ $this->errores = true; } 
             }
         }
-
+        // Si se crea este objeto y hay datos en POST 
         if(count($_POST)>0){
-            if($this->datosValidos()){
-                $datos = array_map(function ($campo){
+            if($this->datosValidos()){ // Si ninguno de los campos ha falldo;
+                // Entonces
+                $datos = array_map(function ($campo){               
                     return $campo->obtenerInfo();
-                }, $this->campos);
+                }, $this->campos);  /* $this->campos[
+                                    *       [titulo] => FieldTitulo Object,
+                                    *       [contenido] => FieldContenido Object,
+                                    *       [etiquetas] => FieldEtiquetas Object
+                                    *              ] 
+                                    */
+                /* $datos
+                    Array
+                    (
+                        [titulo] => Primera prueba
+                        [contenido] => Este es un campo de prueba
+                        [etiquetas] => hola que tal
+                        )
+                */
+
+               
                 $datos = array_combine(static::$lista_info, $datos);
-                $this->modelo = new static::$clase_modelo_asociado($datos);
+
+                //debug_print_backtrace();
+                if (static::$clase_modelo_asociado) {
+                    $this->modelo = new static::$clase_modelo_asociado($datos); 
+                }
             }
         }
     }

@@ -1,18 +1,8 @@
 <?php
 class ModelUsuario extends BaseModel
 {
-	protected static $lita_info = [	"email",
-									"nombre",
-									"apellido_1",
-									"apellido_2",
-									"direccion",
-									"imagen_perfil",
-									"nombre_usuario",
-									"fecha_nacimiento",
-									"sexo",
-									"nacionalidad",
-									"id_tipo_usuario",
-									"fecha_alta",
+	protected static $lita_info = [	"user", // 
+									"pass",
 									];
 
     protected static $campo_id = "id_usuario";
@@ -25,7 +15,7 @@ class ModelUsuario extends BaseModel
 
 
 	public static function logOut(string $token){
-
+		
 	}
 
 

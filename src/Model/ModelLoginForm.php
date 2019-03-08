@@ -5,11 +5,13 @@
  */
 class ModelLoginForm extends BaseForm
 {
-	protected static $clase_modelo_asociado = 'ModelUsuario';
+	protected static $clase_modelo_asociado = null;
 
-    protected static $lista_info = ['email',	'contrasena'];
-    protected static $lista_tipo = ['FieldText','FieldText'];
+    protected static $lista_info = ['user',	'pass'];
+    protected static $lista_tipo = ['FieldTextLogin','FieldTextLogin'];
     protected static $ruta = '/usuario/login';
+
+    
 }
 
 ?>
