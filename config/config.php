@@ -8,5 +8,5 @@
 	//Config::set('ruta.defecto','/noticias/list/');
 	Config::set('ruta.defecto','/index');
 	Config::set('controlador.defecto','main');
-
+	Config::set('session.user', 'USER_ID'); // Guardar resto en localStorage
 ?>

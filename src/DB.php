@@ -15,6 +15,7 @@ class DB {
         try {
             // el localhost podria cambiar para conectarse a un servidor remoto
             $this->connection = new PDO("$db_type:host=$db_host;dbname=$db_name",$db_user,$db_password);
+            $this->connection->exec("set character set utf8");
         } catch (PDOException $e) {
             print "¡Error!: " . $e->getMessage() . "<br/>";
             die();
@@ -32,8 +33,8 @@ class DB {
             $sentenciaSQL = $this->connection->prepare($sql);
             
             $sentenciaEjecutada = $sentenciaSQL->execute($params);
-            echo "\n Sentencia ejecutada => ";
-            var_dump($sentenciaEjecutada);
+            //echo "\n Sentencia ejecutada => ";
+            //var_dump($sentenciaEjecutada);
             
             if (!$sentenciaEjecutada) {
                 print_r($this->connection->errorInfo());
