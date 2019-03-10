@@ -8,7 +8,7 @@ drop table if exists horario;
 drop table if exists pista;
 drop table if exists deporte;
 drop table if exists instalacion;
-drop table if exists noticias;
+drop table if exists noticia;
 
 
 -- ************************************** instalacion
@@ -154,8 +154,9 @@ CONSTRAINT FK_999 FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario) ON DE
 -- ************************************** noticias
 create table noticia(
     id int auto_increment,
-    titulo varchar(30) not null,
-    texto varchar (500) not null,
+    titulo varchar(1000) not null,
+    texto varchar (5000) not null,
+    imagen varchar (255) NULL,
     fecha date not null,
     primary key(id)
 );
