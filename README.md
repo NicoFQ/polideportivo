@@ -11,3 +11,4 @@ Aplicacion completa para la gestion de un polideportivo.
 
 # Funcionalidad para ver:
 1. Login
+2. Admin
