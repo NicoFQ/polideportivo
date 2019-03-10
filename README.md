@@ -10,6 +10,26 @@ Aplicacion completa para la gestion de un polideportivo.
 3. Configuracion de los ficheros de apache(DNS).
 
 # Funcionalidad para ver:
+
 1. Login
-2. Admin
-3. Inicio (usuario)
+
+### Admin
+	1. Inicio
+	2. Empleados
+	3. Añadir clases
+
+### Usuario
+	1. Inicio
+	2. Noticias
+
+# Funcionalidad pendiente de implementación:
+
+### Admin
+	1. Envio de emails
+	2. Editar clases
+
+### Usuario
+	1. Localizacion
+	2. Reservas
+	2. Configuracion perfil
+
