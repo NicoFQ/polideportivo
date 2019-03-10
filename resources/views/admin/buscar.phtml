@@ -1,0 +1,36 @@
+<?php 
+$datos = "";
+if (!empty($data["clientes"])) {
+    $datos = $data["clientes"];
+}elseif (!empty($data["profesores"])) {
+    $datos = $data["profesores"];
+}elseif (!empty($data["admins"])) {
+    $datos = $data["admins"];
+}
+
+?>
+<div>
+    <table>
+    <caption>Usuarios encontrados</caption>
+        <tr>
+            <th>Id</th>
+            <th>nombre</th>
+            <th>primer apellido</th>
+            <th>segundo apellido</th>
+            <th>email</th>
+            <th>nombre usuario</th>
+            <th>sexo</th>
+            <th>tipo usuario</th>
+        </tr>
+        <?php foreach ($datos as $value) { ?>
+            <tr>
+            <?php foreach ($value as $clave => $valor) { 
+                if ($clave == "sexo") 
+                    $valor = ($clave == 0) ? "Masculino" : "Femenino"; ?>
+                    <td><?= $valor?></td>
+                <?php  }//forE ?>
+            </tr>
+        <?php }//forE ?>
+    </table>
+</div>
+<a href="/admin/inicio/">Volver al principio</a>

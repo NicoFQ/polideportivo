@@ -8,6 +8,7 @@ drop table if exists horario;
 drop table if exists pista;
 drop table if exists deporte;
 drop table if exists instalacion;
+drop table if exists noticias;
 
 
 -- ************************************** instalacion
@@ -139,7 +140,6 @@ KEY fkIdx_343 (id_clase, fecha, hora_inicio, hora_fin, id_pista),
 CONSTRAINT FK_343 FOREIGN KEY fkIdx_343 (id_clase, fecha, hora_inicio, hora_fin, id_pista) REFERENCES clase (id_clase, fecha, hora_inicio, hora_fin, id_pista) ON DELETE CASCADE
 ) ENGINE=INNODB;
 
-
 -- ************************************** asiste
 CREATE TABLE gustos_usuario
 (
@@ -151,10 +151,11 @@ PRIMARY KEY (id_gustos),
 CONSTRAINT FK_999 FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario) ON DELETE CASCADE
 ) ENGINE=INNODB;
 
-
-
-
-
-
-
-
+-- ************************************** noticias
+create table noticia(
+    id int auto_increment,
+    titulo varchar(30) not null,
+    texto varchar (500) not null,
+    fecha date not null,
+    primary key(id)
+);

@@ -1,0 +1,56 @@
+<?php $id = ""; ?>
+
+<div>
+    <form action="/admin/buscar/" method="post">
+        <div>
+            <label for="nombre">Nombre</label>
+            <input type="search" name="nombre" id="nombre" autofocus>
+        </div>
+        <div>
+            <label for="apellido">Apellido</label>
+            <input type="search" name="apellido" id="apellido">
+        </div>
+        <div>
+            <label for="dni">DNI</label>
+            <input type="search" name="dni" id="dni">
+        </div>
+        <div>
+            <input type="submit" value="Enviar">
+        </div>
+    </form>
+</div>
+
+<div>
+    <table>
+    <caption>Lista de Empleados</caption>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>nombre</th>
+                <th>primer apellido</th>
+                <th>segundo apellido</th>
+                <th>email</th>
+                <th>nombre usuario</th>
+                <th>sexo</th>
+                <th>tipo usuario</th>
+                <th>Borrar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($data["empleados"] as $value) { ?>
+                <tr>
+                <?php foreach ($value as $clave => $valor) { 
+                    if ($clave == "sexo") 
+                        $valor = ($clave == 0) ? "Masculino" : "Femenino";
+                    if ($clave == "id_usuario") 
+                        $id = $valor; ?>
+                        <td><?= $valor?></td>
+                        
+                    <?php  }//forE ?>
+                    <td><a href="/admin/borrar/<?= $id?>">borrar</a></td>
+                </tr>
+            <?php }//forE ?>
+        </tbody>
+    </table>
+</div>
+<a href="/admin/inicio/">Volver al principio</a>
