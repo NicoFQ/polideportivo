@@ -1,0 +1,26 @@
+<?php 
+// TO DO:
+    // cambiar campos de option por un producto ya reservado que viene de otra pagina
+
+$precio = mt_rand(0,100);
+
+?>
+
+<h2>Haz tus compras aqui</h2>
+<form action="/paypal/paypal" method="post">
+
+    <div>
+        <label for="producto">producto</label>
+        <select name="producto" id="producto" required>
+            <option value="clase_tenis">Tenis</option>
+            <option value="clase_futbol">Futbol</option>
+            <option value="clase_padel">Padel</option>
+            <option value="clase_baloncesto">Baloncesto</option>
+        </select>
+    </div>
+    <input type="hidden" name="precio" value="<?= $precio?>">
+    <div>
+        <input type="submit" value="Comprar">
+    </div>
+
+</form>
