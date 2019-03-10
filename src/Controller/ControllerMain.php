@@ -9,7 +9,7 @@ class ControllerMain extends BaseController {
     	$this->data['style'][] = "/css/polideportivo-global.css";
     	$this->data['style'][] = "/css/login.css";
         $loginForm = new ModelLoginForm($_POST);
-        if ($loginForm->datosValidos() && count($_POST) > 0) {
+        /*if ($loginForm->datosValidos() && count($_POST) > 0) {
            // Pendiente tratamiento de datos que vienten por post.
                 $usuario = ModelUsuario::logIn($_POST['user'],$_POST['pass']);
 
@@ -23,7 +23,7 @@ class ControllerMain extends BaseController {
                             echo "CLIENTE";
                             break;
                     }
-                    die();
+                    
                 }else{
                     echo "Fallo autentificacion.";
                     Router::redirect(Config::get('ruta.defecto'));
@@ -31,7 +31,7 @@ class ControllerMain extends BaseController {
         }else{
             
             echo "NO sdfdsfs";
-        }
+        }*/
         $this->data['form'] = $loginForm->pintar();
     }
 

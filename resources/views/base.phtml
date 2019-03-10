@@ -4,16 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title> <?=$data['title']?> </title>
-    <link rel="stylesheet" type="text/css" href="/css/login.css"> 
-    <link rel="stylesheet" type="text/css" href="/css/polideportivo-global.css">
-    <?php foreach ($data['style'] as $key => $value) { ?>
-    	 <link rel="stylesheet" href="<?=$value?>">
-    <?php } ?>
-
-
+    <title> <?=Config::get('site.name')?> </title>
+    <!--
+        <link rel="stylesheet" type="text/css" href="/css/login.css"> 
+        <link rel="stylesheet" type="text/css" href="/css/polideportivo-global.css">
+        <?php foreach ($data['style'] as $key => $value) { ?>
+        	 <link rel="stylesheet" href="<?=$value?>">
+        <?php } ?>
+    -->
+    
 </head>
 <body>
+    <?php require('comunes/nav_cliente.phtml') ?>
 <!-- Al ser el phtml base, se podra agregar el Js aqui, para todas las paginas que lo necesiten (desplegable del nav...) -->
     <?= $data['contenido']?>
 </body>

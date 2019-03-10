@@ -1,6 +1,4 @@
 <?php
-
-
 /***
 Requisitos:
   Esta clase gestiona el pintado de los campos del formulario cuando se visita
@@ -24,6 +22,7 @@ class BaseForm
     protected static $lista_info;
     protected static $lista_tipo;
     protected static $clase_modelo_asociado;
+    protected static $mensaje_error;
     protected static $ruta;
 
     private $campos;
@@ -36,12 +35,11 @@ class BaseForm
 
         public function __construct($data_row = []) 
     {
-
         $this->errores = false;
-
         //
         // Creo los campos de información con su nombre
         //
+
         $campos = [];
         for($i=0;$i<count(static::$lista_tipo);$i++){
             $nombre_campo = static::$lista_info[$i]; // = ['email', 'contrasena']; 
@@ -118,13 +116,12 @@ class BaseForm
                         [etiquetas] => hola que tal
                         )
                 */
-
-               
                 $datos = array_combine(static::$lista_info, $datos);
-
                 //debug_print_backtrace();
                 if (static::$clase_modelo_asociado) {
-                    $this->modelo = new static::$clase_modelo_asociado($datos); 
+                    $this->modelo = new static::$clase_modelo_asociado($datos);
+                }else{
+                    ModelLoginForm::logInForm();
                 }
             }
         }
@@ -136,12 +133,22 @@ class BaseForm
 
     function pintar() {
         ob_start();
-
+        if (!$this->datosValidos()) {
+            echo "<span>".static::$mensaje_error['ERROR_FIELD']."</span>";
+        }
+        if (empty(static::$mensaje_error['ERROR_AUTH'])) {
+            echo "<span>".static::$mensaje_error['ERROR_AUTH']."</span>";
+        }else{
+            echo "<span>".static::$mensaje_error['ERROR_AUTH']."</span>";
+        }
+        
+            echo "<span>".static::$mensaje_error['ERROR_AUTH']."</span>";
         echo "<form action='#' method='post'>";
         foreach ($this->campos as $campo) {
             $campo->pintar();
             echo "<br>";
         }
+
         echo "<input type='submit' />";
         echo "</form>";
 
