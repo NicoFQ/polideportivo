@@ -1,17 +1,5 @@
 <div class="container">
         <h1>Registro</h1>
-        <div class="errList">
-			<!-- LISTA DE ERRORES -->
-			<?php if (count($errList) > 0) { ?> 
-				<h3>Debe completar los campos</h3>
-				<ul>
-					<?php foreach ($errList as $key => $value) { ?>
-						<li><?=$value?></li>
-					<?php }//forE ?>
-				</ul>
-			<?php }//if ?>
-        </div>
-			<!-- FIN LISTA ERRORES -->
         <div class="form-group col-md-6 col-md-offset-3">
             <form action="#" method="post">
             <label for="dni">Dni:</label>

@@ -13,7 +13,6 @@ class BaseModel
     public static function getAll($page = 0, $num = 10)
     {
         $db = App::getDB(); //Solo devuelve la DB
-
         $nombre_tabla = static::$tabla; 
         $campos_para_select = implode(",",static::$lista_info);
         $campos_para_select = static::$campo_id.",". $campos_para_select;
@@ -23,7 +22,7 @@ class BaseModel
             return new $nombre_clase($datos);
         },$resultado);
         return $resultado;
-    }//getAllNoticias
+    } //getAllNoticias
 
     
 
@@ -47,12 +46,6 @@ class BaseModel
             // **Saltaba error por que el array_combine necesita tener el mismo numero de keys, que de values 
             // entre los 2 arrays que se le pasan**
             $this->id = array_shift($data_row);
-            // echo "<pre>";
-            // print_r(static::$lista_info);
-            // echo "------------------------------";
-            // print_r($data_row);
-            // echo "</pre>";
-            // die();
             $this->data = array_combine(static::$lista_info, $data_row);
         }
     }//construct

@@ -8,8 +8,7 @@ class FieldTextLogin extends BaseField
         if(strlen($this->dato)==0 ||
            $this->dato == null ||
            empty($this->dato)){
-            
-            $this->error = "Debe tener información";
+           $this->error = "ERROR_FIELD";
             return false;
         } else {
             return true;
@@ -18,9 +17,7 @@ class FieldTextLogin extends BaseField
 
     public function pintar() {
         echo "<input type='text' name='$this->nombre' value='$this->dato' />";
-        if($this->error){
-            echo "$this->error";
-        }
+
     }
 }
 
