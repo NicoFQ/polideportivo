@@ -47,12 +47,12 @@ class BaseModel
             // **Saltaba error por que el array_combine necesita tener el mismo numero de keys, que de values 
             // entre los 2 arrays que se le pasan**
             $this->id = array_shift($data_row);
-            echo "<pre>";
-            print_r(static::$lista_info);
-            echo "------------------------------";
-            print_r($data_row);
-            echo "</pre>";
-            die();
+            // echo "<pre>";
+            // print_r(static::$lista_info);
+            // echo "------------------------------";
+            // print_r($data_row);
+            // echo "</pre>";
+            // die();
             $this->data = array_combine(static::$lista_info, $data_row);
         }
     }//construct

@@ -1,0 +1,31 @@
+<?php 
+
+$emails = "";
+
+foreach ($data["datos_usuarios"] as $email) {
+    $emails.=$email["email"]." - ";
+}
+
+?>
+
+
+<div>
+    <form action="/admin/enviarEmail" method="post">
+        <div>
+            <label for="from">De:</label>
+            <input type="text" name="from" id="from" value="polideportivo@gmail.com" readonly>
+        </div>
+        <div>
+            <label for="asunto">Asunto:</label>
+            <input type="text" name="asunto" id="asunto" placeholder="Oferta de verano.">
+        </div>
+        <div>
+            <label for="contenido">Contenido</label>
+            <input type="file" name="contenido" id="contenido" ">
+        </div>
+        <div>
+            <label for="to">TO:</label>
+            <input type="text" name="emails" id="emails" value="<?= $emails?>">
+        </div>
+    </form>
+</div>

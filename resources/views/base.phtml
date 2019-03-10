@@ -4,17 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title> <?=$data['title']?> </title>
-    <link rel="stylesheet" type="text/css" href="/css/login.css"> 
-    <link rel="stylesheet" type="text/css" href="/css/polideportivo-global.css">
-    <?php foreach ($data['style'] as $key => $value) { ?>
-    	 <link rel="stylesheet" href="<?=$value?>">
-    <?php } ?>
-
 
 </head>
 <body>
 <!-- Al ser el phtml base, se podra agregar el Js aqui, para todas las paginas que lo necesiten (desplegable del nav...) -->
+        <?php 
+            if (isset($data["nav_admin"])) { ?>
+                <nav>
+                    <ul>
+                        <li><a href="/admin/inicio">inicio</a></li>
+                        <li><a href="/admin/empleados/">empleados</a></li>
+                        <li><a href="/admin/anadirClases">añadir clases</a></li>
+                        <li><a href="/admin/email">enviar correo</a></li>
+                    </ul>
+                </nav>
+            <?php } ?>
+
+
     <?= $data['contenido']?>
 </body>
 </html>

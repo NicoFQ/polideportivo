@@ -1,0 +1,73 @@
+<?php 
+
+$total = implode("",$data[0]);
+$admins = implode("",$data['admins'][0]);
+$usuarios = implode("",$data['usuarios'][0]);
+
+?>
+
+<a href="#">
+    <h4>Numero usuarios</h4>
+    <span>
+        <i class="fas fa-users"></i>
+    </span>
+    <p><?= $total;?></p>
+    <p><span>Administradores: <?= $admins?></span></p>
+    <p><span>Clientes: <?= $usuarios?></span></p>
+</a>
+
+<a href="../noticias/add/">
+    <div class="contenido-admin">
+        <h4>Agregar noticias</h4>
+        <span>
+            <i class="far fa-newspaper"></i>
+        </span>
+    </div>
+</a>
+<div>
+    <form action="/admin/buscar/" method="post">
+        <div>
+            <label for="nombre">Nombre</label>
+            <input type="search" name="nombre" id="nombre" autofocus>
+        </div>
+        <div>
+            <label for="apellido">Apellido</label>
+            <input type="search" name="apellido" id="apellido">
+        </div>
+        <div>
+            <label for="dni">DNI</label>
+            <input type="search" name="dni" id="dni">
+        </div>
+        <div>
+            <input type="submit" value="Enviar">
+        </div>
+    </form>
+</div>
+<div>
+    <table>
+    <caption>Lista de clientes.</caption>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>nombre</th>
+                <th>primer apellido</th>
+                <th>segundo apellido</th>
+                <th>email</th>
+                <th>sexo</th>
+                <th>nacionalidad</th>
+                <th>fecha nacimiento</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($data["datos_usuarios"] as $value) { ?>
+                <tr>
+                <?php foreach ($value as $clave => $valor) { 
+                    if ($clave == "sexo") 
+                        $valor = ($clave == 0) ? "Masculino" : "Femenino"; ?>
+                        <td><?= $valor?></td>
+                    <?php  }//forE ?>
+                </tr>
+            <?php }//forE ?>
+        </tbody>
+    </table>
+</div>

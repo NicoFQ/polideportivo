@@ -37,8 +37,10 @@ class DB {
             //var_dump($sentenciaEjecutada);
             
             if (!$sentenciaEjecutada) {
+                echo "<pre>";
                 print_r($this->connection->errorInfo());
                 print_r($sentenciaSQL->errorInfo());
+                echo "</pre>";
                 // var_dump($this->connection->errorInfo());
                 return null;
             }else{
