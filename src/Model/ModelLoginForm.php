@@ -21,7 +21,7 @@ class ModelLoginForm extends BaseForm
                         break;
                     case 'CL':
                         echo "CLIENTE";
-                        Router::redirect('usuario/inicio');
+                        Router::redirect('/usuario/inicio');
                         break;
                 }
             }else{

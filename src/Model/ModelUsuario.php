@@ -125,7 +125,7 @@ class ModelUsuario extends BaseModel
 		$sql_insert = "INSERT INTO usuario ($campos_para_insert) VALUES ($parametros_para_insert);";
             
             // print_r(array_values(array_slice($this->data,1)));
-            $resultado = $db->ejecutar($sql_insert, ...array_values($_POST));
+			$resultado = $db->ejecutar($sql_insert, ...array_values($_POST));
             if (is_array($resultado)) {
 				return true;
             }
