@@ -9,5 +9,9 @@ class ControllerUsuario extends BaseController
 	public function noticias(){
 		$this->data['noticias'] = ModelNoticia::getAll();
 	}
-}
+
+
+	public function localizacion(){}
+	
+}//ControllerUsuario
 ?>
