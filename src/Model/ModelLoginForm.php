@@ -1,7 +1,7 @@
 <?php 
 class ModelLoginForm extends BaseForm
 {
-	protected static $clase_modelo_asociado = null;
+	protected static $clase_modelo_asociado = 'ModelLogin';
     protected static $lista_info = ['user',	'pass'];
     protected static $lista_tipo = ['FieldTextLogin','FieldTextLogin'];
     protected static $mensaje_error = ["ERROR_AUTH"	=>"",

@@ -12,11 +12,13 @@ class FieldEmail extends BaseField
     }
 
     public function pintar() {
-        echo "$this->nombre :";
+        echo "<div>";
+        echo "<label for='$this->nombre'>$this->nombre :</label>";
         echo "<input type='email' name='$this->nombre' value='$this->dato'/>";
         if($this->error){
             echo "$this->error";
         }
+        echo "</div>";
     }
 }
 

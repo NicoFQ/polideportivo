@@ -52,9 +52,12 @@ class ControllerNoticias extends BaseController
     
     public function add(){
         $form = new ModelNoticiaForm($_POST);
+        echo "<pre>";
+        print_r($form);
+        echo "</pre>";die();
         if(count($_POST)>0 && $form->datosValidos()) {
             $form->guardaInformacion();
-            App::getRouter()::redirect('/noticias/list/');
+            // App::getRouter()::redirect('/noticias/list/');
         }
         $this->data['form'] = $form->pintar();
     }//add

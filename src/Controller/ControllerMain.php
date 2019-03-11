@@ -36,10 +36,14 @@ class ControllerMain extends BaseController {
     }
 
     function registro(){
-		$this->data['title'] = "Polideportivo | Regsitro";
-    	$this->data['style'][] = "/css/errList.css";
-    	$this->data['style'][] = "/public/css/registro.css";
-    	$this->data['style'][] = "/css/polideportivo-global.css";
+		
+        $form = new ModelRegistroForm($_POST);
+
+        if(count($_POST)>0 && $form->datosValidos()) {
+            
+            App::getRouter()::redirect('/index/');
+        }
+        $this->data['form'] = $form->pintar();
     }
 
 }

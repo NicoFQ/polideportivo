@@ -4,6 +4,7 @@ abstract class BaseField {
     protected $nombre;
     protected $dato;
     protected $error;
+    protected $label;
 
     public function __construct($nombre) {
         $this->nombre = $nombre;
@@ -11,6 +12,9 @@ abstract class BaseField {
 
     public function estableceInfo($dato) {
         $this->dato = $dato;
+    }
+    public function estableceLabel ($dato){
+        $this->label = $dato;
     }
 
     public function obtenerError(){
