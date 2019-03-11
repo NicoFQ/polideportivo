@@ -91,5 +91,11 @@ class ModelUsuario extends BaseModel
 		$usuario = $db->ejecutar($SQL, $user, $user);
 		return $usuario;
 	}
+
+
+	public function getLocalizacion()
+	{
+		
+	}
 }
 ?>
