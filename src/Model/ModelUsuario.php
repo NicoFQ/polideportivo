@@ -114,6 +114,15 @@ class ModelUsuario extends BaseModel
 		$resultado = $db->ejecutar($query);
 		return $resultado;
 	}
+
+
+	static function calcularEdad($nacimiento){
+		$cumpleanos = new DateTime($nacimiento);
+	    $hoy = new DateTime();
+	    $anios = $hoy->diff($cumpleanos);
+	    return $anios->y;
+	}
+
 	public static function registrar()
 	{
 		$db = App::getDB();
@@ -131,5 +140,6 @@ class ModelUsuario extends BaseModel
             }
 		
 	}//registrar
+
 }
 ?>
