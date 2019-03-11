@@ -1,8 +1,8 @@
 <?php
 class ModelUsuario extends BaseModel
 {
-	protected static $lita_info = [	
-    	"id_usuario", 		"email", 		"dni", 
+	protected static $lista_info = [	
+		"id_usuario", 		"email", 		"dni",
 		"nombre", 			"apellido_1",	"apellido_2", 
 		"direccion",		"imagen_perfil","nombre_usuario", 
 		"fecha_nacimiento",	"sexo", 		"nacionalidad",
@@ -33,7 +33,7 @@ class ModelUsuario extends BaseModel
 		$usuario = ModelUsuario::existeUsuario($user);
 		if ($usuario) {
 			$auxPass = $usuario[0]['contrasena'];
-			if ($pass == $auxPass) {
+			if (password_verify($pass,$auxPass)) {
 				return $usuario[0];
 			}else{
 				return false;
@@ -50,7 +50,7 @@ class ModelUsuario extends BaseModel
 
 	static function getBasicDataJSON($id){
 		$db = App::getDB();
-		$camposBasicData = implode(",", static::$lita_info);
+		$camposBasicData = implode(",", static::$lista_info);
 		$SQL = "select $camposBasicData from usuario where ".static::$campo_id." = ?;";
 		$usuario = $db->ejecutar($SQL, $id);
 		if ($usuario) {
@@ -75,13 +75,19 @@ class ModelUsuario extends BaseModel
 		return $clases;
 	}
 
-
 	static function getGustos($id){
 		$db = App::getDB();
 		$SQL = "select * from gustos_usuario where id_usuario = ?;";
 		
 		$gustos = $db->ejecutar($SQL, $id);
-		return $gustos[0];
+		
+		if (!empty($gustos)) {
+			return $gustos[0];
+		}else{
+			return ["deportes_favoritos" => "Aun no has definido tus deportes favoritos.",
+					"comentarios" => "Aun no has hecho ningún comentario."];
+		}
+		
 	}
 
 
@@ -93,10 +99,22 @@ class ModelUsuario extends BaseModel
 	}
 
 
-	public function getLocalizacion()
+	public function getLocalizacion(){}
+
+	public static function getDatosClases()
 	{
+		$db = App::getDB();
+		$query = "SELECT nombre_clase,
+						 fecha,
+        				 hora_inicio,
+        				 hora_fin,
+        				 precio_clase
+        				 FROM clase;";
 		
+		$resultado = $db->ejecutar($query);
+		return $resultado;
 	}
+
 
 	static function calcularEdad($nacimiento){
 		$cumpleanos = new DateTime($nacimiento);
@@ -104,5 +122,24 @@ class ModelUsuario extends BaseModel
 	    $anios = $hoy->diff($cumpleanos);
 	    return $anios->y;
 	}
+
+	public static function registrar()
+	{
+		$db = App::getDB();
+		$_POST["contrasena"] = password_hash($_POST["contrasena"],2);
+		$campos_para_insert = implode(",",ModelRegistroForm::getListaDatos());
+	
+		$parametros_para_insert = implode(",",array_fill(0,(count(ModelRegistroForm::getListaDatos())), "?"));
+		
+		$sql_insert = "INSERT INTO usuario ($campos_para_insert) VALUES ($parametros_para_insert);";
+            
+            // print_r(array_values(array_slice($this->data,1)));
+            $resultado = $db->ejecutar($sql_insert, ...array_values($_POST));
+            if (is_array($resultado)) {
+				return true;
+            }
+		
+	}//registrar
+
 }
 ?>

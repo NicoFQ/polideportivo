@@ -109,10 +109,8 @@ class BaseModel
         $parametros_para_insert = implode(",",array_fill(0,(count(static::$lista_info)), "?"));
         if ($this->getId() == null) {
             $sql_insert = "INSERT INTO $nombre_tabla ($campos_para_insert) VALUES ($parametros_para_insert);";
-            echo "<pre>";
-            print_r($sql_insert);
-            echo "</pre>";
-            print_r(array_values(array_slice($this->data,1)));
+            
+            // print_r(array_values(array_slice($this->data,1)));
             $resultado = $this->db->ejecutar($sql_insert, ...array_values($this->data));
             if (is_array($resultado)) {
                 $this->setId($this->db->getLastId());

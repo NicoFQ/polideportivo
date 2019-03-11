@@ -1,5 +1,126 @@
-@import url("logo.css");
+/* @import url("logo.css");
 @import url("header.css");
 @import url("footer.css");
 @import url("bootstrap/dist/css/bootstrap.css");
-@import url("https://use.fontawesome.com/releases/v5.6.3/css/all.css");
+@import url("https://use.fontawesome.com/releases/v5.6.3/css/all.css"); */
+
+    
+@import url("https://fonts.googleapis.com/css?family=Racing+Sans+One");
+
+:root {
+    --width-logo: 100px;
+    --height-logo: 100px;
+
+    --width-circle: calc(var(--width-logo) - 20px);
+    --height-circle: calc(var(--height-logo) - 20px);
+
+    --width-circlexsm: calc(var(--width-logo) - 30px);
+    --height-circlexsm: calc(var(--height-logo) - 30px);
+}
+header{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    /*background-color: #1f1772ea;*/
+    background-color: #494ca2;
+    /* background-color: #218c74; */
+}
+
+.contenedor-logo {
+    font-family: 'Racing Sans One', serif;
+    width: 40%;
+    margin: 0 auto;
+}
+
+.logo {
+    width: var(--width-logo);
+    height: var(--height-logo);
+    border: solid #227093 5px;
+    /*border:solid rgba(32,15,122,.9) 5px;*/
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px aqua;
+}
+
+.circulo-peq {
+    border: 10px solid #0a3d62;
+    /*border:10px solid rgba(21,31,124,.8);*/
+    border-radius: 50%;
+    width: var(--width-circle);
+    height: var(--width-circle);
+    /* width: 90px;
+height: 90px; */
+}
+
+.circulo-extra-peq {
+    border: 5px solid #dfe4ea;
+    box-shadow: 0px 0px 15px #dfe4ea;
+    border-radius: 50%;
+    width: var(--width-circlexsm);
+    height: var(--height-circlexsm);
+}
+
+.envoltorio {
+    background-image: radial-gradient(circle, #686de0 30%, #30336b);
+    width: var(--width-circlexsm);
+    height: var(--height-circlexsm);
+    /* width: 60px;
+height: 60px; */
+    border-radius: 50%;
+    position: relative;
+}
+
+.contenido {
+    font-size: 4em;
+    text-align: center;
+    position: relative;
+    top: -12.5px;
+    color: #dfe4ea;
+    text-shadow: 8px 8px 4px black;
+}
+
+/* ##### LAYOUT LOGO ######################### */
+body>header>nav>ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
+body ul{
+    list-style-type: none;
+}
+a{
+    color: white;
+    text-decoration: none;
+    padding: 4em 1.5em;
+}
+
+nav>ul>li:nth-of-type(n+6)>a{
+    color: black;
+}
+nav>ul li:nth-child(1) {
+    margin-right: auto;
+}
+nav>ul li:nth-child(6) {
+    margin-left: auto;
+}
+
+
+/* ##### ESTILOS ######################### */
+header li:nth-of-type(n+2) a{
+    
+    margin: 0 2px;
+    /*background-image: linear-gradient(90deg, #22a6b3, #066a74);*/
+    /*background-color: #1f1772ea;*/
+    background-color: #494ca2;
+    transition: 500ms;
+    /*box-sizing: border-box;*/
+}
+
+header li:nth-of-type(n+2) a:hover{
+    box-shadow: 0px 0px 10px aquamarine;
+    text-shadow: 0px 0px 5px white;
+    
+    background-color: #6927ff;
+}
+
+
+
+
+

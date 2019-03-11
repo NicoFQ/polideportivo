@@ -21,6 +21,7 @@ class BaseForm
 {
     protected static $lista_info;
     protected static $lista_tipo;
+    protected static $lista_label;
     protected static $clase_modelo_asociado;
     protected static $mensaje_error;
     protected static $ruta;
@@ -44,7 +45,9 @@ class BaseForm
         for($i=0;$i<count(static::$lista_tipo);$i++){
             $nombre_campo = static::$lista_info[$i]; // = ['email', 'contrasena']; 
             $tipo_campo = static::$lista_tipo[$i]; // = ['FieldTextLogin','FieldTextLogin'];
+            
             $campos[] = new $tipo_campo($nombre_campo); 
+            $campos[$i]->estableceLabel(static::$lista_label[$i]); 
             // [[0] => FieldTextLogin Object, [1] => FieldTextLogin Object]
             
         }
@@ -55,8 +58,8 @@ class BaseForm
         //   campo1 => new FieldTipo('nombre_de_campo')
         //
 
-       
-        $this->campos = array_combine(static::$lista_info, $campos); 
+        $this->campos = array_combine(static::$lista_info, $campos);
+        
         /*
         * $this->campos[
         *       [titulo] => FieldTitulo Object,
@@ -67,7 +70,7 @@ class BaseForm
 
 
         // Si se le pasan datos en el constructor 
-
+        
         if(count($data_row)>0){
             //
             // Tengo datos:
@@ -91,7 +94,7 @@ class BaseForm
                                   //[contenido]   FieldContenido Object,
                                   //[etiquetas]   FieldEtiquetas Object
             foreach ($this->campos as $nombre => &$campo) { 
-                $campo->estableceInfo($data_row[$nombre]); // Asigna la informacion(BaseField) en $data;
+                $campo->estableceInfo($data_row[$nombre]); 
                 // Si la validacion de algun campo no es correcta errores pasa a true;
                 if(!$campo->validar()){ $this->errores = true; } 
             }
@@ -118,10 +121,14 @@ class BaseForm
                 */
                 $datos = array_combine(static::$lista_info, $datos);
                 //debug_print_backtrace();
-                if (static::$clase_modelo_asociado) {
-                    $this->modelo = new static::$clase_modelo_asociado($datos);
-                }else{
+                if (static::$clase_modelo_asociado == 'ModelLogin') {
                     ModelLoginForm::logInForm();
+                    
+                }elseif (static::$clase_modelo_asociado == 'ModelUsuario') {
+                    ModelUsuario::registrar();
+                }
+                else{
+                    $this->modelo = new static::$clase_modelo_asociado($datos);
                 }
             }
         }
@@ -160,3 +167,4 @@ class BaseForm
     }
 }
 ?>
+

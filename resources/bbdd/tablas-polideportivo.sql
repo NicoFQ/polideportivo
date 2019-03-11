@@ -80,7 +80,7 @@ CREATE TABLE usuario
  fecha_nacimiento date NOT NULL ,
  sexo             int ,
  nacionalidad     varchar(45) ,
- id_tipo_usuario  varchar(45) NOT NULL ,
+ id_tipo_usuario  varchar(45) DEFAULT 'CL' NOT NULL ,
  fecha_alta       TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
  UNIQUE (email), 
  UNIQUE (nombre_usuario), 

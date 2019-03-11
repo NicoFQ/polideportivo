@@ -1,6 +1,6 @@
 <?php
 
-class FieldText extends BaseField
+class FieldRadio extends BaseField
 {
     public function validar():bool {
         if(strlen($this->dato)==0){
@@ -13,14 +13,13 @@ class FieldText extends BaseField
 
     public function pintar() {
         echo "<div>";
-        echo "<label for='$this->nombre'>$this->label :</label>";
-        echo "<input type='text' name='$this->nombre' value='$this->dato' />";
+        echo "<label for='$this->nombre'>$this->nombre :</label>";
+        echo "Hombre <input type='radio' name='$this->nombre' value='0'required >";
+        echo "Mujer <input type='radio' name='$this->nombre' value='1' required >";
         if($this->error){
             echo "$this->error";
         }
         echo "</div>";
-        
-        
     }
 }
 
