@@ -6036,3 +6036,33 @@ insert into usuario (
 insert into gustos_usuario(deportes_favoritos, comentarios, id_usuario)
 		values("Futbol, Baloncesto, Tenis", "Soy un apasionado de los deportes.", 3);
 	
+
+
+-- NOTICIAS NOTICIAS NOTICIAS NOTICIAS NOTICIAS 
+
+insert into noticia(titulo, texto, imagen, fecha)
+		values('Dovizioso gana el GP de Qatar', 
+			'Dovizioso ha ganado el Gran Premio de Qatar por delante de Márquez. Crutchlow, en tercera posición, ha cerrado el podio. Valentino Rossi, después de una remontada, ha acabado en quinta posición.',
+			'1_GP.jpg',
+            '2019-03-10');
+
+insert into noticia(titulo, texto, imagen, fecha)
+		values('El Betis insiste y gana en Balaídos a un Celta sin soluciones', 
+			'El Betis no solo es cristalino sino que si se le mirase sin la lupa de los prejuicios se le ponderaría por una vocación que no todos atesoran no ya en el fútbol sino en la vida: el equipo que ordena Quique Setién salta al campo dispuesto a tomar el mando, no quiere ser gregario. Le acusan de horizontal, de poco profundo, barroco y tedioso sin valorar que en el fútbol quedarte con el balón es lo más complicado. Lo fácil, lo que puede hacer todo el mundo, los malos y los buenos, es correr tras él. En un tiempo en el que podría brotar la duda, después de ganar apenas un partido de ocho, de caer en la Copa del Rey y en Europa, de que en el Villamarín surgiesen gritos críticos contra el técnico, el Betis redobló su credo en Balaídos, maduró el partido, lo buscó, lo mereció y lo ganó en un ejercicio de paciencia en el que, por el camino, anuló al Celta. ¿Alguien puede reprocharlo?',
+			'2_Betis.jpg',
+            '2019-03-10');
+
+insert into noticia(titulo, texto, imagen, fecha)
+		values('Cómo exprimir al máximo la experiencia de esquiar', 
+			'En todas las estaciones se ofrecen servicio de guías e instructores, en algunas como St. Anton am Alberg (Austria) para realizar descensos fuera de pista un guía es obligatorio. No todos ofrecen el mismo servicio. Los guías lideran las rutas, pero no dan clases de esquí, y, por lo general, los instructores se centran en mejorar la técnica del esquiador y no en descubrir la estación. A la hora de contratar a un monitor se debe tener claro qué se necesita. Pero en algunas estaciones, como Soldeu el Tarter (Grandvalira, Principado de Andorra), existe la figura del profesor top class, un mentor 360º del deporte de la nieve. Un top class es un esquiador fuera de serie, instructor al máximo nivel cuyo objetivo es garantizar la mejor experiencia al cliente, no solo desarrollando su técnica de esquí, su disposición mental, o estado físico, sino descubriendo el dominio esquiable, o acompañándolo a esquiar la primera nieve, durante la hora mágica, con el sol apareciendo detrás de las montañas cuando la estación aún no ha abierto. Pero incluso después del cierre de los remontes, el top class sigue guiando al esquiador',
+			'3_Esquiar.jpg',
+            '2019-03-10');
+insert into noticia(titulo, texto, imagen, fecha)
+		values('Piqué: “Tenemos los tres títulos en la cabeza”', 
+			'Piqué llegó al Camp Nou con el paso parsimonioso de los futbolistas cuando no están lejos del balón. Iba de la mano de sus dos hijos, Sasha y Milan, vestidos de azulgrana, que no se querían perder el partido de su padre. “So cute (muy tierno)”, publicó el Barcelona. La imagen del 3, un imán para las redes sociales; su presencia, un clásico en el once de Valverde. No descansa el central, ni siquiera cuando Umtiti ya está recuperado de los problemas en la rodilla izquierda. “Es muy regular, en algún momento tendrá que descansar. Tiene cuatro amarillas”, aseguró el Txingurri. El defensa catalán cuenta 2.430 minutos en LaLiga, el jugador de campo que más ha participado.Juega como nunca, marca como casi nunca. Frente al Rayo, Piqué sumó su cuarto gol en LaLiga. La temporada que más dianas firmó fue la 2014-2015: cinco. “En racha, jugando. El último gol lo metí en noviembre o en diciembre. Contento. Me encuentro muy bien, son rachas en una carrera de muchos años. Hay momentos en los que estás mejor. Cuando el equipo está bien, yo me encuentro bien, cómodo y tranquilo, con los tres títulos ahí en la cabeza. Ese es el objetivo”, comentó el central. Piqué sorprendió al Rayo por donde menos se lo esperaba. “Un fallo, una decisión de medio segundo. Sabíamos que los que rematan en el Barça solo podían ser Piqué, Umtiti y Busquets. Es una lástima que nos hayan marcado a balón parado”, se lamentó Míchel.',
+			'4_Pique.jpg',
+            '2019-03-10');
+		
+
+
+

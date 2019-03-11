@@ -1,6 +1,6 @@
 <?php $user = $data['user']; ?>
 <?php $clases = ModelUsuario::clasesDeUsuario($user->id_usuario) ?>
-<?php $clases = ModelUsuario::clasesDeUsuario($user->id_usuario) ?>
+<?php $prefs = $data['user_prefs'] ?>
 <div class="container">
             <!--
             <div class="contenedor-imagen" id="imgGallary">
@@ -15,31 +15,21 @@
                 <div class="col-md-3">
                     <figcaption class="text-center">
                                 <figure>
-                                    <img src="./../../public/img/default_male.png">
+                                    <img src="./../../public/img/users/<?=$user->imagen_perfil?>" alt="imagen_perfil">
                                 </figure>
                             </figcaption>
                 </div>
 
                 <div class="col-md-9">
-                  <pre>
-                    <?=print_r($user)?>
-                  </pre>
                     <h3><?=$user->nombre?> <?=$user->apellido_1?> <?=$user->apellido_2?> (<?=$user->nombre_usuario?>)</h3>
                     <!--<h3>Andres Lopez Guzman (Andrew007)</h3>-->
                     <span><?=$user->fecha_nacimiento?> años</span>
                     <h4>Clases en las que estoy </h4>
                     <p> <?=$clases ?> </p>
-                    <br>
                     <h4> Mis deportes favoritos</h4>
-                    <pre>
-                      <?php print_r($data['user_prefs']) ?> 
-                    </pre>
-
-                    Baloncesto, Tenis, Futbol. <a href=""><img src=""></a>
+                    <?=$prefs['deportes_favoritos'] ?>
                     <h4> Sobre mi</h4>
-                    Me gusta mucho el deporte... Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    <?=$prefs['comentarios'] ?>
                 </div>
             </div>
             <div class="row">
