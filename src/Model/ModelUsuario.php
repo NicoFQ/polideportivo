@@ -97,5 +97,12 @@ class ModelUsuario extends BaseModel
 	{
 		
 	}
+
+	static function calcularEdad($nacimiento){
+		$cumpleanos = new DateTime($nacimiento);
+	    $hoy = new DateTime();
+	    $anios = $hoy->diff($cumpleanos);
+	    return $anios->y;
+	}
 }
 ?>

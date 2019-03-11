@@ -23,7 +23,7 @@
                 <div class="col-md-9">
                     <h3><?=$user->nombre?> <?=$user->apellido_1?> <?=$user->apellido_2?> (<?=$user->nombre_usuario?>)</h3>
                     <!--<h3>Andres Lopez Guzman (Andrew007)</h3>-->
-                    <span><?=$user->fecha_nacimiento?> años</span>
+                    <span><?=ModelUsuario::calcularEdad($user->fecha_nacimiento)?> años</span>
                     <h4>Clases en las que estoy </h4>
                     <p> <?=$clases ?> </p>
                     <h4> Mis deportes favoritos</h4>
