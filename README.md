@@ -1,13 +1,16 @@
 # polideportivo
 Aplicacion completa para la gestion de un polideportivo.
 
-# Instalación
+# Instalación ( Solo linux )
+	
+1. Situate en la carpeta raiz del proyecto.
+2. Desde la raiz del proyecto ejecuta con permisos de administrador 'desplegar.sh':
+		
+		# ./bin/desplegar.sh
 
-1. Configurar la base de datos en config/config.php
-2. Restaurar base de datos en resources/bbdd/
-⋅⋅* Fichero 1 => tablas-polideportivo.sql
-⋅⋅* Fichero 2 => datos-polideportivo.sql
-3. Configuracion de los ficheros de apache(DNS).
+Una vez que se haya ejecutado el script correctamente tendremos 
+que esperar hasta que se apliquen todas las configuraciones.
+	
 
 # Funcionalidad para ver:
 
