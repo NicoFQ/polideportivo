@@ -210,6 +210,15 @@ class ModelUsuario extends BaseModel
             }
 		
 	}//registrar
+        
+        public static function todosDeporte(){
+            
+            $db = App::getDB();
+		$query = "SELECT * FROM deporte;";
+		
+		$resultado = $db->ejecutar($query);
+		return $resultado;
+        }
 
 }
 ?>

@@ -35,6 +35,16 @@ class View
         return $html_content;
     }//render
     
+  /*  public function renderPrueba($data = [])
+    {
+        // Es un buffer de cache, toda la salida se queda en ob_Start
+        ob_start();
+            include($this->template);
+            // Esta funcion devolvera el contenido
+        $html_content = ob_get_clean();
+        return $html_content;
+    }//render*/
+    
 }//View
 
 ?>

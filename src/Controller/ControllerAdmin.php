@@ -41,7 +41,6 @@ class ControllerAdmin extends BaseController
     }
     public function anadirClases()
     {
-        // $this->data["pistas"] = ModelAdmin::getPistas();
         $this->data["profesores"] = ModelAdmin::getProfesores();
         $this->data["horario"] = ModelAdmin::getHorario();
         $this->data["nav_admin"] = true;
@@ -58,6 +57,23 @@ class ControllerAdmin extends BaseController
         $this->data["datos_usuarios"] = ModelAdmin::getDatosClientes();
         $this->data["nav_admin"] = true;
     }//email
+
+    public function pistas()
+    {
+        $this->data["pistas"] = ModelAdmin::getPistas();
+        $this->data["nav_admin"] = true;
+    }
+
+    public function editar($id)
+    {
+        $this->data["pista"] = ModelAdmin::getPistaById($id);
+        if (count($_POST) > 0) {
+            ModelAdmin::editarPista($id,$_POST);
+            App::getRouter()->redirect('/admin/pistas');        
+        }
+        $this->data["nav_admin"] = true;
+        
+    }
     
 
 }//ControllerAdmin
