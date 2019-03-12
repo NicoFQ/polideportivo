@@ -4,9 +4,11 @@ Aplicacion completa para la gestion de un polideportivo.
 # Instalación ( Solo linux )
 	
 1. Situate en la carpeta raiz del proyecto.
-2. Desde la raiz del proyecto ejecuta con permisos de administrador:
+2. Desde la raiz del proyecto ejecuta los siguientes scripts con permisos de administrador:
 		
 		$ sudo ./bin/desplegar.sh
+
+		$ sudo ./bin/rearme_BD.sh
 
 Una vez que se haya ejecutado el script correctamente tendremos 
 que esperar hasta que se apliquen todas las configuraciones.
