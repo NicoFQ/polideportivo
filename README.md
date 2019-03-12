@@ -1,12 +1,12 @@
-# polideportivo
+# Polideportivo DWES 
 Aplicacion completa para la gestion de un polideportivo.
 
 # Instalación ( Solo linux )
 	
 1. Situate en la carpeta raiz del proyecto.
-2. Desde la raiz del proyecto ejecuta con permisos de administrador 'desplegar.sh':
+2. Desde la raiz del proyecto ejecuta con permisos de administrador:
 		
-		# ./bin/desplegar.sh
+		$ sudo ./bin/desplegar.sh
 
 Una vez que se haya ejecutado el script correctamente tendremos 
 que esperar hasta que se apliquen todas las configuraciones.
@@ -15,6 +15,7 @@ que esperar hasta que se apliquen todas las configuraciones.
 # Funcionalidad para ver:
 
 1. Login
+2. Registro
 
 ### Admin
 	1. Inicio
@@ -24,6 +25,7 @@ que esperar hasta que se apliquen todas las configuraciones.
 ### Usuario
 	1. Inicio
 	2. Noticias
+	3. Localizacion
 
 # Funcionalidad pendiente de implementación:
 
@@ -32,7 +34,6 @@ que esperar hasta que se apliquen todas las configuraciones.
 	2. Editar clases
 
 ### Usuario
-	1. Localizacion
 	2. Reservas
 	2. Configuracion perfil
 

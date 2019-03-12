@@ -33,7 +33,7 @@ class ModelUsuario extends BaseModel
 		$usuario = ModelUsuario::existeUsuario($user);
 		if ($usuario) {
 			$auxPass = $usuario[0]['contrasena'];
-			if (password_verify($pass,$auxPass)) {
+			if (ModelUsuario::unHashPass($pass,$auxPass)) {
 				return $usuario[0];
 			}else{
 				return false;
@@ -75,20 +75,55 @@ class ModelUsuario extends BaseModel
 		return $clases;
 	}
 
-	static function getGustos($id){
+	static function getBasicPrefsJSON($id){
 		$db = App::getDB();
 		$SQL = "select * from gustos_usuario where id_usuario = ?;";
 		
 		$gustos = $db->ejecutar($SQL, $id);
-		
+		$prefs = [];
 		if (!empty($gustos)) {
-			return $gustos[0];
+			$prefs = $gustos[0];
 		}else{
-			return ["deportes_favoritos" => "Aun no has definido tus deportes favoritos.",
+			$prefs = ["deportes_favoritos" => "Aun no has definido tus deportes favoritos.",
 					"comentarios" => "Aun no has hecho ningún comentario."];
 		}
-		
+		return json_encode($prefs);
 	}
+
+	
+	private static function compruebaContrasena($user, $datos){
+		$contrasenasCorrectas = false;
+		$pass = $datos['pass_actual'];
+		$pass_1 = $datos['pass_nueva_1'];
+		$pass_2 = $datos['pass_nueva_2'];
+		if (static::autentificar($user->nombre_usuario, $pass)) {
+			if (strcmp($pass_1, $pass_2) == 0) {
+				ModelUsuario::updateContrasena($user->id_usuario, $pass_1);
+				$contrasenasCorrectas = true;
+			}
+		}
+		return $contrasenasCorrectas;
+	}
+	private static function updateContrasena($id, $pass){
+		$db = App::getDB();
+		$hashPass = ModelUsuario::hashPass($pass);
+		$SQL = "update usuario set contrasena = ? where id_usuario = ?;";
+		$usuario = $db->ejecutar($SQL, $hashPass, $id);
+		return $usuario;
+	}
+
+
+
+
+	static function cambioContrasena($datos){
+		$contrasenaCambiada = false;
+		$userSession = json_decode(Session::getInstance()->get(Config::get('session.user')));
+		if ($userSession && count($datos)) {
+			$contrasenaCambiada = ModelUsuario::compruebaContrasena($userSession,$datos);
+		}
+		return $contrasenaCambiada;
+	}
+
 
 
 	public static function existeUsuario(string $user){
@@ -98,6 +133,30 @@ class ModelUsuario extends BaseModel
 		return $usuario;
 	}
 
+	public static function eliminarCuenta($datos){
+		$cuentaEliminada = false;
+		$userSession = json_decode(Session::getInstance()->get(Config::get('session.user')));
+		if ($userSession && count($datos)) {
+			$cuentaEliminada = ModelUsuario::dropUser($userSession,$datos);
+		} 
+		return $cuentaEliminada;
+	}
+
+	public static function dropUser($user, $datos){
+		$usuarioEliminado = false;
+		$auxUser = ModelUsuario::existeUsuario($user->nombre_usuario);
+		$pass = $datos['pass_actual'];
+		if ($auxUser) {
+			
+			if (ModelUsuario::unHashPass($pass, $auxUser[0]['contrasena'])) {
+				$db = App::getDB();
+				$SQL = "delete from usuario where id_usuario = ?;";
+				$usuario = $db->ejecutar($SQL, $user->id_usuario);
+				$usuarioEliminado = true;
+			}
+		}
+		return $usuarioEliminado;
+	}
 
 	public function getLocalizacion(){}
 
@@ -123,10 +182,21 @@ class ModelUsuario extends BaseModel
 	    return $anios->y;
 	}
 
-	public static function registrar()
+	private static function hashPass($pass){
+		return password_hash($pass, 2);
+	}
+
+	/**
+	* 
+	*/
+	private static function unHashPass($txt, $hash){
+		return password_verify($txt,$hash);
+	}
+
+	public static function registrar($datos)
 	{
 		$db = App::getDB();
-		$_POST["contrasena"] = password_hash($_POST["contrasena"],2);
+		$datos["contrasena"] = ModelUsuario::hashPass($datos["contrasena"]);
 		$campos_para_insert = implode(",",ModelRegistroForm::getListaDatos());
 	
 		$parametros_para_insert = implode(",",array_fill(0,(count(ModelRegistroForm::getListaDatos())), "?"));
@@ -134,7 +204,7 @@ class ModelUsuario extends BaseModel
 		$sql_insert = "INSERT INTO usuario ($campos_para_insert) VALUES ($parametros_para_insert);";
             
             // print_r(array_values(array_slice($this->data,1)));
-			$resultado = $db->ejecutar($sql_insert, ...array_values($_POST));
+			$resultado = $db->ejecutar($sql_insert, ...array_values($datos));
             if (is_array($resultado)) {
 				return true;
             }
