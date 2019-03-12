@@ -24,3 +24,19 @@ form input[type="submit"], form input[type="submit"] + a{
 form input[type="submit"]{
     margin-left: 120px;
 }
+
+
+
+/* boton Enviar */
+.button-submit{
+    width:250px !important;
+    position: absolute;
+    left: 45%;
+    bottom:-50px;
+}
+#cancelar{
+    width: 250px;
+    padding: 10px;
+    display: inline-block;
+    margin-left: 20%;
+}

@@ -4,7 +4,7 @@ class FieldPass extends BaseField
 {
     public function validar():bool {
         if(strlen($this->dato)==0){
-            $this->error = "Debe tener información";
+            $this->error = "<span class='text-danger'>Debe tener información</span>";
             return false;
         } else {
             return true;
@@ -14,7 +14,7 @@ class FieldPass extends BaseField
     public function pintar() {
         echo "<div>";
         echo "<label for='$this->nombre'>$this->label :</label>";
-        echo "<input type='password' name='$this->nombre' value='$this->dato' />";
+        echo "<input type='password' name='$this->nombre' value='$this->dato' class='form-control'/>";
         if($this->error){
             echo "$this->error";
         }

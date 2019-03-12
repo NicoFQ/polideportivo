@@ -151,7 +151,7 @@ class BaseForm
         }
         
             echo "<span>".static::$mensaje_error['ERROR_AUTH']."</span>";
-        echo "<form action='#' method='post'>";
+        echo "<form action='#' method='post' class='col-md-8 col-md-offset-2'>";
         foreach ($this->campos as $campo) {
             $campo->pintar();
             echo "<br>";
