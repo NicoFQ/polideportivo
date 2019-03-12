@@ -103,7 +103,7 @@ CREATE TABLE reserva
  fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
 PRIMARY KEY (id_reserva, id_usuario, fecha, hora_inicio, hora_fin, id_pista),
 KEY fkIdx_277 (id_usuario),
-CONSTRAINT FK_277 FOREIGN KEY fkIdx_277 (id_usuario) REFERENCES usuario (id_usuario),
+CONSTRAINT FK_277 FOREIGN KEY fkIdx_277 (id_usuario) REFERENCES usuario (id_usuario) ON DELETE CASCADE,
 KEY fkIdx_330 (hora_inicio, hora_fin, id_pista, fecha),
 CONSTRAINT FK_330 FOREIGN KEY fkIdx_330 (hora_inicio, hora_fin, id_pista, fecha) REFERENCES horario (hora_inicio, hora_fin, id_pista, fecha) ON DELETE CASCADE
 ) ENGINE=INNODB;
