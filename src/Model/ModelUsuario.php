@@ -190,16 +190,21 @@ class ModelUsuario extends BaseModel
 		return password_verify($txt,$hash);
 	}
 
-	public static function registrar($datos)
+	public static function registrar($datos, $ad = false)
 	{
 		$db = App::getDB();
 		$datos["contrasena"] = ModelUsuario::hashPass($datos["contrasena"]);
+		
 		$campos_para_insert = implode(",",ModelRegistroForm::getListaDatos());
 	
 		$parametros_para_insert = implode(",",array_fill(0,(count(ModelRegistroForm::getListaDatos())), "?"));
-		
-		$sql_insert = "INSERT INTO usuario ($campos_para_insert) VALUES ($parametros_para_insert);";
-            
+		$sql_insert = "";
+		if ($ad) {
+			$sql_insert = "INSERT INTO usuario ($campos_para_insert, id_tipo_usuario) VALUES ($parametros_para_insert,?);";
+			array_push($datos, 'AD');
+		}else{
+			$sql_insert = "INSERT INTO usuario ($campos_para_insert) VALUES ($parametros_para_insert);";
+		}
             // print_r(array_values(array_slice($this->data,1)));
 			$resultado = $db->ejecutar($sql_insert, ...array_values($datos));
             if (is_array($resultado)) {

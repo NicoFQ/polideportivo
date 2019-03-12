@@ -28,5 +28,22 @@
         "contrasena" => "1234",
         "fecha_nacimiento" => "1996-03-30",
                         ];
+    	$admin = [	
+        "dni" =>"12345678X", 
+        "nombre"=> "Luis",
+        "apellido_1" => "Lopez",
+
+        "apellido_2" => "Olmos", 
+        "direccion" => "Calle de los mil titulos",		
+        "sexo" => "0",
+
+		"administrador@hotmail.es",
+        "nacionalidad" => "Española",        
+        "nombre_usuario" => "Admin", 
+
+        "contrasena" => "1234",
+        "fecha_nacimiento" => "1996-03-30",
+                        ];
 	ModelUsuario::registrar($user);
+	ModelUsuario::registrar($admin, true);
  ?>
