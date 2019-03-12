@@ -7,8 +7,22 @@ class ControllerUsuario extends BaseController
 		$this->data['user'] = json_decode(Session::getInstance()->get(Config::get('session.user')));
 		$this->data['user_prefs'] = json_decode(Session::getInstance()->get(Config::get('session.pref')));
 		$this->data['clases'] = Session::getInstance()->get(Config::get('session.clas'));
+		$this->data['img_perfil'] = $this->compruebaImagenPerfil($this->data['user']->imagen_perfil);
 		$this->data["nav_cliente"] = true;
 	}
+
+	private function compruebaImagenPerfil($img){
+		$auxImg = $img;
+		if ($auxImg == null) {
+			if ($this->data['user']->sexo) {
+				$auxImg = 'default_female2.png';
+			}else{
+				$auxImg = 'default_male2.png';
+			}
+		}
+		return $auxImg;
+	}
+
 	public function noticias(){
 		$this->data['noticias'] = ModelNoticia::getAll();
 		$this->data["nav_cliente"] = true;
@@ -21,11 +35,13 @@ class ControllerUsuario extends BaseController
 		$this->data['user'] = json_decode(Session::getInstance()->get(Config::get('session.user')));
 		$this->data['user_prefs'] = json_decode(Session::getInstance()->get(Config::get('session.pref')));
 		$this->data['clases'] = Session::getInstance()->get(Config::get('session.clas'));
+		$this->data['img_perfil'] = $this->compruebaImagenPerfil($this->data['user']->imagen_perfil);
 		$this->data["nav_cliente"] = true;
 	}
 
 	public function configuracion_cuenta(){
 		$this->data['user'] = json_decode(Session::getInstance()->get(Config::get('session.user')));
+		$this->data['img_perfil'] = $this->compruebaImagenPerfil($this->data['user']->imagen_perfil);
 		if (isset($_GET['error'])) {
 			$this->data["error"] = $_GET['error'];		
 		}
@@ -40,6 +56,7 @@ class ControllerUsuario extends BaseController
 
 	public function eliminar_cuenta(){
 		$this->data['user'] = json_decode(Session::getInstance()->get(Config::get('session.user')));
+		$this->data['img_perfil'] = $this->compruebaImagenPerfil($this->data['user']->imagen_perfil);
 		if (isset($_GET['error'])) {
 			$this->data["error"] = $_GET['error'];		
 		}
@@ -111,22 +128,15 @@ class ControllerUsuario extends BaseController
                 $fecha = $_POST['fecha'];
                 $idDeporte = $_POST['idDeporte'];
                 $hora = $_POST['clases'];
-                
-                //VALORES DE SESION DE USUARIO EN JSON guardados en la sesion $_SESION[Config::get('session.user')]
-                /*
-
-                 * "id_usuario", 		"email", 		"dni",
-		"nombre", 			"apellido_1",	"apellido_2", 
-		"direccion",		"imagen_perfil","nombre_usuario", 
-		"fecha_nacimiento",	"sexo", 		"nacionalidad",
-		"id_tipo_usuario", 	"fecha_alta",
-                 * 
-                 * 
-                 *                  */
-                
-                //guardar en $this->data para pasarselo a la vista confirmar para que lo pinte
-                           
             }
+        }
+
+        public function salir(){
+	        Session::getInstance()->set(Config::get('session.user'));
+			Session::getInstance()->set(Config::get('session.pref'));
+			Session::getInstance()->set(Config::get('session.clas'));
+			unset($_SESSION);
+	        App::getRouter()->redirect(Config::get('ruta.defecto'));
         }
 }//ControllerUsuario
 ?>

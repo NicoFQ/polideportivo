@@ -1,6 +1,7 @@
 <?php $user = $data['user']; ?>
 <?php $clases = $data['clases'] ?>
 <?php $prefs = $data['user_prefs'] ?>
+<?php $img = $data['img_perfil'] ?>
 <div class="container">
             <!--
             <div class="contenedor-imagen" id="imgGallary">
@@ -12,19 +13,19 @@
             -->
             <div class="row jumbotron">
               
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <figcaption class="text-center">
-                                <figure>
-                                    <img src="/img/users/<?=$user->imagen_perfil?>" alt="imagen_perfil">
-                                </figure>
-                            </figcaption>
+                        <figure>
+                            <img src="/img/users/<?=$img?>" alt="imagen_perfil">
+                        </figure>
+                    </figcaption>
                 </div>
-                <div class="col-md-9">
+                <div class="col-md-8">
                     <h3><?=$user->nombre?> <?=$user->apellido_1?> <?=$user->apellido_2?> (<?=$user->nombre_usuario?>)</h3>
                     <!--<h3>Andres Lopez Guzman (Andrew007)</h3>-->
                     <span><?=ModelUsuario::calcularEdad($user->fecha_nacimiento)?> años</span>
                     <h4>Clases en las que estoy </h4>
-                    <p> <?=$clases ?> </p>
+                    <?=$clases ?> 
                     <h4> Mis deportes favoritos</h4>
                     <?=$prefs->deportes_favoritos ?>
                     <h4> Sobre mi</h4>

@@ -93,6 +93,7 @@ class BaseForm
                                   //[titulo]      FieldTitulo Object
                                   //[contenido]   FieldContenido Object,
                                   //[etiquetas]   FieldEtiquetas Object
+
             foreach ($this->campos as $nombre => &$campo) { 
                 $campo->estableceInfo($data_row[$nombre]); 
                 // Si la validacion de algun campo no es correcta errores pasa a true;

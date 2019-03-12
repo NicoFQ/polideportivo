@@ -17,8 +17,7 @@ class FieldTextLogin extends BaseField
 
     public function pintar() { ?>
        <div class="form-group">
-        <label for="pass" class="sr-only">Password</label>
-        <input type='text' name='$this->nombre' value='<?=$this->dato ?>' class='form-control' placeholder='Email o nombre de usuario'/>
+        <input type='text' name='<?=$this->nombre ?>' value='<?=$this->dato ?>' class='form-control' placeholder='Email o nombre de usuario'/>
       </div>
     <?php }
 }

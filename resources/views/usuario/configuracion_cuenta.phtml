@@ -1,4 +1,5 @@
 <?php $user = $data['user']; ?>
+<?php $img = $data['img_perfil'] ?>
 <div class="container">
 		<main>
  		<h3>
@@ -13,7 +14,7 @@
 								<a href="">Cambiar foto</a>
 							</caption>
 							<figure>
-								<img src="/img/users/<?=$user->imagen_perfil?>" alt="imagen_perfil">
+								<img src="/img/users/<?=$img?>" alt="imagen_perfil" style="width: 80%">
 							</figure>
 							<caption>
 								<h4><?=$user->nombre_usuario?></h4>
