@@ -45,7 +45,8 @@ paypal.Button.render({
   onAuthorize: function (data, actions) {
     return actions.payment.execute()
       .then(function () {
-        window.location = "<?php echo PayPalBaseUrl ?>orderDetails.php?p0aymentID="+data.paymentID+"&payerID="+data.payerID+"&token="+data.paymentToken+"&pid=<?php echo $id_producto; ?>";
+        window.location = "/usuario/inicio/";
+        // window.location = "<?php echo PayPalBaseUrl ?>orderDetails.php?p0aymentID="+data.paymentID+"&payerID="+data.payerID+"&token="+data.paymentToken+"&pid=";
       });
   }
 }, '#paypal-button');

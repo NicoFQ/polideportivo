@@ -163,12 +163,9 @@ class ModelUsuario extends BaseModel
 	public static function getDatosClases()
 	{
 		$db = App::getDB();
-		$query = "SELECT nombre_clase,
-						 fecha,
-        				 hora_inicio,
-        				 hora_fin,
-        				 precio_clase
-        				 FROM clase;";
+		$query = "select c.id_clase, c.nombre_clase, id_instalacion, c.fecha, c.hora_inicio, c.hora_fin, c.precio_clase 
+		from clase c, pista p 
+		where p.id_pista = c.id_pista;";
 		
 		$resultado = $db->ejecutar($query);
 		return $resultado;
@@ -214,11 +211,21 @@ class ModelUsuario extends BaseModel
         public static function todosDeporte(){
             
             $db = App::getDB();
-		$query = "SELECT * FROM deporte;";
+		$query = "select p.id_instalacion,p.id_deporte, d.nombre_deporte from deporte d, pista p
+		where p.id_deporte = d.id_deporte;";
 		
 		$resultado = $db->ejecutar($query);
 		return $resultado;
-        }
+		}
+		public static function getInstalacion($id)
+		{
+			$db = App::getDB();
+			$query = "select distinct p.id_pista,p.id_instalacion,p.id_deporte, p.precio_hora,d.nombre_deporte from deporte d, pista p
+			where p.id_deporte = d.id_deporte and p.id_deporte= ?;";
+			
+			$resultado = $db->ejecutar($query,$id);
+			return $resultado;
+		}
 
 }
 ?>

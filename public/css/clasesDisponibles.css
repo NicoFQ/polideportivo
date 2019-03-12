@@ -1,0 +1,33 @@
+#disponibles{
+    display: flex;
+
+}
+#disponibles article{
+    width: 450px;
+    padding: 1em;
+    margin:10px;
+    border-radius: 5px;
+    color:white;
+    background-image: linear-gradient(to right,#005542,#0b8457);
+    font-size: 18px;
+}
+#disponibles a{
+    color:white;
+}
+#disponibles a:hover{
+    text-decoration: none;
+}
+#disponibles article h2{
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+#disponibles article img{
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    border:solid 1px white;
+}
+#disponibles article p{
+    padding:0 .8em ;
+}

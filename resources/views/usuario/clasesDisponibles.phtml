@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/css/clasesDisponibles.css">
+<div id="disponibles">
 <?php 
 $img = ["https://images.pexels.com/photos/1667583/pexels-photo-1667583.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
         "https://images.pexels.com/photos/73760/swimming-swimmer-female-race-73760.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
@@ -8,7 +10,7 @@ $i = 0;
             <article>
                 <h2><?= $valor["nombre_clase"]?></h2>
                 <div>
-                    <a href="#">
+                    <a href="/usuario/confirmarClases/?id_instalacion=<?=$valor['id_instalacion']?>&precio=<?=$valor["precio_clase"]?>&nombre_clase=<?=$valor['nombre_clase']?>">
                     <img src="<?= $img[$i]?>" alt="<?= $valor["nombre_clase"]?>">
                         <p>Hora Inicio: <?= $valor["hora_inicio"]?></p>
                         <p>Hora Fin: <?= $valor["hora_fin"]?></p>
@@ -18,3 +20,6 @@ $i = 0;
             </article>
         <?php 
         $i++; }//forE ?>
+
+
+</div>

@@ -40,12 +40,21 @@ form input[type=submit]{
 
 /* IMPORTE TOTAL */
 .caja-precio{
-  border:solid 2px black;
+  border:2px solid black;
+  position: absolute;
+  top:-200px;
+  right: -550px;
+  padding: 2em;
 }
-.caja-precio h3{
-  border-bottom:solid 2px black;
-  padding-bottom: .5em;
+
+/* boton paypal */
+#paypal-button-container{
+
 }
-.caja-precio >h3 + p {
-  font-size: 10em;
+#paypal-button{
+  position: relative;
+  text-align: center;
+  margin:0 auto;
+  left: 50%;  
+  transform: scale(2);
 }
