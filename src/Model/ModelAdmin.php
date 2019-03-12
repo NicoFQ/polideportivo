@@ -129,7 +129,13 @@ class ModelAdmin extends BaseModel
         public static function getPistas()
         {
             $db = App::getDB();
-            $query = "SELECT DISTINCT n_pista, id_pista FROM pista";
+            $query = "SELECT id_pista,
+                             n_pista,
+                             precio_hora,
+                             id_deporte,
+                             id_instalacion,
+                             estado 
+                       FROM pista";
             $resultado = $db->ejecutar($query);
             return $resultado;
         }//getPistas
@@ -173,8 +179,33 @@ class ModelAdmin extends BaseModel
             return $resultado;
         }//agregarClase
 
+        public function editarPista($id,$values)
+        {
+            $db = App::getDB();
+            $query = "UPDATE pista
+                      SET n_pista = ?,
+                      precio_hora = ?,
+                      estado = ?
+                      WHERE id_pista = '$id'";
+            $resultado = $db->ejecutar($query, ...array_values($values));
+            return $resultado;          
+        }
 
-    
+        public function getPistaById($id)
+        {
+            $db = App::getDB();
+            $query = "SELECT id_pista,
+                             n_pista,
+                             precio_hora,
+                             id_deporte,
+                             id_instalacion,
+                             estado 
+                       FROM pista
+                       WHERE id_pista = ?";
+            $resultado = $db->ejecutar($query,$id);
+            return $resultado;          
+        }
+
 }//ModelNoticia
 
 ?>

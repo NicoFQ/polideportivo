@@ -2,10 +2,13 @@
 .main-admin a {
     text-decoration: none;
     color:#f5f6fa;
+    -webkit-filter:blur(4px);
     filter: blur(4px);
     transition: .4s;
 }
-.main-admin a:hover { filter:blur(0px); 
+.main-admin a:hover { 
+    -webkit-filter:blur(0px);
+    filter:blur(0px); 
     color:#f5f6fa;
     text-decoration: none;
 }
