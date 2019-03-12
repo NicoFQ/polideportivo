@@ -52,6 +52,7 @@ class ModelRegistroForm extends BaseForm
         'FieldPass',
         'FieldDate',
     ];
+    protected static $submit = "Registrar";
     public static function getListaDatos()
     {
         return static::$lista_info;

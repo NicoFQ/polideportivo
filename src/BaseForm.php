@@ -157,7 +157,7 @@ class BaseForm
             echo "<br>";
         }
         $submit = static::$submit;
-        echo "<input type='submit' value='$submit' id='btn-login' class='btn btn-custom btn-lg btn-block'/>";
+        echo "<input type='submit' value='$submit' id='btn-login' class='btn btn-custom btn-lg btn-block button-submit'/>";
         echo "</form>";
 
         return ob_get_clean();

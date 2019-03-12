@@ -148,7 +148,8 @@ class ControllerUsuario extends BaseController
 		public function confirmarClases()
 		{
 			$this->data['user'] = json_decode(Session::getInstance()->get(Config::get('session.user')));
-			
+			$this->data['deportes'] = ModelUsuario::todosDeporte();
+			$_SESSION['listaDeportes'] = $this->data['deportes']; // Guardo en sesion para cuando vaya a pintar en 'confirmar' saber cual es el id 
 			$this->data["nav_cliente"] = true;
 		}
 }//ControllerUsuario

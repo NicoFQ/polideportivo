@@ -14,7 +14,7 @@ class FieldText extends BaseField
     public function pintar() {
         echo "<div>";
         echo "<label for='$this->nombre'>$this->label :</label>";
-        echo "<input type='text' name='$this->nombre' value='$this->dato' />";
+        echo "<input type='text' name='$this->nombre' value='$this->dato' class='form-control'/>";
         if($this->error){
             echo "$this->error";
         }
