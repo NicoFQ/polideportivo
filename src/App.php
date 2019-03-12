@@ -42,7 +42,8 @@ class App
         if (method_exists($objeto_controlador, $accion)) {
             $salida = $objeto_controlador->procesaAccion($accion, $params);
         }else{
-            throw new Exception("El metodo $accion no existe");
+            // throw new Exception("El metodo $accion no existe");
+            Router::redirect(Config::get('ruta.defecto'));
         }
         echo $salida;
     }

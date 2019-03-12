@@ -113,43 +113,33 @@ class ControllerUsuario extends BaseController
 	}
 
         
-        public function reservarPista(){
+		public function reservarPista()
+		{
           //  $view = new View();
 			$this->data['deportes'] = ModelUsuario::todosDeporte();
 						
-            $_SESSION['listaDeportes'] = $this->data['deportes']; // Guardo en sesion para cuando vaya a pintar en 'confirmar' saber cual es el id asociado al deporte y no volver a buscar en BBDD
-           // $salida = $view->render($this->data);
-					 // echo $salida;
-					 $this->data["nav_cliente"] = true;
+            $_SESSION['listaDeportes'] = $this->data['deportes']; // Guardo en sesion para cuando vaya a pintar en 'confirmar' saber cual es el id 
+			$this->data["nav_cliente"] = true;
         }
         
-        
-        public function confirmar(){
-<<<<<<< HEAD
-            if ( isset($_POST)) {
-               // DATOS DEL FORMULARIO DE RESERVA
-                $fecha = $_POST['fecha'];
-                $idDeporte = $_POST['idDeporte'];
-                $hora = $_POST['clases'];
-            }
-        }
-
-        public function salir(){
-	        Session::getInstance()->set(Config::get('session.user'));
-			Session::getInstance()->set(Config::get('session.pref'));
-			Session::getInstance()->set(Config::get('session.clas'));
+		public function salir()
+		{
+	        Session::getInstance()->set(Config::get('session.user'), false);
+			Session::getInstance()->set(Config::get('session.pref'), false);
+			Session::getInstance()->set(Config::get('session.clas'), false);
 			unset($_SESSION);
 	        App::getRouter()->redirect(Config::get('ruta.defecto'));
         }
-=======
-					$this->data['user'] = json_decode(Session::getInstance()->get(Config::get('session.user')));
-					if (count($_POST) > 0) {
-						// Router::redirect('/usuario/eliminar_cuenta?error=La contraseña actual no es correcta.');
-					}
-					$this->data["nav_cliente"] = true;
-            
-						
-				}
+		public function confirmar()
+		{
+			$this->data['user'] = json_decode(Session::getInstance()->get(Config::get('session.user')));
+			if (count($_POST) > 0) {
+				// Router::redirect('/usuario/eliminar_cuenta?error=La contraseña actual no es correcta.');
+			}
+			$this->data["nav_cliente"] = true;
+        }
+
+				
 		public function confirmarPago()
 		{	
 			$this->data["nav_cliente"] = true;
@@ -161,6 +151,5 @@ class ControllerUsuario extends BaseController
 			
 			$this->data["nav_cliente"] = true;
 		}
->>>>>>> 4f02d06ef0c2bc3e0a2f014cc16e49d433ee0970
 }//ControllerUsuario
 ?>
