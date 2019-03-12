@@ -43,7 +43,7 @@ class App
             $salida = $objeto_controlador->procesaAccion($accion, $params);
         }else{
             // throw new Exception("El metodo $accion no existe");
-            Router::redirect(Config::get('ruta.defecto'));
+            Router::redirect('/usuario/inicio');
         }
         echo $salida;
     }

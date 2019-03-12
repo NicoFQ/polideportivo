@@ -9,7 +9,7 @@ class View
         $this->template = VIEW_ROOT.$enrutador->getControlador().DS.$enrutador->getAccion().".phtml";
         if (!file_exists($this->template)) {
             // throw new Exception("Error template no encontrado: $this->template");
-            Router::redirect(Config::get('ruta.defecto'));
+            Router::redirect('/usuario/inicio');
         }//if
     }//contruct
     public function renderContenido($data = [])

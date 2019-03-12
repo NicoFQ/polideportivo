@@ -21,10 +21,9 @@ class ModelLoginForm extends BaseForm
                 Session::getInstance()->set(Config::get('session.clas'), $clasesUser);
                 switch ($usuario['id_tipo_usuario']) {
                     case 'AD':
-                        echo "ADMIN";
+                    Router::redirect('/admin/inicio');
                         break;
                     case 'CL':
-                        echo "CLIENTE";
                         Router::redirect('/usuario/inicio');
                         break;
                 }

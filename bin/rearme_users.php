@@ -28,6 +28,22 @@
         "contrasena" => "1234",
         "fecha_nacimiento" => "1996-03-30",
                         ];
+       	$userF = [	
+        "dni" =>"12345678X", 
+        "nombre"=> "Laura",
+        "apellido_1" => "Lopez",
+
+        "apellido_2" => "Santos", 
+        "direccion" => "Calle guzman",		
+        "sexo" => "0",
+
+        "email" => "laura@gmail.com",
+        "nacionalidad" => "Cubana",        
+        "nombre_usuario" => "laura", 
+
+        "contrasena" => "1234",
+        "fecha_nacimiento" => "1996-03-30",
+                        ];
     	$admin = [	
         "dni" =>"12345678X", 
         "nombre"=> "Luis",
@@ -46,4 +62,5 @@
                         ];
 	ModelUsuario::registrar($user);
 	ModelUsuario::registrar($admin, true);
+	ModelUsuario::registrar($userF);
  ?>
