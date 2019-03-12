@@ -1,1 +1,1 @@
-php -a -d auto_prepend_file=bin/mvc_shell.php
+php -a -d auto_prepend_file=bin/test_mvc_shell.php

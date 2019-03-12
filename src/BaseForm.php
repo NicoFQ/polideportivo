@@ -125,7 +125,7 @@ class BaseForm
                     ModelLoginForm::logInForm();
                     
                 }elseif (static::$clase_modelo_asociado == 'ModelUsuario') {
-                    ModelUsuario::registrar();
+                    ModelUsuario::registrar($_POST);
                 }
                 else{
                     $this->modelo = new static::$clase_modelo_asociado($datos);

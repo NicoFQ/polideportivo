@@ -3,7 +3,7 @@ class ModelLoginForm extends BaseForm
 {
 	protected static $clase_modelo_asociado = 'ModelLogin';
     protected static $lista_info = ['user',	'pass'];
-    protected static $lista_tipo = ['FieldTextLogin','FieldTextLogin'];
+    protected static $lista_tipo = ['FieldTextLogin','FieldPassLogin'];
     protected static $mensaje_error = ["ERROR_AUTH"	=>"",
 									   "ERROR_FIELD"=>"Ninguno de los campos puede estar vacio.",
 									  ];
@@ -14,7 +14,11 @@ class ModelLoginForm extends BaseForm
             $usuario = ModelUsuario::logIn($_POST['user'],$_POST['pass']);
             if ($usuario) {
                 $basicDataUser = ModelUsuario::getBasicDataJSON($usuario['id_usuario']);
+                $basicPrefUser = ModelUsuario::getBasicPrefsJSON($usuario['id_usuario']);
+                $clasesUser = ModelUsuario::clasesDeUsuario($usuario['id_usuario']);
                 Session::getInstance()->set(Config::get('session.user'), $basicDataUser);
+                Session::getInstance()->set(Config::get('session.pref'), $basicPrefUser);
+                Session::getInstance()->set(Config::get('session.clas'), $clasesUser);
                 switch ($usuario['id_tipo_usuario']) {
                     case 'AD':
                         echo "ADMIN";

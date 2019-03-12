@@ -1,5 +1,5 @@
 <?php $user = $data['user']; ?>
-<?php $clases = ModelUsuario::clasesDeUsuario($user->id_usuario) ?>
+<?php $clases = $data['clases'] ?>
 <?php $prefs = $data['user_prefs'] ?>
 <div class="container">
             <!--
@@ -15,11 +15,10 @@
                 <div class="col-md-3">
                     <figcaption class="text-center">
                                 <figure>
-                                    <img src="./../../public/img/users/<?=$user->imagen_perfil?>" alt="imagen_perfil">
+                                    <img src="/img/users/<?=$user->imagen_perfil?>" alt="imagen_perfil">
                                 </figure>
                             </figcaption>
                 </div>
-
                 <div class="col-md-9">
                     <h3><?=$user->nombre?> <?=$user->apellido_1?> <?=$user->apellido_2?> (<?=$user->nombre_usuario?>)</h3>
                     <!--<h3>Andres Lopez Guzman (Andrew007)</h3>-->
@@ -27,9 +26,9 @@
                     <h4>Clases en las que estoy </h4>
                     <p> <?=$clases ?> </p>
                     <h4> Mis deportes favoritos</h4>
-                    <?=$prefs['deportes_favoritos'] ?>
+                    <?=$prefs->deportes_favoritos ?>
                     <h4> Sobre mi</h4>
-                    <?=$prefs['comentarios'] ?>
+                    <?=$prefs->comentarios ?>
                 </div>
             </div>
             <div class="row">

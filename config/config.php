@@ -9,4 +9,6 @@
 	Config::set('ruta.defecto','/index');
 	Config::set('controlador.defecto','main');
 	Config::set('session.user', 'BASIC_DATA'); // Guardar resto en localStorage
+	Config::set('session.pref', 'BASIC_PREF'); 
+	Config::set('session.clas', 'BASIC_CLAS'); 
 ?>

@@ -2,7 +2,7 @@
 
 class ControllerAdmin extends BaseController 
 {
-    // Aplicar el array de "requiere_autentificacion" para que estas paginas sean privadas
+    protected static $requiere_autentificacion = ['inicio','buscar','empleados','anadirClases','email'];
     public function inicio()
     {
         

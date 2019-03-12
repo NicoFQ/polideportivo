@@ -1,5 +1,6 @@
 drop table if exists gustos_usuario;
 drop table if exists asiste;
+drop table if exists compra;
 drop table if exists clase;
 drop table if exists reserva;
 drop table if exists usuario;
@@ -92,19 +93,21 @@ CONSTRAINT FK_384 FOREIGN KEY fkIdx_384 (id_tipo_usuario) REFERENCES tipo_usuari
 -- ************************************** reserva
 CREATE TABLE reserva
 (
- id_reserva     varchar(45) NOT NULL ,
+ id_reserva     INT AUTO_INCREMENT NOT NULL ,
  id_usuario     INT NOT NULL ,
  fecha          date NOT NULL ,
  hora_inicio    time NOT NULL ,
  hora_fin       time NOT NULL ,
  id_pista       varchar(20) NOT NULL ,
  precio_reserva double ,
+ fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
 PRIMARY KEY (id_reserva, id_usuario, fecha, hora_inicio, hora_fin, id_pista),
 KEY fkIdx_277 (id_usuario),
 CONSTRAINT FK_277 FOREIGN KEY fkIdx_277 (id_usuario) REFERENCES usuario (id_usuario),
 KEY fkIdx_330 (hora_inicio, hora_fin, id_pista, fecha),
 CONSTRAINT FK_330 FOREIGN KEY fkIdx_330 (hora_inicio, hora_fin, id_pista, fecha) REFERENCES horario (hora_inicio, hora_fin, id_pista, fecha) ON DELETE CASCADE
 ) ENGINE=INNODB;
+
 
 -- ************************************** clase
 CREATE TABLE clase
@@ -122,6 +125,20 @@ KEY fkIdx_349 (hora_inicio, hora_fin, id_pista, fecha),
 CONSTRAINT FK_349 FOREIGN KEY fkIdx_349 (hora_inicio, hora_fin, id_pista, fecha) REFERENCES horario (hora_inicio, hora_fin, id_pista, fecha) ON DELETE CASCADE,
 KEY fkIdx_380 (id_usuario),
 CONSTRAINT FK_380 FOREIGN KEY fkIdx_380 (id_usuario) REFERENCES usuario (id_usuario) ON DELETE CASCADE
+) ENGINE=INNODB;
+
+-- ************************************** compra
+CREATE TABLE compra
+(
+ id_compra     	INT AUTO_INCREMENT NOT NULL ,
+ id_usuario     INT NOT NULL ,
+ id_clase		varchar(20) NOT NULL,
+ precio_reserva double,
+ fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+PRIMARY KEY (id_compra, id_usuario, id_clase),
+KEY fkIdx_CLASE_277 (id_usuario),
+CONSTRAINT FK_CLASE_277 FOREIGN KEY fkIdx_CLASE_277 (id_usuario) REFERENCES usuario (id_usuario),
+CONSTRAINT FK_CLASE FOREIGN KEY (id_clase) REFERENCES clase(id_clase)
 ) ENGINE=INNODB;
 
 -- ************************************** asiste

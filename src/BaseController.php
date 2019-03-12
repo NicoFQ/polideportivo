@@ -16,7 +16,7 @@ class BaseController
     public function procesaAccion($metodo, $parametros)
     {
         $noAutorizado = in_array($metodo, static::$requiere_autentificacion);
-        $haySesion = Session::getInstance()->get('AUTH');
+        $haySesion = Session::getInstance()->get(Config::get('session.user'));
         if($noAutorizado && !$haySesion){
             App::getRouter()::redirect(Config::get('ruta.defecto'));
         }
