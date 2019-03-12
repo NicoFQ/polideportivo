@@ -122,6 +122,7 @@ class ControllerUsuario extends BaseController
 			$this->data["nav_cliente"] = true;
         }
         
+
 		public function salir()
 		{
 	        Session::getInstance()->set(Config::get('session.user'), false);
@@ -139,11 +140,12 @@ class ControllerUsuario extends BaseController
 			$this->data["nav_cliente"] = true;
         }
 
-				
 		public function confirmarPago()
 		{	
 			$this->data["nav_cliente"] = true;
 		}
+
+
 
 		public function confirmarClases()
 		{
