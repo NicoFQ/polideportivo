@@ -98,35 +98,34 @@ class ControllerUsuario extends BaseController
         
         public function reservarPista(){
           //  $view = new View();
-            $this->data['deportes'] = ModelUsuario::todosDeporte();
+			$this->data['deportes'] = ModelUsuario::todosDeporte();
+						
             $_SESSION['listaDeportes'] = $this->data['deportes']; // Guardo en sesion para cuando vaya a pintar en 'confirmar' saber cual es el id asociado al deporte y no volver a buscar en BBDD
            // $salida = $view->render($this->data);
-           // echo $salida;
+					 // echo $salida;
+					 $this->data["nav_cliente"] = true;
         }
         
         
         public function confirmar(){
-            if ( isset($_POST)) {
-               // DATOS DEL FORMULARIO DE RESERVA
-                $fecha = $_POST['fecha'];
-                $idDeporte = $_POST['idDeporte'];
-                $hora = $_POST['clases'];
-                
-                //VALORES DE SESION DE USUARIO EN JSON guardados en la sesion $_SESION[Config::get('session.user')]
-                /*
+					$this->data['user'] = json_decode(Session::getInstance()->get(Config::get('session.user')));
+					if (count($_POST) > 0) {
+						// Router::redirect('/usuario/eliminar_cuenta?error=La contraseña actual no es correcta.');
+					}
+					$this->data["nav_cliente"] = true;
+            
+						
+				}
+		public function confirmarPago()
+		{	
+			$this->data["nav_cliente"] = true;
+		}
 
-                 * "id_usuario", 		"email", 		"dni",
-		"nombre", 			"apellido_1",	"apellido_2", 
-		"direccion",		"imagen_perfil","nombre_usuario", 
-		"fecha_nacimiento",	"sexo", 		"nacionalidad",
-		"id_tipo_usuario", 	"fecha_alta",
-                 * 
-                 * 
-                 *                  */
-                
-                //guardar en $this->data para pasarselo a la vista confirmar para que lo pinte
-                           
-            }
-        }
+		public function confirmarClases()
+		{
+			$this->data['user'] = json_decode(Session::getInstance()->get(Config::get('session.user')));
+			
+			$this->data["nav_cliente"] = true;
+		}
 }//ControllerUsuario
 ?>

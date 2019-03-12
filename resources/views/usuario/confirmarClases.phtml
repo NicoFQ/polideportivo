@@ -1,24 +1,21 @@
 <link rel="stylesheet" href="/css/reserva_pista.css">
 <link rel="stylesheet" href="/css/reserva_clase.css">
 <?php 
-
 $deporte = array_values($_SESSION["listaDeportes"]);
-$dep ="";
+
 foreach ($deporte as $value ) {
-    if ($value["id_deporte"] == $_POST["id_deporte"]) {
-      $dep = $value["nombre_deporte"];
+    if ($value["id_instalacion"] == $_GET["id_instalacion"]) {
+      $id_instalacion = $value["id_instalacion"];
     }
 }
 
-$res = ModelUsuario::getInstalacion($_POST["id_deporte"]);
-$id_instalacion = $res[0]["id_instalacion"];
-$precio = $res[0]["precio_hora"];
 $nombreCompleto = $data['user']->nombre." ".$data['user']->apellido_1." ".$data['user']->apellido_2;
 $email = $data['user']->email;
-$id_pista = $res[0]["id_pista"];
-
+$dep = $_GET["nombre_clase"];
+$precio = $_GET["precio"];
 ?>
-    <div class="container">
+
+<div class="container">
       <main class="jumbotron">
       <form action="/usuario/confirmarPago/" method="post">
         <div class="row">
@@ -68,20 +65,7 @@ $id_pista = $res[0]["id_pista"];
               </p>
             </div>
             <div class="col-md-9 col-md-offset-1">
-              <p><?= $_POST["fecha"]?></p>
-              <input type="hidden" name="fecha" value="<?= $_POST["fecha"]?>">
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-1 col-md-offset-1">
-              <p>
-                <span>Hora:</span>
-              </p>
-            </div>
-            <div class="col-md-9 col-md-offset-1">
-              <p>16:00 a 16:59</p>
-              <input type="hidden" name="hora" value="16:00 16:59">
+              <p>Marzo - Abril</p>
             </div>
           </div>
 
@@ -108,10 +92,10 @@ $id_pista = $res[0]["id_pista"];
               <input type="hidden" name="precio" value="<?= $precio?>">
             </div>
           </div>
-          <input type="hidden" name="id_pista" value="<?= $id_pista?>">          
+          <!-- <input type="hidden" name="id_pista" value="<?= $id_pista?>">           -->
         </div>
         </div>
-        <input type="submit" value="Continuar" class="btn btn-primary btn-block">
+        <input type="submit" value="Continuar" class="btn btn-primary btn-block" style="width:250px; margin:10px auto; padding:10px;">
           <!-- Pasos de reserva / footer -->
           <div class="pasos-reserva">
             <div class="row">

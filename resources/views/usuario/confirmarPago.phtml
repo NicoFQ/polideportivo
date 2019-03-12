@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="/css/reserva_pista.css">
+<link rel="stylesheet" href="/css/reserva_clase.css">
+<?php 
+
+$precio = $_POST["precio"];
+
+?>
+
+<main class="jumbotron">
+            <div class="row">
+            <h2 class="text-center text-uppercase">Confirmación de método de pago.</h2>
+                <form action="/paypal/paypal/" method="GET" class="col-md-6">
+                    <div class="row metodo-pago">
+                        <div class="col-md-2 col-md-offset-4">
+                            <i class="fab fa-cc-paypal"></i>
+                        </div>
+                        <div class="col-md-6"">
+                            <input type="radio" name="metodo_pago" >
+                            Paypal.
+                        </div>
+                    </div>
+                    
+                    <div class="row metodo-pago">
+                        <div class="col-md-2 col-md-offset-4">
+                        <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="radio" name="metodo_pago" >
+                            Pago en recepción.
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-center">
+                    <div class="caja-precio">
+                        <h3 class="text-uppercase">Importe Total.</h3>
+                        <p><?= $_POST["precio"]?> € </p>
+                    </div>
+                </div>
+                    <?php if ($precio) {
+                        ModelPaypal::hacerPago($precio);
+                    }else{ ?>
+                        <input type="submit" value="Confirmar pago." class="btn btn-primary btn-block" style="width:250px; margin:10px auto;">
+                    <?php } ?>
+                    
+                </form>            
+                
+                
+            </div>
+                
+            <!-- Pasos de reserva / footer -->
+            <div class="pasos-reserva">
+                <div class="row">
+                <div class="col-md-7 col-md-offset-3">
+                    <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-4"><span class="circulo ">1</span></div>
+                        <div class="col-md-4"><span class="circulo ">2</span></div>
+                        <div class="col-md-4"><span class="circulo paso-actual">3</span></div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </main>
