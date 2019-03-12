@@ -35,7 +35,7 @@
 
         "apellido_2" => "Santos", 
         "direccion" => "Calle guzman",		
-        "sexo" => "0",
+        "sexo" => "1",
 
         "email" => "laura@gmail.com",
         "nacionalidad" => "Cubana",        
