@@ -125,14 +125,17 @@ class ControllerUsuario extends BaseController
         
         
         public function confirmar(){
-<<<<<<< HEAD
-            if ( isset($_POST)) {
-               // DATOS DEL FORMULARIO DE RESERVA
-                $fecha = $_POST['fecha'];
-                $idDeporte = $_POST['idDeporte'];
-                $hora = $_POST['clases'];
-            }
+			$this->data['user'] = json_decode(Session::getInstance()->get(Config::get('session.user')));
+			if (count($_POST) > 0) {
+				// Router::redirect('/usuario/eliminar_cuenta?error=La contraseña actual no es correcta.');
+			}
+			$this->data["nav_cliente"] = true;
+   
         }
+					
+            
+
+
 
         public function salir(){
 	        Session::getInstance()->set(Config::get('session.user'));
@@ -141,19 +144,14 @@ class ControllerUsuario extends BaseController
 			unset($_SESSION);
 	        App::getRouter()->redirect(Config::get('ruta.defecto'));
         }
-=======
-					$this->data['user'] = json_decode(Session::getInstance()->get(Config::get('session.user')));
-					if (count($_POST) > 0) {
-						// Router::redirect('/usuario/eliminar_cuenta?error=La contraseña actual no es correcta.');
-					}
-					$this->data["nav_cliente"] = true;
-            
-						
-				}
+
+
 		public function confirmarPago()
 		{	
 			$this->data["nav_cliente"] = true;
 		}
+
+
 
 		public function confirmarClases()
 		{
@@ -161,6 +159,6 @@ class ControllerUsuario extends BaseController
 			
 			$this->data["nav_cliente"] = true;
 		}
->>>>>>> 4f02d06ef0c2bc3e0a2f014cc16e49d433ee0970
+
 }//ControllerUsuario
 ?>
