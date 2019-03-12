@@ -1,7 +1,8 @@
 <?php 
 $img = ["https://images.pexels.com/photos/1667583/pexels-photo-1667583.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-        "https://images.pexels.com/photos/342361/pexels-photo-342361.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-        "https://images.pexels.com/photos/73760/swimming-swimmer-female-race-73760.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"];
+        "https://images.pexels.com/photos/73760/swimming-swimmer-female-race-73760.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+    "https://images.pexels.com/photos/342361/pexels-photo-342361.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+        ];
 $i = 0;
         foreach ($data["datos_clases"] as $valor) { ?>
             <article>
@@ -9,7 +10,6 @@ $i = 0;
                 <div>
                     <a href="#">
                     <img src="<?= $img[$i]?>" alt="<?= $valor["nombre_clase"]?>">
-                        <p>Fecha: <?= $valor["fecha"]?></p>
                         <p>Hora Inicio: <?= $valor["hora_inicio"]?></p>
                         <p>Hora Fin: <?= $valor["hora_fin"]?></p>
                         <p>Precio: <?= $valor["precio_clase"]?> €</p>

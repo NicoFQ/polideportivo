@@ -7,7 +7,7 @@ class ModelLoginForm extends BaseForm
     protected static $mensaje_error = ["ERROR_AUTH"	=>"",
 									   "ERROR_FIELD"=>"Ninguno de los campos puede estar vacio.",
 									  ];
-    protected static $ruta = '/usuario/login';
+    protected static $submit = 'Entrar';
    	static function logInForm(){
    	 	if (count($_POST) > 0) {
            	// Pendiente tratamiento de datos que vienten por post.

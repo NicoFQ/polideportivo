@@ -14,10 +14,13 @@ class FieldPassLogin extends BaseField
         }
     }
 
-    public function pintar() {
-        echo "<input type='password' name='$this->nombre' value='' />";
+    public function pintar() {?>
+<div class="form-group fluid">
+  <label for="user" class="sr-only">Email</label>
+        <input type='password' name='$this->nombre' value='' class='form-control' placeholder='Contraseña'/>
+</div>
 
-    }
+    <?php }
 
 }
 

@@ -24,7 +24,7 @@ class BaseForm
     protected static $lista_label;
     protected static $clase_modelo_asociado;
     protected static $mensaje_error;
-    protected static $ruta;
+    protected static $submit;
 
     private $campos;
     private $errores;
@@ -155,8 +155,8 @@ class BaseForm
             $campo->pintar();
             echo "<br>";
         }
-
-        echo "<input type='submit' />";
+        $submit = static::$submit;
+        echo "<input type='submit' value='$submit' id='btn-login' class='btn btn-custom btn-lg btn-block'/>";
         echo "</form>";
 
         return ob_get_clean();

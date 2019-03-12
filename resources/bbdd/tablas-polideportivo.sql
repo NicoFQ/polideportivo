@@ -133,7 +133,6 @@ CREATE TABLE compra
  id_compra     	INT AUTO_INCREMENT NOT NULL ,
  id_usuario     INT NOT NULL ,
  id_clase		varchar(20) NOT NULL,
- precio_reserva double,
  fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
 PRIMARY KEY (id_compra, id_usuario, id_clase),
 KEY fkIdx_CLASE_277 (id_usuario),
