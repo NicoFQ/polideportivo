@@ -4,22 +4,22 @@
 <!-- CDN EDITOR -->
 <script src="https://cdn.ckeditor.com/4.11.3/standard/ckeditor.js"></script>
 
-<form action="#" method="post">
+<form action="#" method="post" class="bg-info" style="padding:2em;">
 <input type="hidden" name="id">
     <div>
         <label for="titulo">Titulo</label>
-        <input type="text" name="titulo" id="titulo">
+        <input type="text" name="titulo" id="titulo" class="form-control" style="margin:10px 0px;">
     </div>
     <div>
         <textarea name="texto"></textarea>
     </div>
     <input type="hidden" name="fecha" value="<?= $hoy?>">
     <div>
-        <input type="submit" value="Agregar noticia">
+
+        <input type="submit" value="Agregar noticia" class="btn btn-primary btn-block" style="width:20em; margin:5px auto;">
+        <a href="/admin/inicio/" class="btn btn-success btn-block" style="width:20em; margin:5px auto;">Volver al principio</a>
     </div>
 </form>
 <script>
     CKEDITOR.replace( 'texto' );
 </script>
-
-<a href="/noticias/list/">Volver al principio</a>

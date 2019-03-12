@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class ControllerNoticias extends BaseController
 {
@@ -40,7 +40,7 @@ class ControllerNoticias extends BaseController
         //     "Noticia 2:<br> Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic eaque dolor vero perspiciatis, corrupti est officia beatae nisi? Voluptatibus nostrum commodi accusamus expedita iure quod non voluptates iste aliquam distinctio.",
         //     "Noticia 3:<br> Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic eaque dolor vero perspiciatis, corrupti est officia beatae nisi? Voluptatibus nostrum commodi accusamus expedita iure quod non voluptates iste aliquam distinctio.",
         // ];
-        
+
         // // Se vuelve a castear los $datos_modelo, ya que antes eran una cadena
 
         // // El id se le pasa como param dentro de noticias: http://mvc-todo.io/noticias/show/0
@@ -49,15 +49,16 @@ class ControllerNoticias extends BaseController
         // $this->data["id"] = $id;
         // $this->data["contenido"] = $datos_modelo[$id];
     }//show
-    
+
     public function add(){
         $form = new ModelNoticiaForm($_POST);
-        
+
         if(count($_POST)>0 && $form->datosValidos()) {
             $form->guardaInformacion();
             // App::getRouter()::redirect('/noticias/list/');
         }
         $this->data['form'] = $form->pintar();
+        $this->data["nav_admin"] = true;
     }//add
 
     public function edit($id) {
