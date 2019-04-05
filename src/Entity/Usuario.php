@@ -89,10 +89,16 @@ class Usuario
      */
     private $asistes;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Reserva", mappedBy="usuario", orphanRemoval=true)
+     */
+    private $reservas;
+
     public function __construct()
     {
         $this->gustosUsuarios = new ArrayCollection();
         $this->asistes = new ArrayCollection();
+        $this->reservas = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -300,6 +306,37 @@ class Usuario
             // set the owning side to null (unless already changed)
             if ($asiste->getUsuario() === $this) {
                 $asiste->setUsuario(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Reserva[]
+     */
+    public function getReservas(): Collection
+    {
+        return $this->reservas;
+    }
+
+    public function addReserva(Reserva $reserva): self
+    {
+        if (!$this->reservas->contains($reserva)) {
+            $this->reservas[] = $reserva;
+            $reserva->setUsuario($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReserva(Reserva $reserva): self
+    {
+        if ($this->reservas->contains($reserva)) {
+            $this->reservas->removeElement($reserva);
+            // set the owning side to null (unless already changed)
+            if ($reserva->getUsuario() === $this) {
+                $reserva->setUsuario(null);
             }
         }
 
