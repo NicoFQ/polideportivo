@@ -5,7 +5,7 @@
 /.env.*.local
 /public/bundles/
 /var/
-#/vendor/
+/vendor/
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
@@ -16,3 +16,7 @@
 ###> symfony/web-server-bundle ###
 /.web-server-pid
 ###< symfony/web-server-bundle ###
+
+###> phpstorm ###
+.idea/
+###< phpstorm ###
