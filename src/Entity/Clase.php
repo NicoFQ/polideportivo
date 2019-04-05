@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -56,6 +58,16 @@ class Clase
      * @ORM\JoinColumn(nullable=false)
      */
     private $id_deporte;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Asiste", mappedBy="clase", orphanRemoval=true)
+     */
+    private $asistes;
+
+    public function __construct()
+    {
+        $this->asistes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -154,6 +166,37 @@ class Clase
     public function setIdDeporte(?Deporte $id_deporte): self
     {
         $this->id_deporte = $id_deporte;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Asiste[]
+     */
+    public function getAsistes(): Collection
+    {
+        return $this->asistes;
+    }
+
+    public function addAsiste(Asiste $asiste): self
+    {
+        if (!$this->asistes->contains($asiste)) {
+            $this->asistes[] = $asiste;
+            $asiste->setClase($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAsiste(Asiste $asiste): self
+    {
+        if ($this->asistes->contains($asiste)) {
+            $this->asistes->removeElement($asiste);
+            // set the owning side to null (unless already changed)
+            if ($asiste->getClase() === $this) {
+                $asiste->setClase(null);
+            }
+        }
 
         return $this;
     }

@@ -84,9 +84,15 @@ class Usuario
      */
     private $gustosUsuarios;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Asiste", mappedBy="usuario", orphanRemoval=true)
+     */
+    private $asistes;
+
     public function __construct()
     {
         $this->gustosUsuarios = new ArrayCollection();
+        $this->asistes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -263,6 +269,37 @@ class Usuario
             // set the owning side to null (unless already changed)
             if ($gustosUsuario->getIdUsuario() === $this) {
                 $gustosUsuario->setIdUsuario(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Asiste[]
+     */
+    public function getAsistes(): Collection
+    {
+        return $this->asistes;
+    }
+
+    public function addAsiste(Asiste $asiste): self
+    {
+        if (!$this->asistes->contains($asiste)) {
+            $this->asistes[] = $asiste;
+            $asiste->setUsuario($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAsiste(Asiste $asiste): self
+    {
+        if ($this->asistes->contains($asiste)) {
+            $this->asistes->removeElement($asiste);
+            // set the owning side to null (unless already changed)
+            if ($asiste->getUsuario() === $this) {
+                $asiste->setUsuario(null);
             }
         }
 
