@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -76,6 +78,16 @@ class Usuario
      * @ORM\JoinColumn(nullable=false)
      */
     private $id_tipo_usuario;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\GustosUsuarios", mappedBy="id_usuario", orphanRemoval=true)
+     */
+    private $gustosUsuarios;
+
+    public function __construct()
+    {
+        $this->gustosUsuarios = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -222,6 +234,37 @@ class Usuario
     public function setIdTipoUsuario(?TipoUsuario $id_tipo_usuario): self
     {
         $this->id_tipo_usuario = $id_tipo_usuario;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|GustosUsuarios[]
+     */
+    public function getGustosUsuarios(): Collection
+    {
+        return $this->gustosUsuarios;
+    }
+
+    public function addGustosUsuario(GustosUsuarios $gustosUsuario): self
+    {
+        if (!$this->gustosUsuarios->contains($gustosUsuario)) {
+            $this->gustosUsuarios[] = $gustosUsuario;
+            $gustosUsuario->setIdUsuario($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGustosUsuario(GustosUsuarios $gustosUsuario): self
+    {
+        if ($this->gustosUsuarios->contains($gustosUsuario)) {
+            $this->gustosUsuarios->removeElement($gustosUsuario);
+            // set the owning side to null (unless already changed)
+            if ($gustosUsuario->getIdUsuario() === $this) {
+                $gustosUsuario->setIdUsuario(null);
+            }
+        }
 
         return $this;
     }
