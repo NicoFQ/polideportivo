@@ -28,9 +28,15 @@ class Deporte
      */
     private $pistas;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Clase", mappedBy="id_deporte", orphanRemoval=true)
+     */
+    private $clases;
+
     public function __construct()
     {
         $this->pistas = new ArrayCollection();
+        $this->clases = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -75,6 +81,37 @@ class Deporte
             // set the owning side to null (unless already changed)
             if ($pista->getIdDeporte() === $this) {
                 $pista->setIdDeporte(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Clase[]
+     */
+    public function getClases(): Collection
+    {
+        return $this->clases;
+    }
+
+    public function addClase(Clase $clase): self
+    {
+        if (!$this->clases->contains($clase)) {
+            $this->clases[] = $clase;
+            $clase->setIdDeporte($this);
+        }
+
+        return $this;
+    }
+
+    public function removeClase(Clase $clase): self
+    {
+        if ($this->clases->contains($clase)) {
+            $this->clases->removeElement($clase);
+            // set the owning side to null (unless already changed)
+            if ($clase->getIdDeporte() === $this) {
+                $clase->setIdDeporte(null);
             }
         }
 
