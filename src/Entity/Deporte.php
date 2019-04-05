@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,6 +23,16 @@ class Deporte
      */
     private $nombre_deporte;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Pista", mappedBy="id_deporte", orphanRemoval=true)
+     */
+    private $pistas;
+
+    public function __construct()
+    {
+        $this->pistas = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -34,6 +46,37 @@ class Deporte
     public function setNombreDeporte(string $nombre_deporte): self
     {
         $this->nombre_deporte = $nombre_deporte;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Pista[]
+     */
+    public function getPistas(): Collection
+    {
+        return $this->pistas;
+    }
+
+    public function addPista(Pista $pista): self
+    {
+        if (!$this->pistas->contains($pista)) {
+            $this->pistas[] = $pista;
+            $pista->setIdDeporte($this);
+        }
+
+        return $this;
+    }
+
+    public function removePista(Pista $pista): self
+    {
+        if ($this->pistas->contains($pista)) {
+            $this->pistas->removeElement($pista);
+            // set the owning side to null (unless already changed)
+            if ($pista->getIdDeporte() === $this) {
+                $pista->setIdDeporte(null);
+            }
+        }
 
         return $this;
     }
