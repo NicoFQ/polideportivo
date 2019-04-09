@@ -74,10 +74,10 @@ class Usuario
     private $usuario_activo;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\TipoUsuario", inversedBy="usuarios")
+     * @ORM\ManyToOne(targetEntity="App\Entity\TipoUsuario", inversedBy="usuarios", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
-    private $id_tipo_usuario;
+    private $tipo_usuario;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\GustosUsuarios", mappedBy="id_usuario", orphanRemoval=true)
@@ -244,14 +244,14 @@ class Usuario
         return $this;
     }
 
-    public function getIdTipoUsuario(): ?TipoUsuario
+    public function getTipoUsuario(): ?TipoUsuario
     {
-        return $this->id_tipo_usuario;
+        return $this->tipo_usuario;
     }
 
-    public function setIdTipoUsuario(?TipoUsuario $id_tipo_usuario): self
+    public function setTipoUsuario(?TipoUsuario $id_tipo_usuario): self
     {
-        $this->id_tipo_usuario = $id_tipo_usuario;
+        $this->tipo_usuario = $id_tipo_usuario;
 
         return $this;
     }
