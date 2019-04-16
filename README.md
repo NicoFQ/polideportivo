@@ -1,4 +1,4 @@
-# Polideportivo DWES 
+# Polideportivo Andrés Móntes 
 Aplicacion completa para la gestion de un polideportivo.
 
 # Instalación ( Solo linux )
