@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Clase{% endblock %}
+
+{% block body %}
+    <h1>Clase</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ clase.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre_clase</th>
+                <td>{{ clase.nombreClase }}</td>
+            </tr>
+            <tr>
+                <th>Dias_semana</th>
+                <td>{{ clase.diasSemana }}</td>
+            </tr>
+            <tr>
+                <th>Hora_inicio</th>
+                <td>{{ clase.horaInicio }}</td>
+            </tr>
+            <tr>
+                <th>Hora_fin</th>
+                <td>{{ clase.horaFin }}</td>
+            </tr>
+            <tr>
+                <th>Max_alumnos</th>
+                <td>{{ clase.maxAlumnos }}</td>
+            </tr>
+            <tr>
+                <th>Min_alumnos</th>
+                <td>{{ clase.minAlumnos }}</td>
+            </tr>
+            <tr>
+                <th>Disponible</th>
+                <td>{{ clase.disponible }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('clase_index') }}">back to list</a>
+
+    <a href="{{ path('clase_edit', {'id': clase.id}) }}">edit</a>
+
+    {{ include('clase/_delete_form.html.twig') }}
+{% endblock %}

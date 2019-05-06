@@ -18,8 +18,15 @@ use App\Entity\Usuario;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
 class DespliegueFixtures extends Fixture
 {
+//    Funcion que hara un hash a las contraseñas de los usuarios, necesaria para el login
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
+     {
+         $this->passwordEncoder = $passwordEncoder;
+     }
     public function load(ObjectManager $manager)
     {
 //        TIPO USUARIO ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -42,7 +49,7 @@ class DespliegueFixtures extends Fixture
         $usuario = new Usuario();
         $usuario->setEmail('nico@gm.com');
         $usuario->setNombreUsuario('nico_01');
-        $usuario->setContrasena('1234');
+        $usuario->setContrasena($this->passwordEncoder->encodePassword($usuario, '1234'));
         $usuario->setNumDocumento('1234n');
         $usuario->setNombre('Nicolas');
         $usuario->setApellido1('Flores');
@@ -56,7 +63,7 @@ class DespliegueFixtures extends Fixture
         $usuario1 = new Usuario();
         $usuario1->setEmail('kevin@gm.com');
         $usuario1->setNombreUsuario('kevin_01');
-        $usuario1->setContrasena('1234');
+        $usuario1->setContrasena($this->passwordEncoder->encodePassword($usuario1, '1234'));
         $usuario1->setNumDocumento('1234k');
         $usuario1->setNombre('Kevin');
         $usuario1->setApellido1('Herbás');
@@ -70,7 +77,7 @@ class DespliegueFixtures extends Fixture
         $usuario2 = new Usuario();
         $usuario2->setEmail('javier@gm.com');
         $usuario2->setNombreUsuario('javi_01');
-        $usuario2->setContrasena('1234');
+        $usuario2->setContrasena($this->passwordEncoder->encodePassword($usuario2, '1234'));
         $usuario2->setNumDocumento('1234j');
         $usuario2->setNombre('Javier');
         $usuario2->setApellido1('Moyano');
@@ -78,13 +85,14 @@ class DespliegueFixtures extends Fixture
         $usuario2->setFechaAlta(new \DateTime('@'.strtotime('now')));
         $usuario2->setTipoUsuario($admin);//Este metodo solo acepta un objeto de tipo: TipoUsuario
         $usuario2->setUsuarioActivo(1);
+        $usuario2->setRoles(['ROLE_ADMIN']);
 
         $manager->persist($usuario2);
 
         $usuario3 = new Usuario();
         $usuario3->setEmail('mario@gm.com');
         $usuario3->setNombreUsuario('mario_01');
-        $usuario3->setContrasena('1234');
+        $usuario3->setContrasena($this->passwordEncoder->encodePassword($usuario3, '1234'));
         $usuario3->setNumDocumento('1234m');
         $usuario3->setNombre('Mario');
         $usuario3->setApellido1('Vazquez');
@@ -92,13 +100,14 @@ class DespliegueFixtures extends Fixture
         $usuario3->setFechaAlta(new \DateTime('@'.strtotime('now')));
         $usuario3->setTipoUsuario($cliente);//Este metodo solo acepta un objeto de tipo: TipoUsuario
         $usuario3->setUsuarioActivo(1);
+        $usuario3->setRoles(['ROLE_CLIENTE']);
 
         $manager->persist($usuario3);
 
         $usuario4 = new Usuario();
         $usuario4->setEmail('miguel@gm.com');
         $usuario4->setNombreUsuario('miguel_01');
-        $usuario4->setContrasena('1234');
+        $usuario4->setContrasena($this->passwordEncoder->encodePassword($usuario4, '1234'));
         $usuario4->setNumDocumento('1234p');
         $usuario4->setNombre('Miguel');
         $usuario4->setApellido1('Perez');
@@ -112,7 +121,7 @@ class DespliegueFixtures extends Fixture
         $usuario5 = new Usuario();
         $usuario5->setEmail('laura@gm.com');
         $usuario5->setNombreUsuario('laura_01');
-        $usuario5->setContrasena('1234');
+        $usuario5->setContrasena($this->passwordEncoder->encodePassword($usuario5, '1234'));
         $usuario5->setNumDocumento('1234l');
         $usuario5->setNombre('Laura');
         $usuario5->setApellido1('Gonzalez');
@@ -126,7 +135,7 @@ class DespliegueFixtures extends Fixture
         $usuario6 = new Usuario();
         $usuario6->setEmail('rebeca@gm.com');
         $usuario6->setNombreUsuario('rebeca_01');
-        $usuario6->setContrasena('1234');
+        $usuario6->setContrasena($this->passwordEncoder->encodePassword($usuario6, '1234'));
         $usuario6->setNumDocumento('1234r');
         $usuario6->setNombre('Rebeca');
         $usuario6->setApellido1('Anton');
@@ -137,6 +146,55 @@ class DespliegueFixtures extends Fixture
         // $usuario6->addAsiste()
 
         $manager->persist($usuario6);
+
+        /**
+         * ======== SUPER USUARIOS GENERALES DE LA APLICACION ========
+         */
+        $usuarioAdmin = new Usuario();
+        $usuarioAdmin->setEmail('admin@gm.com');
+        $usuarioAdmin->setNombreUsuario('admin');
+        $usuarioAdmin->setContrasena($this->passwordEncoder->encodePassword($usuario6, '1234'));
+        $usuarioAdmin->setNumDocumento('9999A');
+        $usuarioAdmin->setNombre('Admin');
+        $usuarioAdmin->setApellido1('Admin');
+        $usuarioAdmin->setSexo(0);
+        $usuarioAdmin->setFechaAlta(new \DateTime('@'.strtotime('now')));
+        $usuarioAdmin->setTipoUsuario($admin);//Este metodo solo acepta un objeto de tipo: TipoUsuario
+        $usuarioAdmin->setUsuarioActivo(1);
+
+        $manager->persist($usuarioAdmin);
+
+        $usuarioProfesor = new Usuario();
+        $usuarioProfesor->setEmail('profesor@gm.com');
+        $usuarioProfesor->setNombreUsuario('profesor');
+        $usuarioProfesor->setContrasena($this->passwordEncoder->encodePassword($usuario6, '1234'));
+        $usuarioProfesor->setNumDocumento('9999P');
+        $usuarioProfesor->setNombre('Profesor');
+        $usuarioProfesor->setApellido1('Profesor');
+        $usuarioProfesor->setSexo(0);
+        $usuarioProfesor->setFechaAlta(new \DateTime('@'.strtotime('now')));
+        $usuarioProfesor->setTipoUsuario($admin);//Este metodo solo acepta un objeto de tipo: TipoUsuario
+        $usuarioProfesor->setUsuarioActivo(1);
+
+        $manager->persist($usuarioProfesor);
+
+        $usuarioCliente = new Usuario();
+        $usuarioCliente->setEmail('cliente@gm.com');
+        $usuarioCliente->setNombreUsuario('cliente');
+        $usuarioCliente->setContrasena($this->passwordEncoder->encodePassword($usuario6, '1234'));
+        $usuarioCliente->setNumDocumento('9999C');
+        $usuarioCliente->setNombre('Cliente');
+        $usuarioCliente->setApellido1('Cliente');
+        $usuarioCliente->setSexo(0);
+        $usuarioCliente->setFechaAlta(new \DateTime('@'.strtotime('now')));
+        $usuarioCliente->setTipoUsuario($admin);//Este metodo solo acepta un objeto de tipo: TipoUsuario
+        $usuarioCliente->setUsuarioActivo(1);
+
+        $manager->persist($usuarioCliente);
+
+        /**
+         * ======== FIN DE SUPER USUARIOS ========
+         */
 //        FIN USUARIO /////////////////////////////////////////////////////////////////////////////////////////////////
 
 //        GUSTOS USUARIO //////////////////////////////////////////////////////////////////////////////////////////////

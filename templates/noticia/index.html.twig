@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Noticia index{% endblock %}
+
+{% block body %}
+    <h1>Noticia index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titulo</th>
+                <th>Contenido</th>
+                <th>Img_noticia</th>
+                <th>Fecha_creacion</th>
+                <th>Fecha_modificacion</th>
+                <th>Autor</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for noticium in noticias %}
+            <tr>
+                <td>{{ noticium.id }}</td>
+                <td>{{ noticium.titulo }}</td>
+                <td>{{ noticium.contenido }}</td>
+                <td>{{ noticium.imgNoticia }}</td>
+                <td>{{ noticium.fechaCreacion ? noticium.fechaCreacion|date('Y-m-d') : '' }}</td>
+                <td>{{ noticium.fechaModificacion ? noticium.fechaModificacion|date('Y-m-d') : '' }}</td>
+                <td>{{ noticium.autor }}</td>
+                <td>
+                    <a href="{{ path('noticia_show', {'id': noticium.id}) }}">show</a>
+                    <a href="{{ path('noticia_edit', {'id': noticium.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('noticia_new') }}">Create new</a>
+{% endblock %}

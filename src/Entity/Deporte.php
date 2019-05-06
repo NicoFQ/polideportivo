@@ -117,4 +117,8 @@ class Deporte
 
         return $this;
     }
+    public function __toString()
+    {
+        return $this->nombre_deporte;
+    }
 }

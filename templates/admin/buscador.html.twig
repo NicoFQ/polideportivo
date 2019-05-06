@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Clientes{% endblock %}
+
+{% block body %}
+{% block stylesheets %} <link rel="stylesheet" href="{{ asset('/css/list.css') }}"> {% endblock %}
+    <header>
+        {% include '/admin/nav.html.twig' %}
+    </header>
+    <div class="container">
+        <caption class="text-uppercase">Datos del usuario.</caption>
+        {% if cliente is not null %}
+
+            <table class="table table-striped m-2 text-center">
+                <thead class="bg-dark text-white text-uppercase">
+                <tr>
+                    <td>nombre</td>
+                    <td>apellido</td>
+                    <td>email</td>
+                    <td>activo</td>
+                    <td>nombre usuario</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ cliente.getNombre }}</td>
+                    <td>{{ cliente.getApellido1 }}</td>
+                    <td>{{ cliente.getEmail }}</td>
+                    <td>{{ cliente.getUsuarioActivo }}</td>
+                    <td>{{ cliente.getNombreUsuario }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+        {% else %}
+            <h2>No se ha encontrado ningun usuario con ese DNI</h2>
+        {% endif %}
+        <a href="{{ asset('/admin')}}">Volver al principio</a>
+
+
+    </div>
+
+
+{% endblock %}

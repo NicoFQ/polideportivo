@@ -1,0 +1,27 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+td, th{
+    border: 1px solid gray;
+    padding: .5em;
+    text-align: center;
+}
+thead{
+    background-image: linear-gradient(to bottom, red, darkred);
+    color:white;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+tbody>tr:nth-last-of-type(even){
+    background-color: lightgray;
+    /* font-size: 2em; */
+}
+tbody>tr>td:first-of-type{
+    text-transform: uppercase;
+}
