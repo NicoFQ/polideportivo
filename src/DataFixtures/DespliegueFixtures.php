@@ -147,6 +147,37 @@ class DespliegueFixtures extends Fixture
 
         $manager->persist($usuario6);
 
+
+        //Añadir profesor
+        $usuario7 = new Usuario();
+        $usuario7->setEmail('joseMaria@gm.com');
+        $usuario7->setNombreUsuario('JoseMaria');
+        $usuario7->setContrasena($this->passwordEncoder->encodePassword($usuario7, '1234'));
+        $usuario7->setNumDocumento('1234s');
+        $usuario7->setNombre('Jose');
+        $usuario7->setApellido1('Torresano');
+        $usuario7->setSexo(0);
+        $usuario7->setFechaAlta(new \DateTime('@'.strtotime('now')));
+        $usuario7->setTipoUsuario($profesor);//Este metodo solo acepta un objeto de tipo: TipoUsuario
+        $usuario7->setUsuarioActivo(1);
+
+        $manager->persist($usuario7);
+
+        $usuario8 = new Usuario();
+        $usuario8->setEmail('jorge@gm.com');
+        $usuario8->setNombreUsuario('Jorge');
+        $usuario8->setContrasena($this->passwordEncoder->encodePassword($usuario8, '1234'));
+        $usuario8->setNumDocumento('1234t');
+        $usuario8->setNombre('Jorge');
+        $usuario8->setApellido1('Dueñas');
+        $usuario8->setApellido2('Lerin');
+        $usuario8->setSexo(0);
+        $usuario8->setFechaAlta(new \DateTime('@'.strtotime('now')));
+        $usuario8->setTipoUsuario($profesor);//Este metodo solo acepta un objeto de tipo: TipoUsuario
+        $usuario8->setUsuarioActivo(1);
+
+        $manager->persist($usuario8);
+
         /**
          * ======== SUPER USUARIOS GENERALES DE LA APLICACION ========
          */
@@ -308,11 +339,22 @@ class DespliegueFixtures extends Fixture
         $clase5->setMinAlumnos(2);
         $clase5->setDisponible(0);
 
+        $clase6 = new Clase();
+        $clase6->setIdDeporte($padel);
+        $clase6->setNombreClase("Clase de baloncesto");
+        $clase6->setDiasSemana("J,V");
+        $clase6->setHoraInicio("16:00");
+        $clase6->setHoraFin("18:00");
+        $clase6->setMaxAlumnos(18);
+        $clase6->setMinAlumnos(10);
+        $clase6->setDisponible(1);
+
         $manager->persist($clase1);
         $manager->persist($clase2);
         $manager->persist($clase3);
         $manager->persist($clase4);
         $manager->persist($clase5);
+        $manager->persist($clase6);
 
 
 //        FIN CLASES ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -359,6 +401,33 @@ class DespliegueFixtures extends Fixture
         $asiste6->setClase($clase1);
 
         $manager->persist($asiste6);
+
+         //Asignamos a los usuarios profesores usuario8(Jorge) y usuario7 (Jose Maria)
+        //a 3 clases
+
+        //Jorge ->profesor en clase de futbol
+        //      -> Profesor en calse de baloncesto
+        $asiste7 = new Asiste();
+        $asiste7->setFechaAsisteClase(new \DateTime('2019-04-12'));
+        $asiste7->setUsuario($usuario8);
+        $asiste7->setClase($clase1);
+
+        $manager->persist($asiste7);
+
+        $asiste7 = new Asiste();
+        $asiste7->setFechaAsisteClase(new \DateTime('2019-04-12'));
+        $asiste7->setUsuario($usuario8);
+        $asiste7->setClase($clase6);
+
+        $manager->persist($asiste7);
+
+        //Jorge ->profesor en clase de baloncesto
+        $asiste8 = new Asiste();
+        $asiste8->setFechaAsisteClase(new \DateTime('2019-04-12'));
+        $asiste8->setUsuario($usuario7);
+        $asiste8->setClase($clase3);
+
+        $manager->persist($asiste8);
 
 //        FIN ASISTE ///////////////////////////////////////////////////////////////////////////////////////////////////
 

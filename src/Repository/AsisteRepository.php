@@ -19,32 +19,21 @@ class AsisteRepository extends ServiceEntityRepository
         parent::__construct($registry, Asiste::class);
     }
 
-    // /**
-    //  * @return Asiste[] Returns an array of Asiste objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+    public function getUsuApuntados($id){
+            $qb = $this->createQueryBuilder('asiste')   
+            ->select('count(asiste.usuario)')
+            ->where('asiste.clase= :clase')
+            ->setParameter('clase',$id);
 
-    /*
-    public function findOneBySomeField($value): ?Asiste
-    {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            return $qb->getQuery()->getResult();
     }
-    */
+
+    public function getFechaClase($id){
+        $qb = $this->createQueryBuilder('asiste')   
+        ->select('asiste.fecha_asiste_clase')
+        ->where('asiste.clase= :clase')
+        ->setParameter('clase',$id);
+
+        return $qb->getQuery()->getResult();
+}
 }

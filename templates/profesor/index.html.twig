@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CLASES PROFESOR {% endblock %}
+
+{% block body %}
+{{dump(clases)}}
+{{dump(apuntados)}}
+{{dump(fechas)}}
+
+ <header>
+        
+ </header>
+
+        <li><a href="{{ asset('/admin/') }}"><img src="{{ asset('/img/logo_polideportivo.png') }}" alt="logo-polideportivo"></a></li>
+        <li><a href="{{ asset('/admin/') }}">Inicio</a></li>
+ 
+ <div class="container">
+        <table class="table table-striped text-center">
+            <thead class="thead-dark text-uppercase">
+            <tr>
+                <th>Deporte</th>
+                <th>Fecha</th>
+                <th>Hora inicio</th>
+                <th>Hora fin</th>
+                <th>Alumnos apuntados</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                {% for e in clases %}
+              
+                <tr>
+                    <td>{{ e.getNombreClase }}</td>
+                    <td>{{ fechas[loop.index - 1]|date("m/d/Y")}}</td>
+                    <td>{{ e.getHoraInicio}}</td>
+                    <td>{{ e.getHoraFin}}</td>
+                    <td>{{ apuntados[loop.index - 1]}}</td>
+                  
+                    
+                </tr>
+             
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
