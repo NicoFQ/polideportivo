@@ -1,0 +1,33 @@
+{% extends 'usuario/nav_usuario.html.twig' %}
+{% block stylesheets %}
+	<style>
+	    nav > ul {
+	    	display: flex;
+	    	list-style-type: none;
+	    }
+	    nav > ul > li{
+	    	margin-right: 1em;
+	    }
+	    .data{
+	    	position: absolute;
+	    	right: 0px;
+	    	top: 0px;
+	    }
+	</style>
+{% endblock %}
+
+{% block title %}Hello UsuarioController!{% endblock %}
+{% block main %}
+	   	<div>
+	   		<h2> FULL USER </h2> 
+	   		<p> {{ fullUser.getNombre }} </p>
+	   		<p> Clases en las que estoy </p>
+	   		<p> {{ dump(clases) }} </p>
+	   		<p> {{ fullUser.getNombre }} </p>
+	   		<p> {{ fullUser.getNombre }} </p>
+	   		<p> {{ fullUser.getNombre }} </p>
+	   	</div>
+
+	   	<div class="data"> {{ dump(fullUser) }} </div>
+
+{% endblock %}

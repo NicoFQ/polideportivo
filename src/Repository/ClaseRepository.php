@@ -22,19 +22,33 @@ class ClaseRepository extends ServiceEntityRepository
     // /**
     //  * @return Clase[] Returns an array of Clase objects
     //  */
-    /*
-    public function findByExampleField($value)
+    
+    public function findClasesById($id)
     {
+/*
+        //        Se define la tabla que usaras con el alias
+        $qb = $this->createQueryBuilder('u')
+//            Si no se especifica la SELECT, dara todos los datos
+                   ->select('count(u)')
+//            Join: Equivalente a la union de tablas
+                   ->innerJoin('App\Entity\TipoUsuario','t', 'WITH', 'u.tipo_usuario = t.id')
+                   ->andWhere('t.nombre_tipo = :tipo_usuario')
+                   ->setParameter('tipo_usuario',$tipo_usuario);
+//        permite ver el resultao de la query (como el pre)
+//        dump($qb->getQuery()->getResult());
+        return $qb->getQuery()->getResult();
+
+*/
+
         return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
+            ->select('nombre_clase')
+            ->innerJoin('App\Entity\Asiste','a', 'WITH', 'c.id = a.id')
+            ->andWhere('a.id_usuario = :id')
+            ->setParameter('id', $id)
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?Clase
