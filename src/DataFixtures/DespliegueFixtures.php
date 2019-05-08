@@ -57,6 +57,7 @@ class DespliegueFixtures extends Fixture
         $usuario->setFechaAlta(new \DateTime('@'.strtotime('now')));
         $usuario->setTipoUsuario($admin);//Este metodo solo acepta un objeto de tipo: TipoUsuario
         $usuario->setUsuarioActivo(1);
+        $usuario->setRoles(['ROLE_ADMIN']);
 
         $manager->persist($usuario);
 
@@ -71,6 +72,7 @@ class DespliegueFixtures extends Fixture
         $usuario1->setFechaAlta(new \DateTime('@'.strtotime('now')));
         $usuario1->setTipoUsuario($admin);//Este metodo solo acepta un objeto de tipo: TipoUsuario
         $usuario1->setUsuarioActivo(1);
+        $usuario1->setRoles(['ROLE_ADMIN']);
 
         $manager->persist($usuario1);
 
@@ -115,6 +117,7 @@ class DespliegueFixtures extends Fixture
         $usuario4->setFechaAlta(new \DateTime('@'.strtotime('now')));
         $usuario4->setTipoUsuario($profesor);//Este metodo solo acepta un objeto de tipo: TipoUsuario
         $usuario4->setUsuarioActivo(1);
+        $usuario4->setRoles(['ROLE_PROFESOR']);
 
         $manager->persist($usuario4);
 
@@ -129,6 +132,7 @@ class DespliegueFixtures extends Fixture
         $usuario5->setFechaAlta(new \DateTime('@'.strtotime('now')));
         $usuario5->setTipoUsuario($cliente);//Este metodo solo acepta un objeto de tipo: TipoUsuario
         $usuario5->setUsuarioActivo(1);
+        $usuario5->setRoles(['ROLE_CLIENTE']);
 
         $manager->persist($usuario5);
 
@@ -143,6 +147,7 @@ class DespliegueFixtures extends Fixture
         $usuario6->setFechaAlta(new \DateTime('@'.strtotime('now')));
         $usuario6->setTipoUsuario($cliente);//Este metodo solo acepta un objeto de tipo: TipoUsuario
         $usuario6->setUsuarioActivo(1);
+        $usuario6->setRoles(['ROLE_CLIENTE']);
         // $usuario6->addAsiste()
 
         $manager->persist($usuario6);
@@ -160,6 +165,7 @@ class DespliegueFixtures extends Fixture
         $usuario7->setFechaAlta(new \DateTime('@'.strtotime('now')));
         $usuario7->setTipoUsuario($profesor);//Este metodo solo acepta un objeto de tipo: TipoUsuario
         $usuario7->setUsuarioActivo(1);
+        $usuario7->setRoles(['ROLE_PROFESOR']);
 
         $manager->persist($usuario7);
 
@@ -175,6 +181,7 @@ class DespliegueFixtures extends Fixture
         $usuario8->setFechaAlta(new \DateTime('@'.strtotime('now')));
         $usuario8->setTipoUsuario($profesor);//Este metodo solo acepta un objeto de tipo: TipoUsuario
         $usuario8->setUsuarioActivo(1);
+        $usuario8->setRoles(['ROLE_PROFESOR']);
 
         $manager->persist($usuario8);
 
@@ -192,6 +199,7 @@ class DespliegueFixtures extends Fixture
         $usuarioAdmin->setFechaAlta(new \DateTime('@'.strtotime('now')));
         $usuarioAdmin->setTipoUsuario($admin);//Este metodo solo acepta un objeto de tipo: TipoUsuario
         $usuarioAdmin->setUsuarioActivo(1);
+        $usuarioAdmin->setRoles(['ROLE_ADMIN']);
 
         $manager->persist($usuarioAdmin);
 
@@ -204,8 +212,9 @@ class DespliegueFixtures extends Fixture
         $usuarioProfesor->setApellido1('Profesor');
         $usuarioProfesor->setSexo(0);
         $usuarioProfesor->setFechaAlta(new \DateTime('@'.strtotime('now')));
-        $usuarioProfesor->setTipoUsuario($admin);//Este metodo solo acepta un objeto de tipo: TipoUsuario
+        $usuarioProfesor->setTipoUsuario($profesor);//Este metodo solo acepta un objeto de tipo: TipoUsuario
         $usuarioProfesor->setUsuarioActivo(1);
+        $usuarioProfesor->setRoles(['ROLE_PROFESOR']);
 
         $manager->persist($usuarioProfesor);
 
@@ -218,8 +227,9 @@ class DespliegueFixtures extends Fixture
         $usuarioCliente->setApellido1('Cliente');
         $usuarioCliente->setSexo(0);
         $usuarioCliente->setFechaAlta(new \DateTime('@'.strtotime('now')));
-        $usuarioCliente->setTipoUsuario($admin);//Este metodo solo acepta un objeto de tipo: TipoUsuario
+        $usuarioCliente->setTipoUsuario($cliente);//Este metodo solo acepta un objeto de tipo: TipoUsuario
         $usuarioCliente->setUsuarioActivo(1);
+        $usuarioCliente->setRoles(['ROLE_CLIENTE']);
 
         $manager->persist($usuarioCliente);
 
@@ -482,6 +492,8 @@ class DespliegueFixtures extends Fixture
         $noticia_1 = new Noticia();
         $noticia_1->setTitulo("Muere un Fixture en Symfony");
         $noticia_1->setContenido("El hecho sucedio la pasada madrugada tras entrar a un merge. Relatan los testigos que intentaba robar datos.");
+        $noticia_1->setFechaCreacion(new \DateTime('@'.strtotime('now')));
+        $noticia_1->setAutor("Nicolas Flores");
         $manager->persist($noticia_1);
 //        FIN NOTICIA /////////////////////////////////////////////////////////////////////////////////////////////////
         $manager->flush();

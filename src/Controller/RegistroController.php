@@ -45,6 +45,7 @@ class RegistroController extends AbstractController
                     $form->get('contrasena')->getData()
                 )
             );
+            $usuario->setRoles(['ROLE_CLIENTE']);
 //            dump($form->getData());die();
             $em->persist($usuario);
 

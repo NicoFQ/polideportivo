@@ -1,4 +1,6 @@
-<nav>
+{% block stylesheets %} <link rel="stylesheet" href="{{ asset('/css/nav.css') }}"> {% endblock %}
+<header>
+    <nav>
     <ul>
         <li><a href="{{ asset('/admin/') }}"><img src="{{ asset('/img/logo_polideportivo.png') }}" alt="logo-polideportivo"></a></li>
         <li><a href="{{ asset('/admin/') }}">Inicio</a></li>
@@ -8,3 +10,4 @@
         <li><a href="{{ path('logout') }}"><i class="fas fa-sign-out-alt"> logout</i></a></li>
     </ul>
 </nav>
+</header>

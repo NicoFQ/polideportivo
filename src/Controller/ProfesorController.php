@@ -14,17 +14,18 @@ class ProfesorController extends AbstractController
     /**
      * @Route("/profesor", name="profesor")
      */
-    public function index(ClaseRepository $em, AsisteRepository $usu )
+    public function index(ClaseRepository $em, AsisteRepository $usu)
     {
         //Tenemos que sacar el $id de la session
         //$id = $_SESSION['id_usuario'];
-        $id = 8;
+        // dump($token);die;
+        $id = 9;
         $arrApun = [];
         $arrFechas = [];
         $contador = 0;
         $clasesProfesor = $em -> getClaseImparte($id);
-       dump($clasesProfesor);
-        die();
+    //    dump($clasesProfesor);
+    //     die();
          foreach($clasesProfesor as $key => $value){
             if($contador % 2 == 0){
                 $t = $value -> getid();

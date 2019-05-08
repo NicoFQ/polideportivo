@@ -3,6 +3,7 @@
 {% block title %}Clase index{% endblock %}
 
 {% block body %}
+{% block stylesheets %} <link rel="stylesheet" href="{{ asset('/css/list.css') }}"> {% endblock %}
     <h1>Clase index</h1>
     <header>
         {% include '/admin/nav.html.twig' %}
