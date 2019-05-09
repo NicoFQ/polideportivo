@@ -1,0 +1,42 @@
+.contenedor-tarjeta{
+    border:2px solid red;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 20px;
+}
+.tarjeta{
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    align-content: center;
+    border:2px solid green;
+    padding: 10px;
+    margin: 20px;
+    width:15%;
+    cursor:pointer;
+    text-align: center;
+}
+.tarjeta h3{
+    text-align: center;
+    margin:0;
+    padding: 10px;
+}
+.tarjeta p{
+    margin:0;
+    padding: 10px;
+}
+.tarjeta a{
+    text-decoration: none;
+    color:black;
+}
+.tarjeta a>i{
+    display: flex;
+    flex-direction: column;
+}
+.tarjeta i, .tarjeta > p > i{
+    margin:0 auto;
+    text-align: center;
+    font-size: 3.5em;
+    display: block;
+}

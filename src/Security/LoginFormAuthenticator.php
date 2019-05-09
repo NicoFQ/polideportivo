@@ -101,7 +101,9 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
                 case "ROLE_CLIENTE":
                     $redireccion = "/noticia";
                     break;
-
+                case "ROLE_PROFESOR":
+                    $redireccion = "/profesor";
+                    break;
             }
             return new RedirectResponse($redireccion);
     }

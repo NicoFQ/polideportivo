@@ -29,3 +29,4 @@ security:
     access_control:
          - { path: ^/admin, roles: ROLE_ADMIN}
          - { path: ^/noticia, roles: ROLE_CLIENTE }
+         - { path: ^/profesor, roles: ROLE_PROFESOR }
