@@ -18,7 +18,7 @@
     /* padding: 10px; */
     margin: 5px 10px;
     border:none;
-    border-bottom: 1px solid red;
+    border-bottom: 1px sol green;
     transition: 200ms;
 }
 #form input:focus{
