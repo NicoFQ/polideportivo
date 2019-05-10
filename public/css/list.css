@@ -1,28 +1,75 @@
+@import url("./general.css");
+:root{
+    --gris: ;
+    --rojo: #eb3b5a;
+    --rojo-2: #ff0b55;
+    --rojo-3: #d61d4e;
+    --gris: #f6f6f6;
+    --gris-2: #e8e8e8;
+    --verde: #49beb7;
+    --verde-2: #15cda8;
+}
 .container{
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    font-family: 'Poppins',sans-serif;
 }
-
 table{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 20px;
 }
 td, th{
-    border: 1px solid gray;
+    border: 1px solid var(--gris);
     padding: .5em;
     text-align: center;
 }
 thead{
-    background-image: linear-gradient(to bottom, red, darkred);
+    background-image: linear-gradient(to bottom, var(--rojo), var(--rojo-2));
     color:white;
     cursor: pointer;
     text-transform: uppercase;
 }
 tbody>tr:nth-last-of-type(even){
-    background-color: lightgray;
+    background-color: var(--gris-2);
     /* font-size: 2em; */
 }
 tbody>tr>td:first-of-type{
     text-transform: uppercase;
+}
+
+
+
+/*ICONOS / ACCIONES CRUD*/
+
+.acciones{
+    display: flex;
+    justify-content: space-around;
+}
+.acciones a{
+    color: var(--rojo-2);
+    font-size: 1.3em;
+}
+
+.link{
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 2px;
+    transition: 200ms ease-in-out;
+    margin:5px;
+    text-transform: uppercase;
+}
+.link-button{
+    background-color: var(--verde);
+}
+.link-button:hover{
+    background-color: var(--verde-2);
+}
+
+.link-edit{
+    background-color: var(--rojo-3);
+}
+.link-edit:hover{
+    background-color: var(--rojo);
 }

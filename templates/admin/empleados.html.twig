@@ -9,8 +9,9 @@
     </header>
 
     <div class="container">
-        <table class="table table-striped text-center">
-            <thead class="thead-dark text-uppercase">
+        <h2>Lista de empleados</h2>
+        <table>
+            <thead>
             <tr>
                 <th>nombre</th>
                 <th>apellido</th>
@@ -26,7 +27,12 @@
                     <td>{{ e.getNombre }}</td>
                     <td>{{ e.getApellido1 }}</td>
                     <td>{{ e.getEmail}}</td>
-                    <td>{{ e.getTipoUsuario}}</td>
+                    {% if   e.getTipoUsuario  == "AD" %}
+                        <td>Administrador</td>
+                    {% elseif e.getTipoUsuario == "PR" %}
+                        <td>Profesor</td>
+                    {% endif %}
+                    
                     {% if   e.getUsuarioActivo  == 1 %}
                         <td>Usuario Activo</td>
                     {% endif %}

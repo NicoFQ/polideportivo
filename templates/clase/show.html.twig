@@ -3,8 +3,13 @@
 {% block title %}Clase{% endblock %}
 
 {% block body %}
-    <h1>Clase</h1>
-
+{% block stylesheets %} <link rel="stylesheet" href="{{ asset('/css/list.css') }}"> {% endblock %}
+<header>
+        {% include '/admin/nav.html.twig' %}
+    </header>
+    <div class="container">
+        <h2>Clase: {{clase.nombreClase}}</h2>
+    
     <table class="table">
         <tbody>
             <tr>
@@ -12,39 +17,45 @@
                 <td>{{ clase.id }}</td>
             </tr>
             <tr>
-                <th>Nombre_clase</th>
+                <th>Nombre clase</th>
                 <td>{{ clase.nombreClase }}</td>
             </tr>
             <tr>
-                <th>Dias_semana</th>
+                <th>Dias semana</th>
                 <td>{{ clase.diasSemana }}</td>
             </tr>
             <tr>
-                <th>Hora_inicio</th>
+                <th>Hora inicio</th>
                 <td>{{ clase.horaInicio }}</td>
             </tr>
             <tr>
-                <th>Hora_fin</th>
+                <th>Hora fin</th>
                 <td>{{ clase.horaFin }}</td>
             </tr>
             <tr>
-                <th>Max_alumnos</th>
+                <th>Max. Alumnos</th>
                 <td>{{ clase.maxAlumnos }}</td>
             </tr>
             <tr>
-                <th>Min_alumnos</th>
+                <th>Min. Alumnos</th>
                 <td>{{ clase.minAlumnos }}</td>
             </tr>
             <tr>
-                <th>Disponible</th>
-                <td>{{ clase.disponible }}</td>
+                <th>Estado</th>
+                {% if clase.disponible == 1 %}
+                    <td>Disponible</td>
+                {% else %}
+                    <td>No Disponible</td>
+                {% endif %}
+
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('clase_index') }}">back to list</a>
+    <a href="{{ path('clase_index') }}" class="link link-button">Volver a la lista</a>
 
-    <a href="{{ path('clase_edit', {'id': clase.id}) }}">edit</a>
+    <a href="{{ path('clase_edit', {'id': clase.id}) }}" class="link link-edit">Editar esta clase</a>
 
     {{ include('clase/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

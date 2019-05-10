@@ -1,23 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}EMPLEADOS{% endblock %}
+{% block title %}ENVIO DE CORREOS{% endblock %}
 
 {% block body %}
+
+{% block stylesheets %}
+     <link rel="stylesheet" href="{{ asset('/css/email.css') }}"> 
+{% endblock %}
     <header>
         {% include '/admin/nav.html.twig' %}
     </header>
-<div class="container">
-    <h2>Envio de correo</h2>
-    {{ form(emailTemplate) }}
-    {#    No podemos usar el CK editor por que agrega las etiquetas HTML#}
-    {#    y el mailer lo entiende como string, enviando las etiquetas en crudo!#}
-    <!-- CDN EDITOR -->
-    <script src="https://cdn.ckeditor.com/4.11.3/standard/ckeditor.js"></script>
-    {#    Este script buscara el ID del text-area para aplicarle sus estilos#}
-    <script>
-        CKEDITOR.replace( 'form_Contenido' );
-    </script>
-</div>
+    <div class="container">
+        <h2>Envio de correo</h2>
+        {{ form(emailTemplate) }}
+        {#    No podemos usar el CK editor por que agrega las etiquetas HTML#}
+        {#    y el mailer lo entiende como string, enviando las etiquetas en crudo!#}
+        <!-- CDN EDITOR -->
+        <script src="https://cdn.ckeditor.com/4.11.3/standard/ckeditor.js"></script>
+        {#    Este script buscara el ID del text-area para aplicarle sus estilos#}
+        <script>
+            CKEDITOR.replace( 'form_Contenido' );
+        </script>
+    </div>
     {% block javascripts %} <script src="{{ asset('/js/textArea.js') }}"></script> {% endblock %}
 
 {% endblock %}
