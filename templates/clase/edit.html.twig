@@ -3,15 +3,20 @@
 {% block title %}EDITAR CLASE{% endblock %}
 
 {% block body %}
-{% block stylesheets %} <link rel="stylesheet" href="{{ asset('/css/editClase.css') }}"> {% endblock %}
+{% block stylesheets %} <link rel="stylesheet" href="{{ asset('/css/editClase.css') }}">
+                        <link rel="stylesheet" href="{{ asset('/css/general.css') }}">
+{% endblock %}
     <div class="container">
         
-        {{ include('clase/_form.html.twig', {'button_label': 'Update'}) }}
-
-        <a href="{{ path('clase_index') }}" class="link link-button">Volver a la lista</a>
+        {{ include('clase/_form.html.twig', {'button_label': 'Actualizar'}) }}
 
         {{ include('clase/_delete_form.html.twig') }}
+        <a href="{{ path('clase_index') }}" class="link link-button">Volver a la lista</a>
     </div>
 
-    
+        <script>
+            const actualizarButton = document.querySelector('.btn')
+            actualizarButton.classList.add('link')
+            actualizarButton.classList.add('link-button')
+        </script>
 {% endblock %}

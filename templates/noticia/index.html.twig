@@ -29,8 +29,8 @@
                 <td>{{ noticium.fechaModificacion ? noticium.fechaModificacion|date('Y-m-d') : '' }}</td>
                 <td>{{ noticium.autor }}</td>
                 <td>
-                    <a href="{{ path('noticia_show', {'id': noticium.id}) }}">show</a>
-                    <a href="{{ path('noticia_edit', {'id': noticium.id}) }}">edit</a>
+                    <a href="{{ path('noticia_show', {'id': noticium.id}) }}"><i class="fa fa-eye"></i></a>
+                    <a href="{{ path('noticia_edit', {'id': noticium.id}) }}"><i class="fa fa-edit"></i></a>
                 </td>
             </tr>
         {% else %}

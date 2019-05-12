@@ -30,6 +30,7 @@ class RegistroType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
+                "label" => "Email (*)",
                 'attr' => [
                     'placeholder' => 'Introduzca su email.',
                     'class' => 'form-control'
@@ -41,11 +42,10 @@ class RegistroType extends AbstractType
                 ]
             ])
             ->add('nombre_usuario', TextType::class, [
-                'attr' => [
-                    'class' => 'form-control'
-                ]
+                "label" => "nombre de usuario (*)",
             ])
             ->add('contrasena', PasswordType::class, [
+                "label" => "Contraseña (*)",
                 'attr' => [
 //                    'pattern' => '[0-9][a-z]',
                     'placeholder' => 'Introduzca la contraseña.'
@@ -61,16 +61,20 @@ class RegistroType extends AbstractType
                 ]
             ])
             ->add('num_documento',TextType::class,[
-                'attr' => [
-                    'class' => 'form-control'
+                "label" => "D.N.I (*)",
+                "attr" => [
+                    "placeholder" => "D.N.I / N.I.E"
                 ]
             ])
-            ->add('nombre',TextType::class)
-            ->add('apellido_1', TextType::class, ['label' => 'Primer apellido '])
+            ->add('nombre',TextType::class,[
+                "label" => "Nombre (*)"
+            ])
+            ->add('apellido_1', TextType::class, ['label' => 'Primer apellido (*)'])
             ->add('apellido_2', TextType::class, ['label' => 'Segundo apellido ', 'required' => false])
 //            ->add('numero_telf', NumberType::class, ['label' => 'Numero de telefono'])
 //            ->add('imagen_perfil', FileType::class, ['mapped' => false,'required' =>  false])
             ->add('sexo', ChoiceType::class,[
+                "label" => "Sexo (*)",
                 'choices' => [
                     'hombre' => 0,
                     'mujer' => 1
@@ -92,7 +96,11 @@ class RegistroType extends AbstractType
                 'mapped' => false
             ])
 
-            ->add('Registrar',SubmitType::class)
+            ->add('Registrar',SubmitType::class, [
+                "attr" => [
+                    "class" => "link link-button"
+                ]
+            ])
         ;
 //        $builder
 //            ->add('email')

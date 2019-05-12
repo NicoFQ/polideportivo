@@ -103,4 +103,23 @@ class UsuarioRepository extends ServiceEntityRepository
             ->getQuery()
             ->getOneOrNullResult();
     }
+
+    public function comprobarNumDocumento($num_documento)
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.num_documento = :n_documento')
+            ->setParameter('n_documento', $num_documento)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+    public function comprobarEmail($email)
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.email = :email')
+            ->setParameter('email', $email)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
+
 }

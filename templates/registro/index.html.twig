@@ -9,8 +9,25 @@
         {% endblock %}
     <div class="container">
         <h2>Registro</h2>
+{#        {% if error %}  comprobar aqui los errores#}
         {{ form(form_view) }}
-        <a href="{{ asset('/login') }}" class="button ok">Iniciar sersión</a>
+        <a href="{{ asset('/login') }}" class="button link link-edit">Iniciar sersión</a>
     </div>
+    <script>
+        const form = document.getElementsByTagName('form')[0]
+        const div = document.createElement('div')
+        const button = document.getElementsByTagName('button')[0]
+        const a = document.getElementsByTagName('a')[0]
 
+
+        div.appendChild(button)
+        div.appendChild(a)
+
+        form.appendChild(div)
+
+        fetch("http://localhost:8000/RegistroController.php")
+            .then(noData => noData.json())
+            .then(data => console.log(data))
+
+    </script>
 {% endblock %}

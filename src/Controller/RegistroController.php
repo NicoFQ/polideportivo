@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\TipoUsuario;
 use App\Entity\Usuario;
 use App\Form\RegistroType;
+use App\Repository\UsuarioRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,12 +17,14 @@ class RegistroController extends AbstractController
     /**
      * @Route("/registro", name="registro")
      */
-    public function index(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    public function index(Request $request, UserPasswordEncoderInterface $passwordEncoder, UsuarioRepository $userRepo)
     {
         $em = $this->getDoctrine()->getManager();//Conexion de base de datos
 
 //        Consulta para sacar el tipo de cliente
         $cliente= $this->getDoctrine()->getRepository(TipoUsuario::class)->findOneBy(["nombre_tipo"=>"CL"]);
+
+
 
 //        Usuario que se crea y recoge los datos del registro
         $usuario = new Usuario();
@@ -45,13 +48,25 @@ class RegistroController extends AbstractController
                     $form->get('contrasena')->getData()
                 )
             );
-            $usuario->setRoles(['ROLE_CLIENTE']);
-//            dump($form->getData());die();
-            $em->persist($usuario);
+            $existeNDocumento = $userRepo->comprobarNumDocumento($form->get("num_documento")->getData());
+            $existeEmail = $userRepo->comprobarEmail($form->get("email")->getData());
 
-            $em->flush();
+            $usuario->setRoles(['ROLE_CLIENTE']);
+            if (empty($existeNDocumento) && empty($existeEmail)){
+                echo json_encode("All good");
+                $em->persist($usuario);
+
+                $em->flush();
 //            Si ha agregado al usuario a la BBDD, le redicreciona al login
-            return new RedirectResponse('/login');
+                return new RedirectResponse('/login');
+            }else{
+                //Enviar array de errores
+            }
+//            $em->persist($usuario);
+//
+//            $em->flush();
+////            Si ha agregado al usuario a la BBDD, le redicreciona al login
+//            return new RedirectResponse('/login');
         }
         return $this->render('registro/index.html.twig', [
             'form_view' => $form->createView()

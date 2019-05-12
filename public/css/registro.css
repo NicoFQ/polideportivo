@@ -9,7 +9,7 @@ body{
     background-size: cover;
 }
 .container{
-    border:1px solid rgb(27, 165, 165);
+    /*border:1px solid rgb(27, 165, 165);*/
     box-shadow: 0px 0px 10px white;
     border-radius: 5px;
     font-family: 'Poppins', sans-serif;
@@ -18,11 +18,19 @@ body{
     margin:50px auto;
     width: 60%;
     background-image: linear-gradient(to top, rgb(224, 223, 223), white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .container > h2{
     text-align: center;
     text-transform: uppercase;
+}
+#registro:before{
+    content: '(*): Campos obligatorios.';
+    color:gray;
+    margin-bottom: 10px;
 }
 #registro{
     display: flex;
@@ -45,39 +53,44 @@ body{
     margin:9px 0;
 }
 
-button{
-    width: auto;
-    margin: 0;
-    padding: 0;
+/*Clase Ultimo div para los botones*/
+form > div:last-of-type{
+    display: flex;
+    justify-content: center;
 }
-/*
-    Clase button general
-*/
-.button{
-    cursor:pointer;
-    text-decoration: none;
-    font-size: 14px;
-    text-align: center;
-    display: block;
-    text-transform: uppercase;
-    padding: 10px;
-    margin:3px 0;
-    font-family: 'Poppins', sans-serif;
-    color:white;
-    transition: 200ms ease-in-out;
-    border:none;
-    border-radius: 3px;
-}
+/*button{*/
+/*    width: auto;*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*}*/
+/*!**/
+/*    Clase button general*/
+/**!*/
+/*.button{*/
+/*    cursor:pointer;*/
+/*    text-decoration: none;*/
+/*    font-size: 14px;*/
+/*    text-align: center;*/
+/*    display: block;*/
+/*    text-transform: uppercase;*/
+/*    padding: 10px;*/
+/*    margin:3px 0;*/
+/*    font-family: 'Poppins', sans-serif;*/
+/*    color:white;*/
+/*    transition: 200ms ease-in-out;*/
+/*    border:none;*/
+/*    border-radius: 3px;*/
+/*}*/
 
-.ok{
-    background-image: linear-gradient(to top, rgb(123, 226, 154), rgb(4, 87, 17));
-}
-.ok:hover{
-    background-color: rgb(71, 168, 71);
-}
-.cancel{
-    background-image: linear-gradient(to top, rgb(233, 104, 104), rgb(148, 0, 0));
-}
-.cancel:hover{
-    background-color: rgb(221, 109, 109);
-}
+/*.ok{*/
+/*    background-image: linear-gradient(to top, rgb(123, 226, 154), rgb(4, 87, 17));*/
+/*}*/
+/*.ok:hover{*/
+/*    background-color: rgb(71, 168, 71);*/
+/*}*/
+/*.cancel{*/
+/*    background-image: linear-gradient(to top, rgb(233, 104, 104), rgb(148, 0, 0));*/
+/*}*/
+/*.cancel:hover{*/
+/*    background-color: rgb(221, 109, 109);*/
+/*}*/

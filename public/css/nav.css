@@ -23,6 +23,7 @@ header>nav>ul{
 }
 ul{
     list-style-type: none;
+    padding: 0;
 }
 header> nav a{
     color:#fff;

@@ -4,3 +4,59 @@
     font-family: 'Poppins';
     src: url('../fonts/poppins/Poppins-Regular.ttf');
 }
+:root{
+    /*--gris: ;*/
+    --rojo: #eb3b5a;
+    --rojo-2: #ff0b55;
+    --rojo-3: #d61d4e;
+    --gris: #f6f6f6;
+    --gris-2: #e8e8e8;
+    --verde: #49beb7;
+    --verde-2: #15cda8;
+    --azul-oscuro: #010059;
+    --azul-oscuro-2:#107595;
+}
+
+/*ICONOS / ACCIONES CRUD*/
+
+.acciones{
+    display: flex;
+    justify-content: space-around;
+}
+.acciones a{
+    color: var(--rojo-2);
+    font-size: 1.3em;
+}
+.link{
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 2px;
+    border:none;
+    transition: 200ms ease-in-out;
+    margin:5px;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+    cursor:pointer;
+    font-size: 1em;
+    text-align: center;
+}
+.link-button{
+    background-color: var(--verde);
+}
+.link-button:hover{
+    background-color: var(--verde-2);
+}
+
+.link-edit{
+    background-color: var(--azul-oscuro);
+}
+.link-edit:hover{
+    background-color: var(--azul-oscuro-2);
+}
+.link-cancel{
+    background-color: var(--rojo-3);
+}
+.link-cancel:hover{
+    background-color: var(--rojo);
+}
