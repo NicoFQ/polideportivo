@@ -68,7 +68,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
         if (!$user) {
             // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('Email could not be found.');
+            throw new CustomUserMessageAuthenticationException('Email desconocido, intentelo de nuevo.');
         }
 
         return $user;
@@ -110,6 +110,6 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
     protected function getLoginUrl()
     {
-        return $this->urlGenerator->generate('app_login');
+        return $this->urlGenerator->generate('login');
     }
 }

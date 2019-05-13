@@ -12,7 +12,7 @@ form{
     margin:20px auto;
     padding: 10px;
 }
-form:first-of-type:before{
+.container > form:first-of-type:before{
     content: "EDITA LA CLASE";
     font-family: 'Popins',sans-serif;
     font-size: 1.4em;
@@ -46,20 +46,24 @@ form input:focus{
     flex-direction: column;
     align-content: center;
 }
-form:first-of-type{
+form > div > form{
+    width: 6em;
+    margin:0;
+    padding:0;
+}
+form > div:last-child{
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    margin:10px 0;
 }
-form:first-of-type button{
-    width: 7.5em;
-    align-self: center;
+
+.container > a:last-of-type{
+    background-color: var(--azul-oscuro);
+    margin: 0 auto;
+    transition: 200ms;
 }
-form:nth-of-type(2){
-    /*border:2px solid red;*/
-    position: relative;
-    width:5em;
-    top:-40px;
-    padding: 0;
+.container > a:last-of-type:hover{
+    background-color: var(--azul-oscuro-2);
 }
 
 .container > a:last-of-type{

@@ -120,6 +120,15 @@ class UsuarioRepository extends ServiceEntityRepository
             ->getQuery()
             ->getOneOrNullResult();
     }
+    public function getEmails()
+    {
+        return $this->createQueryBuilder('u')
+            ->select("u.email")
+            ->where('u.tipo_usuario IN (2,3)')
+            ->getQuery()
+            ->getResult();
+    }
+
 
 
 }

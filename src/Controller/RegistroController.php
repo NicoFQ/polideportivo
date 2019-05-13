@@ -24,7 +24,7 @@ class RegistroController extends AbstractController
 //        Consulta para sacar el tipo de cliente
         $cliente= $this->getDoctrine()->getRepository(TipoUsuario::class)->findOneBy(["nombre_tipo"=>"CL"]);
 
-
+        $errors = [];
 
 //        Usuario que se crea y recoge los datos del registro
         $usuario = new Usuario();
@@ -52,16 +52,18 @@ class RegistroController extends AbstractController
             $existeEmail = $userRepo->comprobarEmail($form->get("email")->getData());
 
             $usuario->setRoles(['ROLE_CLIENTE']);
-            if (empty($existeNDocumento) && empty($existeEmail)){
-                echo json_encode("All good");
+            if (!empty($existeEmail)){
+                $errors[] = "El email ya ha sido registrado, intentelo de nuevo.";
+            }elseif (!empty($existeNDocumento)){
+                $errors[] = "Ya tenemos registrado ese D.N.I / N.I.E";
+            }else{
                 $em->persist($usuario);
 
                 $em->flush();
 //            Si ha agregado al usuario a la BBDD, le redicreciona al login
                 return new RedirectResponse('/login');
-            }else{
-                //Enviar array de errores
             }
+
 //            $em->persist($usuario);
 //
 //            $em->flush();
@@ -69,7 +71,8 @@ class RegistroController extends AbstractController
 //            return new RedirectResponse('/login');
         }
         return $this->render('registro/index.html.twig', [
-            'form_view' => $form->createView()
+            'form_view' => $form->createView(),
+            'errors' => $errors
         ]);
     }
 }

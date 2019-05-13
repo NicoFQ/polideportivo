@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello RegistroController!{% endblock %}
+{% block title %}REGISTRO{% endblock %}
 
 {% block body %}
 
@@ -9,7 +9,15 @@
         {% endblock %}
     <div class="container">
         <h2>Registro</h2>
-{#        {% if error %}  comprobar aqui los errores#}
+        <div class="errors">
+            {% if errors %}
+                <ul>
+                    {% for e in errors %}
+                        <li>{{ e }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
         {{ form(form_view) }}
         <a href="{{ asset('/login') }}" class="button link link-edit">Iniciar sersión</a>
     </div>
@@ -19,15 +27,10 @@
         const button = document.getElementsByTagName('button')[0]
         const a = document.getElementsByTagName('a')[0]
 
-
         div.appendChild(button)
         div.appendChild(a)
 
         form.appendChild(div)
-
-        fetch("http://localhost:8000/RegistroController.php")
-            .then(noData => noData.json())
-            .then(data => console.log(data))
 
     </script>
 {% endblock %}

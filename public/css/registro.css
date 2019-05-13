@@ -4,9 +4,10 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins');
 body{
     content: " ";
-    background-image: url("https://images.pexels.com/photos/1637451/pexels-photo-1637451.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
-    background-repeat: no-repeat;
-    background-size: cover;
+    /*background-image: url("https://images.pexels.com/photos/1637451/pexels-photo-1637451.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: cover;*/
+    background-image: linear-gradient(to top, #92EB75, #A2FFF8);
 }
 .container{
     /*border:1px solid rgb(27, 165, 165);*/
@@ -17,7 +18,7 @@ body{
     box-sizing: border-box;
     margin:50px auto;
     width: 60%;
-    background-image: linear-gradient(to top, rgb(224, 223, 223), white);
+    background-image: linear-gradient(to bottom , rgb(224, 223, 223), white);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -58,39 +59,11 @@ form > div:last-of-type{
     display: flex;
     justify-content: center;
 }
-/*button{*/
-/*    width: auto;*/
-/*    margin: 0;*/
-/*    padding: 0;*/
-/*}*/
-/*!**/
-/*    Clase button general*/
-/**!*/
-/*.button{*/
-/*    cursor:pointer;*/
-/*    text-decoration: none;*/
-/*    font-size: 14px;*/
-/*    text-align: center;*/
-/*    display: block;*/
-/*    text-transform: uppercase;*/
-/*    padding: 10px;*/
-/*    margin:3px 0;*/
-/*    font-family: 'Poppins', sans-serif;*/
-/*    color:white;*/
-/*    transition: 200ms ease-in-out;*/
-/*    border:none;*/
-/*    border-radius: 3px;*/
-/*}*/
-
-/*.ok{*/
-/*    background-image: linear-gradient(to top, rgb(123, 226, 154), rgb(4, 87, 17));*/
-/*}*/
-/*.ok:hover{*/
-/*    background-color: rgb(71, 168, 71);*/
-/*}*/
-/*.cancel{*/
-/*    background-image: linear-gradient(to top, rgb(233, 104, 104), rgb(148, 0, 0));*/
-/*}*/
-/*.cancel:hover{*/
-/*    background-color: rgb(221, 109, 109);*/
-/*}*/
+.errors{
+    border-radius: 3px;
+    background-color: #E84656;
+    color:white;
+}
+.errors li:first-of-type, .errors li:last-of-type{
+    padding: 10px;
+}

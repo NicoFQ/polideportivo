@@ -33,6 +33,7 @@ class AdminController extends AbstractController
         $admins = $em->getTotalUsuariosBy('AD');
         $usuarios = $em->getTotalUsuariosBy('CL');
         $profesores = $em->getTotalUsuariosBy('PR');
+
         return $this->render('admin/index.html.twig', [
             'clientes' => $clientes,
             'admins' => $admins,
@@ -65,10 +66,19 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin/email", name="email")
      */
-    public function email(Request $request, \Swift_Mailer $mailer)
+    public function email(Request $request, \Swift_Mailer $mailer, UsuarioRepository $em)
     {
         $data = "";
-        $emails = ["kevinherbas7@gmail.com","kevinmb41@hotmail.com"];
+        $emails = $em->getEmails();
+        $emailsCompletos = "";
+        foreach (array_values($emails) as $email){
+            foreach ($email as $data){
+                $emailsCompletos.=$data.", ";
+            }
+        }
+        $emailsCompletos = substr($emailsCompletos,0,strlen($emailsCompletos)-2);
+
+
         $form = $this->createFormBuilder(null)
 
 //            ->setAction($this->generateUrl('enviando'))
@@ -83,7 +93,11 @@ class AdminController extends AbstractController
                 'disabled' => true
             ])
             ->add('Para',TextType::class,[
-                "data" => implode(",", $emails)
+                "attr" => [
+                    "placeholder" => $emailsCompletos
+                ],
+                "required" => false
+//                "data" => $emailsCompletos
             ])
             ->add('Contenido',TextareaType::class,[
                 "attr" => [
@@ -101,13 +115,16 @@ class AdminController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
                 $data = $form->getData();
-//                $data["Contenido"] =  $request->request->get("Contenido");
-//                $data = $form->getViewData();
+
+                $destinatario = $form->get("Para")->getData();
+                if (empty($destinatario)){
+                    $data["Para"] = $emailsCompletos;
+                }
                 $message = (new \Swift_Message('Swiftmailer'))
                     ->setCharset('iso-8859-2')
                     ->setFrom('taccdev44@gmail.com')
 
-                    ->setTo(['kevinherbas7@gmail.com','nicolasmatiasshm@hotmail.es'])
+                    ->setTo($emails)
                     ->setBody(
 
                         $this->render(
