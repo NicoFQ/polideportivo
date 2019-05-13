@@ -8,14 +8,27 @@
 <body>
 
 <div id="app">
-    <p>{{content}}</p>
+    <button @click="fetchAll()">
+        Pulsar
+    </button>
+    <p>{{user[user]}}</p>
 </div>
 
 <script>
+    const URL = "http://localhost:8000/usuario/test";
+
     new Vue({
         el: '#app',
         data: {
-            content: "idk"
+            user : {}
+        },
+        methods: {
+            fetchAll : () => {
+                fetch(URL)
+                    .then(noData => noData.json())
+                    .then(data => {this.user=data})
+                    .then(d => console.log(this.user))
+            }
         }
     })
 </script>

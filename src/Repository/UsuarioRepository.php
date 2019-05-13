@@ -129,6 +129,15 @@ class UsuarioRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function getDataUser($id)
+    {
+        return $this->createQueryBuilder('u')
+            ->select('u.nombre, u.email, u.nombre_usuario, u.nombre_usuario, u.imagen_perfil, u.apellido_1')
+            ->where('u.id = :id')
+            ->setParameter('id',$id)
+            ->getQuery()
+            ->getResult();
+    }
 
 
 }
