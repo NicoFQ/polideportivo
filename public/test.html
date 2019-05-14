@@ -4,32 +4,171 @@
     <meta charset="UTF-8">
     <title>T E S T</title>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<!--    tailwindcss-->
+<!--    <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">-->
+<!--    font awesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <style>
+        #app>form>div{
+            font-family: sans-serif;
+        }
+        #app>form>div>div{
+            display:flex;
+            justify-content: space-between;
+            margin:10px;
+            box-shadow:0px 0px 5px #3a3a59;
+            padding: 10px;
+            border-radius:3px;
+        }
+        #app>form>div>div>div{
+            display: flex;
+            flex-direction: column;
+            /*flex-direction: row-reverse;*/
+        }
+        #app span{
+            font-weight: bold;
+        }
+        button{
+            font-size: 1.6em;
+            padding: 0;
+            width: 2.5em;
+            margin: 10px;
+            align-self: center;
+        }
+        .edit{
+            display: flex;
+            flex-direction: row-reverse !important;
+            /*border:2px solid red;*/
+        }
+        .edit button{
+            margin:3px;
+        }
+        .none{
+            display: none;
+        }
+        .visible{
+            display: inherit;
+        }
+
+    </style>
 </head>
 <body>
 
 <div id="app">
-    <button @click="fetchAll()">
-        Pulsar
-    </button>
-    <p>{{user[user]}}</p>
+    <form action="#">
+    <div v-for="u in user">
+        <div>
+            <div>
+                <p><span>Nombre: </span>{{u.nombre}}</p>
+                <p v-if="form.name"><span>Nuevo nombre: </span>{{form.name}}</p>
+            </div>
+            <div>
+                <button class="fas fa-edit" @click="edit"></button>
+                <button class="fas fa-window-close none" @click="unsetOptions"></button>
+                <button class="fas fa-check-circle none" @click="saveData"></button>
+                <input type="text" name="nombre" id="nombre" v-model="form.name" class="none">
+            </div>
+
+        </div>
+
+        <div>
+            <div>
+                <p><span>Email: </span>{{u.email}}</p>
+                <p v-if="form.email"><span>Nuevo email: </span>{{form.email}}</p>
+            </div>
+            <div>
+                <button class="fas fa-edit" @click="edit"></button>
+                <button class="fas fa-window-close none" @click="unsetOptions"></button>
+                <button class="fas fa-check-circle none" @click="saveData"></button>
+                <input type="text" name="email" id="email" v-model="form.email" class="none">
+            </div>
+
+        </div>
+    </div>
+    </form>
 </div>
 
 <script>
+
     const URL = "http://localhost:8000/usuario/test";
+    const URLPOST = "http://localhost:8000/usuario/data"
 
     new Vue({
         el: '#app',
-        data: {
-            user : {}
+        created: function (){
+                this.fetchAll();
         },
-        methods: {
-            fetchAll : () => {
+        data: {
+            user : [],
+            form: {
+                nombre: "",
+                email: ""
+            },
+            clases:{
+                edit: "fa-edit",
+                ok: "fa-check-circle",
+                cancel: "fa-window-close"
+            },
+            editElements:[],
+        },
+        methods:{
+            edit(e){
+                const form = document.forms[0].addEventListener('submit', e => e.preventDefault())
+                // Hago al contenedor flexible
+                e.target.parentNode.classList.add("edit")
+                this.setOptions(e);
+
+            },
+            setOptions(e){
+                const currentButton = e.target;
+                const divContainer = document.querySelector('.edit');
+
+                const input = divContainer.querySelector('input')
+
+                const cancelButton = divContainer.getElementsByTagName('button')[1]
+                const okButton= divContainer.getElementsByTagName('button')[2]
+
+                this.editElements.push(input, cancelButton, okButton)
+                currentButton.classList.add('none')
+                this.editElements.forEach(v => v.classList.remove('none'))
+            },
+            unsetOptions (e){
+                this.editElements.forEach(v => v.classList.add('none'))
+                const divContainer = document.querySelector('.edit');
+                const editButton = divContainer.getElementsByTagName('button')[0]
+                editButton.classList.remove('none')
+                e.currentTarget.parentElement.classList.remove("edit")
+                this.editElements = [];
+            },
+            saveData (e){
+                const form = document.forms[0];
+                const datos = new FormData()
+                // to do: hacer una comprobacion de los elementos enviados desde el form que no esten vacios...
+                datos.append("id",this.user[0].id)
+                datos.append("nombre",form.nombre.value)
+                datos.append("email",form.email.value)
+
+                this.enviarDatos(datos)
+
+                this.unsetOptions(e)
+            },
+
+            enviarDatos(data){
+                var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+                xhr.open('POST', URLPOST);
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState>3 && xhr.status==200) console.log(JSON.stringify(xhr.responseText));
+                };
+                // xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+                xhr.send(data);
+                this.fetchAll();
+            },
+            fetchAll(){
                 fetch(URL)
                     .then(noData => noData.json())
-                    .then(data => {this.user=data})
-                    .then(d => console.log(this.user))
+                    .then(data => this.user = data["user"])
             }
-        }
+        },
     })
 </script>
 </body>

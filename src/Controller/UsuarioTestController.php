@@ -19,16 +19,23 @@ class UsuarioTestController extends AbstractController
     public function index(UsuarioRepository $em)
     {
         $data = $em->getDataUser(2);
-//        dump();die;
-//        $template = $this->renderView('usuario_test/index.html.twig',[
-//           'data' => $this->json(["user" => $data])
-//        ]);
-        $response = new JsonResponse();
-        $response->setData(["data" => $data]);
         return new JsonResponse(["user" => $data]);
-
-//        return $this->render('usuario_test/index.html.twig', [
-//            'data' => "idk"
-//        ]);
+    }
+    /**
+     * @Route("/usuario/data", name="usuario_data")
+     */
+    public function data(UsuarioRepository $em)
+    {
+        $data = "";
+        if (count($_POST) > 0){
+            if ($em->updateUser($_POST["id"],$_POST["nombre"])){
+                $data = "done";
+            }else{
+                $data = "error";
+            }
+        }else{
+            $data = "no";
+        }
+        return new JsonResponse(['res' => $data]);
     }
 }
