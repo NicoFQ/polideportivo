@@ -1,0 +1,12 @@
+{% block stylesheets %} <link rel="stylesheet" href="{{ asset('/css/nav.css') }}"> {% endblock %}
+<header>
+    <nav>
+    <ul>
+        <li><a href="{{ asset('/profesor/') }}"><img src="{{ asset('/img/logo_polideportivo.png') }}" alt="logo-polideportivo"></a></li>
+        <li><a href="{{ asset('/profesor/') }}">Inicio</a></li>
+        <li><a href="{{ asset('/profesor/') }}">Clases</a></li>
+        <li><a href="{{ asset('/admin/email/') }}">Enviar correo</a></li>
+        <li><a href="{{ path('logout') }}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+    </ul>
+</nav>
+</header>
