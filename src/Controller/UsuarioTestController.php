@@ -18,6 +18,7 @@ class UsuarioTestController extends AbstractController
      */
     public function index(UsuarioRepository $em)
     {
+//        Obtener el ID de la sesion de nico
         $data = $em->getDataUser(2);
         return new JsonResponse(["user" => $data]);
     }
@@ -28,6 +29,8 @@ class UsuarioTestController extends AbstractController
     {
         $data = "";
         if (count($_POST) > 0){
+//            Modificar la query para que solo admita los valores que se entregan
+//            en getDataUser
             if ($em->updateUser($_POST["id"],$_POST["nombre"])){
                 $data = "done";
             }else{

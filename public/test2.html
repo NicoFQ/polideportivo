@@ -5,15 +5,15 @@
     <title>T E S T</title>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-<!--    tailwindcss-->
-<!--    <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">-->
-<!--    font awesome-->
+    <!--    tailwindcss-->
+    <!--    <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">-->
+    <!--    font awesome-->
 
     <style>
-        #app>form>div{
+        #app>div{
             font-family: sans-serif;
         }
-        #app>form>div>div{
+        #app>div>div{
             display:flex;
             justify-content: space-between;
             margin:10px;
@@ -21,7 +21,7 @@
             padding: 10px;
             border-radius:3px;
         }
-        #app>form>div>div>div{
+        #app>div>div>div{
             display: flex;
             flex-direction: column;
             /*flex-direction: row-reverse;*/
@@ -56,37 +56,36 @@
 <body>
 
 <div id="app">
-    <form action="#">
-    <div v-for="u in user">
-        <div>
-            <div>
-                <p><span>Nombre: </span>{{u.nombre}}</p>
-                <p v-if="form.name"><span>Nuevo nombre: </span>{{form.name}}</p>
-            </div>
-            <div>
-                <button class="fas fa-edit" @click="edit"></button>
-                <button class="fas fa-window-close none" @click="unsetOptions"></button>
-                <button class="fas fa-check-circle none" @click="saveData" ></button>
-                <input type="text" name="nombre" id="nombre" v-model="form.name" class="none" v-on:keyup.enter="saveData">
+        <div v-for="u in user">
+            <div class="info-user">
+                <div>
+                    <p><span>Nombre: </span>{{u.nombre}}</p>
+                    <p v-if="form.name"><span>Nuevo nombre: </span>{{form.name}}</p>
+                </div>
+                <div>
+                    <button class="fas fa-edit" @click="edit"></button>
+                    <button class="fas fa-window-close none" @click="unsetOptions"></button>
+                    <button class="fas fa-check-circle none" @click="saveData" ></button>
+                    <input type="text" name="nombre" id="nombre" v-model="form.name" class="none" v-on:keyup.enter="saveData">
+                </div>
             </div>
 
+            <div class="info-user">
+                <div>
+                    <p><span>Email: </span>{{u.email}}</p>
+                    <p v-if="form.email"><span>Nuevo email: </span>{{form.email}}</p>
+                </div>
+                <div>
+                    <button class="fas fa-edit" @click="edit"></button>
+                    <button class="fas fa-window-close none" @click="unsetOptions"></button>
+                    <button class="fas fa-check-circle none" @click="saveData"></button>
+                    <input type="text" name="email" id="email" v-model="form.email" class="none">
+                </div>
+
+            </div>
+<!--            se podran ir agregando mas divs en funcion de los datos que se pudan modificar -->
+<!--            por parte del usuario-->
         </div>
-
-        <div>
-            <div>
-                <p><span>Email: </span>{{u.email}}</p>
-                <p v-if="form.email"><span>Nuevo email: </span>{{form.email}}</p>
-            </div>
-            <div>
-                <button class="fas fa-edit" @click="edit"></button>
-                <button class="fas fa-window-close none" @click="unsetOptions"></button>
-                <button class="fas fa-check-circle none" @click="saveData"></button>
-                <input type="text" name="email" id="email" v-model="form.email" class="none">
-            </div>
-
-        </div>
-    </div>
-    </form>
 </div>
 
 <script>
@@ -97,7 +96,7 @@
     new Vue({
         el: '#app',
         created: function (){
-                this.fetchAll();
+            this.fetchAll();
         },
         data: {
             user : [],
@@ -114,7 +113,6 @@
         },
         methods:{
             edit(e){
-                const form = document.forms[0].addEventListener('submit', e => e.preventDefault())
                 // Hago al contenedor flexible
                 e.target.parentNode.classList.add("edit")
                 this.setOptions(e);
@@ -142,21 +140,19 @@
                 this.editElements = [];
             },
             saveData (e){
-                const form = document.forms[0];
                 const datos = new FormData()
                 // to do: hacer una comprobacion de los elementos enviados desde el form que no esten vacios...
                 datos.append("id",this.user[0].id)
-                datos.append("nombre",form.nombre.value)
-                datos.append("email",form.email.value)
+                datos.append("nombre",this.getInputData('nombre'))
+                datos.append("email",this.getInputData('email'))
 
                 this.enviarDatos(datos)
 
                 this.unsetOptions(e)
                 this.form = {}
             },
-
             enviarDatos(data){
-                var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+                const xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
                 xhr.open('POST', URLPOST);
                 xhr.onreadystatechange = function() {
                     if (xhr.readyState>3 && xhr.status==200) console.log(JSON.stringify(xhr.responseText));
@@ -165,11 +161,24 @@
                 xhr.send(data);
                 this.fetchAll();
             },
+            /**
+             * Funcion que hace la peticion de datos al servidor
+             * Return: Promesa / Datos del server
+             */
             fetchAll(){
                 fetch(URL)
                     .then(noData => noData.json())
                     .then(data => this.user = data["user"])
-            }
+            },
+            /**
+             * Funcion que recupera el valor del elemento input
+             * @param name => ID del input, solo admite ID
+             * @returns: Contenido del input
+             */
+            getInputData(name){
+                return document.getElementById(name).value
+            },
+
         },
     })
 </script>
