@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EMPLEADOS{% endblock %}
+
+{% block body %}
+    {% block stylesheets %} <link rel="stylesheet" href="{{ asset('/css/list.css') }}"> {% endblock %}
+    <header>
+        {% include '/admin/nav.html.twig' %}
+    </header>
+
+    <div class="container">
+        <table class="table table-striped text-center">
+            <thead class="thead-dark text-uppercase">
+            <tr>
+                <th>nombre</th>
+                <th>apellido</th>
+                <th>email</th>
+                <th>role</th>
+                <th>estado</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                {% for e in empleados %}
+                <tr>
+                    <td>{{ e.getNombre }}</td>
+                    <td>{{ e.getApellido1 }}</td>
+                    <td>{{ e.getEmail}}</td>
+                    <td>{{ e.getTipoUsuario}}</td>
+                    {% if   e.getUsuarioActivo  == 1 %}
+                        <td>Usuario Activo</td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

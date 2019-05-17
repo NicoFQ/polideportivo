@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans+Caption');
+@import url("https://use.fontawesome.com/releases/v5.8.1/css/all.css");
+:root{
+    --tamano-img :100px;
+}
+
+header{
+    border:1px solid gray;
+    text-transform: uppercase;
+    font-family: 'PT Sans Caption', sans-serif;
+}
+header>nav>ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+ul{
+    list-style-type: none;
+}
+a{
+    color:black;
+    text-decoration: none;
+    padding: 3.2em 1.5em;
+}
+nav>ul>li:first-of-type>a{
+    padding: 0;
+}
+nav>ul{
+    margin: 0;
+    padding: 0;
+}
+nav>ul>li:nth-of-type(n+6)>a{
+    color: black;
+}
+nav>ul li:nth-child(1) {
+    margin-right: auto;
+}
+nav>ul li:nth-child(6) {
+    margin-left: auto;
+}
+nav>ul>li:first-of-type{
+    width: var(--tamano-img);
+    height: var(--tamano-img);
+}
+nav>ul li > a >img{
+    width: 100%;
+}
+
+
+/* ##### ESTILOS ######################### */
+header li:nth-of-type(n+2) a{
+    margin: 0 2px;
+    /* background-color: #494ca2; */
+    /* border:1px solid gray; */
+    transition: 500ms;
+}
+
+header li:nth-of-type(n+2) a:hover{
+    /* box-shadow: 0px 0px 10px aquamarine; */
+    text-shadow: 0px 0px 5px white;
+    background-color: #8395a7;
+    color:white;
+}

@@ -277,4 +277,14 @@ class Session implements SessionInterface, \IteratorAggregate, \Countable
     {
         return $this->getBag($this->attributeName);
     }
+
+     /**
+     * Obtiene el usuario que este actualmente con la sesion activa.
+     * @return Entity
+     */
+    public function getUser()
+    {
+        $data = unserialize($this->get("_security_main"));
+        return $data->getUser();
+    }
 }

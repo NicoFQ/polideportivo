@@ -19,15 +19,31 @@
 {% block title %}Hello UsuarioController!{% endblock %}
 {% block main %}
 	   	<div>
+	   	
 	   		<h2> FULL USER </h2> 
-	   		<p> {{ fullUser.getNombre }} </p>
-	   		<p> Clases en las que estoy </p>
-	   		<p> {{ dump(clases) }} </p>
+	   		<p> {{ fullUser.getNombre }} {{ fullUser.getApellido1}} {{ fullUser.getApellido2 }} ({{ fullUser.getNombreUsuario }})</p>
+	   		<p> Clases en las que estoy </p> 
+	   		<pre>Implementar un icono que identifique a la clase para ponerlo en el calendario</pre>
+	   		<p>
+		   		{% for asiste in asistencias %}
+	        		{{ asiste.getClase.getNombreClase }} <br>       
+	            {% endfor %}
+            </p>
+            <p> Mis deportes favoritos </p>
 	   		<p> {{ fullUser.getNombre }} </p>
 	   		<p> {{ fullUser.getNombre }} </p>
 	   		<p> {{ fullUser.getNombre }} </p>
 	   	</div>
 
-	   	<div class="data"> {{ dump(fullUser) }} </div>
-
+	   	<div class="data"> {{ dump(asistencias) }} </div>
+	   	<p> {{ asistencias[0].getClase.getNombreClase }} </p>
+		<p> {{ asistencias[0].getFechaAsisteClase|date("d/m/Y") }} </p>
+		<div id="app"></div>
+		{% include '/usuario/prueba.html' %}
+		
+		{% block javascripts %}
+		<script>
+			{% include '/usuario/vue-calendar.js' %}
+		</script>
+		{% endblock %}
 {% endblock %}

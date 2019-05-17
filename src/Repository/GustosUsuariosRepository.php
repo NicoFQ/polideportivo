@@ -19,32 +19,27 @@ class GustosUsuariosRepository extends ServiceEntityRepository
         parent::__construct($registry, GustosUsuarios::class);
     }
 
-    // /**
-    //  * @return GustosUsuarios[] Returns an array of GustosUsuarios objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('g')
-            ->andWhere('g.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('g.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?GustosUsuarios
+    public function findById($id)
     {
+/*
+        //        Se define la tabla que usaras con el alias
+        $qb = $this->createQueryBuilder('u')
+//            Si no se especifica la SELECT, dara todos los datos
+                   ->select('count(u)')
+//            Join: Equivalente a la union de tablas
+                   ->innerJoin('App\Entity\TipoUsuario','t', 'WITH', 'u.tipo_usuario = t.id')
+                   ->andWhere('t.nombre_tipo = :tipo_usuario')
+                   ->setParameter('tipo_usuario',$tipo_usuario);
+//        permite ver el resultao de la query (como el pre)
+//        dump($qb->getQuery()->getResult());
+        return $qb->getQuery()->getResult();
+
+*/
         return $this->createQueryBuilder('g')
-            ->andWhere('g.exampleField = :val')
-            ->setParameter('val', $value)
+            ->andWhere('g.id = :id')
+            ->setParameter('id', $id)
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getResult();
     }
-    */
 }

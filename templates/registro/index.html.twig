@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RegistroController!{% endblock %}
+
+{% block body %}
+
+    {% block stylesheet %}
+        <link rel="stylesheet" href="{{ asset('/css/registro.css') }}">
+        {% endblock %}
+    <div class="container">
+        <h2>Registro</h2>
+        {{ form(form_view) }}
+        <a href="{{ asset('/login') }}" class="button ok">Iniciar sersión</a>
+    </div>
+
+{% endblock %}

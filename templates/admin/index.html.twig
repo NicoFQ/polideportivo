@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}INICIO{% endblock %}
+
+
+{#{% block javascripts %} <script src="{{ asset('/js/textArea.js') }}"></script> {% endblock %}#}
+{% block body %}
+{% block stylesheets %} <link rel="stylesheet" href="{{ asset('/css/list.css') }}"> {% endblock %}
+    <header>
+        {% include '/admin/nav.html.twig' %}
+    </header>
+
+    <main>
+        <div class="card-container">
+            <div class="card">
+                <h3>Total de usuarios</h3>
+                <p><i class="fas fa-users"></i></p>
+                <p>{{ admins[0][1] }}<span> Administradores</span></p>
+                <p>{{ profesores[0][1] }}<span> Profesores</span></p>
+                <p>{{ usuarios[0][1] }}<span> Clientes</span></p>
+            </div>
+            <div class="card">
+                <a href="{{ asset('/noticia/') }}">Noticias <i class="fas fa-newspaper"></i></a>
+            </div>
+        </div>
+        <div class="container">
+
+{#            Esta es la manera de importar controladores en vistas de otros controladores#}
+            {{ render(controller('App\\Controller\\SearchController::searchBar')) }}
+            <table class="table table-striped">
+                <thead class="thead-dark text-uppercase">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Nombre Usuario</th>
+                    <th>Sexo</th>
+                    <th>Fecha Alta</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for c in clientes %}
+                    <tr>
+                        <td>{{ c.getNombre }}</td>
+                        <td>{{ c.getApellido1 }}</td>
+                        <td>{{ c.getEmail }}</td>
+                        <td>{{ c.getNombreUsuario }}</td>
+                        {% if c.getSexo == "0" %}
+                            <td>Masculino </td>
+                        {% else %}
+                            <td>Femenino</td>
+                        {% endif %}
+                        <td>{{ c.getFechaAlta|date('Y-m-d')}}</td>
+                    </tr>
+
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+{% endblock %}

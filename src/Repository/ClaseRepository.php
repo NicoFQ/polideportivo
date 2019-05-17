@@ -3,7 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Clase;
+use App\Entity\Usuario;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Bundle\DoctrineBundle\Repository\Entity;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -39,7 +41,6 @@ class ClaseRepository extends ServiceEntityRepository
         return $qb->getQuery()->getResult();
 
 */
-
         return $this->createQueryBuilder('c')
             ->select('nombre_clase')
             ->innerJoin('App\Entity\Asiste','a', 'WITH', 'c.id = a.id')
@@ -50,15 +51,22 @@ class ClaseRepository extends ServiceEntityRepository
     }
     
 
-    /*
-    public function findOneBySomeField($value): ?Clase
+    /** Funcion para extrar las clases que tiene asignadas cada profesor
+     * @param $id_usuario-> id del profesor sobre el que vamos hacer la 
+     *        consulta de sus clases
+     * 
+     */
+
+   public function getClaseImparte($id_usuario)
     {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
+
+         $qb = $this->createQueryBuilder('clase,App\Entity\Asiste asiste')   
+                     ->select('clase,asiste')
+                     ->where('asiste.clase = clase.id ')
+                     ->andWhere('asiste.usuario= :usuario')
+                     ->setParameter('usuario',$id_usuario);
+
+             return $qb->getQuery()->getResult();
+                   
+}
 }

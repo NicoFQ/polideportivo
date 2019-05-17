@@ -1,0 +1,83 @@
+:root{
+    --p-input: 10px;
+}
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+body{
+    content: " ";
+    background-image: url("https://images.pexels.com/photos/1637451/pexels-photo-1637451.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.container{
+    border:1px solid rgb(27, 165, 165);
+    box-shadow: 0px 0px 10px white;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    padding: 1em;
+    box-sizing: border-box;
+    margin:50px auto;
+    width: 60%;
+    background-image: linear-gradient(to top, rgb(224, 223, 223), white);
+}
+
+.container > h2{
+    text-align: center;
+    text-transform: uppercase;
+}
+#registro{
+    display: flex;
+    flex-direction: column;
+    padding: .5em;
+}
+#registro > div{
+    display: flex;
+    flex-direction: column;
+    margin: 7px 0;
+    text-transform: uppercase;
+}
+#registro > div > input{
+    padding: var(--p-input);
+    margin:9px 0;
+    font-size: 1em;
+}
+#registro > div > select{
+    padding: var(--p-input);
+    margin:9px 0;
+}
+
+button{
+    width: auto;
+    margin: 0;
+    padding: 0;
+}
+/*
+    Clase button general
+*/
+.button{
+    cursor:pointer;
+    text-decoration: none;
+    font-size: 14px;
+    text-align: center;
+    display: block;
+    text-transform: uppercase;
+    padding: 10px;
+    margin:3px 0;
+    font-family: 'Poppins', sans-serif;
+    color:white;
+    transition: 200ms ease-in-out;
+    border:none;
+    border-radius: 3px;
+}
+
+.ok{
+    background-image: linear-gradient(to top, rgb(123, 226, 154), rgb(4, 87, 17));
+}
+.ok:hover{
+    background-color: rgb(71, 168, 71);
+}
+.cancel{
+    background-image: linear-gradient(to top, rgb(233, 104, 104), rgb(148, 0, 0));
+}
+.cancel:hover{
+    background-color: rgb(221, 109, 109);
+}
