@@ -28,4 +28,5 @@ security:
                     - App\Security\LoginFormAuthenticator
     access_control:
          - { path: ^/admin, roles: ROLE_ADMIN}
-         - { path: ^/usuario, roles: ROLE_CLIENTE }
+         - { path: ^/noticia, roles: ROLE_CLIENTE }
+         - { path: ^/profesor, roles: ROLE_PROFESOR }

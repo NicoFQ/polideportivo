@@ -1,0 +1,53 @@
+@import url('./general.css');
+:root{
+    --verde-osc: #085f63;
+    --verde-cla: #49beb7;
+}
+.contenedor-tarjeta{
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 20px;
+    font-family: 'Poppins',sans-serif;
+    color:#fff;
+}
+.tarjeta{
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    align-content: center;
+    background-color: var(--verde-cla);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 20px;
+    width:15%;
+    cursor:pointer;
+    text-align: center;
+    transition: 300ms ease-in-out;
+}
+.tarjeta:hover{
+    transform: scale(1.2);
+}
+.tarjeta h3{
+    text-align: center;
+    margin:0;
+    padding: 10px;
+}
+.tarjeta p{
+    margin:0;
+    padding: 10px;
+}
+.tarjeta a{
+    text-decoration: none;
+    color:#fff;
+}
+.tarjeta a>i{
+    display: flex;
+    flex-direction: column;
+}
+.tarjeta i, .tarjeta > p > i{
+    margin:0 auto;
+    text-align: center;
+    font-size: 3.5em;
+    display: block;
+}

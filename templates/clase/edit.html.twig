@@ -1,13 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Clase{% endblock %}
+{% block title %}EDITAR CLASE{% endblock %}
 
 {% block body %}
-    <h1>Edit Clase</h1>
+{% block stylesheets %} <link rel="stylesheet" href="{{ asset('/css/editClase.css') }}"> {% endblock %}
+    <div class="container">
+        
+        {{ include('clase/_form.html.twig', {'button_label': 'Update'}) }}
 
-    {{ include('clase/_form.html.twig', {'button_label': 'Update'}) }}
+        <a href="{{ path('clase_index') }}" class="link link-button">Volver a la lista</a>
 
-    <a href="{{ path('clase_index') }}">back to list</a>
+        {{ include('clase/_delete_form.html.twig') }}
+    </div>
 
-    {{ include('clase/_delete_form.html.twig') }}
+    
 {% endblock %}

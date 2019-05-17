@@ -1,0 +1,35 @@
+:root{
+    --separacion: 5px;
+    --marron : #240041;
+    --azul-claro: #5ca0d3;
+}
+form{
+    border:2px solid red;
+    font-family: 'Popins',sans-serif;
+    width: 70%;
+    margin:20px auto;
+}
+form:first-of-type:before{
+    content: "EDITA LA CLASE";
+    font-family: 'Popins',sans-serif;
+    font-size: 1.4em;
+    font-weight: bold;
+    margin:0 auto;
+    /* margin:0 auto; */
+}
+form > div#clase > div{
+    display: flex;
+    flex-direction: column;
+}
+form div > label{
+    margin:var(--separacion);
+}
+form  div > input, form select{
+    margin:var(--separacion);
+    padding: 10px;
+    border-radius: 2px;
+    border:1px solid var(--marron);
+}
+form input:focus{
+    border:2px solid var(--azul-claro);
+}

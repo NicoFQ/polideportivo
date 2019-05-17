@@ -5,30 +5,39 @@
 
 {#{% block javascripts %} <script src="{{ asset('/js/textArea.js') }}"></script> {% endblock %}#}
 {% block body %}
-{% block stylesheets %} <link rel="stylesheet" href="{{ asset('/css/list.css') }}"> {% endblock %}
+{% block stylesheets %}
+     <link rel="stylesheet" href="{{ asset('/css/list.css') }}"> 
+     <link rel="stylesheet" href="{{ asset('/css/tarjetas.css') }}"> 
+     <link rel="stylesheet" href="{{ asset('/css/buscador.css') }}"> 
+{% endblock %}
     <header>
         {% include '/admin/nav.html.twig' %}
     </header>
 
     <main>
-        <div class="card-container">
-            <div class="card">
+        <div class="contenedor-tarjeta">
+            <div class="tarjeta">
                 <h3>Total de usuarios</h3>
                 <p><i class="fas fa-users"></i></p>
                 <p>{{ admins[0][1] }}<span> Administradores</span></p>
                 <p>{{ profesores[0][1] }}<span> Profesores</span></p>
                 <p>{{ usuarios[0][1] }}<span> Clientes</span></p>
             </div>
-            <div class="card">
-                <a href="{{ asset('/noticia/') }}">Noticias <i class="fas fa-newspaper"></i></a>
+            <div class="tarjeta">
+                <a href="{{ asset('/noticia/') }}">
+                    <h3>Noticias</h3> 
+                    <i class="fas fa-newspaper"></i>
+                    <p>Apartado que permite agregar noticias nuevas para los clientes.</p>
+                </a>
             </div>
         </div>
         <div class="container">
 
 {#            Esta es la manera de importar controladores en vistas de otros controladores#}
+
             {{ render(controller('App\\Controller\\SearchController::searchBar')) }}
-            <table class="table table-striped">
-                <thead class="thead-dark text-uppercase">
+            <table>
+                <thead>
                 <tr>
                     <th>Nombre</th>
                     <th>Apellido</th>

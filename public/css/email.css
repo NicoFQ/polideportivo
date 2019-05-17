@@ -1,0 +1,59 @@
+@import url('./general.css');
+:root{
+    --separacion: 5px;
+    --azul-claro: #5ca0d3;
+    --marron : #240041;
+    --verde: #49beb7;
+    --verde-2: #15cda8;
+    --verde-3: #096386;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    font-family: 'Poppins',sans-serif;
+    box-sizing: border-box;
+}
+.container h2{
+    text-align: center;
+}
+#form{
+    width: 80%;
+    margin:0 auto;
+}
+#form >div{
+    display: flex;
+    flex-direction: column;
+}
+#form > div > label{
+    margin:var(--separacion);
+}
+#form > div > input, #form textarea{
+    margin:var(--separacion);
+    padding: 10px;
+    border-radius: 2px;
+    border:1px solid var(--marron);
+}
+#form input:focus, #form textarea:focus{
+    border:2px solid var(--azul-claro);
+}
+
+#form button{
+    width: 25%;
+    font-family: 'Poppins',sans-serif;
+    padding: var(--separacion);
+    text-transform: uppercase;
+    margin:10px auto;
+    background-color: var(--verde-2);
+    color:white;
+    transition: 200ms ease-in-out;
+    font-size: 1.3em;
+    border-radius: 4px;
+    border:none;
+    box-shadow: 0px 0px 5px var(--verde-3) inset;
+}
+#form button:hover{
+    background-color: var(--verde);
+    cursor: pointer;
+}
