@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3bdd9848e986dbbef299b8125b6299d2",
+    "content-hash": "3c19adc2e5d725354da8038e7b86cec1",
     "packages": [
         {
             "name": "doctrine/annotations",
-            "version": "v1.6.0",
+            "version": "v1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/annotations.git",
-                "reference": "c7f2050c68a9ab0bdb0f98567ec08d80ea7d24d5"
+                "reference": "53120e0eb10355388d6ccbe462f1fea34ddadb24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/c7f2050c68a9ab0bdb0f98567ec08d80ea7d24d5",
-                "reference": "c7f2050c68a9ab0bdb0f98567ec08d80ea7d24d5",
+                "url": "https://api.github.com/repos/doctrine/annotations/zipball/53120e0eb10355388d6ccbe462f1fea34ddadb24",
+                "reference": "53120e0eb10355388d6ccbe462f1fea34ddadb24",
                 "shasum": ""
             },
             "require": {
@@ -72,7 +72,7 @@
                 "docblock",
                 "parser"
             ],
-            "time": "2017-12-06T07:11:42+00:00"
+            "time": "2019-03-25T19:12:02+00:00"
         },
         {
             "name": "doctrine/cache",
@@ -4935,16 +4935,16 @@
         },
         {
             "name": "symfony/validator",
-            "version": "v4.2.5",
+            "version": "v4.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/validator.git",
-                "reference": "db5457ed88aacc1a040d4961ee52cddad3e5a4aa"
+                "reference": "0d83ae4c4c5418522f05a25e4597719043b45f40"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/validator/zipball/db5457ed88aacc1a040d4961ee52cddad3e5a4aa",
-                "reference": "db5457ed88aacc1a040d4961ee52cddad3e5a4aa",
+                "url": "https://api.github.com/repos/symfony/validator/zipball/0d83ae4c4c5418522f05a25e4597719043b45f40",
+                "reference": "0d83ae4c4c5418522f05a25e4597719043b45f40",
                 "shasum": ""
             },
             "require": {
@@ -5020,7 +5020,7 @@
             ],
             "description": "Symfony Validator Component",
             "homepage": "https://symfony.com",
-            "time": "2019-03-30T15:58:42+00:00"
+            "time": "2019-05-01T05:55:04+00:00"
         },
         {
             "name": "symfony/var-exporter",
