@@ -19,9 +19,11 @@
         <script src="https://cdn.ckeditor.com/4.11.3/standard/ckeditor.js"></script>
         {#    Este script buscara el ID del text-area para aplicarle sus estilos#}
         <script>
+
             CKEDITOR.replace( 'form_Contenido' );
         </script>
     </div>
+    
     {% block javascripts %} <script src="{{ asset('/js/textArea.js') }}"></script> {% endblock %}
 
 {% endblock %}
