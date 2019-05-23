@@ -56,7 +56,7 @@
 <body>
 
 <div id="app">
-    <form action="#">
+    <form action="#" enctype="multipart/form-data">
     <div v-for="u in user">
         <div>
             <div>
@@ -85,14 +85,45 @@
             </div>
 
         </div>
+
+        <div>
+            <div>
+                <figure>
+                    <img :src="u.imagen_perfil" :alt="u.nombre" id="img">
+                    <figcaption>Imagen de perfil</figcaption>
+                </figure>
+                <figure v-if="form.img">
+                    <img :src="form.img" alt="">
+                </figure>
+            </div>
+            <div>
+                <button class="fas fa-edit" @click="edit"></button>
+                <button class="fas fa-window-close none" @click="unsetOptions"></button>
+                <button class="fas fa-check-circle none" @click="saveData"></button>
+                <input type="file" name="imagen" id="imagen" class="none" onchange="document.getElementById('img').src = window.URL.createObjectURL(this.files[0])"/>
+            </div>
+
+        </div>
     </div>
     </form>
+
 </div>
 
 <script>
+    // Si se usa un dominio se podra usar window.location || window.location.hostname
+    const HOST = "http://"+ window.location.host; //window.location.host => dominio + puerto
+    const URL = HOST+"/usuario/test";
+    const URLPOST = HOST+"/usuario/data"
 
-    const URL = "http://localhost:8000/usuario/test";
-    const URLPOST = "http://localhost:8000/usuario/data"
+    // TO DO:
+    //     -Hacer funcion que compruebe si los esta enviando datos desde el form
+    //         Si envia datos
+    //             Actaulico la query
+    //         Si no
+    //             envio los datos que obtuve en la primera llamada y actualizo la query?
+    //     Es necesario actualizar todos los datos cada vez que entre al perfil del ususario?
+    //     Buscar un "Hna cambaido los datos desde mysql"
+
 
     new Vue({
         el: '#app',
@@ -103,12 +134,8 @@
             user : [],
             form: {
                 nombre: "",
-                email: ""
-            },
-            clases:{
-                edit: "fa-edit",
-                ok: "fa-check-circle",
-                cancel: "fa-window-close"
+                email: "",
+                img:""
             },
             editElements:[],
         },
@@ -146,8 +173,11 @@
                 const datos = new FormData()
                 // to do: hacer una comprobacion de los elementos enviados desde el form que no esten vacios...
                 datos.append("id",this.user[0].id)
-                datos.append("nombre",form.nombre.value)
-                datos.append("email",form.email.value)
+                datos.append("nombre",this.getInputData('nombre'))
+                datos.append("email",this.getInputData('email'))
+                console.log(document.getElementById("imagen").files[0])
+                datos.append("imagen",document.getElementById('imagen').files[0])
+                // datos.append("imagen","imagen.jpeg")
 
                 this.enviarDatos(datos)
 
@@ -169,7 +199,15 @@
                 fetch(URL)
                     .then(noData => noData.json())
                     .then(data => this.user = data["user"])
-            }
+            },
+            /**
+             * Funcion que recupera el valor del elemento input
+             * @param name => ID del input, solo admite ID
+             * @returns: Contenido del input
+             */
+            getInputData(name){
+                return document.getElementById(name).value
+            },
         },
     })
 </script>

@@ -132,21 +132,23 @@ class UsuarioRepository extends ServiceEntityRepository
     public function getDataUser($id)
     {
         return $this->createQueryBuilder('u')
-            ->select('u.id, u.nombre, u.email, u.nombre_usuario, u.nombre_usuario, u.imagen_perfil, u.apellido_1')
+            ->select('u.id, u.nombre, u.email, u.nombre_usuario, u.nombre_usuario, u.imagen_perfil, u.apellido_1, u.imagen_perfil   ')
             ->where('u.id = :id')
             ->setParameter('id',$id)
             ->getQuery()
             ->getResult();
     }
-    public function updateUser($id,$nombre)
+    public function updateUser($id,$nombre,$nombreIMG)
     {
         $conn = $this->getEntityManager()->getConnection();
-
+//        $nuevaRuta = "/src/DataFixtures/imgs/".$id."/".$nombreIMG;
+        $nuevaRuta = "/imgs/".$id."/".$nombreIMG;
         $query = 'UPDATE usuario
-                   SET nombre = :nombre
+                   SET nombre = :nombre,
+                   imagen_perfil = :nuevaRuta
                    WHERE id = :id';
         $stmnt = $conn->prepare($query);
-        return $stmnt->execute(['id' => $id,'nombre' => $nombre]);
+        return $stmnt->execute(['id' => $id,'nombre' => $nombre,'nuevaRuta' => $nuevaRuta]);
 //        return $stmnt->fetchAll();
     }
 
