@@ -47,10 +47,20 @@
         .none{
             display: none;
         }
-        .visible{
-            display: inherit;
-        }
+        figure{
+            padding: 10px;
+            width: 225px;
+            height: 225px;
+            text-align: center;
 
+        }
+        figure > figcaption{
+            margin-top: 5px;
+        }
+        figure > img{
+            width: 100%;
+            /*filter: drop-shadow(0px 0px 4px #00faac);*/
+        }
     </style>
 </head>
 <body>
@@ -87,13 +97,12 @@
         </div>
 
         <div>
+
             <div>
+                <h3>Imagen de perfil</h3>
                 <figure>
                     <img :src="u.imagen_perfil" :alt="u.nombre" id="img">
-                    <figcaption>Imagen de perfil</figcaption>
-                </figure>
-                <figure v-if="form.img">
-                    <img :src="form.img" alt="">
+                    <figcaption>Imagen de perfil: {{u.nombre}}</figcaption>
                 </figure>
             </div>
             <div>
@@ -171,13 +180,10 @@
             saveData (e){
                 const form = document.forms[0];
                 const datos = new FormData()
-                // to do: hacer una comprobacion de los elementos enviados desde el form que no esten vacios...
                 datos.append("id",this.user[0].id)
-                datos.append("nombre",this.getInputData('nombre'))
-                datos.append("email",this.getInputData('email'))
-                console.log(document.getElementById("imagen").files[0])
+                datos.append("nombre",(this.getInputData("nombre") || this.user[0].nombre))
+                datos.append("email",(this.getInputData('email') || this.user[0].email))
                 datos.append("imagen",document.getElementById('imagen').files[0])
-                // datos.append("imagen","imagen.jpeg")
 
                 this.enviarDatos(datos)
 

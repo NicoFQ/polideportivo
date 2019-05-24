@@ -19,7 +19,7 @@ class UsuarioTestController extends AbstractController
     public function index(UsuarioRepository $em)
     {
 //        Obtener el ID de la sesion de nico
-        $data = $em->getDataUser(2);
+        $data = $em->getDataUser(5);
         return new JsonResponse(["user" => $data]);
     }
     /**
@@ -28,20 +28,20 @@ class UsuarioTestController extends AbstractController
     public function data(UsuarioRepository $em)
     {
         $data = "";
-        $this->crearDirectorio("imgs/".$_POST["id"],$_FILES);
-        if (count($_POST) > 0){
-//            Modificar la query para que solo admita los valores que se entregan
-//            en getDataUser
-            if ($em->updateUser($_POST["id"],$_POST["nombre"],$this->getNombreFoto($_FILES))){
-                $data = "done";
-            }else{
-                $data = "error";
+            if (count($_FILES) > 0){
+//                Si no devuelve el nombre de foto, devuelve un string vacio, la ruta de la img por defecto
+//                se establece en la consulta
+                $nombreFoto = ($this->getNombreFoto($_FILES)) ? $this->getNombreFoto($_FILES) : "";
+                $em->updateIMG($_POST["id"],$nombreFoto);
+                $this->crearDirectorio("imgs/".$_POST["id"],$_FILES);
             }
-        }else{
-            $data = "no";
-        }
+
+            if (count($_POST) > 2){
+//            Modificar la query para que solo admita los valores que se entregan en getDataUser
+                $em->updateUser($_POST["id"],$_POST["nombre"]);
+            }
         return new JsonResponse(['res' => $data]);
-    }
+    }//data
 
     /** Funcion que creara la carpeta de Destino General y la carpeta
      * con el ID del usuario obtenido desde el formulario HTML
