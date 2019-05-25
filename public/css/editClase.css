@@ -8,7 +8,7 @@
 form{
 
     font-family: 'Popins',sans-serif;
-    width: 70%;
+    width: 40%;
     margin:20px auto;
     padding: 10px;
 }
@@ -58,21 +58,8 @@ form > div:last-child{
 }
 
 .container > a:last-of-type{
-    background-color: var(--azul-oscuro);
-    margin: 0 auto;
-    transition: 200ms;
-}
-.container > a:last-of-type:hover{
-    background-color: var(--azul-oscuro-2);
-}
-
-.container > a:last-of-type{
-    background-color: var(--azul-oscuro);
     margin: 0 auto;
     position:relative;
     top:-30px;
     transition: 200ms;
-}
-.container > a:last-of-type:hover{
-    background-color: var(--azul-oscuro-2);
 }

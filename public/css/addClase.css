@@ -1,0 +1,7 @@
+form[name="clase"]:before{
+    Content: "Agregar una nueva clase.";
+    font-family: 'Popins',sans-serif;
+    font-size: 1.4em;
+    font-weight: bold;
+    margin: 10px;
+}
