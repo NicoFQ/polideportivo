@@ -43,7 +43,7 @@ nav>ul>li:nth-of-type(n+6)>a{
 nav>ul li:nth-child(1) {
     margin-right: auto;
 }
-nav>ul li:nth-child(6) {
+nav>ul li:last-of-type {
     margin-left: auto;
 }
 nav>ul>li:first-of-type{
