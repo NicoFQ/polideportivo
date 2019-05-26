@@ -1,49 +1,50 @@
 {% extends 'usuario/nav_usuario.html.twig' %}
 {% block stylesheets %}
-	<style>
-	    nav > ul {
-	    	display: flex;
-	    	list-style-type: none;
-	    }
-	    nav > ul > li{
-	    	margin-right: 1em;
-	    }
-	    .data{
-	    	position: absolute;
-	    	right: 0px;
-	    	top: 0px;
-	    }
-	</style>
+	<link rel="stylesheet" type="text/css" href="{{ asset('/css/calendarVue.css') }}">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="{{ asset('/js/calendarVue.js') }}"></script>
+
 {% endblock %}
 
-{% block title %}Hello UsuarioController!{% endblock %}
+{% block title %}Polideportivo{% endblock %}
 {% block main %}
-	   	<div>
-	   	
-	   		<h2> FULL USER </h2> 
-	   		<p> {{ fullUser.getNombre }} {{ fullUser.getApellido1}} {{ fullUser.getApellido2 }} ({{ fullUser.getNombreUsuario }})</p>
-	   		<p> Clases en las que estoy </p> 
-	   		<pre>Implementar un icono que identifique a la clase para ponerlo en el calendario</pre>
-	   		<p>
-		   		{% for asiste in asistencias %}
-	        		{{ asiste.getClase.getNombreClase }} <br>       
-	            {% endfor %}
-            </p>
-            <p> Mis deportes favoritos </p>
-	   		<p> {{ fullUser.getNombre }} </p>
-	   		<p> {{ fullUser.getNombre }} </p>
-	   		<p> {{ fullUser.getNombre }} </p>
-	   	</div>
+	{% include 'usuario/v-calendar.html' %}
+{% endblock %}
 
-	   	<div class="data"> {{ dump(asistencias) }} </div>
-	   	<p> {{ asistencias[0].getClase.getNombreClase }} </p>
-		<p> {{ asistencias[0].getFechaAsisteClase|date("d/m/Y") }} </p>
-		<div id="app"></div>
-		{% include '/usuario/prueba.html' %}
-		
-		{% block javascripts %}
-		<script>
-			{% include '/usuario/vue-calendar.js' %}
-		</script>
-		{% endblock %}
+{% block javascripts %}
+	<script>
+		// Recibe un array de objetos, con el titulo del evento, codDeporte, fecha, hora de inicio, hora de fin, instalacion, pista,
+		/*
+			[
+				{
+					titulo: 		String: "Clase de Baloncesto",
+					codDeporte:		String: "C-01",
+					fecha: 			String: "26/05/2019",
+					inicio: 		String: "12:00",
+					fin: : 			String: "15:00",
+					instalacion: 	String: null
+					pista: 			String: null
+				},
+				{
+					titulo: 		String: "Reserva Pista",
+					codDeporte:		String: "C-01",
+					fecha: 			String: "30/05/2019",
+					inicio: 		String: "13:00",
+					fin: 			String: "15:00",
+					instalacion: 	String: "2",
+					pista: 			String: "P-5",
+				},
+				{
+					titulo: 		String: "Clase de Futbol",
+					codDeporte:		String: "C-01",
+					fecha: 			String: "28/05/2019",
+					inicio: 		String: "16:00",
+					fin: 			String: "17:00",
+					instalacion: 	String: null
+					pista: 			String: null
+				},
+			]	
+		*/
+		calendario.init();
+	</script>
 {% endblock %}
