@@ -8,7 +8,7 @@
         {% include '/admin/nav.html.twig' %}
     </header>
     <div class="container">
-        <caption class="text-uppercase">Datos del usuario.</caption>
+        <caption><h2>Datos del usuario.</h2></caption>
         {% if cliente is not null %}
 
             <table class="table table-striped m-2 text-center">
@@ -17,7 +17,7 @@
                     <td>nombre</td>
                     <td>apellido</td>
                     <td>email</td>
-                    <td>activo</td>
+                    <td>estado</td>
                     <td>nombre usuario</td>
                 </tr>
                 </thead>
@@ -26,7 +26,9 @@
                     <td>{{ cliente.getNombre }}</td>
                     <td>{{ cliente.getApellido1 }}</td>
                     <td>{{ cliente.getEmail }}</td>
-                    <td>{{ cliente.getUsuarioActivo }}</td>
+                    {% if   cliente.getUsuarioActivo  == 1 %}
+                        <td>Usuario Activo</td>
+                    {% endif %}
                     <td>{{ cliente.getNombreUsuario }}</td>
                 </tr>
                 </tbody>
@@ -35,7 +37,7 @@
         {% else %}
             <h2>No se ha encontrado ningun usuario con ese DNI</h2>
         {% endif %}
-        <a href="{{ asset('/admin')}}">Volver al principio</a>
+        <a href="{{ asset('/admin')}}" class="link link-button">Volver al principio</a>
 
 
     </div>

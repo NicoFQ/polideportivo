@@ -2,18 +2,18 @@
 
 {% block title %}CLASES PROFESOR {% endblock %}
 
+{#{% block javascripts %} <script src="{{ asset('/js/textArea.js') }}"></script> {% endblock %}#}
 {% block body %}
-{{dump(clases)}}
-{{dump(apuntados)}}
-{{dump(fechas)}}
-
- <header>
-        
- </header>
-
-        <li><a href="{{ asset('/admin/') }}"><img src="{{ asset('/img/logo_polideportivo.png') }}" alt="logo-polideportivo"></a></li>
-        <li><a href="{{ asset('/admin/') }}">Inicio</a></li>
- 
+{% block stylesheets %}
+     <link rel="stylesheet" href="{{ asset('/css/list.css') }}"> 
+     <link rel="stylesheet" href="{{ asset('/css/tarjetas.css') }}"> 
+     <link rel="stylesheet" href="{{ asset('/css/buscador.css') }}"> 
+    
+{% endblock %}
+    <header>
+        {% include '/profesor/nav.html.twig' %}
+    </header>
+  <main>
  <div class="container">
         <table class="table table-striped text-center">
             <thead class="thead-dark text-uppercase">
@@ -44,4 +44,14 @@
             </tbody>
         </table>
     </div>
+      <div id="your-component">
+    <!-- Using Component -->
+    <sweet-calendar
+      :eventCategories="eventCategories"
+      :events="events"
+      ref="calendar"
+    />
+  </div>
+ </main>
+  {#{% block javascripts %} <script src="{{ asset('profesor/calendario.vue') }}"></script> {% endblock %}#}
 {% endblock %}

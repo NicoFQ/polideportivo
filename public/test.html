@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>T E S T</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <!--    tailwindcss-->
+    <!--    <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">-->
+    <!--    font awesome-->
+
+    <style>
+        #app>form>div{
+            font-family: sans-serif;
+        }
+        #app>form>div>div{
+            display:flex;
+            justify-content: space-between;
+            margin:10px;
+            box-shadow:0px 0px 5px #3a3a59;
+            padding: 10px;
+            border-radius:3px;
+        }
+        #app>form>div>div>div{
+            display: flex;
+            flex-direction: column;
+            /*flex-direction: row-reverse;*/
+        }
+        #app span{
+            font-weight: bold;
+        }
+        button{
+            font-size: 1.6em;
+            padding: 0;
+            width: 2.5em;
+            margin: 10px;
+            align-self: center;
+        }
+        .edit{
+            display: flex;
+            flex-direction: row-reverse !important;
+            /*border:2px solid red;*/
+        }
+        .edit button{
+            margin:3px;
+        }
+        .none{
+            display: none;
+        }
+        figure{
+            padding: 10px;
+            width: 225px;
+            height: 225px;
+            text-align: center;
+        }
+        figure > figcaption{
+            margin-top: 5px;
+        }
+        figure > img{
+            width: 100%;
+            /*filter: drop-shadow(0px 0px 4px #00faac);*/
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <form action="#" enctype="multipart/form-data">
+        <div v-for="u in user">
+            <div>
+                <div>
+                    <p><span>Nombre: </span>{{u.nombre}}</p>
+                    <p v-if="form.name"><span>Nuevo nombre: </span>{{form.name}}</p>
+                </div>
+                <div>
+                    <button class="fas fa-edit" @click="edit"></button>
+                    <button class="fas fa-window-close none" @click="unsetOptions"></button>
+                    <button class="fas fa-check-circle none" @click="saveData" ></button>
+                    <input type="text" name="nombre" id="nombre" v-model="form.name" class="none" v-on:keyup.enter="saveData">
+                </div>
+
+            </div>
+
+            <div>
+                <div>
+                    <p><span>Email: </span>{{u.email}}</p>
+                    <p v-if="form.email"><span>Nuevo email: </span>{{form.email}}</p>
+                </div>
+                <div>
+                    <button class="fas fa-edit" @click="edit"></button>
+                    <button class="fas fa-window-close none" @click="unsetOptions"></button>
+                    <button class="fas fa-check-circle none" @click="saveData"></button>
+                    <input type="text" name="email" id="email" v-model="form.email" class="none">
+                </div>
+
+            </div>
+
+            <div>
+
+                <div>
+                    <h3>Imagen de perfil</h3>
+                    <figure>
+                        <img :src="u.imagen_perfil" :alt="u.nombre" id="img">
+                        <figcaption>Imagen de perfil: {{u.nombre}}</figcaption>
+                    </figure>
+                </div>
+                <div>
+                    <button class="fas fa-edit" @click="edit"></button>
+                    <button class="fas fa-window-close none" @click="unsetOptions"></button>
+                    <button class="fas fa-check-circle none" @click="saveData"></button>
+                    <input type="file" name="imagen" id="imagen" class="none" onchange="document.getElementById('img').src = window.URL.createObjectURL(this.files[0])"/>
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<script>
+    // Si se usa un dominio se podra usar window.location || window.location.hostname
+    const HOST = "http://"+ window.location.host; //window.location.host => dominio + puerto
+    const URL = HOST+"/ajax/";
+    const URLPOST = HOST+"/ajax/data"
+
+    console.log(HOST)
+    console.log(URL)
+    console.log(URLPOST)
+    // TO DO:
+    //     -Hacer funcion que compruebe si los esta enviando datos desde el form
+    //         Si envia datos
+    //             Actaulico la query
+    //         Si no
+    //             envio los datos que obtuve en la primera llamada y actualizo la query?
+    //     Es necesario actualizar todos los datos cada vez que entre al perfil del ususario?
+    //     Buscar un "Hna cambaido los datos desde mysql"
+    new Vue({
+        el: '#app',
+        created: function (){
+            this.fetchAll();
+        },
+        data: {
+            user : [],
+            form: {
+                nombre: "",
+                email: "",
+                img:""
+            },
+            editElements:[],
+        },
+        methods:{
+            edit(e){
+                const form = document.forms[0].addEventListener('submit', e => e.preventDefault())
+                // Hago al contenedor flexible
+                e.target.parentNode.classList.add("edit")
+                this.setOptions(e);
+            },
+            setOptions(e){
+                const currentButton = e.target;
+                const divContainer = document.querySelector('.edit');
+                const input = divContainer.querySelector('input')
+                const cancelButton = divContainer.getElementsByTagName('button')[1]
+                const okButton= divContainer.getElementsByTagName('button')[2]
+                this.editElements.push(input, cancelButton, okButton)
+                currentButton.classList.add('none')
+                this.editElements.forEach(v => v.classList.remove('none'))
+            },
+            unsetOptions (e){
+                this.editElements.forEach(v => v.classList.add('none'))
+                const divContainer = document.querySelector('.edit');
+                const editButton = divContainer.getElementsByTagName('button')[0]
+                editButton.classList.remove('none')
+                e.currentTarget.parentElement.classList.remove("edit")
+                this.editElements = [];
+            },
+            saveData (e){
+                const form = document.forms[0];
+                const datos = new FormData()
+                datos.append("id",this.user[0].id)
+                datos.append("nombre",(this.getInputData("nombre") || this.user[0].nombre))
+                datos.append("email",(this.getInputData('email') || this.user[0].email))
+                datos.append("imagen",document.getElementById('imagen').files[0])
+                this.enviarDatos(datos)
+                this.unsetOptions(e)
+                this.form = {}
+            },
+            enviarDatos(data){
+                var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+                xhr.open('POST', URLPOST);
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState>3 && xhr.status==200) console.log(JSON.stringify(xhr.responseText));
+                };
+                // xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+                xhr.send(data);
+                this.fetchAll();
+            },
+            fetchAll(){
+                fetch(URL)
+                    .then(noData => noData.json())
+                    .then(data => this.user = data["user"])
+            },
+            /**
+             * Funcion que recupera el valor del elemento input
+             * @param name => ID del input, solo admite ID
+             * @returns: Contenido del input
+             */
+            getInputData(name){
+                return document.getElementById(name).value
+            },
+        },
+    })
+</script>
+</body>
+</html>

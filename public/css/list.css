@@ -1,6 +1,6 @@
 @import url("./general.css");
 :root{
-    --gris: ;
+    /*--gris: ;*/
     --rojo: #eb3b5a;
     --rojo-2: #ff0b55;
     --rojo-3: #d61d4e;
@@ -68,8 +68,8 @@ tbody>tr>td:first-of-type{
 }
 
 .link-edit{
-    background-color: var(--rojo-3);
+    background-color: var(--azul-oscuro);
 }
 .link-edit:hover{
-    background-color: var(--rojo);
+    background-color: var(--azul-oscuro-2);
 }

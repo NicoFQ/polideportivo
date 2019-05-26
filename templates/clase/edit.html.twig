@@ -3,15 +3,31 @@
 {% block title %}EDITAR CLASE{% endblock %}
 
 {% block body %}
-{% block stylesheets %} <link rel="stylesheet" href="{{ asset('/css/editClase.css') }}"> {% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('/css/editClase.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/general.css') }}">
+{% endblock %}
     <div class="container">
         
-        {{ include('clase/_form.html.twig', {'button_label': 'Update'}) }}
-
-        <a href="{{ path('clase_index') }}" class="link link-button">Volver a la lista</a>
+        {{ include('clase/_form.html.twig', {'button_label': 'Actualizar'}) }}
 
         {{ include('clase/_delete_form.html.twig') }}
+        <a href="{{ path('clase_index') }}" class="link link-button">Volver a la lista</a>
     </div>
 
-    
+    <script>
+        const actualizarButton = document.querySelector('form button:last-child')
+        // actualizarButton.classList.add('link')
+        // actualizarButton.classList.add('link-button')
+
+        console.log(actualizarButton.classList)
+        // Div contenedor necesario para poder agrupar los botones, ya que
+        // el segundo boton es un formulario
+        const div = document.createElement('div')
+        const deleteForm = document.getElementsByTagName('form')[1]
+        console.log(deleteForm)
+        div.appendChild(actualizarButton)
+        div.appendChild(deleteForm)
+        document.getElementsByTagName('form')[0].appendChild(div)
+    </script>
 {% endblock %}

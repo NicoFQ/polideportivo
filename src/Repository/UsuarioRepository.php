@@ -103,4 +103,69 @@ class UsuarioRepository extends ServiceEntityRepository
             ->getQuery()
             ->getOneOrNullResult();
     }
+
+    public function comprobarNumDocumento($num_documento)
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.num_documento = :n_documento')
+            ->setParameter('n_documento', $num_documento)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+    public function comprobarEmail($email)
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.email = :email')
+            ->setParameter('email', $email)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+    public function getEmails()
+    {
+        return $this->createQueryBuilder('u')
+            ->select("u.email")
+            ->where('u.tipo_usuario IN (2,3)')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function getDataUser($id)
+    {
+        return $this->createQueryBuilder('u')
+            ->select('u.id, u.nombre, u.email, u.nombre_usuario, u.nombre_usuario, u.imagen_perfil, u.apellido_1, u.imagen_perfil   ')
+            ->where('u.id = :id')
+            ->setParameter('id',$id)
+            ->getQuery()
+            ->getResult();
+    }
+//    Para una futura version, pasar un array con todos los valores
+//    y prepararlos dentro de la query
+    public function updateUser($id,$arr)
+    {
+        $conn = $this->getEntityManager()->getConnection();
+        $query = 'UPDATE usuario
+                   SET nombre = :nombre,
+                   email = :email
+                   WHERE id = :id';
+        $stmnt = $conn->prepare($query);
+        return $stmnt->execute(['id' => $id,'nombre' => $arr["nombre"],'email' => $arr["email"]]);
+//        return $stmnt->fetchAll();
+    }
+    public function updateIMG($id, $nombreIMG)
+    {
+        $conn = $this->getEntityManager()->getConnection();
+//        $nuevaRuta = "/src/DataFixtures/imgs/".$id."/".$nombreIMG;
+        $nuevaRuta = "";
+        if (empty($nombreIMG)){
+            $nuevaRuta = "img/profile.png";
+        }
+        $nuevaRuta = "/imgs/".$id."/".$nombreIMG;
+        $query = 'UPDATE usuario
+                   SET imagen_perfil = :nuevaRuta
+                   WHERE id = :id';
+        $stmnt = $conn->prepare($query);
+        return $stmnt->execute(['id' => $id, 'nuevaRuta' => $nuevaRuta]);
+    }
+
+
 }
