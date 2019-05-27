@@ -57,7 +57,7 @@ new Vue({
                 console.log("lmao")
             const datos = new FormData()
             datos.append("id",this.user[0].id)
-            datos.append("nombre",(this.getInputData("nombre_usuario") || this.user[0].nombre_usuario))
+            datos.append("nombre_usuario",(this.getInputData("nombre_usuario") || this.user[0].nombre_usuario))
             datos.append("email",(this.getInputData('email') || this.user[0].email))
             datos.append("direccion",(this.getInputData('direccion') || this.user[0].direccion))
             datos.append("n_portal",(this.getInputData('n_portal') || this.user[0].n_portal))

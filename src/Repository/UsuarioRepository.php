@@ -152,11 +152,22 @@ class UsuarioRepository extends ServiceEntityRepository
     {
         $conn = $this->getEntityManager()->getConnection();
         $query = 'UPDATE usuario
-                   SET nombre = :nombre,
-                   email = :email
+                   SET nombre_usuario = :nombre_usuario,
+                        email = :email,
+                        direccion = :direccion,
+                        n_portal = :n_portal,
+                        piso = :piso,
+                        num_telf = :num_telf
                    WHERE id = :id';
         $stmnt = $conn->prepare($query);
-        return $stmnt->execute(['id' => $id,'nombre' => $arr["nombre"],'email' => $arr["email"]]);
+        return $stmnt->execute(['id' => $id,
+                                'nombre_usuario' => $arr["nombre_usuario"],
+                                'email' => $arr["email"],
+                                'direccion' => $arr["direccion"],
+                                'n_portal' => $arr["n_portal"],
+                                'piso' => $arr["piso"],
+                                'num_telf' => $arr["num_telf"]
+                                ]);
 //        return $stmnt->fetchAll();
     }
     public function updateIMG($id, $nombreIMG)

@@ -108,7 +108,7 @@ class Usuario implements UserInterface
     private $roles = [];
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $num_telf;
 

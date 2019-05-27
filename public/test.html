@@ -69,7 +69,7 @@
         <div v-for="u in user">
             <div>
                 <div>
-                    <p><span>Nombre: </span>{{u.nombre}}</p>
+                    <p><span>Nombre: </span>{{u.nombre_usuario}}</p>
                     <p v-if="form.name"><span>Nuevo nombre: </span>{{form.name}}</p>
                 </div>
                 <div>
@@ -177,7 +177,7 @@
                 const form = document.forms[0];
                 const datos = new FormData()
                 datos.append("id",this.user[0].id)
-                datos.append("nombre",(this.getInputData("nombre") || this.user[0].nombre))
+                datos.append("nombre_usuario",(this.getInputData("nombre") || this.user[0].nombre_usuario))
                 datos.append("email",(this.getInputData('email') || this.user[0].email))
                 datos.append("imagen",document.getElementById('imagen').files[0])
                 this.enviarDatos(datos)
