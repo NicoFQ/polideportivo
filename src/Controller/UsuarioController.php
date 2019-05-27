@@ -50,4 +50,15 @@ class UsuarioController extends AbstractController
             'gustos' => $gustos
         ]);
     }
+
+    /**
+     * @Route("/usuario/configuracionPerfil", name="usuario_configuracion")
+     */
+    public function configurarPerfil(AsisteRepository $asiste, GustosUsuariosRepository $gustos)
+    {
+
+        return $this->render('usuario/configuracionPerfil.html.twig', [
+            "idk" => "idk"
+        ]);
+    }
 }

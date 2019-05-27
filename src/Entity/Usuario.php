@@ -106,6 +106,26 @@ class Usuario implements UserInterface
      * @ORM\Column(type="json", nullable=true)
      */
     private $roles = [];
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $num_telf;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $direccion;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $n_portal;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $piso;
     const ROLE_TYPES = array(   'CL' => 'ROLE_CLIENTE',
                                 'PR' => 'ROLE_PROFESOR',
                                 'AD' => 'ROLE_ADMIN'
@@ -479,5 +499,53 @@ class Usuario implements UserInterface
     public function eraseCredentials()
     {
 //        return "";
+    }
+
+    public function getNumTelf(): ?int
+    {
+        return $this->num_telf;
+    }
+
+    public function setNumTelf(?int $num_telf): self
+    {
+        $this->num_telf = $num_telf;
+
+        return $this;
+    }
+
+    public function getDireccion(): ?string
+    {
+        return $this->direccion;
+    }
+
+    public function setDireccion(string $direccion): self
+    {
+        $this->direccion = $direccion;
+
+        return $this;
+    }
+
+    public function getNPortal(): ?int
+    {
+        return $this->n_portal;
+    }
+
+    public function setNPortal(int $n_portal): self
+    {
+        $this->n_portal = $n_portal;
+
+        return $this;
+    }
+
+    public function getPiso(): ?string
+    {
+        return $this->piso;
+    }
+
+    public function setPiso(string $piso): self
+    {
+        $this->piso = $piso;
+
+        return $this;
     }
 }

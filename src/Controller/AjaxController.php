@@ -7,6 +7,7 @@ use App\Repository\UsuarioRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AjaxController extends AbstractController
@@ -17,7 +18,10 @@ class AjaxController extends AbstractController
     public function index(UsuarioRepository $em)
     {
 //        Obtener el ID de la sesion de nico
-        $data = $em->getDataUser(5);
+        $userSesion = new Session();
+        $userSesion = $userSesion->getUser();
+        $data = $em->getDataUser($userSesion->getId());
+        return new JsonResponse(["user" => $data]);
         return new JsonResponse(["user" => $data]);
     }
     /**

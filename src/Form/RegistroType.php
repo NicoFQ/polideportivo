@@ -7,6 +7,7 @@ use App\Entity\User;
 use App\Entity\Usuario;
 //use Doctrine\DBAL\Types\TextType;
 use Doctrine\DBAL\Types\DateType;
+use function Sodium\add;
 use Symfony\Bundle\FrameworkBundle\Tests\Fixtures\Validation\Category;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -71,6 +72,9 @@ class RegistroType extends AbstractType
             ])
             ->add('apellido_1', TextType::class, ['label' => 'Primer apellido (*)'])
             ->add('apellido_2', TextType::class, ['label' => 'Segundo apellido ', 'required' => false])
+            ->add("direccion",TextType::class,["label" => "Dirección (*)"])
+            ->add("n_portal", NumberType::class,["label" => "Nº portal (*)"])
+            ->add("piso",TextType::class,["label" => "Piso / Puerta (*)"])
 //            ->add('numero_telf', NumberType::class, ['label' => 'Numero de telefono'])
 //            ->add('imagen_perfil', FileType::class, ['mapped' => false,'required' =>  false])
             ->add('sexo', ChoiceType::class,[

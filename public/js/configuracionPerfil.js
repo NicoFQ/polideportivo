@@ -25,36 +25,47 @@ new Vue({
     methods:{
         edit(e){
             const form = document.forms[0].addEventListener('submit', e => e.preventDefault())
-
-            this.setOptions(e.target.parentElement);
-            e.target.parentElement.classList.add("edit")
+            // Hago al contenedor flexible
+            // e.target.parentNode.classList.add("edit")
+            console.log("currentTarget" ,e.currentTarget)
+            // e.currentTarget.parentElement.classList.add("edit")
+            // if (!e.target.parentElement.classList.contains("edit"))
+            //     e.target.parentElement.classList.add("edit")
+            // const edit = Array.from(document.getElementsByClassName("edit"))
+            //
+            // // Ahora para la "ejecucion", pero sigue eliminando los valores
+            // if (edit.length > 1){
+            //     alert("Ya estas editando otro eleme  nto, cierralo para poder continuar.")
+            //     return
+            // }
+            // console.log(edit)
+            this.setOptions(e);
         },
         setOptions(e){
-            const button = e.getElementsByTagName("button")
-            const input = e.querySelector("input")
-            Array.from(button).forEach(item => this.editElements.push(item))
-            this.editElements.push(input)
-            this.editElementsStatus("none")
+            const currentButton = e.currentTarget;
+            // const divContainer = document.querySelector('.edit');
+            const divContainer = e.currentTarget.parentElement
+            divContainer.classList.add("edit")
+            const input = divContainer.querySelector('input')
+            const cancelButton = divContainer.getElementsByTagName('button')[1]
+            const okButton= divContainer.getElementsByTagName('button')[2]
+            this.editElements.push(input, cancelButton, okButton)
+            currentButton.classList.add('none')
+            this.editElements.forEach(v => v.classList.remove('none'))
 
-            if (this.editElements.length > 4)
-                this.editElements.splice(4)
-
-            console.log("set",this.editElements)
         },
         unsetOptions (e){
-            this.editElementsStatus("none")
-            // todo: arreglar que se pueda usar la puta tecla de enviar, sin tener
-            // que montar la de dios para esta mierda funcinoe!
-            const editButton = e.target.querySelector("button")
-            console.log(editButton)
+            this.editElements.forEach(v => v.classList.add('none'))
+            const divContainer = e.currentTarget.parentElement
+            divContainer.classList.remove("edit")
+            const editButton = divContainer.getElementsByTagName('button')[0]
+            editButton.classList.remove('none')
+            console.log("button",editButton.classList)
 
-            console.log("unset", this.editElements)
-            e.currentTarget.parentElement.classList.remove("edit")
-            this.editElements = []
+            this.editElements = [];
+            this.form = {}
         },
         saveData (e){
-            if (this.editElements.length > 1)
-                console.log("lmao")
             const datos = new FormData()
             datos.append("id",this.user[0].id)
             datos.append("nombre",(this.getInputData("nombre_usuario") || this.user[0].nombre_usuario))
@@ -65,7 +76,7 @@ new Vue({
             datos.append("num_telf",(this.getInputData('num_telf') || this.user[0].num_telf))
             datos.append("imagen",document.getElementById('imagen').files[0])
             this.enviarDatos(datos)
-
+            this.unsetOptions(e)
             this.form = {}
 
         },
@@ -108,9 +119,6 @@ new Vue({
                 this.message = false;
                 // document.getElementById('app').removeChild(document.getElementById('message'))
             },2700)
-        },
-        editElementsStatus(clase){
-            this.editElements.forEach(item => item.classList.toggle(clase))
         }
     },
 })

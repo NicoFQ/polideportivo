@@ -57,6 +57,9 @@ class DespliegueFixtures extends Fixture
         $usuario->setFechaAlta(new \DateTime('@'.strtotime('now')));
         $usuario->setTipoUsuario($admin);//Este metodo solo acepta un objeto de tipo: TipoUsuario
         $usuario->setUsuarioActivo(1);
+        $usuario->setDireccion("C/Leon");
+        $usuario->setNPortal(23);
+        $usuario->setPiso("2ºD");
         $usuario->setRoles(['ROLE_ADMIN']);
 
         $manager->persist($usuario);
@@ -72,6 +75,9 @@ class DespliegueFixtures extends Fixture
         $usuario1->setFechaAlta(new \DateTime('@'.strtotime('now')));
         $usuario1->setTipoUsuario($admin);//Este metodo solo acepta un objeto de tipo: TipoUsuario
         $usuario1->setUsuarioActivo(1);
+        $usuario1->setDireccion("C/Caceres");
+        $usuario1->setNPortal(43);
+        $usuario1->setPiso("4ºB");
         $usuario1->setRoles(['ROLE_ADMIN']);
 
         $manager->persist($usuario1);
@@ -87,6 +93,9 @@ class DespliegueFixtures extends Fixture
         $usuario2->setFechaAlta(new \DateTime('@'.strtotime('now')));
         $usuario2->setTipoUsuario($admin);//Este metodo solo acepta un objeto de tipo: TipoUsuario
         $usuario2->setUsuarioActivo(1);
+        $usuario2->setDireccion("C/Limon");
+        $usuario2->setNPortal(52);
+        $usuario2->setPiso("1ºD");
         $usuario2->setRoles(['ROLE_ADMIN']);
 
         $manager->persist($usuario2);
@@ -102,6 +111,9 @@ class DespliegueFixtures extends Fixture
         $usuario3->setFechaAlta(new \DateTime('@'.strtotime('now')));
         $usuario3->setTipoUsuario($cliente);//Este metodo solo acepta un objeto de tipo: TipoUsuario
         $usuario3->setUsuarioActivo(1);
+        $usuario3->setDireccion("C/Abedul");
+        $usuario3->setNPortal(75);
+        $usuario3->setPiso("Bajo I");
         $usuario3->setRoles(['ROLE_CLIENTE']);
 
         $manager->persist($usuario3);
@@ -117,6 +129,9 @@ class DespliegueFixtures extends Fixture
         $usuario4->setFechaAlta(new \DateTime('@'.strtotime('now')));
         $usuario4->setTipoUsuario($profesor);//Este metodo solo acepta un objeto de tipo: TipoUsuario
         $usuario4->setUsuarioActivo(1);
+        $usuario4->setDireccion("C/Alcaravea");
+        $usuario4->setNPortal(121);
+        $usuario4->setPiso("5ºC");
         $usuario4->setRoles(['ROLE_PROFESOR']);
 
         $manager->persist($usuario4);
@@ -132,6 +147,9 @@ class DespliegueFixtures extends Fixture
         $usuario5->setFechaAlta(new \DateTime('@'.strtotime('now')));
         $usuario5->setTipoUsuario($cliente);//Este metodo solo acepta un objeto de tipo: TipoUsuario
         $usuario5->setUsuarioActivo(1);
+        $usuario5->setDireccion("Pza. Ana Maria");
+        $usuario5->setNPortal(321);
+        $usuario5->setPiso("3ºA");
         $usuario5->setRoles(['ROLE_CLIENTE']);
 
         $manager->persist($usuario5);
@@ -147,6 +165,9 @@ class DespliegueFixtures extends Fixture
         $usuario6->setFechaAlta(new \DateTime('@'.strtotime('now')));
         $usuario6->setTipoUsuario($cliente);//Este metodo solo acepta un objeto de tipo: TipoUsuario
         $usuario6->setUsuarioActivo(1);
+        $usuario6->setDireccion("Pza. Armería");
+        $usuario6->setNPortal(72);
+        $usuario6->setPiso("SN");
         $usuario6->setRoles(['ROLE_CLIENTE']);
         // $usuario6->addAsiste()
 
@@ -165,6 +186,9 @@ class DespliegueFixtures extends Fixture
         $usuario7->setFechaAlta(new \DateTime('@'.strtotime('now')));
         $usuario7->setTipoUsuario($profesor);//Este metodo solo acepta un objeto de tipo: TipoUsuario
         $usuario7->setUsuarioActivo(1);
+        $usuario7->setDireccion("Av. Abrantes");
+        $usuario7->setNPortal(234);
+        $usuario7->setPiso("3ºA");
         $usuario7->setRoles(['ROLE_PROFESOR']);
 
         $manager->persist($usuario7);
@@ -181,6 +205,9 @@ class DespliegueFixtures extends Fixture
         $usuario8->setFechaAlta(new \DateTime('@'.strtotime('now')));
         $usuario8->setTipoUsuario($profesor);//Este metodo solo acepta un objeto de tipo: TipoUsuario
         $usuario8->setUsuarioActivo(1);
+        $usuario8->setDireccion("Pza. de los Abetos");
+        $usuario8->setNPortal(42);
+        $usuario8->setPiso("1ºI");
         $usuario8->setRoles(['ROLE_PROFESOR']);
 
         $manager->persist($usuario8);
@@ -199,6 +226,9 @@ class DespliegueFixtures extends Fixture
         $usuarioAdmin->setFechaAlta(new \DateTime('@'.strtotime('now')));
         $usuarioAdmin->setTipoUsuario($admin);//Este metodo solo acepta un objeto de tipo: TipoUsuario
         $usuarioAdmin->setUsuarioActivo(1);
+        $usuarioAdmin->setDireccion("c/Mayor");
+        $usuarioAdmin->setNPortal(01);
+        $usuarioAdmin->setPiso("1ºD");
         $usuarioAdmin->setRoles(['ROLE_ADMIN']);
 
         $manager->persist($usuarioAdmin);
@@ -214,6 +244,9 @@ class DespliegueFixtures extends Fixture
         $usuarioProfesor->setFechaAlta(new \DateTime('@'.strtotime('now')));
         $usuarioProfesor->setTipoUsuario($profesor);//Este metodo solo acepta un objeto de tipo: TipoUsuario
         $usuarioProfesor->setUsuarioActivo(1);
+        $usuarioProfesor->setDireccion("c/Mayor");
+        $usuarioProfesor->setNPortal(01);
+        $usuarioProfesor->setPiso("1ºD");
         $usuarioProfesor->setRoles(['ROLE_PROFESOR']);
 
         $manager->persist($usuarioProfesor);
@@ -229,6 +262,9 @@ class DespliegueFixtures extends Fixture
         $usuarioCliente->setFechaAlta(new \DateTime('@'.strtotime('now')));
         $usuarioCliente->setTipoUsuario($cliente);//Este metodo solo acepta un objeto de tipo: TipoUsuario
         $usuarioCliente->setUsuarioActivo(1);
+        $usuarioCliente->setDireccion("c/Mayor");
+        $usuarioCliente->setNPortal(01);
+        $usuarioCliente->setPiso("1ºD");
         $usuarioCliente->setRoles(['ROLE_CLIENTE']);
 
         $manager->persist($usuarioCliente);

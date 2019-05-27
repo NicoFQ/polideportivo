@@ -48,6 +48,7 @@ class RegistroController extends AbstractController
                     $form->get('contrasena')->getData()
                 )
             );
+            $usuario->setImagenPerfil("public/img/default.png");
             $existeNDocumento = $userRepo->comprobarNumDocumento($form->get("num_documento")->getData());
             $existeEmail = $userRepo->comprobarEmail($form->get("email")->getData());
 

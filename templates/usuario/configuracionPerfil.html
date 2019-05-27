@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CONFIGURAR PERFIL</title>
+<!--    VUE-->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<!--    FONT AWESOME-->
+<!--    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">-->
+</head>
+<body>
+<div id="app">
+    <h2>Configuración de perfil.</h2>
+    <p v-if="message" id="message">Se han actualizado tus datos correctamente.</p>
+    <form action="#" enctype="multipart/form-data" method="post">
+        <div v-for="u in user">
+            <div>
+                <div>
+                    <p><span>Nombre: </span>$¿u.nombre_usuario?</p>
+                    <p v-if="form.nombre_usuario"><span>Nuevo nombre: </span>$¿form.nombre_usuario?</p>
+                </div>
+                <div>
+                    <button class="fas fa-edit" @click="edit"></button>
+                    <button class="fas fa-window-close none cancel " @click="unsetOptions"></button>
+                    <button class="fas fa-check-circle none ok" @click="saveData"></button>
+                    <input type="text" name="nombre_usuario" id="nombre_usuario" v-model="form.nombre_usuario" class="none"
+                           v-on:keyup.enter="saveData">
+                </div>
+
+            </div>
+
+            <div id="divEmail">
+                <div>
+                    <p><span>Email: </span>$¿u.email?</p>
+                    <p v-if="form.email"><span>Nuevo email: </span>$¿form.email?</p>
+                </div>
+                <div>
+                    <button class="fas fa-edit" @click="edit"></button>
+                    <button class="fas fa-window-close none cancel" @click="unsetOptions"></button>
+                    <button class="fas fa-check-circle none ok" @click="saveData"></button>
+                    <input type="text" name="email" id="email" v-model="form.email" class="none" v-on:keyup.enter="saveData">
+                </div>
+
+            </div>
+
+            <div>
+                <div>
+                    <p><span>Direccion: </span>$¿u.direccion?</p>
+                    <p v-if="form.direccion"><span>Nueva direccion: </span>$¿form.direccion?</p>
+                </div>
+                <div>
+                    <button class="fas fa-edit" @click="edit"></button>
+                    <button class="fas fa-window-close none cancel " @click="unsetOptions"></button>
+                    <button class="fas fa-check-circle none ok" @click="saveData"></button>
+                    <input type="text" name="direccion" id="direccion" v-model="form.direccion" class="none"
+                           v-on:keyup.enter="saveData">
+                </div>
+
+            </div>
+            <div>
+                <div>
+                    <p><span>Nº portal: </span>$¿u.n_portal?</p>
+                    <p v-if="form.n_portal"><span>Nuevo nº portal: </span>$¿form.n_portal?</p>
+                </div>
+                <div>
+                    <button class="fas fa-edit" @click="edit"></button>
+                    <button class="fas fa-window-close none cancel " @click="unsetOptions"></button>
+                    <button class="fas fa-check-circle none ok" @click="saveData"></button>
+                    <input type="text" name="n_portal" id="n_portal" v-model="form.n_portal" class="none"
+                           v-on:keyup.enter="saveData">
+                </div>
+
+            </div>
+
+            <div>
+                <div>
+                    <p><span>Piso: </span>$¿u.piso?</p>
+                    <p v-if="form.piso"><span>Nuevo piso / puerta: </span>$¿form.piso?</p>
+                </div>
+                <div>
+                    <button class="fas fa-edit" @click="edit"></button>
+                    <button class="fas fa-window-close none cancel " @click="unsetOptions"></button>
+                    <button class="fas fa-check-circle none ok" @click="saveData"></button>
+                    <input type="text" name="piso" id="piso" v-model="form.piso" class="none"
+                           v-on:keyup.enter="saveData">
+                </div>
+
+            </div>
+
+            <div>
+                <div>
+                    <p v-if="u.num_telf != null"><span>Teléfono: </span>$¿u.num_telf?</p>
+                    <p v-else><span>Teléfono: </span>Agregar número de teléfono.</p>
+                    <p v-if="form.num_telf"><span>Nuevo telefono: </span>$¿form.num_telf?</p>
+                </div>
+                <div>
+                    <button class="fas fa-edit" @click="edit"></button>
+                    <button class="fas fa-window-close none cancel " @click="unsetOptions"></button>
+                    <button class="fas fa-check-circle none ok" @click="saveData"></button>
+                    <input type="text" name="num_telf" id="num_telf" v-model="form.num_telf" class="none"
+                           v-on:keyup.enter="saveData">
+                </div>
+
+            </div>
+            <div>
+
+                <div>
+                    <h3>Imagen de perfil</h3>
+                    <figure>
+                        <img :src="u.imagen_perfil" :alt="u.nombre" id="img">
+                        <figcaption>Imagen de perfil: $¿u.nombre_usuario?</figcaption>
+                    </figure>
+                </div>
+                <div>
+                    <button class="fas fa-edit" @click="edit"></button>
+                    <button class="fas fa-window-close none cancel" @click="unsetOptions"></button>
+                    <button class="fas fa-check-circle none ok" @click="saveData"></button>
+                    <input type="file" name="imagen" id="imagen" class="none"
+                           onchange="document.getElementById('img').src = window.URL.createObjectURL(this.files[0])"/>
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+</div>
+</body>
+</html>

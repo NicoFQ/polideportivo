@@ -1,0 +1,16 @@
+{% extends 'usuario/nav_usuario.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/nav.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/configuracionPerfil.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+{% endblock %}
+
+{% block title %}Polideportivo{% endblock %}
+{% block main %}
+    {% include 'usuario/configuracionPerfil.html' %}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('/js/prueba.js') }}" type="text/javascript"></script>
+{% endblock %}
