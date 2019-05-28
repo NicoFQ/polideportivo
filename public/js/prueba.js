@@ -39,22 +39,16 @@ new Vue({
             if (this.editElements.length > 4)
                 this.editElements.splice(4)
 
-            console.log("set",this.editElements)
         },
         unsetOptions (e){
             this.editElementsStatus("none")
-            // todo: arreglar que se pueda usar la puta tecla de enviar, sin tener
-            // que montar la de dios para esta mierda funcinoe!
             const editButton = e.target.querySelector("button")
-            console.log(editButton)
 
-            console.log("unset", this.editElements)
             e.currentTarget.parentElement.classList.remove("edit")
             this.editElements = []
         },
         saveData (e){
-            if (this.editElements.length > 1)
-                console.log("lmao")
+
             const datos = new FormData()
             datos.append("id",this.user[0].id)
             datos.append("nombre_usuario",(this.getInputData("nombre_usuario") || this.user[0].nombre_usuario))
@@ -64,8 +58,10 @@ new Vue({
             datos.append("piso",(this.getInputData('piso') || this.user[0].piso))
             datos.append("num_telf",(this.getInputData('num_telf') || this.user[0].num_telf))
             datos.append("imagen",document.getElementById('imagen').files[0])
-            this.enviarDatos(datos)
 
+            this.enviarDatos(datos)
+            if (e.target.parentElement.tagName == "DIV")
+                this.unsetOptions(e)
             this.form = {}
 
         },

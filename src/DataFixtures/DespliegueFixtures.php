@@ -545,11 +545,38 @@ class DespliegueFixtures extends Fixture
 
 //        NOTICIA /////////////////////////////////////////////////////////////////////////////////////////////////////
         $noticia_1 = new Noticia();
-        $noticia_1->setTitulo("Muere un Fixture en Symfony");
-        $noticia_1->setContenido("El hecho sucedio la pasada madrugada tras entrar a un merge. Relatan los testigos que intentaba robar datos.");
+        $noticia_1->setTitulo("Sport is Party - La Feria del Deporte");
+        $noticia_1->setContenido("
+
+En pro de la salud, el bienestar y la actividad física, contra el sedentarismo y la obesidad, se celebrará en Madrid la primera edición de Sport is Party. Un evento lúdico-deportivo en el que se conjugarán ocio y cultura, donde niños y adultos podrán disfrutar de más de 60 disciplinas deportivas. Una cita original y diferente en la que se unen actividades demostrativas, participativas y competitivas de todas las disciplinas deportivas, con zonas de exposición y en un ambiente lúdico-deportivo 100%.
+
+Los visitantes a este gran evento recordarán para siempre una experiencia única y transformadora. Y todo sustentado con la versatilidad de una de las instalaciones feriales más modernas y mejor comunicadas del mundo, como es la Feria de Madrid.
+");
         $noticia_1->setFechaCreacion(new \DateTime('@'.strtotime('now')));
-        $noticia_1->setAutor("Nicolas Flores");
+        $noticia_1->setAutor("Luis pagandos");
+        $noticia_1->setImgNoticia("https://www.madrid.es/UnidadesDescentralizadas/Deportes/Actividades/Actividades2018/06junio/Ficheros/imagenferiasport.jpg");
         $manager->persist($noticia_1);
+
+        $noticia_2 = new Noticia();
+        $noticia_2->setTitulo("XXXIV Carrera del árbol y 17ª Marcha por la salud y la integración");
+        $noticia_2->setContenido("La carrera del Árbol no es una actividad competitiva; todos los participantes corren con el mismo dorsal.
+
+Salida: avenida de Buenos Aires.
+
+Llegada: Centro Deportivo Municipal Palomeras.");
+        $noticia_2->setFechaCreacion(new \DateTime('@'.strtotime('now')));
+        $noticia_2->setAutor("Nicolas Flores");
+        $noticia_2->setImgNoticia("https://www.grupobrotons.es/wp-content/uploads/DSC_9099.jpg");
+        $manager->persist($noticia_2);
+
+        $noticia_3 = new Noticia();
+        $noticia_3->setTitulo("VI Carrera hay salida contra la violencia de género");
+        $noticia_3->setContenido("Un proyecto organizado por el grupo Zinet Media, para concienciar a la sociedad de la violencia de género que sufren miles de mujeres. Queremos posicionarnos contra el machismo y lanzar el mensaje de que cada persona puede luchar contra esta lacra. Lanzamos también un mensaje de apoyo a las mujeres: hay muchas personas dispuestas a creerte, ayudarte, a echarte una mano para que rehagas tu vida. Estos son los objetivos de la Carrera Hay Salida, que ya va por la 6ª Edición, por una sociedad libre de violencia de género. Porque acabar con la violencia machista es cosa de todos");
+        $noticia_3->setFechaCreacion(new \DateTime('@'.strtotime('now')));
+        $noticia_3->setAutor("Amaia garcia");
+        $noticia_3->setImgNoticia("https://www.madridiario.es/fotos/1/142640_f1f9078668dcc80c968ae241f3cf5460_thumb_722.jpeg");
+        $manager->persist($noticia_3);
+
 //        FIN NOTICIA /////////////////////////////////////////////////////////////////////////////////////////////////
         $manager->flush();
     }//load

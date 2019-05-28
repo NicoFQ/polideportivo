@@ -96,7 +96,7 @@ class Noticia
 
     public function setFechaCreacion(\DateTimeInterface $fecha_creacion): self
     {
-        $this->fecha_alta = $fecha_creacion;
+        $this->fecha_creacion = $fecha_creacion;
 
         return $this;
     }
@@ -106,7 +106,7 @@ class Noticia
         return $this->fecha_modificacion;
     }
 
-    public function setFechaModificacion(\DateTimeInterface $fecha_alta): self
+    public function setFechaModificacion(\DateTimeInterface $fecha_modificacion): self
     {
         $this->fecha_modificacion = $fecha_modificacion;
 

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\NoticiaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -54,11 +55,19 @@ class UsuarioController extends AbstractController
     /**
      * @Route("/usuario/configuracionPerfil", name="usuario_configuracion")
      */
-    public function configurarPerfil(AsisteRepository $asiste, GustosUsuariosRepository $gustos)
+    public function configurarPerfil()
     {
-
         return $this->render('usuario/configuracionPerfil.html.twig', [
-            "idk" => "idk"
+            "" => ""
+        ]);
+    }
+    /**
+     * @Route("/usuario/noticias", name="noticias")
+     */
+    public function noticias(NoticiaRepository $noticiaRepository)
+    {
+        return $this->render('usuario/noticias.html.twig', [
+            'noticias' => $noticiaRepository->findAll(),
         ]);
     }
 }
