@@ -14,9 +14,15 @@ class Noticia1Type extends AbstractType
         $builder
             ->add('titulo')
             ->add('contenido')
-            ->add('img_noticia')
+            ->add('img_noticia',null,[
+                "label" => "Imagen de la noticia"
+            ])
             ->add('fecha_creacion')
-            ->add('fecha_modificacion')
+            ->add('fecha_modificacion',null,[
+                "mapped" => false,
+                "data" => new \DateTime('@'.strtotime('now')),
+
+            ])
             ->add('autor')
         ;
     }

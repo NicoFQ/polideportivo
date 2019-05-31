@@ -4,9 +4,7 @@
 
 {% block body %}
 {% block stylesheets %} <link rel="stylesheet" href="{{ asset('/css/list.css') }}"> {% endblock %}
-<header>
-        {% include '/admin/nav.html.twig' %}
-    </header>
+    {% include '/admin/nav.html.twig' %}
     <div class="container">
         <h2>Clase: {{clase.nombreClase}}</h2>
     

@@ -60,3 +60,10 @@
 .link-cancel:hover{
     background-color: var(--rojo);
 }
+figure{
+    width: 400px;
+    height: auto;
+}
+figure > img{
+    width: 100%;
+}

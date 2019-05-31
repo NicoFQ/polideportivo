@@ -1,0 +1,7 @@
+form[name="noticia1"]:before{
+    Content: "Agregar una nueva noticia." !important;
+    font-family: 'Popins',sans-serif;
+    font-size: 1.4em;
+    font-weight: bold;
+    margin: 10px;
+}

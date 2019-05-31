@@ -1,13 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Noticia{% endblock %}
+{% block title %}EDITAR NOTICIA{% endblock %}
 
 {% block body %}
-    <h1>Edit Noticia</h1>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('/css/editClase.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/editNoticia.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/general.css') }}">
+    {% endblock %}
+    {% include '/admin/nav.html.twig' %}
+    <div class="container">
+        {{ include('noticia/_form.html.twig', {'button_label': 'Actualizar'}) }}
 
-    {{ include('noticia/_form.html.twig', {'button_label': 'Update'}) }}
+        <a href="{{ path('noticia_index') }}" class="link link-button">Volver a la lista</a>
 
-    <a href="{{ path('noticia_index') }}">back to list</a>
-
-    {{ include('noticia/_delete_form.html.twig') }}
+        {{ include('noticia/_delete_form.html.twig') }}
+    </div>
+    <script src="{{ asset('js/botonesForms.js') }}"></script>
 {% endblock %}

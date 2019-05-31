@@ -15,6 +15,8 @@
     flex-direction: column;
     align-items: center;
     font-family: 'Poppins',sans-serif;
+    width: 80%;
+    margin:0 auto;
 }
 table{
     padding: 20px;
@@ -72,4 +74,12 @@ tbody>tr>td:first-of-type{
 }
 .link-edit:hover{
     background-color: var(--azul-oscuro-2);
+}
+
+figure{
+    width:200px;
+    height: 200px;
+}
+img{
+    width:100%;
 }

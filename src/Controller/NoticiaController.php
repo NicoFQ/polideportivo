@@ -31,6 +31,7 @@ class NoticiaController extends AbstractController
     public function new(Request $request): Response
     {
         $noticium = new Noticia();
+        $noticium->setFechaCreacion(new \DateTime('@'.strtotime('now')));
         $form = $this->createForm(Noticia1Type::class, $noticium);
         $form->handleRequest($request);
 

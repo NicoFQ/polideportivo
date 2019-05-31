@@ -1,0 +1,66 @@
+:root{
+    --separacion: 5px;
+    --marron : #240041;
+    --azul-claro: #5ca0d3;
+    --azul-oscuro: #010059;
+    --azul-oscuro-2:#107595;
+}
+form{
+
+    font-family: 'Popins',sans-serif;
+    width: 40%;
+    margin:20px auto;
+    padding: 10px;
+}
+.container > form:first-of-type:before{
+    content: "EDITA LA NOTICIA";
+    font-family: 'Popins',sans-serif;
+    font-size: 1.4em;
+    font-weight: bold;
+    margin: 10px;
+}
+
+/*form > div:first-of-type{*/
+/*    margin-top: 20px;*/
+/*}*/
+/*form > div > div{*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*}*/
+/*form div > label{*/
+/*    margin:var(--separacion);*/
+/*}*/
+/*form  div > input, form select{*/
+/*    margin:var(--separacion);*/
+/*    padding: 10px;*/
+/*    border-radius: 2px;*/
+/*    border:1px solid var(--marron);*/
+/*    width: auto;*/
+/*}*/
+/*form input:focus{*/
+/*    border:2px solid var(--azul-claro);*/
+/*}*/
+
+/*!*BOTONES DEL FORM*!*/
+/*.container{*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-content: center;*/
+/*}*/
+/*form > div > form{*/
+/*    width: 6em;*/
+/*    margin:0;*/
+/*    padding:0;*/
+/*}*/
+/*form > div:last-child{*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    margin:10px 0;*/
+/*}*/
+
+/*.container > a:last-of-type{*/
+/*    margin: 0 auto;*/
+/*    position:relative;*/
+/*    top:-30px;*/
+/*    transition: 200ms;*/
+/*}*/

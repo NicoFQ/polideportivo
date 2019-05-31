@@ -7,9 +7,7 @@
 {% block stylesheets %}
      <link rel="stylesheet" href="{{ asset('/css/email.css') }}"> 
 {% endblock %}
-    <header>
         {% include '/admin/nav.html.twig' %}
-    </header>
     <div class="container">
         <h2>Envio de correo</h2>
         {{ form(emailTemplate) }}

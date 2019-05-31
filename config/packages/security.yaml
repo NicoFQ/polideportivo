@@ -17,8 +17,8 @@ security:
             anonymous: true
 
             form_login:
-                login_path: login
-                check_path: login
+                login_path: /login
+                check_path: /login
                 provider: my_provider
             logout:
                 path: /logout
@@ -30,5 +30,6 @@ security:
 #            Accesos de ADMIN
          - { path: ^/admin, roles: ROLE_ADMIN}
          - { path: ^/clase, roles: ROLE_ADMIN}
-         - { path: ^/noticia, roles: ROLE_CLIENTE }
+         - { path: ^/noticia, roles: ROLE_ADMIN }
          - { path: ^/profesor, roles: ROLE_PROFESOR }
+         - { path: ^/usuario, roles: ROLE_CLIENTE}

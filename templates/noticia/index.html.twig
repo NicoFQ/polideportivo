@@ -3,41 +3,65 @@
 {% block title %}Noticia index{% endblock %}
 
 {% block body %}
-    <h1>Noticia index</h1>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('/css/list.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/general.css') }}">
+    {% endblock %}
+        {% include '/admin/nav.html.twig' %}
+    <div class="container">
+        <h1>Listado de noticias</h1>
 
-    <table class="table">
-        <thead>
+        <table class="table">
+            <thead>
             <tr>
                 <th>Titulo</th>
                 <th>Contenido</th>
-                <th>Img_noticia</th>
-                <th>Fecha_creacion</th>
-                <th>Fecha_modificacion</th>
+{#                <th>Img_noticia</th>#}
+                <th>Fecha creacion</th>
+{#                <th>Fecha_modificacion</th>#}
                 <th>Autor</th>
-                <th>actions</th>
+                <th>Acciones</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for noticium in noticias %}
-            <tr>
-                <td>{{ noticium.titulo }}</td>
-                <td>{{ noticium.contenido }}</td>
-                <td>{{ noticium.imgNoticia }}</td>
-                <td>{{ noticium.fechaCreacion ? noticium.fechaCreacion|date('Y-m-d') : '' }}</td>
-                <td>{{ noticium.fechaModificacion ? noticium.fechaModificacion|date('Y-m-d') : '' }}</td>
-                <td>{{ noticium.autor }}</td>
-                <td>
-                    <a href="{{ path('noticia_show', {'id': noticium.id}) }}"><i class="fa fa-eye"></i></a>
-                    <a href="{{ path('noticia_edit', {'id': noticium.id}) }}"><i class="fa fa-edit"></i></a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for noticium in noticias %}
+                <tr>
+                    <td>{{ noticium.titulo }}</td>
+                    <td class="contenido">{{ noticium.contenido }}</td>
+{#                    <td><figure>#}
+{#                            <img src="{{ noticium.imgNoticia }}" alt="imagen de la noticia">#}
+{#                        </figure>#}
+{#                    </td>#}
+                    <td>{{ noticium.fechaCreacion ? noticium.fechaCreacion|date('Y-m-d') : '' }}</td>
+{#                    <td>{{ noticium.fechaModificacion ? noticium.fechaModificacion|date('Y-m-d') : '' }}</td>#}
+                    <td>{{ noticium.autor }}</td>
+                    <td class="acciones">
+                        <a href="{{ path('noticia_show', {'id': noticium.id}) }}"><i class="fa fa-eye"></i></a>
+                        <a href="{{ path('noticia_edit', {'id': noticium.id}) }}"><i class="fa fa-edit"></i></a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="8">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-    <a href="{{ path('noticia_new') }}">Create new</a>
+        <a href="{{ path('noticia_new') }}" class="link link-button">Agregar noticia</a>
+    </div>
+    <script>
+        const contenido = Array.from(document.getElementsByClassName('contenido'))
+
+        const formatearTexto = (items) => {
+            const total = 200
+            items.forEach(v => {
+                if (v.innerText.length > total){
+                    v.innerText = v.innerText.substr(0,total)+"..."
+                }
+            })
+        }//formatearTexto
+        formatearTexto(contenido)
+
+    </script>
 {% endblock %}
