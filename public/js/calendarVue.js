@@ -19,9 +19,45 @@ let calendario = (function(){
         }
       }
     },
+    created:
+      function(){ 
+        let clases = document.querySelectorAll("td[data-clase]");
+        let fechas  = document.querySelectorAll("td[data-fecha]");
+      let arrObjetos= [];
+     
+      for (let i = 0; i < clases.length ;i++) {
+        ob= {};
+        let nombre =  clases[i].innerText;
+        let dia = fechas[i].innerText;
+        dia = dia.substring(0, 2);
+        if(dia[0]==0){
+          console.log(dia);
+          dia = parseInt(dia);
+        }
+        ob.nombre = nombre;
+        ob.dia = dia;
+        arrObjetos.push(ob);
+      }
 
+      let days = document.querySelectorAll('.Cr-Days_day');
+      console.log(days);
+      for ( i = 0; i < days.length ;i++) {
+         let span = days[i].firstChild;
+         console.log(span.innerText);
+         arrObjetos.forEach(element => {
+          if(span.innerText == element.dia){
+            days[i].style = "background-color:red";
+          }
+        });
+       
+      }
+
+      console.log(arrObjetos);
+       } ,
     computed: {
+      
       currYear() {
+
         return this.inst_date.getFullYear()
       },
       currMonth() {
@@ -67,6 +103,9 @@ let calendario = (function(){
       qtyDaysNextMonth() {
         
         return 42 - (this.daysInMonth + this._qtyDaysPrevMonth)
+      },
+      pintar(){
+        return this.pintarClase
       }
     },
     methods: {
@@ -98,6 +137,13 @@ let calendario = (function(){
         this.output.format = `${this.currYear}-${fixMonth}-${fixDay}`
 
         this.$emit('setdate', this.output)
+      },
+
+      pintarClase(){
+        let dias = document.querySelectorAll("td[data-fecha]");
+        for (const d of dias) {
+          console.log(d);
+        }
       }
     }
   });
