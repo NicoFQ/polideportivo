@@ -3,6 +3,6 @@
 #    controller: App\Controller\DefaultController::index
 
 #Si se establece esta ruta por defecto, no te permite loguearte
-index:
-   path: /login
-   controller: App\Controller\SecurityController::login
+#index:
+ #  path: /
+ #  controller: App\Controller\SecurityController::login
