@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PaypalController!{% endblock %}
+
+{% block body %}
+    <div class="paypal-container">
+        {#        Implementacion de credenciales y render del button#}
+        <script
+                src="https://www.paypal.com/sdk/js?client-id={{ id }}">
+        </script>
+
+        <script
+                src="https://www.paypal.com/sdk/js?client-id={{ id }}">
+        </script>
+
+        <div id="paypal-button-container"></div>
+
+        {#        <script>#}
+        {#            paypal.Buttons().render('#paypal-button-container');#}
+        {#        </script>#}
+
+        {#        Se establece el precio que pagara#}
+        <script>
+            const URL = "http://"+window.location.host+"/paypal";
+
+            paypal.Buttons({
+                createOrder: function(data, actions) {
+                    // Set up the transaction
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: {{ precio }}
+                            }
+                        }]
+                    });
+                },
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        const data = new FormData();
+                        data.append("id",details.id)
+                        data.append("price",details.purchase_units[0].amount.value)
+                        data.append("status", details.status)
+                        alert('Transaction completed by ' + details.payer.name.given_name);
+                        // Call your server to save the transaction
+                        return fetch(URL+"/transaction-complete", {
+                            method: 'post',
+                            // headers: {
+                            //     'content-type': 'application/json'
+                            // },
+                            body: data
+                        })
+                            .then(res => res.text())
+                            .then(body => console.log(body));
+                    });
+                }
+            }).render('#paypal-button-container');
+        </script>
+    </div>
+{% endblock %}
