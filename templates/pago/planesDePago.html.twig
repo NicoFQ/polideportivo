@@ -3,46 +3,19 @@
 {% block title %}Hello PagoController!{% endblock %}
 
 {% block body %}
-    <style>
-        #radios {
-            display: flex;
-            /*margin:5px;*/
-        }
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('/css/general.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/tarjetasBonos.css') }}">
 
-        #radios > div {
-            /*border: 2px solid red;*/
-            /*padding: 1em;*/
-            /*margin: 0 10px;*/
-            /*background-color: #3abaae;*/
-        }
-
-        input[type="radio"] {
-            /*display:none;*/
-        }
-
-        label {
-            /*border:2px solid red;*/
-        }
-        input[type="radio"] + div {
-            opacity: .5;
-            border: 2px solid red;
-            padding: 1em;
-            margin: 0 10px;
-            background-color: #3abaae;
-        }
-        input[type="radio"]:checked + div {
-            opacity: .8;
-            transform:scale(1.2);
-        }
-    </style>
+    {% endblock %}
     <form action="/pago" method="post">
         <div id="radios">
             <div>
                 <input type="radio" name="bono" id="basico" value="basico">
-                <div>
+                <div  id="basico-box">
                     <h2>Plan de pago: {{ basico.getNombreBono }}</h2>
                     <hr>
-                    <p>Suscripción desde: {{ basico.getPrecio }},00 €</p>
+                    <p>Suscripción desde: {{ basico.getPrecio }},00€</p>
                     <p>Duracion: {{ basico.getDuracionDias }} días</p>
                     <label for="basico">Seleccionar</label>
                 </div>
@@ -50,15 +23,16 @@
             </div>
             <div>
                 <input type="radio" name="bono" id="premium" value="premium">
-                <div>
+                <div id="premium-box">
                     <h2>Plan de pago: {{ premium.getNombreBono }}</h2>
                     <hr>
-                    <p>Suscripción desde: {{ premium.getPrecio }},00 €</p>
+                    <p>Suscripción desde: {{ premium.getPrecio }},00€</p>
                     <p>Duracion: {{ premium.getDuracionDias }} días</p>
                     <label for="premium">Seleccionar</label>
                 </div>
             </div>
         </div>
         <input type="submit" value="Enviar">
+
     </form>
 {% endblock %}
