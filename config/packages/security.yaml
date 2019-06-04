@@ -36,3 +36,4 @@ security:
          - { path: ^/noticia, roles: ROLE_ADMIN }
          - { path: ^/profesor, roles: ROLE_PROFESOR }
          - { path: ^/usuario, roles: ROLE_CLIENTE}
+         - { path: ^/pago, roles: ROLE_CLIENTE}

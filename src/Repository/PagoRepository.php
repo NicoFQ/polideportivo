@@ -18,33 +18,17 @@ class PagoRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Pago::class);
     }
-
-    // /**
-    //  * @return Pago[] Returns an array of Pago objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function guardarPago($arr)
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $conn = $this->getEntityManager()->getConnection();
 
-    /*
-    public function findOneBySomeField($value): ?Pago
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $query = 'insert into pago (usuario_id, pago_id, tipo_bono_id, concepto, fecha_pago) 
+                    values (:usuario_id, :id_tipo_pago, :id_tipo_bono, :concepto, now());';
+        $stmnt = $conn->prepare($query);
+        return $stmnt->execute(['usuario_id' => $arr["usuario_id"],
+                                'id_tipo_pago' => $arr["id_tipo_pago"],
+                                'id_tipo_bono' => $arr["id_tipo_bono"],
+                                    'concepto' => $arr["concepto"],
+        ]);
     }
-    */
 }

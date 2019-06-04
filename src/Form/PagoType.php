@@ -22,10 +22,16 @@ class PagoType extends AbstractType
         $fecha = date("d/m/Y");
         $usuario = new Session();
         $usuario = $usuario->getUser();
-        dump($usuario);
+
 
         $builder
-            ->add('concepto')
+            ->add('concepto', TextType::class,[
+                "attr" => [
+                    "placeholder" => "Suscripción mensual"
+                ],
+                "data" => "Suscripción mensual",
+                "required" => false
+            ])
             ->add('fecha_pago',TextType::class,[
                 'data' => $fecha,
                 'disabled' => true
@@ -34,19 +40,18 @@ class PagoType extends AbstractType
                 "mapped" => false
             ])
             ->add('usuario',TextType::class,[
-                "data" => $usuario
+                "data" => $usuario,
+                "disabled" => true
             ])
             ->add('pago',TextType::class,[
                 "data" => "PayPal",
                 "label" => "Sistema de pago",
                 "disabled" => true
             ])
-            ->add('tipo_bono',ChoiceType::class,[
-                "choices" => [
-                    "uno" => "uno"
-                ]
+            ->add('tipo_bono',HiddenType::class,[
+                "mapped" => false
             ])
-            ->add("ENVIAR", SubmitType::class)
+//            ->add("ENVIAR", SubmitType::class)
         ;
     }
 
