@@ -4,7 +4,11 @@
 
 {% block body %}
     <div class="paypal-container">
+<<<<<<< HEAD
 {#        Implementacion de credenciales y render del button#}
+=======
+        {#        Implementacion de credenciales y render del button#}
+>>>>>>> ca2f47b8b41933dcfebf716aafa75ea2aa3f5bd3
         <script
                 src="https://www.paypal.com/sdk/js?client-id={{ id }}">
         </script>
@@ -15,11 +19,19 @@
 
         <div id="paypal-button-container"></div>
 
+<<<<<<< HEAD
 {#        <script>#}
 {#            paypal.Buttons().render('#paypal-button-container');#}
 {#        </script>#}
 
 {#        Se establece el precio que pagara#}
+=======
+        {#        <script>#}
+        {#            paypal.Buttons().render('#paypal-button-container');#}
+        {#        </script>#}
+
+        {#        Se establece el precio que pagara#}
+>>>>>>> ca2f47b8b41933dcfebf716aafa75ea2aa3f5bd3
         <script>
             const URL = "http://"+window.location.host+"/paypal";
 

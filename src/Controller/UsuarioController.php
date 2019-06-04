@@ -40,7 +40,7 @@ class UsuarioController extends AbstractController
      */
     public function index(AsisteRepository $asiste, GustosUsuariosRepository $gustos){
 
-        $userSesion = new Session(); 
+        $userSesion = new Session();
         $userSesion = $userSesion->getUser();
         $asistencias = $asiste->usuarioAsiste($userSesion->getId());
         $misGustos = $gustos->findById(1);

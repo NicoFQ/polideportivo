@@ -1,0 +1,35 @@
+<div class="Wrap" id="app">
+  <fieldset>
+    <legend>Base Calendar</legend>
+    <div>
+      <p>Salida:</p>
+      <pre>$¿ output ?</pre>
+      <p>Hoy: $¿new Date().toLocaleDateString()?</p>
+      <p>Dia seleccionado: <b>$¿output.str?</b></p>
+      <p>Dia seleccionado (formato): <b>$¿output.format?</b></p>
+    </div>
+    <div class="flex">
+      <div class="Calendar">
+        <div class="Cr-Head">
+          <div class="Cr-Head_ltMonth" @click="ltMonth">«</div>
+          <div class="Cr-Head_currMonth">$¿months[currMonth].slice(0,3)? $¿currYear?</div>
+          <div class="Cr-Head_gtMonth" @click="gtMonth">»</div>
+        </div>
+        <div class="Cr-Week">
+          <div class="Cr-Week_day" v-for="day in days">$¿day?</div>
+        </div>
+        <div class="Cr-Days">
+          <div class="Cr-Days_blank" v-for="blank in daysOfPrevMonth">
+          	<span>$¿blank?</span>
+      	  </div>
+          <div class="Cr-Days_day" v-for="i in daysInMonth" :class="{currDay: i == currDay, clickedDay: i == clickedDay, nico: 1 == 1}" @click="setDate(i)">
+          	<span>$¿i?</span>	
+      	  </div>
+          <div class="Cr-Days_blank" v-for="_,i in qtyDaysNextMonth">
+          	<span>$¿i+1?</span>	
+          </div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
