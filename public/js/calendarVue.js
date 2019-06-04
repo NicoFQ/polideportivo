@@ -31,7 +31,7 @@ let calendario = (function(){
         let dia = fechas[i].innerText;
         dia = dia.substring(0, 2);
         if(dia[0]==0){
-          console.log(dia);
+          
           dia = parseInt(dia);
         }
         ob.nombre = nombre;
@@ -40,13 +40,34 @@ let calendario = (function(){
       }
 
       let days = document.querySelectorAll('.Cr-Days_day');
-      console.log(days);
+     
       for ( i = 0; i < days.length ;i++) {
          let span = days[i].firstChild;
-         console.log(span.innerText);
+  
          arrObjetos.forEach(element => {
           if(span.innerText == element.dia){
-            days[i].style = "background-color:red";
+            //days[i].style = "background-color:red";
+            switch (element.nombre) {
+              case "CLASE DE FUTBOL":
+                 days[i].classList.add('clase');
+                 
+                
+                break;
+              case "CLASE DE BALONCESTO":
+                days[i].classList.add('clase');
+               
+                
+                break;
+              case "CLASE DE PADEL":
+                  days[i].classList.add('clase');
+                break;
+              case "CLASE DE TENIS":
+                  days[i].classList.add('clase');
+                break;
+            
+              default:
+                break;
+            }
           }
         });
        
@@ -54,6 +75,7 @@ let calendario = (function(){
 
       console.log(arrObjetos);
        } ,
+       
     computed: {
       
       currYear() {
@@ -76,7 +98,7 @@ let calendario = (function(){
         }
       },
       daysInMonth() {
-        console.log(new Date(this.currYear, this.currMonth + 1, 0).getDate());
+        
         return new Date(this.currYear, this.currMonth + 1, 0).getDate()
       },
       _lastDateOfPrevMonth() {
@@ -104,9 +126,7 @@ let calendario = (function(){
         
         return 42 - (this.daysInMonth + this._qtyDaysPrevMonth)
       },
-      pintar(){
-        return this.pintarClase
-      }
+     
     },
     methods: {
       ltMonth() {
@@ -139,12 +159,7 @@ let calendario = (function(){
         this.$emit('setdate', this.output)
       },
 
-      pintarClase(){
-        let dias = document.querySelectorAll("td[data-fecha]");
-        for (const d of dias) {
-          console.log(d);
-        }
-      }
+     
     }
   });
   }

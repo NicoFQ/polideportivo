@@ -15,6 +15,10 @@
 {#{% block javascripts %} <script src="{{ asset('/js/textArea.js') }}"></script> {% endblock %}#}
 {% block body %}
 
+{% block stylesheet %}
+ <link rel="stylesheet" href="{{ asset('/css/calendarioProfe.css') }}">
+{% endblock %}
+
     <header>
         {% include '/profesor/nav.html.twig' %}
     </header>
@@ -49,9 +53,14 @@
             </tbody>
         </table>
     </div>
+	<label id="btnCalendario" for="inp">
+	<input type="checkbox" value="Ver Calendario" id="inp">
+	</label>
+	<nav>
    {% block main %}
 	{% include 'profesor/v-calendar.html' %}
 {% endblock %}
+</nav>
  </main>
   {% block javascripts %}
 	<script>

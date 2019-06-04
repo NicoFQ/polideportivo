@@ -1,0 +1,44 @@
+
+.icons{
+    float: right;
+    background-size: cover;
+    width: .5em;
+    height: .5em;
+    margin: .1em;
+
+}
+
+
+.clase{
+    background-image: url('/img/clases.svg');
+    background-repeat: no-repeat;
+    background-size: 1em;
+    background-position: 10px 8px;
+   
+    
+}
+
+#btnCalendario{
+    border:solid 2px red;
+    width: 150px;
+    height: 50px;
+}
+
+.no{
+    opacity: 0;
+}
+
+
+#inp{
+    position: absolute;
+    left: -20000000px;
+}
+nav{
+    opacity: 0;
+}
+
+#btnCandario:checked nav{
+    opacity: 9;
+}
+
+
