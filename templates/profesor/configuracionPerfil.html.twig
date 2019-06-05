@@ -1,4 +1,4 @@
-{% extends 'usuario/nav_usuario.html.twig' %}
+{% extends 'profesor/nav.html.twig' %}
 {% block stylesheets %}
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/nav_usuario.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/configuracionPerfil.css') }}">
@@ -8,7 +8,7 @@
 
 {% block title %}Polideportivo{% endblock %}
 {% block main %}
-    {% include 'usuario/configuracionPerfil.html' %}
+    {% include 'profesor/configuracionPerfil.html' %}
 {% endblock %}
 
 {% block javascripts %}

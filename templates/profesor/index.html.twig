@@ -5,23 +5,16 @@
 	<script src="{{ asset('/js/calendarVue.js') }}"></script>
 
   <link rel="stylesheet" href="{{ asset('/css/list.css') }}"> 
-  <link rel="stylesheet" href="{{ asset('/css/tarjetas.css') }}"> 
-  <link rel="stylesheet" href="{{ asset('/css/buscador.css') }}"> 
+<link rel="stylesheet" href="{{ asset('/css/calendarioProfe.css') }}">
+
 {% endblock %}
 
 {% block title %}CLASES PROFESOR {% endblock %}
-
-
-{#{% block javascripts %} <script src="{{ asset('/js/textArea.js') }}"></script> {% endblock %}#}
 {% block body %}
 
-{% block stylesheet %}
- <link rel="stylesheet" href="{{ asset('/css/calendarioProfe.css') }}">
-{% endblock %}
-
-    <header>
+ <header>
         {% include '/profesor/nav.html.twig' %}
-    </header>
+ </header>   
   <main>
  <div class="container">
         <table class="table table-striped text-center">
@@ -53,14 +46,14 @@
             </tbody>
         </table>
     </div>
-	<label id="btnCalendario" for="inp">
+	<div>
 	<input type="checkbox" value="Ver Calendario" id="inp">
-	</label>
-	<nav>
-   {% block main %}
+	<label id="btnCalendario" for="inp">Ver Calendario</label>
 	{% include 'profesor/v-calendar.html' %}
-{% endblock %}
-</nav>
+	</div>
+
+	
+
  </main>
   {% block javascripts %}
 	<script>
