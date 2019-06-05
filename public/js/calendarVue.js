@@ -170,7 +170,60 @@ let calendario = (function(){
         this.$emit('setdate', this.output)
       },
       prueba(){
-        console.log('eeeee');
+        let clases = document.querySelectorAll("td[data-clase]");
+          let fechas  = document.querySelectorAll("td[data-fecha]");
+        let arrObjetos= [];
+       
+        for (let i = 0; i < clases.length ;i++) {
+          ob= {};
+          let nombre =  clases[i].innerText;
+          let dia = fechas[i].innerText;
+          dia = dia.substring(0, 2);
+          if(dia[0]==0){
+            
+            dia = parseInt(dia);
+          }
+          ob.nombre = nombre;
+          ob.dia = dia;
+          arrObjetos.push(ob);
+          
+        }
+  
+        let days = document.querySelectorAll('.nico');
+        console.log(days);
+        for ( i = 0; i < days.length ;i++) {
+           let span = days[i].firstChild;
+    
+           arrObjetos.forEach(element => {
+            if(span.innerText == element.dia){
+              //days[i].style = "background-color:red";
+              switch (element.nombre) {
+                case "CLASE DE FUTBOL":
+                   days[i].classList.add('clase');
+                   
+                  
+                  break;
+                case "CLASE DE BALONCESTO":
+                  days[i].classList.add('clase');
+                 
+                  
+                  break;
+                case "CLASE DE PADEL":
+                    days[i].classList.add('clase');
+                  break;
+                case "CLASE DE TENIS":
+                    days[i].classList.add('clase');
+                  break;
+              
+                default:
+                  break;
+              }
+            }
+          });
+         
+        }
+  
+        console.log(arrObjetos);
       },
 
       userActivity(){

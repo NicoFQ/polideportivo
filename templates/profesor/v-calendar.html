@@ -22,7 +22,7 @@
           <div class="Cr-Days_blank" v-for="blank in daysOfPrevMonth">
           	<span>$¿blank?</span>
       	  </div>
-          <div class="Cr-Days_day" v-for="i in daysInMonth" :class="{currDay: i == currDay, clickedDay: i == clickedDay, nico: 1 == 1}" @click="setDate(i)">
+          <div class="Cr-Days_day" v-for="i in daysInMonth" :class="{currDay: i == currDay, clickedDay: i == clickedDay, nico: 1 == 1}" @click="setDate(i),prueba()">
           	<span>$¿i?</span>	
       	  </div>
           <div class="Cr-Days_blank" v-for="_,i in qtyDaysNextMonth">
