@@ -22,8 +22,8 @@ class AjaxController extends AbstractController
         $userSesion = $userSesion->getUser();
         $data = $em->getDataUser($userSesion->getId());
         return new JsonResponse(["user" => $data]);
-        return new JsonResponse(["user" => $data]);
     }
+
     /**
      * Funcion que recibira datos por POST desde una pagina html (ConfiguracionPerfil)
      * @Route("/ajax/data", name="ajax_data")
@@ -85,5 +85,16 @@ class AjaxController extends AbstractController
         $extension = strrpos($arr['imagen']['name'],".");
         $extension = substr($arr['imagen']['name'],$extension);
         return $nombre.$extension;
+    }
+    /**
+    * @Route("/ajax/getUserActivity", name="ajax")
+    */
+    public function getUserActivity(UsuarioRepository $em)
+    {
+//      Obtener el ID de la sesion de nico
+        $userSesion = new Session();
+        $userSesion = $userSesion->getUser();
+        $data = $em->getUserActivity($userSesion->getId());
+        return new JsonResponse(["activity" => $data]);
     }
 }

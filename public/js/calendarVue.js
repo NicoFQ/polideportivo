@@ -1,12 +1,16 @@
 let calendario = (function(){
+  const HOST = "http://"+ window.location.host; //window.location.host => dominio + puerto
+  const AJAX = "/ajax/";
+  const USER_ACTIVITY = HOST+AJAX+'getUserActivity';
   const init = function(){
-
-
   const NOW = new Date()
-
+  // http://127.0.0.1:8000http://127.0.0.1:8000/ajax/getUserActivity
   const vm = new Vue({
     el: "#app",
     delimiters: ['$¿', '?'],
+    created(){
+        this.userActivity();
+    },
     data() {
       return {
         inst_date: NOW,
@@ -31,7 +35,6 @@ let calendario = (function(){
         return this.inst_date.getDay()
       },
       currDay() {
-        // !TODO wtf
         if (
           this.inst_date.getMonth() === NOW.getMonth() &&
           this.inst_date.getFullYear() === NOW.getFullYear()
@@ -98,8 +101,19 @@ let calendario = (function(){
         this.output.format = `${this.currYear}-${fixMonth}-${fixDay}`
 
         this.$emit('setdate', this.output)
+      },
+      checkDay(){
+        console.log(this);
+      },
+
+      userActivity(){
+        fetch(USER_ACTIVITY).then( res => res.json() )
+                .then(data => {
+                  console.log(data);
+                })
       }
-    }
+    }, 
+
   });
   }
   return { init };

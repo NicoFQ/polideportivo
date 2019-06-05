@@ -346,7 +346,7 @@ class DespliegueFixtures extends Fixture
         $pista1->setDisponible(1);
         $pista1->setIdDeporte($padel);
         $pista1->setIdInstalacion($instalacion_1);
-
+        $pista1->setNumPista("P-1-1");
         $manager->persist($pista1);
 //        FIN PISTA ///////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -426,14 +426,14 @@ class DespliegueFixtures extends Fixture
 
 //        ASISTE ///////////////////////////////////////////////////////////////////////////////////////////////////////
         $asiste1 = new Asiste();
-        $asiste1->setFechaAsisteClase(new \DateTime('2019-04-12'));
+        $asiste1->setFechaAsisteClase(new \DateTime('2019-06-26'));
         $asiste1->setUsuario($usuario5);
         $asiste1->setClase($clase2);
 
         $manager->persist($asiste1);
 
         $asiste2 = new Asiste();
-        $asiste2->setFechaAsisteClase(new \DateTime('2019-04-12'));
+        $asiste2->setFechaAsisteClase(new \DateTime('2019-04-28'));
         $asiste2->setUsuario($usuario4);
         $asiste2->setClase($clase2);
 
@@ -454,7 +454,7 @@ class DespliegueFixtures extends Fixture
         $manager->persist($asiste4);
 
         $asiste5 = new Asiste();
-        $asiste5->setFechaAsisteClase(new \DateTime('2019-04-12'));
+        $asiste5->setFechaAsisteClase(new \DateTime('2019-06-28'));
         $asiste5->setUsuario($usuario5);
         $asiste5->setClase($clase2);
 
@@ -505,8 +505,27 @@ class DespliegueFixtures extends Fixture
         $reserva1->setFechaCreacion(new \DateTime('@'.strtotime('now')));
         $reserva1->setUsuario($usuario3);
         $reserva1->setPista($pista1);
-
         $manager->persist($reserva1);
+
+        $reserva2 = new Reserva();
+        $reserva2->setPrecioReserva(10);
+        $reserva2->setFechaDeReserva(new \DateTime('2019-06-24'));
+        $reserva2->setHoraInicio('12:00');
+        $reserva2->setHoraFin('14:00');
+        $reserva2->setFechaCreacion(new \DateTime('@'.strtotime('now')));
+        $reserva2->setUsuario($usuario5);
+        $reserva2->setPista($pista1);
+        $manager->persist($reserva2);
+
+        $reserva3 = new Reserva();
+        $reserva3->setPrecioReserva(10);
+        $reserva3->setFechaDeReserva(new \DateTime('2019-06-21'));
+        $reserva3->setHoraInicio('18:00');
+        $reserva3->setHoraFin('19:00');
+        $reserva3->setFechaCreacion(new \DateTime('@'.strtotime('now')));
+        $reserva3->setUsuario($usuario5);
+        $reserva3->setPista($pista1);
+        $manager->persist($reserva3);
 //        FIN RESERVA /////////////////////////////////////////////////////////////////////////////////////////////////
 
 //        TIPO PAGO ///////////////////////////////////////////////////////////////////////////////////////////////////

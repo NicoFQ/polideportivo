@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use App\Entity\Usuario;
 use App\Repository\AsisteRepository;
 use App\Repository\GustosUsuariosRepository;
+use App\Repository\UsuarioRepository;
 
 class UsuarioController extends AbstractController
 {
@@ -38,17 +39,20 @@ class UsuarioController extends AbstractController
     /**
      * @Route("/usuario", name="usuario")
      */
-    public function index(AsisteRepository $asiste, GustosUsuariosRepository $gustos){
+    public function index(AsisteRepository $asiste, GustosUsuariosRepository $gustos, UsuarioRepository $em){
 
         $userSesion = new Session(); 
         $userSesion = $userSesion->getUser();
         $asistencias = $asiste->usuarioAsiste($userSesion->getId());
         $misGustos = $gustos->findById(1);
+        $data = $em->getUserActivity(6);
+       
         //$asistencias = $asiste->usuarioAsiste(6);
         return $this->render('usuario/index.html.twig', [
             'fullUser' => $userSesion,
             'asistencias' => $asistencias,
-            'gustos' => $gustos
+            'gustos' => $gustos,
+            'data' => $data,
         ]);
     }
 

@@ -55,6 +55,11 @@ class Pista
      */
     private $reservas;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $num_pista;
+
     public function __construct()
     {
         $this->reservas = new ArrayCollection();
@@ -164,6 +169,18 @@ class Pista
                 $reserva->setPista(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNumPista(): ?string
+    {
+        return $this->num_pista;
+    }
+
+    public function setNumPista(string $num_pista): self
+    {
+        $this->num_pista = $num_pista;
 
         return $this;
     }

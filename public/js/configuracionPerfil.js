@@ -76,8 +76,6 @@ new Vue({
             this.fetchAll();
             this.message = true;
             this.deleteMessage()
-
-
         },
         fetchAll(){
             fetch(URL)
