@@ -2,15 +2,14 @@ let calendario = (function(){
   const HOST = "http://"+ window.location.host; //window.location.host => dominio + puerto
   const AJAX = "/ajax/";
   const USER_ACTIVITY = HOST+AJAX+'getUserActivity';
+  const PROFESOR_ACTIVITY = HOST+AJAX+'getProfesorActivity';
   const init = function(){
   const NOW = new Date()
+  const ROL = window.location.pathname;
   // http://127.0.0.1:8000http://127.0.0.1:8000/ajax/getUserActivity
   const vm = new Vue({
     el: "#app",
     delimiters: ['$¿', '?'],
-    created(){
-        this.userActivity();
-    },
     data() {
       return {
         inst_date: NOW,
@@ -23,8 +22,13 @@ let calendario = (function(){
         }
       }
     },
-    created:
-      function(){ 
+    created: function(){ 
+      if (this.ROL == "/usuario") {
+        this.userActivity();  
+      }else if(this.ROL == "/profesor"){
+        this.profesorActivity();  
+      }
+
         let clases = document.querySelectorAll("td[data-clase]");
         let fechas  = document.querySelectorAll("td[data-fecha]");
       let arrObjetos= [];
@@ -161,12 +165,15 @@ let calendario = (function(){
 
         this.$emit('setdate', this.output)
       },
-      checkDay(){
-        console.log(this);
-      },
 
       userActivity(){
         fetch(USER_ACTIVITY).then( res => res.json() )
+                .then(data => {
+                  console.log(data);
+                })
+      }, 
+      profesorActivity(){
+        fetch(PROFESOR_ACTIVITY).then( res => res.json() )
                 .then(data => {
                   console.log(data);
                 })
