@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
-	<link rel="stylesheet" type="text/css" href="{{ asset('/css/calendarVue.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('/css/calendarVueUno.css') }}">
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<script src="{{ asset('/js/calendarVue.js') }}"></script>
 
@@ -55,6 +55,7 @@
 	
 
  </main>
+ {% endblock %}
   {% block javascripts %}
 	<script>
 		// Recibe un array de objetos, con el titulo del evento, codDeporte, fecha, hora de inicio, hora de fin, instalacion, pista,
@@ -91,5 +92,5 @@
 		*/
 		calendario.init();
 	</script>
-{% endblock %}
+
 {% endblock %}

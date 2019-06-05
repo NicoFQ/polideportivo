@@ -97,4 +97,16 @@ class AjaxController extends AbstractController
         $data = $em->getUserActivity($userSesion->getId());
         return new JsonResponse(["activity" => $data]);
     }
+
+    /**
+    * @Route("/ajax/getProfesorActivity", name="ajax")
+    */
+    public function getProfesorActivity(UsuarioRepository $em)
+    {
+//      Obtener el ID de la sesion de nico
+        $userSesion = new Session();
+        $userSesion = $userSesion->getUser();
+        $data = $em->getProfesorActivity($userSesion->getId());
+        return new JsonResponse(["activity" => $data]);
+    }
 }

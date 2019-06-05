@@ -192,6 +192,13 @@ class UsuarioRepository extends ServiceEntityRepository
       $activity = array_merge($reservas, $clases);
       return $activity;
     }
+
+    public function getProfesorActivity($id){
+        
+        $clases = self::getClasesUsuario($id);
+        
+        return $clases;
+      }
     /*
 
     id  1

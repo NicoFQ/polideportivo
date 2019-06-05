@@ -6,6 +6,7 @@ let calendario = (function(){
   const init = function(){
   const NOW = new Date()
   const ROL = window.location.pathname;
+  const dataProfesor={};
   // http://127.0.0.1:8000http://127.0.0.1:8000/ajax/getUserActivity
   const vm = new Vue({
     el: "#app",
@@ -23,65 +24,68 @@ let calendario = (function(){
       }
     },
     created: function(){ 
-      if (this.ROL == "/usuario") {
+      if (ROL == "/usuario") {
         this.userActivity();  
-      }else if(this.ROL == "/profesor"){
-        this.profesorActivity();  
-      }
+      }else if(ROL == "/profesor"){
+        this.profesorActivity(); 
+        console.log('profe'); 
+      
 
-        let clases = document.querySelectorAll("td[data-clase]");
-        let fechas  = document.querySelectorAll("td[data-fecha]");
-      let arrObjetos= [];
+      //   let clases = document.querySelectorAll("td[data-clase]");
+      //   let fechas  = document.querySelectorAll("td[data-fecha]");
+      // let arrObjetos= [];
      
-      for (let i = 0; i < clases.length ;i++) {
-        ob= {};
-        let nombre =  clases[i].innerText;
-        let dia = fechas[i].innerText;
-        dia = dia.substring(0, 2);
-        if(dia[0]==0){
+      // for (let i = 0; i < clases.length ;i++) {
+      //   ob= {};
+      //   let nombre =  clases[i].innerText;
+      //   let dia = fechas[i].innerText;
+      //   dia = dia.substring(0, 2);
+      //   if(dia[0]==0){
           
-          dia = parseInt(dia);
-        }
-        ob.nombre = nombre;
-        ob.dia = dia;
-        arrObjetos.push(ob);
-      }
+      //     dia = parseInt(dia);
+      //   }
+      //   ob.nombre = nombre;
+      //   ob.dia = dia;
+      //   arrObjetos.push(ob);
+        
+      // }
 
-      let days = document.querySelectorAll('.Cr-Days_day');
-     
-      for ( i = 0; i < days.length ;i++) {
-         let span = days[i].firstChild;
+      // let days = document.querySelectorAll('.nico');
+      // console.log(days);
+      // for ( i = 0; i < days.length ;i++) {
+      //    let span = days[i].firstChild;
   
-         arrObjetos.forEach(element => {
-          if(span.innerText == element.dia){
-            //days[i].style = "background-color:red";
-            switch (element.nombre) {
-              case "CLASE DE FUTBOL":
-                 days[i].classList.add('clase');
+      //    arrObjetos.forEach(element => {
+      //     if(span.innerText == element.dia){
+      //       //days[i].style = "background-color:red";
+      //       switch (element.nombre) {
+      //         case "CLASE DE FUTBOL":
+      //            days[i].classList.add('clase');
                  
                 
-                break;
-              case "CLASE DE BALONCESTO":
-                days[i].classList.add('clase');
+      //           break;
+      //         case "CLASE DE BALONCESTO":
+      //           days[i].classList.add('clase');
                
                 
-                break;
-              case "CLASE DE PADEL":
-                  days[i].classList.add('clase');
-                break;
-              case "CLASE DE TENIS":
-                  days[i].classList.add('clase');
-                break;
+      //           break;
+      //         case "CLASE DE PADEL":
+      //             days[i].classList.add('clase');
+      //           break;
+      //         case "CLASE DE TENIS":
+      //             days[i].classList.add('clase');
+      //           break;
             
-              default:
-                break;
-            }
-          }
-        });
+      //         default:
+      //           break;
+      //       }
+      //     }
+      //   });
        
-      }
+      // }
 
-      console.log(arrObjetos);
+      // console.log(arrObjetos);
+       }
        } ,
        
     computed: {
@@ -165,6 +169,9 @@ let calendario = (function(){
 
         this.$emit('setdate', this.output)
       },
+      prueba(){
+        console.log('eeeee');
+      },
 
       userActivity(){
         fetch(USER_ACTIVITY).then( res => res.json() )
@@ -176,11 +183,72 @@ let calendario = (function(){
         fetch(PROFESOR_ACTIVITY).then( res => res.json() )
                 .then(data => {
                   console.log(data);
+                  dataProfesor = data;
                 })
+
       }
     }, 
 
   });
+  if(ROL == "/profesor"){
+    
+  
+
+    let clases = document.querySelectorAll("td[data-clase]");
+    let fechas  = document.querySelectorAll("td[data-fecha]");
+  let arrObjetos= [];
+ 
+  for (let i = 0; i < clases.length ;i++) {
+    ob= {};
+    let nombre =  clases[i].innerText;
+    let dia = fechas[i].innerText;
+    dia = dia.substring(0, 2);
+    if(dia[0]==0){
+      
+      dia = parseInt(dia);
+    }
+    ob.nombre = nombre;
+    ob.dia = dia;
+    arrObjetos.push(ob);
+    
+  }
+
+  let days = document.querySelectorAll('.nico');
+  console.log(days);
+  for ( i = 0; i < days.length ;i++) {
+     let span = days[i].firstChild;
+
+     arrObjetos.forEach(element => {
+      if(span.innerText == element.dia){
+        //days[i].style = "background-color:red";
+        switch (element.nombre) {
+          case "CLASE DE FUTBOL":
+             days[i].classList.add('clase');
+             
+            
+            break;
+          case "CLASE DE BALONCESTO":
+            days[i].classList.add('clase');
+           
+            
+            break;
+          case "CLASE DE PADEL":
+              days[i].classList.add('clase');
+            break;
+          case "CLASE DE TENIS":
+              days[i].classList.add('clase');
+            break;
+        
+          default:
+            break;
+        }
+      }
+    });
+   
+  }
+
+  console.log(arrObjetos);
+  }
   }
   return { init };
 })();
