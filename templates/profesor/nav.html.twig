@@ -1,26 +1,12 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %} <link rel="stylesheet" href="{{ asset('/css/nav_usuario.css') }}"> {% endblock %}
 {% block nav %}
-{#<header>	#}
-{#	<nav>#}
-{#		<ul>#}
-{#			<li> <a href="usuario/" title="LOGO"> LOGO </a> </li>#}
-{#			<li> <a href="usuario/" title="INICIO"> INICIO </a> </li>#}
-{#			<li> <a href="{{ asset('usuario/noticias') }}" title="NOTICIAS"> NOTICIAS </a> </li>#}
-{#			<li> <a href="usuario/" title="LOCALIZACIÓN"> LOCALIZACIÓN </a> </li>#}
-{#			<li> <a href="usuario/" title="RESERVAS"> RESERVAS </a> </li>#}
-{#			<li> <a href="{{ asset('usuario/configuracionPerfil') }}" title="CONFIGURACIO PERFIL"> CONF_PERF </a> </li>#}
-{#			<li> <a href="usuario/" title="SALIR"> <i class="fas fa-sign-out-alt"> logout</i> </a> </li>			#}
-{#		</ul>#}
-{#	</nav>#}
-{#</header>#}
-
 <header>
 	<nav>
 		<ul>
 			<li><a href="{{ asset('/profesor/') }}"><img src="{{ asset('/img/logo_polideportivo.png') }}" alt="logo-polideportivo"></a></li>
 			<li><a href="{{ asset('/profesor/') }}">inicio</a></li>
-			<li><a href="{{ asset('profesor/noticias') }}">noticias</a></li>
+			<li><a href="{{ asset('profesor/noticias/') }}">noticias</a></li>
 			<li>
 				<details>
 					<summary><i class="fas fa-cog"></i> Config.</summary>
