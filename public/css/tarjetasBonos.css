@@ -1,6 +1,7 @@
 :root{
     --verde: #20c1bd;
-    --verde-2: #15cda8;
+    /*--verde-2: #15cda8;*/
+    --verde-2: #67eaca;
     --amarillo: #f69314;
     --amarillo-2: #facf5a;
     --blanco: #fdfdf6;
@@ -9,10 +10,20 @@
     --azul-2: #837dff;
     --azul-oscuro: #283149;
 }
-
+form{
+    width:50%;
+    margin:20px auto;
+    padding: 1em;
+    font-family: 'Poppins',sans-serif;
+    background-color: var(--blanco);
+    border-radius: 5px;
+}
+form > h2{
+    text-align: center;
+    text-transform: uppercase;
+}
 #radios {
     display: flex;
-    font-family: 'Poppins',sans-serif;
     color:var(--blanco);
     margin:40px auto;
     justify-content: center;
@@ -24,17 +35,16 @@
 input[type="radio"] {
     display:none;
 }
-/*#basico-box, #premium-box{*/
 #radios > div > div{
     padding: 1em;
     margin: 0 20px;
     box-shadow:  0 0 10px var(--azul-oscuro);
 }
 #basico-box{
-    background-color: var(--verde);
+    background-image: linear-gradient(to top, var(--verde),var(--verde-2));
 }
 #premium-box{
-    background-color: var(--amarillo);
+    background-image: linear-gradient(to top, var(--amarillo),var(--amarillo-2));
 }
 label {
     padding: .5em 1.5em;
@@ -60,23 +70,22 @@ label:hover{
 #radios > div > div hr{
     width: 50%;
     color: var(--blanco);
-    /*opacity: .3;*/
 }
 input[type="radio"]:checked ~ div{
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
 input[type="submit"]{
     background-color: var(--azul);
     color:var(--blanco);
     border:2px solid;
-    border-radius:3px;
+    border-radius:5px;
     padding: .5em 1.3em;
     cursor:pointer;
     text-transform: uppercase;
     font-family: 'Poppins',sans-serif;
     width: 6.5em;
-    font-size: 1em;
+    font-size: 1.1em;
     margin:0 auto;
     display:block;
     text-align: center;

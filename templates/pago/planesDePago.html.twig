@@ -1,14 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PagoController!{% endblock %}
+{% block title %}ELEGIR PAGO{% endblock %}
 
 {% block body %}
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('/css/general.css') }}">
         <link rel="stylesheet" href="{{ asset('/css/tarjetasBonos.css') }}">
-
     {% endblock %}
+    {% include '/usuario/nav_usuario.html.twig' %}
     <form action="/pago" method="post">
+        <h2>Nuestros bonos</h2>
         <div id="radios">
             <div>
                 <input type="radio" name="bono" id="basico" value="basico">

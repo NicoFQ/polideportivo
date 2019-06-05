@@ -51,7 +51,7 @@
     background-color: var(--azul-3);
 }
 
-img{
+.noticia img{
     width: 100%;
     padding: 2px;
     border:2px groove var(--verde);

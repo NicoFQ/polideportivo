@@ -3,7 +3,6 @@
 {% block title %}Hello PaypalController!{% endblock %}
 
 {% block body %}
-    <div class="paypal-container">
         {#        Implementacion de credenciales y render del button#}
         <script
                 src="https://www.paypal.com/sdk/js?client-id={{ id }}&currency=EUR">
@@ -52,5 +51,4 @@
                 }
             }).render('#paypal-button-container');
         </script>
-    </div>
 {% endblock %}

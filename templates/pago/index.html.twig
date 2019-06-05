@@ -1,11 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PagoController!{% endblock %}
+{% block title %}REALIZAR COMPRA{% endblock %}
 
 {% block body %}
-    {{ form(form_view) }}
-    <div id="paypal-container">
-        {{ render(controller('App\\Controller\\PaypalController:index')) }}
+    {% block stylesheets %}
+{#        <link rel="stylesheet" href="{{ asset('/css/general.css') }}">#}
+        <link rel="stylesheet" href="{{ asset('/css/nav.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/pago.css') }}">
+    {% endblock %}
+    {% include '/usuario/nav_usuario.html.twig' %}
+
+    <div class="container">
+        <h2>Datos de compra.</h2>
+        {{ form(form_view) }}
+
+            {{ render(controller('App\\Controller\\PaypalController:index')) }}
+
     </div>
     <script>
 
