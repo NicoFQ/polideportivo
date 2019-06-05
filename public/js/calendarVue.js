@@ -23,9 +23,67 @@ let calendario = (function(){
         }
       }
     },
+    created:
+      function(){ 
+        let clases = document.querySelectorAll("td[data-clase]");
+        let fechas  = document.querySelectorAll("td[data-fecha]");
+      let arrObjetos= [];
+     
+      for (let i = 0; i < clases.length ;i++) {
+        ob= {};
+        let nombre =  clases[i].innerText;
+        let dia = fechas[i].innerText;
+        dia = dia.substring(0, 2);
+        if(dia[0]==0){
+          
+          dia = parseInt(dia);
+        }
+        ob.nombre = nombre;
+        ob.dia = dia;
+        arrObjetos.push(ob);
+      }
 
+      let days = document.querySelectorAll('.Cr-Days_day');
+     
+      for ( i = 0; i < days.length ;i++) {
+         let span = days[i].firstChild;
+  
+         arrObjetos.forEach(element => {
+          if(span.innerText == element.dia){
+            //days[i].style = "background-color:red";
+            switch (element.nombre) {
+              case "CLASE DE FUTBOL":
+                 days[i].classList.add('clase');
+                 
+                
+                break;
+              case "CLASE DE BALONCESTO":
+                days[i].classList.add('clase');
+               
+                
+                break;
+              case "CLASE DE PADEL":
+                  days[i].classList.add('clase');
+                break;
+              case "CLASE DE TENIS":
+                  days[i].classList.add('clase');
+                break;
+            
+              default:
+                break;
+            }
+          }
+        });
+       
+      }
+
+      console.log(arrObjetos);
+       } ,
+       
     computed: {
+      
       currYear() {
+
         return this.inst_date.getFullYear()
       },
       currMonth() {
@@ -43,7 +101,7 @@ let calendario = (function(){
         }
       },
       daysInMonth() {
-        console.log(new Date(this.currYear, this.currMonth + 1, 0).getDate());
+        
         return new Date(this.currYear, this.currMonth + 1, 0).getDate()
       },
       _lastDateOfPrevMonth() {
@@ -70,7 +128,8 @@ let calendario = (function(){
       qtyDaysNextMonth() {
         
         return 42 - (this.daysInMonth + this._qtyDaysPrevMonth)
-      }
+      },
+     
     },
     methods: {
       ltMonth() {

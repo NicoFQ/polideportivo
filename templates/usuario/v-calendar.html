@@ -24,7 +24,7 @@
           	<span>$¿blank?</span>
       	  </div>
           <!-- Dias del mes actual -->
-          <div class="Cr-Days_day" v-for="i in daysInMonth" :class="{ currDay: i == currDay, clickedDay: i == clickedDay }" @click="setDate(i)" v-data-date=" i ">
+          <div class="Cr-Days_day" v-for="i in daysInMonth" :class="{ currDay: i == currDay, clickedDay: i == clickedDay }" @click="setDate(i)">
           	<span>$¿i?</span>	
       	  </div>
           <!-- Dias del mes siguiente -->

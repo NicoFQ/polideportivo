@@ -1,18 +1,20 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" type="text/css" href="{{ asset('/css/calendarVue.css') }}">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="{{ asset('/js/calendarVue.js') }}"></script>
+
+  <link rel="stylesheet" href="{{ asset('/css/list.css') }}"> 
+<link rel="stylesheet" href="{{ asset('/css/calendarioProfe.css') }}">
+
+{% endblock %}
 
 {% block title %}CLASES PROFESOR {% endblock %}
-
-{#{% block javascripts %} <script src="{{ asset('/js/textArea.js') }}"></script> {% endblock %}#}
 {% block body %}
-{% block stylesheets %}
-     <link rel="stylesheet" href="{{ asset('/css/list.css') }}"> 
-     <link rel="stylesheet" href="{{ asset('/css/tarjetas.css') }}"> 
-     <link rel="stylesheet" href="{{ asset('/css/buscador.css') }}"> 
-    
-{% endblock %}
-    <header>
+
+ <header>
         {% include '/profesor/nav.html.twig' %}
-    </header>
+ </header>   
   <main>
  <div class="container">
         <table class="table table-striped text-center">
@@ -30,8 +32,8 @@
                 {% for e in clases %}
               
                 <tr>
-                    <td>{{ e.getNombreClase }}</td>
-                    <td>{{ fechas[loop.index - 1]|date("m/d/Y")}}</td>
+                    <td data-clase="nombreClase">{{ e.getNombreClase }}</td>
+                    <td data-fecha="fecha" >{{ fechas[loop.index - 1]|date("d/m/Y")}}</td>
                     <td>{{ e.getHoraInicio}}</td>
                     <td>{{ e.getHoraFin}}</td>
                     <td>{{ apuntados[loop.index - 1]}}</td>
@@ -44,14 +46,50 @@
             </tbody>
         </table>
     </div>
-      <div id="your-component">
-    <!-- Using Component -->
-    <sweet-calendar
-      :eventCategories="eventCategories"
-      :events="events"
-      ref="calendar"
-    />
-  </div>
+	<div>
+	<input type="checkbox" value="Ver Calendario" id="inp">
+	<label id="btnCalendario" for="inp">Ver Calendario</label>
+	{% include 'profesor/v-calendar.html' %}
+	</div>
+
+	
+
  </main>
-  {#{% block javascripts %} <script src="{{ asset('profesor/calendario.vue') }}"></script> {% endblock %}#}
+  {% block javascripts %}
+	<script>
+		// Recibe un array de objetos, con el titulo del evento, codDeporte, fecha, hora de inicio, hora de fin, instalacion, pista,
+		/*
+			[
+				{
+					titulo: 		String: "Clase de Baloncesto",
+					codDeporte:		String: "C-01",
+					fecha: 			String: "26/05/2019",
+					inicio: 		String: "12:00",
+					fin: : 			String: "15:00",
+					instalacion: 	String: null
+					pista: 			String: null
+				},
+				{
+					titulo: 		String: "Reserva Pista",
+					codDeporte:		String: "C-01",
+					fecha: 			String: "30/05/2019",
+					inicio: 		String: "13:00",
+					fin: 			String: "15:00",
+					instalacion: 	String: "2",
+					pista: 			String: "P-5",
+				},
+				{
+					titulo: 		String: "Clase de Futbol",
+					codDeporte:		String: "C-01",
+					fecha: 			String: "28/05/2019",
+					inicio: 		String: "16:00",
+					fin: 			String: "17:00",
+					instalacion: 	String: null
+					pista: 			String: null
+				},
+			]	
+		*/
+		calendario.init();
+	</script>
+{% endblock %}
 {% endblock %}

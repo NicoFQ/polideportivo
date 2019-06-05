@@ -8,6 +8,7 @@ use App\Repository\ClaseRepository;
 use App\Repository\AsisteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\NoticiaRepository;
 
 class ProfesorController extends AbstractController
 {
@@ -48,6 +49,24 @@ class ProfesorController extends AbstractController
             'clases' => $clasesProfesor,
             'fechas' => $arrFechas,
             'apuntados' => $arrApun,
+        ]);
+    }
+    /**
+     * @Route("/profesor/configuracionPerfil", name="profesor_configuracion")
+     */
+    public function configurarPerfil()
+    {
+        return $this->render('profesor/configuracionPerfil.html.twig', [
+            "" => ""
+        ]);
+    }
+    /**
+     * @Route("/profesor/noticias", name="profesor_noticias")
+     */
+    public function noticias(NoticiaRepository $noticiaRepository)
+    {
+        return $this->render('profesor/noticias.html.twig', [
+            'noticias' => $noticiaRepository->findAll(),
         ]);
     }
 }

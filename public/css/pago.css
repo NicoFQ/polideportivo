@@ -1,0 +1,65 @@
+:root{
+    --verde: #00bdaa;
+    --verde-2: #00d1cd;
+    --azul: #7ad9f5;
+    --azul-2: #8158fc;
+    --verde-bg:#099a97;
+    --verde-bg-2:#00faac;
+    --blanco: #fdfff0;
+    --morado: #ffbd39;
+    --rojo: #c72c41;
+    --gris: #f6f6f6;
+    --gris-2:#dedede;
+    --blanco-2:#fdfdf6;
+}
+
+.container{
+    /*border:2px solid red;*/
+    width: 40%;
+    margin:20px auto;
+    box-sizing: border-box;
+    padding: 1em;
+    font-family: 'Poppins',sans-serif;
+    font-size: 1em;
+    outline:1px solid var(--gris-2);
+}
+.container > h2{
+    text-align: center;
+    margin:0;
+    padding: 0;
+    text-transform: uppercase;
+}
+.container > form > div {
+    padding: 1em;
+}
+.container > form > div > div{
+    display: flex;
+    flex-direction: column;
+    outline: 1px solid var(--gris-2);
+    margin:10px;
+    padding: .5em;
+}
+form > div > div > label{
+    margin-bottom: 10px;
+}
+form > div > div > input{
+    /*border:2px solid var(--azul-2);*/
+    border: 2px solid var(--gris-2);
+    padding: .7em;
+    border-radius: 4px;
+    transition: 150ms;
+}
+form > div > div > input:focus{
+    border-color: var(--azul);
+}
+form > div > div > input:disabled{
+    background-color: var(--gris);
+    color:black;
+}
+
+#paypal-button-container{
+    padding: 5px;
+    box-shadow: 0px 0px 10px var(--gris-2);
+    width: 65%;
+    margin:0 auto;
+}

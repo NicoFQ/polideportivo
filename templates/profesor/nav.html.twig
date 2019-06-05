@@ -1,12 +1,21 @@
-{% block stylesheets %} <link rel="stylesheet" href="{{ asset('/css/nav.css') }}"> {% endblock %}
+{% extends 'base.html.twig' %}
+{% block stylesheets %} <link rel="stylesheet" href="{{ asset('/css/nav_usuario.css') }}"> {% endblock %}
+{% block nav %}
 <header>
-    <nav>
-    <ul>
-        <li><a href="{{ asset('/profesor/') }}"><img src="{{ asset('/img/logo_polideportivo.png') }}" alt="logo-polideportivo"></a></li>
-        <li><a href="{{ asset('/profesor/') }}">Inicio</a></li>
-        <li><a href="{{ asset('/profesor/') }}">Clases</a></li>
-        <li><a href="{{ asset('/profesor/email/') }}">Enviar correo</a></li>
-        <li><a href="{{ path('logout') }}"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
-    </ul>
-</nav>
+	<nav>
+		<ul>
+			<li><a href="{{ asset('/profesor/') }}"><img src="{{ asset('/img/logo_polideportivo.png') }}" alt="logo-polideportivo"></a></li>
+			<li><a href="{{ asset('/profesor/') }}">inicio</a></li>
+			<li><a href="{{ asset('/profesor/noticias/') }}">noticias</a></li>
+			<li>
+				<details>
+					<summary><i class="fas fa-cog"></i> Config.</summary>
+			<li><a href="{{ asset('profesor/configuracionPerfil') }}"><i class="fas fa-user-cog"></i> Perfil</a></li>
+			<li><a href="{{ path('logout') }}"><i class="fas fa-sign-out-alt"></i> Salir</a></li>
+			</details>
+			</li>
+		</ul>
+	</nav>
 </header>
+	<script src="{{ asset('/js/nav_usuario.js') }}"></script>
+{% endblock %}

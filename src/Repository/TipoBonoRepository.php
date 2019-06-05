@@ -19,32 +19,13 @@ class TipoBonoRepository extends ServiceEntityRepository
         parent::__construct($registry, TipoBono::class);
     }
 
-    // /**
-    //  * @return TipoBono[] Returns an array of TipoBono objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function getIdTipoBono($nombre)
     {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $conn = $this->getEntityManager()->getConnection();
 
-    /*
-    public function findOneBySomeField($value): ?TipoBono
-    {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $query = 'select id, precio from tipo_bono t where t.nombre_bono = :nombre';
+        $stmnt = $conn->prepare($query);
+        $stmnt->execute(['nombre' => $nombre]);
+        return $stmnt->fetchAll();
     }
-    */
 }

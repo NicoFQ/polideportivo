@@ -61,6 +61,7 @@ class DespliegueFixtures extends Fixture
         $usuario->setNPortal(23);
         $usuario->setPiso("2ºD");
         $usuario->setRoles(['ROLE_ADMIN']);
+        $usuario->setImagenPerfil("/img/default.png");
 
         $manager->persist($usuario);
 
@@ -79,6 +80,7 @@ class DespliegueFixtures extends Fixture
         $usuario1->setNPortal(43);
         $usuario1->setPiso("4ºB");
         $usuario1->setRoles(['ROLE_ADMIN']);
+        $usuario1->setImagenPerfil("/img/default.png");
 
         $manager->persist($usuario1);
 
@@ -97,6 +99,7 @@ class DespliegueFixtures extends Fixture
         $usuario2->setNPortal(52);
         $usuario2->setPiso("1ºD");
         $usuario2->setRoles(['ROLE_ADMIN']);
+        $usuario2->setImagenPerfil("/img/default.png");
 
         $manager->persist($usuario2);
 
@@ -115,6 +118,7 @@ class DespliegueFixtures extends Fixture
         $usuario3->setNPortal(75);
         $usuario3->setPiso("Bajo I");
         $usuario3->setRoles(['ROLE_CLIENTE']);
+        $usuario3->setImagenPerfil("/img/default.png");
 
         $manager->persist($usuario3);
 
@@ -133,6 +137,7 @@ class DespliegueFixtures extends Fixture
         $usuario4->setNPortal(121);
         $usuario4->setPiso("5ºC");
         $usuario4->setRoles(['ROLE_PROFESOR']);
+        $usuario4->setImagenPerfil("/img/default.png");
 
         $manager->persist($usuario4);
 
@@ -151,6 +156,7 @@ class DespliegueFixtures extends Fixture
         $usuario5->setNPortal(321);
         $usuario5->setPiso("3ºA");
         $usuario5->setRoles(['ROLE_CLIENTE']);
+        $usuario5->setImagenPerfil("/img/default.png");
 
         $manager->persist($usuario5);
 
@@ -169,6 +175,7 @@ class DespliegueFixtures extends Fixture
         $usuario6->setNPortal(72);
         $usuario6->setPiso("SN");
         $usuario6->setRoles(['ROLE_CLIENTE']);
+        $usuario6->setImagenPerfil("/img/default.png");
         // $usuario6->addAsiste()
 
         $manager->persist($usuario6);
@@ -190,6 +197,7 @@ class DespliegueFixtures extends Fixture
         $usuario7->setNPortal(234);
         $usuario7->setPiso("3ºA");
         $usuario7->setRoles(['ROLE_PROFESOR']);
+        $usuario7->setImagenPerfil("/img/default.png");
 
         $manager->persist($usuario7);
 
@@ -209,6 +217,7 @@ class DespliegueFixtures extends Fixture
         $usuario8->setNPortal(42);
         $usuario8->setPiso("1ºI");
         $usuario8->setRoles(['ROLE_PROFESOR']);
+        $usuario8->setImagenPerfil("/img/default.png");
 
         $manager->persist($usuario8);
 
@@ -230,6 +239,7 @@ class DespliegueFixtures extends Fixture
         $usuarioAdmin->setNPortal(01);
         $usuarioAdmin->setPiso("1ºD");
         $usuarioAdmin->setRoles(['ROLE_ADMIN']);
+        $usuarioAdmin->setImagenPerfil("/img/default.png");
 
         $manager->persist($usuarioAdmin);
 
@@ -248,6 +258,7 @@ class DespliegueFixtures extends Fixture
         $usuarioProfesor->setNPortal(01);
         $usuarioProfesor->setPiso("1ºD");
         $usuarioProfesor->setRoles(['ROLE_PROFESOR']);
+        $usuarioProfesor->setImagenPerfil("/img/default.png");
 
         $manager->persist($usuarioProfesor);
 
@@ -266,6 +277,7 @@ class DespliegueFixtures extends Fixture
         $usuarioCliente->setNPortal(01);
         $usuarioCliente->setPiso("1ºD");
         $usuarioCliente->setRoles(['ROLE_CLIENTE']);
+        $usuarioCliente->setImagenPerfil("/img/default.png");
 
         $manager->persist($usuarioCliente);
 
@@ -304,7 +316,6 @@ class DespliegueFixtures extends Fixture
         $baloncesto->setComentarios("");
 
         $manager->persist($baloncesto);
-
 
 
 //        FIN GUSTOS USUARIO //////////////////////////////////////////////////////////////////////////////////////////
@@ -429,64 +440,82 @@ class DespliegueFixtures extends Fixture
         $asiste1->setFechaAsisteClase(new \DateTime('2019-06-26'));
         $asiste1->setUsuario($usuario5);
         $asiste1->setClase($clase2);
-
         $manager->persist($asiste1);
 
         $asiste2 = new Asiste();
-        $asiste2->setFechaAsisteClase(new \DateTime('2019-04-28'));
+        $asiste2->setFechaAsisteClase(new \DateTime('2019-06-01'));
         $asiste2->setUsuario($usuario4);
-        $asiste2->setClase($clase2);
-
+        $asiste2->setClase($clase6);
         $manager->persist($asiste2);
 
         $asiste3 = new Asiste();
-        $asiste3->setFechaAsisteClase(new \DateTime('2019-04-12'));
+        $asiste3->setFechaAsisteClase(new \DateTime('2019-06-12'));
         $asiste3->setUsuario($usuario2);
-        $asiste3->setClase($clase2);
+        $asiste3->setClase($clase1);
+        $manager->persist($asiste3);
+
+        $asiste4 = new Asiste();
+        $asiste4->setFechaAsisteClase(new \DateTime('2019-04-16'));
+        $asiste3->setUsuario($usuario2);
+        $asiste3->setClase($clase1);
 
         $manager->persist($asiste3);
 
         $asiste4 = new Asiste();
-        $asiste4->setFechaAsisteClase(new \DateTime('2019-04-12'));
+        $asiste4->setFechaAsisteClase(new \DateTime('2019-04-01'));
         $asiste4->setUsuario($usuario1);
-        $asiste4->setClase($clase2);
+        $asiste4->setClase($clase6);
 
         $manager->persist($asiste4);
 
         $asiste5 = new Asiste();
         $asiste5->setFechaAsisteClase(new \DateTime('2019-06-28'));
         $asiste5->setUsuario($usuario5);
-        $asiste5->setClase($clase2);
+        $asiste5->setClase($clase6);
 
         $manager->persist($asiste5);
 
         $asiste6 = new Asiste();
         $asiste6->setFechaAsisteClase(new \DateTime('2019-04-12'));
-        $asiste6->setUsuario($usuario3);
+        $asiste6->setUsuario($usuario3);    
         $asiste6->setClase($clase1);
 
         $manager->persist($asiste6);
+
+        $asiste7 = new Asiste();
+        $asiste7->setFechaAsisteClase(new \DateTime('2019-06-12'));
+        $asiste7->setUsuario($usuario3);
+        $asiste7->setClase($clase2);
+
+        $manager->persist($asiste7);
+
+        $asiste8 = new Asiste();
+        $asiste8->setFechaAsisteClase(new \DateTime('2019-06-12'));
+        $asiste8->setUsuario($usuario5);
+        $asiste8->setClase($clase2);
+
+        $manager->persist($asiste8);
 
          //Asignamos a los usuarios profesores usuario8(Jorge) y usuario7 (Jose Maria)
         //a 3 clases
 
         //Jorge ->profesor en clase de futbol
-        //      -> Profesor en calse de baloncesto
+        //      -> Profesor en clase de baloncesto
         $asiste7 = new Asiste();
-        $asiste7->setFechaAsisteClase(new \DateTime('2019-04-12'));
+        $asiste7->setFechaAsisteClase(new \DateTime('2019-06-10'));
         $asiste7->setUsuario($usuario8);
         $asiste7->setClase($clase1);
 
         $manager->persist($asiste7);
-
+        //En este asiste asignamos al profesor Jorge(usuario8) la de baloncesto(clase6) L,J de 16:00 a 18:00
         $asiste7 = new Asiste();
-        $asiste7->setFechaAsisteClase(new \DateTime('2019-04-12'));
+        $asiste7->setFechaAsisteClase(new \DateTime('2019-06-12'));
         $asiste7->setUsuario($usuario8);
         $asiste7->setClase($clase6);
 
         $manager->persist($asiste7);
 
-        //Jorge ->profesor en clase de baloncesto
+        //En este asiste asignamos al profesor Jose Maria(usuario7) la de baloncesto(clase3) L,X de 16:00 a 18:00
         $asiste8 = new Asiste();
         $asiste8->setFechaAsisteClase(new \DateTime('2019-04-12'));
         $asiste8->setUsuario($usuario7);

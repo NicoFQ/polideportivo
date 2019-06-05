@@ -1,0 +1,120 @@
+@import url("https://use.fontawesome.com/releases/v5.8.1/css/all.css");
+:root {
+    --tamano-img: 100px;
+    /* --rojo:#ef3f61; */
+    --rojo: #eb3b5a;
+    --shadow-rojo: #3a3a59;
+    --rosa: #ffdee6;
+    --morado: #970690;
+}
+
+header {
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--rojo);
+    font-size: 18px;
+    box-sizing: border-box;
+
+}
+
+header>nav>ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    height: 120px !important;
+}
+
+header>nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 2.7em 1.5em;
+    padding: 59px 1.5em;
+}
+
+nav>ul>li:first-of-type>a {
+    padding: 0;
+}
+
+nav>ul {
+    margin: 0;
+    padding: 0;
+}
+
+nav>ul>li:nth-of-type(n+6)>a {
+    color: black;
+}
+
+nav>ul li:nth-child(1) {
+    margin-right: auto;
+}
+
+nav>ul li:last-of-type {
+    margin-left: auto;
+    position: relative;
+}
+
+nav>ul>li:first-of-type {
+    width: var(--tamano-img);
+    height: var(--tamano-img);
+}
+
+nav>ul li>a>img {
+    width: 100%;
+}
+/* ##### ESTILOS ######################### */
+header li:nth-of-type(n+2) a {
+    margin: 0 2px;
+    transition: 500ms;
+}
+/*header li:nth-of-type(n+2):not(li:last-of-type) a:hover {*/
+header li:not(:last-of-type):nth-of-type(n+2) a:hover{
+    box-shadow: 0px -5px 0px 0px inset var(--shadow-rojo);
+    background-color: var(--rosa);
+    color: black;
+}
+/* Personalizacion perfil usuario */
+details {
+    background-color: var(--morado);
+    color:white;
+    border: 1px solid white;
+    box-sizing: border-box;
+    position: relative;
+    user-select: none;
+    -moz-user-select: none;
+    cursor:pointer;
+    text-transform: capitalize;
+}
+summary{
+    padding:.5em;
+}
+ deatils ul{height: 120px;}
+.dontMove {
+    position: relative;
+    top: 42px;
+}
+details li a {
+    padding: 0;
+
+}
+details li a:hover {
+    color: black;
+}
+
+details li {
+    padding: .5em;
+    transition: 200ms ease-in-out;
+}
+details li:hover{
+    box-shadow: 0px -5px 0px 0px inset var(--shadow-rojo);
+    background-color: var(--rosa);
+    color:black;
+}
+details li i{
+    font-size: 22px;
+}

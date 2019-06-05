@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ELEGIR PAGO{% endblock %}
+
+{% block body %}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('/css/general.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/tarjetasBonos.css') }}">
+    {% endblock %}
+    {% include '/usuario/nav_usuario.html.twig' %}
+    <form action="/pago" method="post">
+        <h2>Nuestros bonos</h2>
+        <div id="radios">
+            <div>
+                <input type="radio" name="bono" id="basico" value="basico">
+                <div  id="basico-box">
+                    <h2>Plan de pago: {{ basico.getNombreBono }}</h2>
+                    <hr>
+                    <p>Suscripción desde: {{ basico.getPrecio }},00€</p>
+                    <p>Duracion: {{ basico.getDuracionDias }} días</p>
+                    <label for="basico">Seleccionar</label>
+                </div>
+
+            </div>
+            <div>
+                <input type="radio" name="bono" id="premium" value="premium">
+                <div id="premium-box">
+                    <h2>Plan de pago: {{ premium.getNombreBono }}</h2>
+                    <hr>
+                    <p>Suscripción desde: {{ premium.getPrecio }},00€</p>
+                    <p>Duracion: {{ premium.getDuracionDias }} días</p>
+                    <label for="premium">Seleccionar</label>
+                </div>
+            </div>
+        </div>
+        <input type="submit" value="Enviar">
+
+    </form>
+{% endblock %}

@@ -62,7 +62,7 @@ class RegistroController extends AbstractController
 
                 $em->flush();
 //            Si ha agregado al usuario a la BBDD, le redicreciona al login
-                return new RedirectResponse('/login');
+                return new RedirectResponse('/');
             }
 
 //            $em->persist($usuario);

@@ -19,32 +19,18 @@ class TipoPagoRepository extends ServiceEntityRepository
         parent::__construct($registry, TipoPago::class);
     }
 
-    // /**
-    //  * @return TipoPago[] Returns an array of TipoPago objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /** Funcion que obtiene Array asociativo con el ID del tipo de pago asignado al nombre
+     * @param $nombre: Nombre del tipo de pago
+     * @return mixed[]
+     * @throws \Doctrine\DBAL\DBALException
+     */
+    public function getIdTipoPago($nombre)
     {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $conn = $this->getEntityManager()->getConnection();
 
-    /*
-    public function findOneBySomeField($value): ?TipoPago
-    {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $query = 'select id from tipo_pago t where t.nombre_tipo = :nombre';
+        $stmnt = $conn->prepare($query);
+        $stmnt->execute(['nombre' => $nombre]);
+        return $stmnt->fetchAll();
     }
-    */
 }

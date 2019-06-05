@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Noticia index{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('/css/noticias.css') }}">
+{% endblock %}
+{% block body %}
+    <header>
+        {% include '/profesor/nav.html.twig' %}
+    </header>
+    <div class="container">
+        <h1>Noticias</h1>
+        <main>
+            {% for noticium in noticias %}
+                <div class="noticia">
+                    <h2>{{ noticium.titulo }}</h2>
+                    <p>
+                        <span class="autor">Por: {{ noticium.autor }}</span>
+                        <span class="fecha">Fecha: {{ noticium.fechaCreacion ? noticium.fechaCreacion|date('Y-m-d') : '' }}</span>
+                    </p>
+                    <div>
+                        <p>
+                            {{ noticium.contenido }}
+                            <figure>
+                                <img src="{{ noticium.imgNoticia }}" alt="Imagen de la noticia">
+                                <figcaption></figcaption>
+                            </figure>
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}
+        </main>
+
+    </div>
+
+{% endblock %}
