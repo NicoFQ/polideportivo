@@ -46,13 +46,13 @@
     left: -200000px;
 }
 
-#app{
+#contenedor{
     display: none;
 }
 
 
 
-#inp:checked ~ #app{
+#inp:checked ~ #contenedor{
     display: block;
 }
 

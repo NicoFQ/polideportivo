@@ -10,6 +10,7 @@ use App\Entity\Usuario;
 use App\Repository\AsisteRepository;
 use App\Repository\GustosUsuariosRepository;
 use App\Repository\UsuarioRepository;
+use App\Repository\ClaseRepository;
 
 class UsuarioController extends AbstractController
 {
@@ -72,6 +73,16 @@ class UsuarioController extends AbstractController
     {
         return $this->render('usuario/noticias.html.twig', [
             'noticias' => $noticiaRepository->findAll(),
+        ]);
+    }
+
+     /**
+     * @Route("/usuario/reservas", name="reservarClase")
+     */
+    public function reservas(ClaseRepository $clases)
+    {
+        return $this->render('usuario/reservas.html.twig', [
+            "nombreClases" => $clases ->nombreClases(),
         ]);
     }
 }

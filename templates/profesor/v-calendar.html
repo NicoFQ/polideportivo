@@ -1,13 +1,18 @@
 <div class="Wrap" id="app">
+    <input type="checkbox" value="Ver Calendario" id="inp" @click="pintarIconoClase()">
+    <label id="btnCalendario" for="inp">Ver Calendario</label>
+    <div id="contenedor">
   <fieldset>
     <legend>Base Calendar</legend>
     <div>
       <p>Salida:</p>
       <pre>$¿ output ?</pre>
-      <p>Hoy: $¿new Date().toLocaleDateString()?</p>
+      <p>Hoy: $¿new Date().toLocaleDateString('en-GB')?</p>
       <p>Dia seleccionado: <b>$¿output.str?</b></p>
       <p>Dia seleccionado (formato): <b>$¿output.format?</b></p>
+      
     </div>
+    
     <div class="flex">
       <div class="Calendar">
         <div class="Cr-Head">
@@ -22,7 +27,7 @@
           <div class="Cr-Days_blank" v-for="blank in daysOfPrevMonth">
           	<span>$¿blank?</span>
       	  </div>
-          <div class="Cr-Days_day" v-for="i in daysInMonth" :class="{currDay: i == currDay, clickedDay: i == clickedDay, nico: 1 == 1}" @click="setDate(i),prueba()">
+          <div class="Cr-Days_day" v-for="i in daysInMonth" :class="{currDay: i == currDay, clickedDay: i == clickedDay, nico: 1 == 1}" @click="setDate(i),pintarIconoClase()">
           	<span>$¿i?</span>	
       	  </div>
           <div class="Cr-Days_blank" v-for="_,i in qtyDaysNextMonth">
@@ -32,4 +37,5 @@
       </div>
     </div>
   </fieldset>
+</div>
 </div>

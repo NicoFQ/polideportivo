@@ -68,5 +68,16 @@ class ClaseRepository extends ServiceEntityRepository
 
              return $qb->getQuery()->getResult();
                    
-}
+  }
+
+  /*Funcion que duvuelve el nombre de todas las clases deportivas creadas
+  
+  */
+
+  public function nombreClases(){
+   return $this ->createQueryBuilder('clase') 
+            ->select('distinct nombre_clase')
+            ->getQuery()
+            ->getResult();
+  }
 }
