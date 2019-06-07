@@ -80,17 +80,19 @@ class UsuarioController extends AbstractController
      * @Route("/usuario/reservas", name="reservarClase")
      */
     public function reservas(ClaseRepository $clases)
-    {
+    {   
+        $fecha = date("Y-m-d");
         return $this->render('usuario/reservas.html.twig', [
             "nombreClases" => $clases ->nombreClases(),
+            "fechaNow" => $fecha,
         ]);
     }
     /**
      * @Route("/usuario/reservas/data", name="reservarClase_data_json")
      */
-    public function datosClaseJson (ClaseRepository $clase)
+    public function datosClaseJson ()
     {
-
+        return new JsonResponse($_GET);
 
     }
 }

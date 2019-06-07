@@ -74,11 +74,14 @@ class ClaseRepository extends ServiceEntityRepository
   */
 
   public function nombreClases(){
-   return $this ->createQueryBuilder('c')
-            ->select('distinct c.nombre_clase')
-            ->getQuery()
-            ->getResult();
+            $conn = $this->getEntityManager()->getConnection();
+            $query = 'select distinct c.nombre_clase, c.id_deporte_id from clase c';
+            $sts = $conn->prepare($query);
+            $sts->execute();
+            return $sts -> fetchAll();
   }
+
+
   public function getDatosClaseByName($nombre_clase)
   {
       $conn = $this->getEntityManager()->getConnection();

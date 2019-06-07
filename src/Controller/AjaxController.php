@@ -123,4 +123,45 @@ class AjaxController extends AbstractController
 
     }
 
+    /**
+     * @Route("/ajax/getHorariosClase", name="ajax")
+     */
+     
+    public function getHorariosClase(){
+        // echo "ccc";
+        // dump($_GET);
+        // die;
+        // $dias = array('Domingo','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado');
+        // $fecha = $dias[date('N', strtotime($_GET['fecha']))];
+        // echo $fecha;
+        // switch ($fecha) {
+        //     case 'Lunes':
+        //         $fecha = 'L';
+        //         break;
+        //     case 'Martes':
+        //         $fecha = 'M';
+        //         break; 
+        //     case 'Miercoles':
+        //         $fecha = 'X';
+        //         break;             
+        //     case 'Jueves':
+        //         $fecha = 'J';
+        //         break;
+        //     case 'Viernes':
+        //         $fecha = 'V';
+        //         break; 
+        //     case 'Sabado':
+        //         $fecha = 'S';
+        //         break;
+        //     case 'Domingo':
+        //         $fecha = 'D';
+        //         break;
+        //     default:
+        //         # code...
+        //         break;
+        // }
+        // $_GET['nombre'];
+        return new JsonResponse($_GET);
+    }
+
 }

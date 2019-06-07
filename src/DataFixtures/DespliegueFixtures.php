@@ -416,7 +416,7 @@ class DespliegueFixtures extends Fixture
         $clase5->setDisponible(0);
 
         $clase6 = new Clase();
-        $clase6->setIdDeporte($padel);
+        $clase6->setIdDeporte($baloncesto);
         $clase6->setNombreClase("Clase de baloncesto");
         $clase6->setDiasSemana("J,V");
         $clase6->setHoraInicio("16:00");

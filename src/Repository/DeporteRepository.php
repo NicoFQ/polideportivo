@@ -47,4 +47,20 @@ class DeporteRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function nombreClases(){
+        return $this ->createQueryBuilder('c')
+                 ->select('distinct  c.id,c.nombre_clase')
+                 //->innerJoin('App\Entity\Deporte','a', 'WITH', 'c.id_deporte = a.id_deporte')
+                 ->getQuery()
+                 ->getResult();
+     
+                
+             // $conn = $this->getEntityManager()->getConnection();
+             // $query ='select distinct nombre_clase, id_deporte_id
+             //                                 from clase  
+             //                                 ';
+             //  $stmnt = $conn->prepare($query);
+             // return $query->getResult($stmnt);
+       }
 }
