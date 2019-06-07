@@ -30,7 +30,8 @@ class PagoType extends AbstractType
                     "placeholder" => "Suscripción mensual"
                 ],
                 "data" => "Suscripción mensual",
-                "required" => false
+                "required" => false,
+                "disabled" => true
             ])
             ->add('fecha_pago',TextType::class,[
                 'data' => $fecha,
@@ -51,7 +52,6 @@ class PagoType extends AbstractType
             ->add('tipo_bono',HiddenType::class,[
                 "mapped" => false
             ])
-//            ->add("ENVIAR", SubmitType::class)
         ;
     }
 

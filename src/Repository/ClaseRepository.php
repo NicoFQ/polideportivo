@@ -3,7 +3,6 @@
 namespace App\Repository;
 
 use App\Entity\Clase;
-use App\Entity\Usuario;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Bundle\DoctrineBundle\Repository\Entity;
 use Symfony\Bridge\Doctrine\RegistryInterface;
@@ -75,9 +74,19 @@ class ClaseRepository extends ServiceEntityRepository
   */
 
   public function nombreClases(){
-   return $this ->createQueryBuilder('clase') 
-            ->select('distinct nombre_clase')
+   return $this ->createQueryBuilder('c')
+            ->select('distinct c.nombre_clase')
             ->getQuery()
             ->getResult();
+  }
+  public function getDatosClaseByName($nombre_clase)
+  {
+      $conn = $this->getEntityManager()->getConnection();
+      $query = 'SELECT dias_semana, hora_inicio, hora_fin, max_alumnos, disponible
+                FROM clase 
+                WHERE nombre_clase = :nombre_clase
+                AND disponible = 1';
+      $stmnt = $conn->prepare($query);
+      return $stmnt->execute(['nombre_clase' => $nombre_clase]);
   }
 }

@@ -8,5 +8,33 @@
 {% block main %}
 {#	{% include 'usuario/nav_usuario.html.twig' %}#}
 	
-	<h2>{% dump(nombreClases) %}ssssssssssssss</h2>
+{#	<h2>{% dump(nombreClases) %}ssssssssssssss</h2>#}
+	<form action="/ajax/getClasesByName" method="post">
+		<div>
+			<label for="fecha">Fecha</label>
+			<input type="date" name="fecha" id="fecha">
+		</div>
+		<select name="" id="">
+			<option value="--">Seleciona una clase</option>
+
+		{% for c in nombreClases %}
+			<option value="{{ c.nombre_clase }}" onclick="seleccionClase('{{ c.nombre_clase }}')">{{ c.nombre_clase }}</option>
+		{% endfor %}
+		</select>
+{#		<input type="submit" value="Enviar">#}
+	</form>
+	<script>
+		const fetchAll = () => {
+			const URL = "http://"+window.location;
+			console.log(URL)
+			fetch(URL)
+					.then(noData => noData.json())
+					.then(data => console.log(data))
+		}
+		const seleccionClase = (nombre_clase) => {
+			const nombre = nombre_clase || "Clase de baloncesto";
+
+			fetchAll()
+		}
+	</script>
 {% endblock %}

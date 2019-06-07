@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Usuario;
+use App\Repository\ClaseRepository;
 use App\Repository\UsuarioRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -109,4 +110,17 @@ class AjaxController extends AbstractController
         $data = $em->getProfesorActivity($userSesion->getId());
         return new JsonResponse(["activity" => $data]);
     }
+
+    /**
+     * @Route("/ajax/getClasesByName", name="ajax")
+     * @param ClaseRepository $clase
+     */
+    public function getClasesByName(ClaseRepository $clase)
+    {
+        $data = $clase->getDatosClaseByName($_POST["nombre_clase"]);
+
+        dump($data);die;
+
+    }
+
 }

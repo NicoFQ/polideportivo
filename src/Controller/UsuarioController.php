@@ -85,4 +85,12 @@ class UsuarioController extends AbstractController
             "nombreClases" => $clases ->nombreClases(),
         ]);
     }
+    /**
+     * @Route("/usuario/reservas/data", name="reservarClase_data_json")
+     */
+    public function datosClaseJson (ClaseRepository $clase)
+    {
+
+
+    }
 }
