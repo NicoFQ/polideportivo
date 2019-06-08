@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Usuario;
+use App\Repository\AsisteRepository;
 use App\Repository\ClaseRepository;
 use App\Repository\UsuarioRepository;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -88,7 +90,7 @@ class AjaxController extends AbstractController
         return $nombre.$extension;
     }
     /**
-    * @Route("/ajax/getUserActivity", name="ajax")
+    * @Route("/ajax/getUserActivity", name="ajax_user")
     */
     public function getUserActivity(UsuarioRepository $em)
     {
@@ -100,7 +102,7 @@ class AjaxController extends AbstractController
     }
 
     /**
-    * @Route("/ajax/getProfesorActivity", name="ajax")
+    * @Route("/ajax/getProfesorActivity", name="ajax_profesor")
     */
     public function getProfesorActivity(UsuarioRepository $em)
     {
@@ -112,56 +114,38 @@ class AjaxController extends AbstractController
     }
 
     /**
-     * @Route("/ajax/getClasesByName", name="ajax")
+     * @Route("/ajax/getHorariosClase", name="ajax_horario")
      * @param ClaseRepository $clase
      */
-    public function getClasesByName(ClaseRepository $clase)
+    public function getClasesByName(ClaseRepository $clase, AsisteRepository $asiste)
     {
         $data = $clase->getDatosClaseByName($_POST["nombre_clase"]);
-
-        dump($data);die;
-
+        $nUsuarios = $asiste->getUsuApuntados($_POST["id"]);
+        return new JsonResponse(["datos" =>
+                [
+                    "horariosClase" => $data,
+                    "nUsuarios" => $nUsuarios
+                ]
+        ]);
     }
-
     /**
-     * @Route("/ajax/getHorariosClase", name="ajax")
+     * @Route("/ajax/setReservaClase", name="ajax_reserva_clase")
+     * @param ClaseRepository $clase
      */
-     
-    public function getHorariosClase(){
-        // echo "ccc";
-        // dump($_GET);
-        // die;
-        // $dias = array('Domingo','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado');
-        // $fecha = $dias[date('N', strtotime($_GET['fecha']))];
-        // echo $fecha;
-        // switch ($fecha) {
-        //     case 'Lunes':
-        //         $fecha = 'L';
-        //         break;
-        //     case 'Martes':
-        //         $fecha = 'M';
-        //         break; 
-        //     case 'Miercoles':
-        //         $fecha = 'X';
-        //         break;             
-        //     case 'Jueves':
-        //         $fecha = 'J';
-        //         break;
-        //     case 'Viernes':
-        //         $fecha = 'V';
-        //         break; 
-        //     case 'Sabado':
-        //         $fecha = 'S';
-        //         break;
-        //     case 'Domingo':
-        //         $fecha = 'D';
-        //         break;
-        //     default:
-        //         # code...
-        //         break;
-        // }
-        // $_GET['nombre'];
-        return new JsonResponse($_GET);
+    public function setReservaClase(AsisteRepository $asiste)
+    {
+        $data = $_POST["clase_id"];
+        $usuario = new Session();
+        $usuario = $usuario->getUser();
+        $usuarioId = $usuario->getId();
+
+        $datosInsert = ["clase_id" => $data, "usuario_id" => $usuarioId];
+        if ($asiste->setReservaClase($datosInsert)){
+            return new RedirectResponse("/usuario");
+        }
+
+
+
     }
 
 }

@@ -1,56 +1,26 @@
 {% extends 'usuario/nav_usuario.html.twig' %}
 {% block stylesheets %}
-	<link rel="stylesheet" type="text/css" href="{{ asset('/css/nav_usuario.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/nav_usuario.css') }}">
 {% endblock %}
 
 {% block title %}Polideportivo{% endblock %}
 
 {% block main %}
-{#	{% include 'usuario/nav_usuario.html.twig' %}#}
-	
- <h2>{% dump(nombreClases) %}</h2>
-	
-		<div>
-			<label for="fecha">Fecha</label>
-			<input type="date" name="fecha" id="fecha" value="{{ fechaNow }}">
-		</div>
-		<select name="" id="select">
-			<option value="--">Seleciona una clase</option>
+        <div>
+            <label for="fecha">Fecha</label>
+            <input type="date" name="fecha" id="fecha" value="{{ fechaNow }}">
+        </div>
+        <select name="nombre_clase" id="nombre_clase">
+            <option value="--">Seleciona una clase</option>
 
-		{% for c in nombreClases %}
-			<option value="{{ c.id_deporte_id }}" >{{ c.nombre_clase }}</option>
-		{% endfor %}
-		</select>
-		<button value="Enviar" onclick="seleccionClase()">Buscar Clase</button>
-	
-	<script>
-		const fetchAll = (id_deporte,fecha) => 
-		{
-			//No consigo ue me funcione nada de ajax
-			// La primera consulta funciona bien a traves de un evento en el boton de buscar clase
-			// si no introduce una clase salta un alert y la fecha por defecto introduce la del dia 
+            {% for c in nombreClases %}
+                <option value="{{ c.id_deporte_id }}">{{ c.nombre_clase }}</option>
+            {% endfor %}
+        </select>
+        <button value="Enviar" onclick="seleccionClase()">Buscar clase</button>
+        <div id="datos-clase"></div>
 
-			
-			const URL = window.location.host+"/ajax/getHorariosClase?id="+id_deporte+"fecha="+fecha;
-			console.log(URL);
-			fetch(URL)
-					.then(noData => noData.json())
-					.then(data => console.log(data))
-					
-		}
-		const seleccionClase = () => {
-			
-			var combo = document.getElementById("select");
-            var id_deporte = combo.options[combo.selectedIndex].value;
-			if(id_deporte == "--"){
-				alert('Por favor selecciona un deporte');
-			}else{
 
-			const nombre = id_deporte || 1;
-            fecha= document.getElementById('fecha').value;
-			console.log(fecha);
-			fetchAll(id_deporte,fecha);
-			}
-		}
-	</script>
+
+    <script src="{{ asset('/js/reservas.js') }}"></script>
 {% endblock %}

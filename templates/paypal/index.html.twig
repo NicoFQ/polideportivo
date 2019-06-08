@@ -40,9 +40,6 @@
                         // Call your server to save the transaction
                         return fetch(URL+"/transaction-complete", {
                             method: 'post',
-                            // headers: {
-                            //     'content-type': 'application/json'
-                            // },
                             body: data
                         })
                             .then(res => res.text())
