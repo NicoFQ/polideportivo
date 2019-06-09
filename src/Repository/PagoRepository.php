@@ -31,4 +31,16 @@ class PagoRepository extends ServiceEntityRepository
                                     'concepto' => $arr["concepto"],
         ]);
     }
+
+    public function estaAbonado($usuario_id)
+    {
+        $conn = $this->getEntityManager()->getConnection();
+        $query = 'select tipo_bono_id
+                    from pago 
+                    where month(fecha_pago) = month(current_date()) 
+                    and usuario_id = :usuario_id;';
+        $stmnt = $conn->prepare($query);
+        $stmnt->execute(['usuario_id' => $usuario_id]);
+        return $stmnt->fetchAll();
+    }
 }

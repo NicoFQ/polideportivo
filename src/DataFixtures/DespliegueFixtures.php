@@ -590,12 +590,21 @@ class DespliegueFixtures extends Fixture
 //        PAGO ////////////////////////////////////////////////////////////////////////////////////////////////////////
         $pago1 = new Pago();
         $pago1->setConcepto("Reserva pista");
-        $pago1->setFechaPago(new \DateTime('@'.strtotime('now')));
+        $pago1->setFechaPago(new \DateTime('@'.strtotime('2019-04-01')));
         $pago1->setUsuario($usuario3);
         $pago1->setTipoBono($premium);
         $pago1->setPago($paypal);
 
         $manager->persist($pago1);
+
+        $pago2 = new Pago();
+        $pago2->setConcepto("Reserva pista");
+        $pago2->setFechaPago(new \DateTime('@'.strtotime('2019-02-25')));
+        $pago2->setUsuario($usuario7);
+        $pago2->setTipoBono($premium);
+        $pago2->setPago($paypal);
+
+        $manager->persist($pago2);
 //        FIN PAGO ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //        NOTICIA /////////////////////////////////////////////////////////////////////////////////////////////////////
