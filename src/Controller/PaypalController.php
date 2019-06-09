@@ -36,18 +36,18 @@ class PaypalController extends AbstractController
     {
         $data = json_encode($_POST);
         $this->sess = new Session();
+        $response = "";
         if (!empty($data)){
             $dataInsert = $this->sess->get("datosPago");
             if ($pagoDB->guardarPago($dataInsert)){
-                $data = "done";
-
+                $response = "pagado";
             }else{
-                $data = "fail";
+                $response = "noPagado";
             }
 
         }
-        return new RedirectResponse("/usuario");
-//        return new JsonResponse(['res' => $data]);
+//        return new RedirectResponse("/usuario");
+        return new JsonResponse(['res' => $response]);
     }
 
 

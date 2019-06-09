@@ -6,6 +6,7 @@ use App\Entity\Pago;
 use App\Entity\TipoBono;
 use App\Entity\TipoPago;
 use App\Form\PagoType;
+use App\Repository\PagoRepository;
 use App\Repository\TipoBonoRepository;
 use App\Repository\TipoPagoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -25,8 +26,13 @@ class PagoController extends AbstractController
 
         $tipo_pago = $this->getDoctrine()->getRepository(TipoPago::class);
         $idPago = $tipoPago->getIdTipoPago("Paypal")[0]["id"];
-//        $nombreBono = (!empty($_POST["bono"])) ? $_POST["bono"] : "basico";
         $nombreBono = "";
+
+        $session = new Session();
+        $usuario = new Session();
+        $usuario = $usuario->getUser();
+
+        $usuarioId = $usuario->getId();
 
         if (count(($_POST)) == 0){
             return new RedirectResponse("/pago/planes");
@@ -35,12 +41,6 @@ class PagoController extends AbstractController
         }
         $idTiboBono = $tipoBono->getIdTipoBono($nombreBono)[0]["id"];
         $precio = $tipoBono->getIdTipoBono($nombreBono)[0]["precio"];
-
-        $session = new Session();
-        $usuario = new Session();
-        $usuario = $usuario->getUser();
-
-        $usuarioId = $usuario->getId();
 
         $form = $this->createForm(PagoType::class, null, [
             "method" => "POST",

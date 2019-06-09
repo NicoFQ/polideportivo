@@ -42,8 +42,13 @@
                             method: 'post',
                             body: data
                         })
-                            .then(res => res.text())
-                            .then(body => console.log(body));
+                            .then(res => res.json())
+                            .then(body => {
+                                if(body.res == "pagado"){
+                                    window.location = "/usuario"
+                                }
+                            })
+
                     });
                 }
             }).render('#paypal-button-container');

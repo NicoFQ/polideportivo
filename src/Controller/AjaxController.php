@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Usuario;
 use App\Repository\AsisteRepository;
 use App\Repository\ClaseRepository;
+use App\Repository\PagoRepository;
 use App\Repository\UsuarioRepository;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -132,7 +133,7 @@ class AjaxController extends AbstractController
      * @Route("/ajax/setReservaClase", name="ajax_reserva_clase")
      * @param ClaseRepository $clase
      */
-    public function setReservaClase(AsisteRepository $asiste)
+    public function setReservaClase(AsisteRepository $asiste, PagoRepository $pago)
     {
         $data = $_POST["clase_id"];
         $usuario = new Session();
@@ -140,11 +141,18 @@ class AjaxController extends AbstractController
         $usuarioId = $usuario->getId();
 
         $datosInsert = ["clase_id" => $data, "usuario_id" => $usuarioId];
-        if ($asiste->setReservaClase($datosInsert)){
-            return new RedirectResponse("/usuario");
+
+        $response ="";
+//        Hago esta comprobacion por que al ser Ajax, al intentar redirigir desde php no lo renderiza.
+//        Tengo que hacer flags para poder saber lo que ha hecho, segun lo que envie
+//        hara una redireccion u otra
+        if(!empty($pago->estaAbonado($usuarioId))){//Si esta abonado, hago la reserva
+            $asiste->setReservaClase($datosInsert);
+            $response = "Insertado";
+        }else{ //Si no, redirijo al usuario hacia nuestros bonos
+            $response = "noAbonado";
         }
-
-
+        return new JsonResponse(["data" => $response]);
 
     }
 

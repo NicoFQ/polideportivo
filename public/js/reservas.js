@@ -95,7 +95,16 @@ function hacerReserva(){
         method: "post",
         body:formReserva
     })
-        .then(noData => console.log(noData.json()))
+        .then(noData => noData.json())
+        .then(data => {
+             if(data.data == "noAbonado"){
+                 alert("Para poder continuar debes comprar uno de nuestros bonos.");
+                 window.location = "/pago/planes";
+             }else{
+                 alert("Te has apuntado a la clase correctamente.");
+                 window.location = "/usuario"
+             }
+        })
 }//hacerReserva
 function formatDias(arr){
     let diasCompletos = [];
