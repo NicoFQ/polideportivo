@@ -585,3 +585,17 @@ button:active:after {
             transform: scale(0.7);
   }
 }
+
+#activities{
+  display: flex;
+}
+
+.point{
+  border: 2px solid #477dca;
+  border-radius: 5px;
+  height: 0px !important;
+  width: 15px;
+  margin: 0 auto;
+  position: relative;
+  top: -20px;
+}

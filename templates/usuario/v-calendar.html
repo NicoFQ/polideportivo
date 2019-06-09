@@ -1,13 +1,4 @@
 <div class="Wrap" id="app">
-  <fieldset>
-    <legend>Base Calendar</legend>
-    <div>
-      <p>Salida:</p>
-      <pre>$¿ output ?</pre>
-      <p>Hoy: $¿new Date().toLocaleDateString()?</p>
-      <p>Dia seleccionado: <b>$¿output.str?</b></p>
-      <p>Dia seleccionado (formato): <b>$¿output.format?</b></p>
-    </div>
     <div class="flex">
       <div class="calendar">
         <div class="Cr-Head">
@@ -26,13 +17,19 @@
           <!-- Dias del mes actual -->
           <div class="Cr-Days_day" v-for="i in daysInMonth" :class="{ currDay: i == currDay, clickedDay: i == clickedDay }" @click="setDate(i)">
           	<span>$¿i?</span>	
+            <div class="point" v-if="matchDay(i)"></div>
       	  </div>
           <!-- Dias del mes siguiente -->
           <div class="Cr-Days_blank" v-for="blank in qtyDaysNextMonth">
-          	<span>$¿blank?</span>	
+          	<span>$¿blank?</span>
           </div>
         </div>
       </div>
     </div>
-  </fieldset>
+    <div id="activities">
+      <pre>$¿ output ?</pre>
+      <p>Hoy: $¿new Date().toLocaleDateString()?</p>
+      <p>Dia seleccionado: <b>$¿output.str?</b></p>
+      <p>Dia seleccionado (formato): <b>$¿output.format?</b></p>
+    </div>
 </div>

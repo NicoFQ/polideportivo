@@ -474,6 +474,13 @@ class DespliegueFixtures extends Fixture
         $asiste5->setClase($clase6);
 
         $manager->persist($asiste5);
+        
+        $asiste5 = new Asiste();
+        $asiste5->setFechaAsisteClase(new \DateTime('2019-06-28'));
+        $asiste5->setUsuario($usuario5);
+        $asiste5->setClase($clase6);
+
+        $manager->persist($asiste5);
 
         $asiste6 = new Asiste();
         $asiste6->setFechaAsisteClase(new \DateTime('2019-04-12'));

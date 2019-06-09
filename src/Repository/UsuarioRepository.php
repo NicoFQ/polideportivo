@@ -112,6 +112,7 @@ class UsuarioRepository extends ServiceEntityRepository
             ->getQuery()
             ->getOneOrNullResult();
     }
+
     public function comprobarEmail($email)
     {
         return $this->createQueryBuilder('u')
@@ -120,6 +121,7 @@ class UsuarioRepository extends ServiceEntityRepository
             ->getQuery()
             ->getOneOrNullResult();
     }
+
     public function getEmails()
     {
         return $this->createQueryBuilder('u')
@@ -146,6 +148,7 @@ class UsuarioRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
 //    Para una futura version, pasar un array con todos los valores
 //    y prepararlos dentro de la query
     public function updateUser($id,$arr)
@@ -170,6 +173,7 @@ class UsuarioRepository extends ServiceEntityRepository
                                 ]);
 //        return $stmnt->fetchAll();
     }
+    
     public function updateIMG($id, $nombreIMG)
     {
         $conn = $this->getEntityManager()->getConnection();
