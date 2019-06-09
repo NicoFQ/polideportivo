@@ -170,16 +170,17 @@ let calendario = (function(){
         },
         
         checkActivity(fecha){
-          let countActivities = 0;
           this.hiddenActivities();
           ACTIVITY.forEach( v => {
             if (v.fecha == fecha) {
               this.showActivities(v);
-              countActivities++;
             }
           });
-          if(!countActivities){
-              //this.hiddenActivities();
+          let div = document.getElementById("activities");
+          if (!div.childNodes.length) {
+            document.getElementById("sinActividades").style.display = 'inherit';
+          }else{
+            document.getElementById("sinActividades").style.display = 'none';
           }
         },
 
@@ -202,43 +203,105 @@ let calendario = (function(){
         },
 
         hiddenActivities(){
-          let div = document.getElementById("activities");
+          if (ROL == "/usuario") {
+            let div = document.getElementById("activities");
+          
           while(div.childNodes.length){
             div.removeChild(div.childNodes[0]);
           }
+          
+            
+            
+          }else if(ROL == "/profesor"){
+            let tbody = document.getElementsByTagName("tbody")[0];
+            while(tbody.childNodes.length){
+              tbody.removeChild(tbody.childNodes[0]);
+            }
+          } 
         }, 
 
         showActivities(activity){
-          console.log("show");
-          let div = document.createElement("div");
-          let keys = Object.keys(activity);
-          keys.forEach(v =>{
-            let p = document.createElement("p");
+          if (ROL == "/usuario") {
+            let div = document.createElement("div");
+            div.setAttribute("id", "actividad");
+            let keys = Object.keys(activity);
+            keys.forEach(v =>{
+              let p = document.createElement("p");
 
-            let spanTitle = document.createElement("span");
-            let spanContent = document.createElement("span");
-            let txtTitle = null;
-            if (v == 'titulo') {
-              txtTitle = document.createTextNode('');
-            }else{
-              txtTitle = document.createTextNode(v[0].toUpperCase()+v.slice(1)+': ');
-            }
-            let txtContent = null;
-            if (v == 'instalacion') {
-              txtContent = document.createTextNode(activity[v][0].toUpperCase() + activity[v].slice(1).toLowerCase());
-              console.log(txtContent);
-            }else{
-              txtContent = document.createTextNode(activity[v]);
-            }
+              let spanTitle = document.createElement("span");
+              let spanContent = document.createElement("span");
+              let txtTitle = null;
+              if (v == 'titulo') {
+                txtTitle = document.createTextNode('');
+              }else{
+                txtTitle = document.createTextNode(v[0].toUpperCase()+v.slice(1)+': ');
+              }
+              let txtContent = null;
+              if (v == 'instalacion') {
+                txtContent = document.createTextNode(activity[v][0].toUpperCase() + activity[v].slice(1).toLowerCase());
+                console.log(txtContent);
+              }else{
+                txtContent = document.createTextNode(activity[v]);
+              }
+              
 
-            spanTitle.appendChild(txtTitle);
-            spanContent.appendChild(txtContent);
-            p.appendChild(spanTitle);
-            p.appendChild(spanContent);
-            div.appendChild(p);
-          });
-          document.getElementById("activities").appendChild(div);
+              spanTitle.appendChild(txtTitle);
+              spanContent.appendChild(txtContent);
+              p.appendChild(spanTitle);
+              p.appendChild(spanContent);
+              div.appendChild(p);
+              if (v == 'titulo') {
+                div.appendChild(document.createElement("hr"));
+              }
+            });
+
+            document.getElementById("activities").appendChild(div);
+          }else if(ROL == "/profesor"){
+            let tr = document.createElement("tr");
+            let keys = Object.keys(activity);
+            keys.forEach(v => {
+              let td = document.createElement("td");
+              let txtTd = document.createTextNode(activity[v]);
+              td.appendChild(txtTd);
+              tr.appendChild(td);
+            });
+            document.getElementsByTagName("tbody")[0].appendChild(tr);
+          } 
+        },
+        pintarIconoClase(){
+        let clases = document.querySelectorAll("td[data-clase]");
+          let fechas  = document.querySelectorAll("td[data-fecha]");
+        let arrObjetos= [];
+       
+        for (let i = 0; i < clases.length ;i++) {
+          ob= {};
+          let nombre =  clases[i].innerText;
+          let dia = fechas[i].innerText;
+          dia = dia.substring(0, 2);
+          if(dia[0]==0){
+            
+            dia = parseInt(dia);
+          }
+          ob.nombre = nombre;
+          ob.dia = dia;
+          arrObjetos.push(ob);
+          
         }
+  
+        let days = document.querySelectorAll('.nico');
+        for ( i = 0; i < days.length ;i++) {
+           let span = days[i].firstChild;
+    
+           arrObjetos.forEach(element => {
+            if(span.innerText == element.dia){
+              //days[i].style = "background-color:red";
+              days[i].classList.add('clase');
+            }
+          });
+         
+        }
+
+},
       },
     });
     }
@@ -255,6 +318,7 @@ let calendario = (function(){
       fetch(PROFESOR_ACTIVITY).then( res => res.json() )
         .then(data => {
           ACTIVITY = data.activity;
+          console.log(ACTIVITY);
           runCalendar();
         })
     }
@@ -265,8 +329,6 @@ let calendario = (function(){
     }else if(ROL == "/profesor"){
       profesorActivity();  
     } 
-
-
   }
     
     return { init };

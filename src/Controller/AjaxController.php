@@ -3,7 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Usuario;
+use App\Repository\AsisteRepository;
+use App\Repository\ClaseRepository;
 use App\Repository\UsuarioRepository;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -87,7 +90,7 @@ class AjaxController extends AbstractController
         return $nombre.$extension;
     }
     /**
-    * @Route("/ajax/getUserActivity", name="ajax")
+    * @Route("/ajax/getUserActivity", name="ajax_user")
     */
     public function getUserActivity(UsuarioRepository $em)
     {
@@ -97,4 +100,52 @@ class AjaxController extends AbstractController
         $data = $em->getUserActivity($userSesion->getId());
         return new JsonResponse(["activity" => $data]);
     }
+
+    /**
+    * @Route("/ajax/getProfesorActivity", name="ajax_profesor")
+    */
+    public function getProfesorActivity(UsuarioRepository $em)
+    {
+//      Obtener el ID de la sesion de nico
+        $userSesion = new Session();
+        $userSesion = $userSesion->getUser();
+        $data = $em->getProfesorActivity($userSesion->getId());
+        return new JsonResponse(["activity" => $data]);
+    }
+
+    /**
+     * @Route("/ajax/getHorariosClase", name="ajax_horario")
+     * @param ClaseRepository $clase
+     */
+    public function getClasesByName(ClaseRepository $clase, AsisteRepository $asiste)
+    {
+        $data = $clase->getDatosClaseByName($_POST["nombre_clase"]);
+        $nUsuarios = $asiste->getUsuApuntados($_POST["id"]);
+        return new JsonResponse(["datos" =>
+                [
+                    "horariosClase" => $data,
+                    "nUsuarios" => $nUsuarios
+                ]
+        ]);
+    }
+    /**
+     * @Route("/ajax/setReservaClase", name="ajax_reserva_clase")
+     * @param ClaseRepository $clase
+     */
+    public function setReservaClase(AsisteRepository $asiste)
+    {
+        $data = $_POST["clase_id"];
+        $usuario = new Session();
+        $usuario = $usuario->getUser();
+        $usuarioId = $usuario->getId();
+
+        $datosInsert = ["clase_id" => $data, "usuario_id" => $usuarioId];
+        if ($asiste->setReservaClase($datosInsert)){
+            return new RedirectResponse("/usuario");
+        }
+
+
+
+    }
+
 }

@@ -196,24 +196,13 @@ class UsuarioRepository extends ServiceEntityRepository
       $activity = array_merge($reservas, $clases);
       return $activity;
     }
-    /*
 
-    id  1
-    usuario_id  6
-    pista_id  1
-    precio_reserva  10
-    fecha_de_reserva  2019-06-24
-    hora_inicio 12:00
-    hora_fin  14:00
-    fecha_creacion  2019-06-01
-    nombre_instalacion  PABELLON 1
-    id_deporte_id 3
-    id_instalacion_id 1
-    nombre_pista  Pista de padel
-    precio_hora 10
-    disponible  1
-    comentarios null
-    */
+    public function getProfesorActivity($id){
+        
+        $clases = self::getClasesProfesor($id);
+        
+        return $clases;
+      }
 
     private function getReservasUsuario($id){
         $conn = $this->getEntityManager()->getConnection();
@@ -223,30 +212,6 @@ class UsuarioRepository extends ServiceEntityRepository
         return $stmnt->fetchAll();
     }
 
-    /*
-    
-    id  2
-    usuario_id  6
-    clase_id  2
-    fecha_asiste_clase  2019-06-26
-    id_deporte_id 3
-    nombre_clase  Clase de padel
-    dias_semana L,X,J,V
-    hora_inicio 10:00
-    hora_fin  12:00
-    max_alumnos 4
-    min_alumnos 2
-    disponible  1
-
-
-    titulo:     String: "Clase de Baloncesto",
-    codDeporte:   String: "C-01",
-    fecha:      String: "26/05/2019",
-    inicio:     String: "12:00",
-    fin: :      String: "15:00",
-    instalacion:  String: null
-    pista:      String: null
-    */
     private function getClasesUsuario($id){
         $conn = $this->getEntityManager()->getConnection();
         $query = 'select c.nombre_clase "titulo", a.fecha_asiste_clase "fecha", c.hora_inicio "inicio", c.hora_fin "fin" from asiste a, clase c where a.usuario_id = :id and a.clase_id = c.id';
@@ -254,4 +219,29 @@ class UsuarioRepository extends ServiceEntityRepository
         $stmnt->execute(['id' => $id]);
         return $stmnt->fetchAll();
     }
+
+    private function getClasesProfesor($id){
+        $conn = $this->getEntityManager()->getConnection();
+        $query = 'select a.clase_id "clase", c.nombre_clase "titulo", a.fecha_asiste_clase "fecha", c.hora_inicio "inicio", c.hora_fin "fin" from asiste a, clase c where a.usuario_id = :id and a.clase_id = c.id';
+        $stmnt = $conn->prepare($query);
+        $stmnt->execute(['id' => $id]);
+        return self::getNumeroDeAlumnos($stmnt->fetchAll());
+    }
+
+    private function getNumeroDeAlumnos($clases){
+        $tamClases = count($clases);
+        if ($tamClases > 0) {
+            for ($i=0; $i < $tamClases; $i++) { 
+                $conn = $this->getEntityManager()->getConnection();
+                $query = 'select count(*) "alumnos" from asiste where clase_id = :id and fecha_asiste_clase = :fecha';
+                $stmnt = $conn->prepare($query);
+                $stmnt->execute(['id' => $clases[$i]["clase"], 'fecha' => $clases[$i]["fecha"]]);
+                $numAlumnos = $stmnt->fetchAll()[0]["alumnos"]-1;
+                array_shift($clases[$i]);
+                $clases[$i]["alumnos"] = $numAlumnos;
+            }
+        }
+        return $clases;
+
+    }   
 }

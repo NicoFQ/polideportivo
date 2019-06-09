@@ -19,46 +19,45 @@ class AsisteRepository extends ServiceEntityRepository
         parent::__construct($registry, Asiste::class);
     }
 
-    public function getUsuApuntados($id){
-            $qb = $this->createQueryBuilder('asiste')   
+    public function getUsuApuntados($id)
+    {
+        $qb = $this->createQueryBuilder('asiste')
             ->select('count(asiste.usuario)')
             ->where('asiste.clase= :clase')
-            ->setParameter('clase',$id);
-
-            return $qb->getQuery()->getResult();
-    }
-
-    public function getFechaClase($id){
-        $qb = $this->createQueryBuilder('asiste')   
-        ->select('asiste.fecha_asiste_clase')
-        ->where('asiste.clase= :clase')
-        ->setParameter('clase',$id);
+            ->setParameter('clase', $id);
 
         return $qb->getQuery()->getResult();
     }
 
-        public function usuarioAsiste($id)
+    public function getFechaClase($id)
     {
-/*
-        //        Se define la tabla que usaras con el alias
-        $qb = $this->createQueryBuilder('u')
-//            Si no se especifica la SELECT, dara todos los datos
-                   ->select('count(u)')
-//            Join: Equivalente a la union de tablas
-                   ->innerJoin('App\Entity\TipoUsuario','t', 'WITH', 'u.tipo_usuario = t.id')
-                   ->andWhere('t.nombre_tipo = :tipo_usuario')
-                   ->setParameter('tipo_usuario',$tipo_usuario);
-//        permite ver el resultao de la query (como el pre)
-//        dump($qb->getQuery()->getResult());
-        return $qb->getQuery()->getResult();
+        $qb = $this->createQueryBuilder('asiste')
+            ->select('asiste.fecha_asiste_clase')
+            ->where('asiste.clase= :clase')
+            ->setParameter('clase', $id);
 
-*/
+        return $qb->getQuery()->getResult();
+    }
+
+    public function usuarioAsiste($id)
+    {
         return $this->createQueryBuilder('a')
             ->andWhere('a.usuario = :id')
             ->setParameter('id', $id)
             ->getQuery()
             ->getResult();
     }
-    
+    public function setReservaClase($arr)
+    {
+        $conn = $this->getEntityManager()->getConnection();
+        $query = 'INSERT INTO asiste (usuario_id, clase_id, fecha_asiste_clase) 
+                  VALUES (:usuario_id, :clase_id, now())';
+        $stmnt = $conn->prepare($query);
+        return $stmnt->execute([
+            "usuario_id" => $arr["usuario_id"],
+            "clase_id" => $arr["clase_id"]
+        ]);
+    }
+
 
 }
