@@ -1,24 +1,26 @@
 {% extends 'usuario/nav_usuario.html.twig' %}
-{% block stylesheets %}
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/nav_usuario.css') }}">
-{% endblock %}
-
 {% block title %}Polideportivo{% endblock %}
 
 {% block main %}
-        <div>
-            <label for="fecha">Fecha</label>
-            <input type="date" name="fecha" id="fecha" value="{{ fechaNow }}">
-        </div>
-        <select name="nombre_clase" id="nombre_clase">
-            <option value="--">Seleciona una clase</option>
+    {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="{{ asset('/css/nav_usuario.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('/css/reservaClases.css') }}">
+    {% endblock %}
+    <div class="container">
+        <h2>Reserva de clases</h2>
+        <div id="container-reservas">
+            <select name="nombre_clase" id="nombre_clase">
+                <option value="--">Seleciona una clase</option>
 
-            {% for c in nombreClases %}
-                <option value="{{ c.id_deporte_id }}">{{ c.nombre_clase }}</option>
-            {% endfor %}
-        </select>
-        <button value="Enviar" onclick="seleccionClase()">Buscar clase</button>
+                {% for c in nombreClases %}
+                    <option value="{{ c.id_deporte_id }}">{{ c.nombre_clase }}</option>
+                {% endfor %}
+            </select>
+            <button value="Enviar" onclick="seleccionClase()" class="btn ok">Buscar clase</button>
+
+        </div>
         <div id="datos-clase"></div>
+    </div>
 
 
 

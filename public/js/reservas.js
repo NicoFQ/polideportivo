@@ -70,13 +70,15 @@ function crearEstruscturaClase(obj){
         let template = `
             <div>
                 <h2>${v.nombre_clase}</h2>
-                <h3>Dias de la semana en los que se imparte la clase: ${diasSemana}</h3>
-                <p><span>Estado:</span> ${estado}</p>
-                <p><span>Hora inicio:</span> ${v.hora_inicio}</p>
-                <p><span>Hora fin:</span> ${v.hora_fin}</p>
-                <p><span>Nº máximo de alumnos: </span> ${v.max_alumnos}</p>
-                <p><span>Alumnos apuntados:</span> ${alumnosApuntados}</p>
-                <button onclick="hacerReserva()">Reservar</button>
+                <h3>Dias de la semana en los que se imparte la clase: <span>${diasSemana}</span></h3>
+                    <div>
+                        <p><span>Estado:</span> ${estado}</p>
+                        <p><span>Hora inicio:</span> ${v.hora_inicio}</p>
+                        <p><span>Hora fin:</span> ${v.hora_fin}</p>
+                        <p><span>Nº máximo de alumnos: </span> ${v.max_alumnos}</p>
+                        <p><span>Alumnos apuntados:</span> ${alumnosApuntados}</p>
+                        <button onclick="hacerReserva()" class="btn ok">Reservar</button>
+                    </div>
             </div>
         `;
         contenedor.innerHTML = template;
@@ -133,5 +135,5 @@ function formatDias(arr){
                 break;
         }
     })
-    return diasCompletos.join(",");
+    return diasCompletos.join(", ");
 }
