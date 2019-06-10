@@ -2,6 +2,7 @@
 {% block stylesheets %}
 	<link rel="stylesheet" type="text/css" href="{{ asset('/css/calendarVue.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('/css/nav_usuario.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('/css/perfil_usuario.css') }}">
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<script src="{{ asset('/js/calendarVue.js') }}"></script>
 
@@ -10,45 +11,14 @@
 {% block title %}Polideportivo{% endblock %}
 
 {% block main %}
-{#	{% include 'usuario/nav_usuario.html.twig' %}#}
+	{% dump(gustos) %}
+	{% dump(user) %}
+	{% dump(clases) %}
+
+	{% include 'usuario/body_usuario.html' %}
 	{% include 'usuario/v-calendar.html' %}
-	{% dump(data) %}
 {% endblock %}
 
 {% block javascripts %}
-	<script>
-		// Recibe un array de objetos, con el titulo del evento, codDeporte, fecha, hora de inicio, hora de fin, instalacion, pista,
-		/*
-			[
-				{
-					titulo: 		String: "Clase de Baloncesto",
-					codDeporte:		String: "C-01",
-					fecha: 			String: "26/05/2019",
-					inicio: 		String: "12:00",
-					fin: : 			String: "15:00",
-					instalacion: 	String: null
-					pista: 			String: null
-				},
-				{
-					titulo: 		String: "Reserva Pista",
-					codDeporte:		String: "C-01",
-					fecha: 			String: "30/05/2019",
-					inicio: 		String: "13:00",
-					fin: 			String: "15:00",
-					instalacion: 	String: "2",
-					pista: 			String: "P-5",
-				},
-				{
-					titulo: 		String: "Clase de Futbol",
-					codDeporte:		String: "C-01",
-					fecha: 			String: "28/05/2019",
-					inicio: 		String: "16:00",
-					fin: 			String: "17:00",
-					instalacion: 	String: null
-					pista: 			String: null
-				},
-			]	
-		*/
-		calendario.init();
-	</script>
+	<script> calendario.init() </script>
 {% endblock %}

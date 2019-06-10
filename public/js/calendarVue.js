@@ -42,7 +42,7 @@ let calendario = (function(){
           return this.inst_date.getDay()
         },
         currDay() {
-          console.log(ACTIVITY);
+          
           if (
             this.inst_date.getMonth() === NOW.getMonth() &&
             this.inst_date.getFullYear() === NOW.getFullYear()
@@ -91,7 +91,7 @@ let calendario = (function(){
         },
         setDate(day) {
           this.clickedDay = day;
-          console.log("setDate");
+          
           this.checkActivity(this.formatDay(day));
           
           //this.$emit('setdate', this.output)
@@ -178,7 +178,7 @@ let calendario = (function(){
               let txtContent = null;
               if (v == 'instalacion') {
                 txtContent = document.createTextNode(activity[v][0].toUpperCase() + activity[v].slice(1).toLowerCase());
-                console.log(txtContent);
+                
               }else{
                 txtContent = document.createTextNode(activity[v]);
               }
@@ -213,7 +213,7 @@ let calendario = (function(){
               let txtContent = null;
               if (v == 'instalacion') {
                 txtContent = document.createTextNode(activity[v][0].toUpperCase() + activity[v].slice(1).toLowerCase());
-                console.log(txtContent);
+                
               }else{
                 txtContent = document.createTextNode(activity[v]);
               }
@@ -282,12 +282,12 @@ let calendario = (function(){
       fetch(PROFESOR_ACTIVITY).then( res => res.json() )
         .then(data => {
           ACTIVITY = data.activity;
-          console.log(ACTIVITY);
+          
           runCalendar();
         })
     }
 
-    console.log(ROL);
+    
     if (ROL == "/usuario") {
       userActivity();  
     }else if(ROL == "/profesor"){
