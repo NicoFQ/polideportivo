@@ -26,71 +26,8 @@ let calendario = (function(){
             format: '' //2018-04-19
           }
         }
-      },
-      created: function(){ 
-        /*CONTENEDOR = document.getElementById("activities");
-        if (ROL == "/usuario") {
-          this.userActivity();  
-        }else if(ROL == "/profesor"){
-          this.profesorActivity();  
-        } 
-*/
-        this.setDate(NOW.getDate());
-
-        let clases = document.querySelectorAll("td[data-clase]");
-        let fechas  = document.querySelectorAll("td[data-fecha]");
-        let arrObjetos= [];
-       
-        for (let i = 0; i < clases.length ;i++) {
-          ob= {};
-          let nombre =  clases[i].innerText;
-          let dia = fechas[i].innerText;
-          dia = dia.substring(0, 2);
-          if(dia[0]==0){
-            
-            dia = parseInt(dia);
-          }
-          ob.nombre = nombre;
-          ob.dia = dia;
-          arrObjetos.push(ob);
-        }
-
-        let days = document.querySelectorAll('.Cr-Days_day');
-       
-        for ( i = 0; i < days.length ;i++) {
-           let span = days[i].firstChild;
-    
-           arrObjetos.forEach(element => {
-            if(span.innerText == element.dia){
-              //days[i].style = "background-color:red";
-              switch (element.nombre) {
-                case "CLASE DE FUTBOL":
-                   days[i].classList.add('clase');
-                   
-                  
-                  break;
-                case "CLASE DE BALONCESTO":
-                  days[i].classList.add('clase');
-                 
-                  
-                  break;
-                case "CLASE DE PADEL":
-                    days[i].classList.add('clase');
-                  break;
-                case "CLASE DE TENIS":
-                    days[i].classList.add('clase');
-                  break;
-              
-                default:
-                  break;
-              }
-            }
-          });
-         
-        }
-
-        //console.log(arrObjetos);
-         } ,
+      }
+        ,
          
       computed: {
         
@@ -213,9 +150,11 @@ let calendario = (function(){
             
             
           }else if(ROL == "/profesor"){
-            let tbody = document.getElementsByTagName("tbody")[0];
-            while(tbody.childNodes.length){
-              tbody.removeChild(tbody.childNodes[0]);
+            
+            let div = document.getElementById("activities");
+          
+            while(div.childNodes.length){
+              div.removeChild(div.childNodes[0]);
             }
           } 
         }, 
@@ -257,15 +196,40 @@ let calendario = (function(){
 
             document.getElementById("activities").appendChild(div);
           }else if(ROL == "/profesor"){
-            let tr = document.createElement("tr");
+            let div = document.createElement("div");
+            div.setAttribute("id", "actividad");
             let keys = Object.keys(activity);
-            keys.forEach(v => {
-              let td = document.createElement("td");
-              let txtTd = document.createTextNode(activity[v]);
-              td.appendChild(txtTd);
-              tr.appendChild(td);
+            keys.forEach(v =>{
+              let p = document.createElement("p");
+
+              let spanTitle = document.createElement("span");
+              let spanContent = document.createElement("span");
+              let txtTitle = null;
+              if (v == 'titulo') {
+                txtTitle = document.createTextNode('');
+              }else{
+                txtTitle = document.createTextNode(v[0].toUpperCase()+v.slice(1)+': ');
+              }
+              let txtContent = null;
+              if (v == 'instalacion') {
+                txtContent = document.createTextNode(activity[v][0].toUpperCase() + activity[v].slice(1).toLowerCase());
+                console.log(txtContent);
+              }else{
+                txtContent = document.createTextNode(activity[v]);
+              }
+              
+
+              spanTitle.appendChild(txtTitle);
+              spanContent.appendChild(txtContent);
+              p.appendChild(spanTitle);
+              p.appendChild(spanContent);
+              div.appendChild(p);
+              if (v == 'titulo') {
+                div.appendChild(document.createElement("hr"));
+              }
             });
-            document.getElementsByTagName("tbody")[0].appendChild(tr);
+
+            document.getElementById("activities").appendChild(div);
           } 
         },
         pintarIconoClase(){

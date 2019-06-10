@@ -1,23 +1,4 @@
 
-.icons{
-    float: right;
-    background-size: cover;
-    width: .5em;
-    height: .5em;
-    margin: .1em;
-
-}
-
-
-.clase{
-    background-image: url('/img/clases.svg');
-    background-repeat: no-repeat;
-    background-size: 1em;
-    background-position: 10px 8px;
-   
-    
-}
-
 .container{
     margin-top:50px;
     margin-bottom: 20px;
@@ -49,8 +30,6 @@
 #contenedor{
     display: none;
 }
-
-
 
 #inp:checked ~ #contenedor{
     display: block;
