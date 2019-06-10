@@ -9,16 +9,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
+.flex{
+  display: flex;
+  flex-wrap: wrap;  
+}
+
 .Wrap {
   padding: 1em;
   margin: auto;
   max-width: 1200px;
 }
 
-.Calendar {
+.calendar {
   margin: auto;
   box-shadow: 0 0 20px rgba(51,51,51,0.5);
-  width: 80%;
+  width: 450px;
   text-align: center;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -60,7 +65,7 @@ body {
 }
 .Cr-Days {
   flex-wrap: wrap;
-  line-height: 70px;
+  line-height: 50px;
 }
 .Cr-Days_blank,
 .Cr-Days_day {

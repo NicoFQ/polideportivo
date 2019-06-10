@@ -47,4 +47,16 @@ class InstalacionRepository extends ServiceEntityRepository
         ;
     }
     */
+     /*Funcion que duvuelve el nombre de todas las clases deportivas creadas
+
+    */
+
+    public function nombreInstalacion()
+    {
+        $conn = $this->getEntityManager()->getConnection();
+        $query = 'select distinct i.nombre_instalacion, i.id from instalacion i';
+        $sts = $conn->prepare($query);
+        $sts->execute();
+        return $sts->fetchAll();
+    }
 }
