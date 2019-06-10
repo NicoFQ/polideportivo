@@ -1,96 +1,103 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
-	<link rel="stylesheet" type="text/css" href="{{ asset('/css/calendarVueUno.css') }}">
-	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-	<script src="{{ asset('/js/calendarVue.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/calendarVueUno.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="{{ asset('/js/calendarVue.js') }}"></script>
 
-  <link rel="stylesheet" href="{{ asset('/css/list.css') }}"> 
-  <link rel="stylesheet" href="{{ asset('/css/calendarioProfe.css') }}"> 
+    <link rel="stylesheet" href="{{ asset('/css/list.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/calendarioProfe.css') }}">
 
 {% endblock %}
 
 {% block title %}CLASES PROFESOR {% endblock %}
 {% block body %}
 
- <header>
+    <header>
         {% include '/profesor/nav.html.twig' %}
- </header>   
-  <main>
- <div class="container">
-        <table class="table table-striped text-center">
-            <thead class="thead-dark text-uppercase">
-            <tr>
-                <th>Deporte</th>
-                <th>Fecha</th>
-                <th>Hora inicio</th>
-                <th>Hora fin</th>
-                <th>Alumnos apuntados</th>
-            </tr>
-            </thead>
-            <tbody>
+    </header>
+    <main>
+        <div class="container">
+            {% if clases|length  == 0 %}
+            <h3>No tiene clases asignadas</h3>
+            {% else %}
+            <table>
+                <thead>
+                <tr>
+                    <th>Deporte</th>
+                    <th>Fecha</th>
+                    <th>Hora inicio</th>
+                    <th>Hora fin</th>
+                    <th>Alumnos apuntados</th>
+                </tr>
+                </thead>
+                <tbody>
+
 
                 {% for e in clases %}
-              
-                <tr>
-                    <td data-clase="nombreClase">{{ e.getNombreClase }}</td>
-                    <td data-fecha="fecha" >{{ fechas[loop.index - 1]|date("d/m/Y")}}</td>
-                    <td>{{ e.getHoraInicio}}</td>
-                    <td>{{ e.getHoraFin}}</td>
-                    <td>{{ apuntados[loop.index - 1]}}</td>
-                  
-                    
-                </tr>
-             
+
+                    <tr>
+                        <td data-clase="nombreClase">{{ e.getNombreClase }}</td>
+                        <td data-fecha="fecha">{{ fechas[loop.index - 1]|date("d/m/Y") }}</td>
+                        <td>{{ e.getHoraInicio }}</td>
+                        <td>{{ e.getHoraFin }}</td>
+                        <td>{{ apuntados[loop.index - 1] }}</td>
+
+
+                    </tr>
+
                 {% endfor %}
 
-            </tbody>
-        </table>
-    </div>
-	<div>
-	
-	{% include 'profesor/v-calendar.html' %}
-	</div>
 
-	
+                {% endif %}
 
- </main>
- 
+
+                </tbody>
+            </table>
+        </div>
+        <div>
+
+            {% include 'profesor/v-calendar.html' %}
+        </div>
+
+
+    </main>
+
 {% endblock %}
   {% block javascripts %}
-	<script>
-		// Recibe un array de objetos, con el titulo del evento, codDeporte, fecha, hora de inicio, hora de fin, instalacion, pista,
-		/*
-			[
-				{
-					titulo: 		String: "Clase de Baloncesto",
-					codDeporte:		String: "C-01",
-					fecha: 			String: "26/05/2019",
-					inicio: 		String: "12:00",
-					fin: : 			String: "15:00",
-					instalacion: 	String: null
-					pista: 			String: null
-				},
-				{
-					titulo: 		String: "Reserva Pista",
-					codDeporte:		String: "C-01",
-					fecha: 			String: "30/05/2019",
-					inicio: 		String: "13:00",
-					fin: 			String: "15:00",
-					instalacion: 	String: "2",
-					pista: 			String: "P-5",
-				},
-				{
-					titulo: 		String: "Clase de Futbol",
-					codDeporte:		String: "C-01",
-					fecha: 			String: "28/05/2019",
-					inicio: 		String: "16:00",
-					fin: 			String: "17:00",
-					instalacion: 	String: null
-					pista: 			String: null
-				},
-			]	
-		*/
-		calendario.init();
-	</script>
+      <script>
+          // Recibe un array de objetos, con el titulo del evento, codDeporte, fecha, hora de inicio, hora de fin, instalacion, pista,
+          /*
+              [
+                  {
+                      titulo: 		String: "Clase de Baloncesto",
+                      codDeporte:		String: "C-01",
+                      fecha: 			String: "26/05/2019",
+                      inicio: 		String: "12:00",
+                      fin: : 			String: "15:00",
+                      instalacion: 	String: null
+                      pista: 			String: null
+                  },
+                  {
+                      titulo: 		String: "Reserva Pista",
+                      codDeporte:		String: "C-01",
+                      fecha: 			String: "30/05/2019",
+                      inicio: 		String: "13:00",
+                      fin: 			String: "15:00",
+                      instalacion: 	String: "2",
+                      pista: 			String: "P-5",
+                  },
+                  {
+                      titulo: 		String: "Clase de Futbol",
+                      codDeporte:		String: "C-01",
+                      fecha: 			String: "28/05/2019",
+                      inicio: 		String: "16:00",
+                      fin: 			String: "17:00",
+                      instalacion: 	String: null
+                      pista: 			String: null
+                  },
+              ]
+          */
+          calendario.init();
+      </script>
 
-{% endblock %}
+  {% endblock %}

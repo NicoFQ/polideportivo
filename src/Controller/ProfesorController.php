@@ -7,6 +7,7 @@ use App\Repository\UsuarioRepository;
 use App\Repository\ClaseRepository;
 use App\Repository\AsisteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\NoticiaRepository;
 
@@ -20,7 +21,11 @@ class ProfesorController extends AbstractController
         //Tenemos que sacar el $id de la session
         //$id = $_SESSION['id_usuario'];
         // dump($token);die;
-        $id = 9;
+        $userSesion = new Session();
+        $userSesion = $userSesion->getUser();
+        $userId = $userSesion->getId();
+
+        $id = $userId;
         $arrApun = [];
         $arrFechas = [];
         $contador = 0;
