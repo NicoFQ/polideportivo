@@ -321,18 +321,43 @@ class DespliegueFixtures extends Fixture
 //        FIN GUSTOS USUARIO //////////////////////////////////////////////////////////////////////////////////////////
 
 //        INSTALACION /////////////////////////////////////////////////////////////////////////////////////////////////
+//      PADEL
         $instalacion_1 = new Instalacion();
-        $instalacion_1->setNombreInstalacion("PABELLON 1");
+        $instalacion_1->setNombreInstalacion("PISTA 1");
 
         $instalacion_2 = new Instalacion();
-        $instalacion_2->setNombreInstalacion("PABELLON 2");
+        $instalacion_2->setNombreInstalacion("PISTA 2");
 
         $instalacion_3 = new Instalacion();
-        $instalacion_3->setNombreInstalacion("PABELLON 3");
+        $instalacion_3->setNombreInstalacion("PISTA 3");
+        //BALONCESTO
+        $instalacion_4 = new Instalacion();
+        $instalacion_4->setNombreInstalacion("PABELLON 1");
+
+        $instalacion_5 = new Instalacion();
+        $instalacion_5->setNombreInstalacion("PABELLON 2");
+
+        $instalacion_6 = new Instalacion();
+        $instalacion_6->setNombreInstalacion("PABELLON 3");
+        //FUTBOL
+        $instalacion_7 = new Instalacion();
+        $instalacion_7->setNombreInstalacion("CAMPO 1");
+
+        $instalacion_8 = new Instalacion();
+        $instalacion_8->setNombreInstalacion("CAMPO 2");
+
+        $instalacion_9 = new Instalacion();
+        $instalacion_9->setNombreInstalacion("CAMPO 3");
 
         $manager->persist($instalacion_1);
         $manager->persist($instalacion_2);
         $manager->persist($instalacion_3);
+        $manager->persist($instalacion_4);
+        $manager->persist($instalacion_5);
+        $manager->persist($instalacion_6);
+        $manager->persist($instalacion_7);
+        $manager->persist($instalacion_8);
+        $manager->persist($instalacion_9);
 //        FIN INSTALACION ////////////////////////////////////////////////////////////////////////////////////////////
 
 //        DEPORTES ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -351,6 +376,8 @@ class DespliegueFixtures extends Fixture
 //        FIN DEPORTES ////////////////////////////////////////////////////////////////////////////////////////////////
 
 //        PISTA ///////////////////////////////////////////////////////////////////////////////////////////////////////
+//        padel
+
         $pista1 = new Pista();
         $pista1->setNombrePista("Pista de padel");
         $pista1->setPrecioHora(10);
@@ -359,6 +386,80 @@ class DespliegueFixtures extends Fixture
         $pista1->setIdInstalacion($instalacion_1);
         $pista1->setNumPista("P-1-1");
         $manager->persist($pista1);
+
+        $pista1 = new Pista();
+        $pista1->setNombrePista("Pista de padel");
+        $pista1->setPrecioHora(10);
+        $pista1->setDisponible(1);
+        $pista1->setIdDeporte($padel);
+        $pista1->setIdInstalacion($instalacion_2);
+        $pista1->setNumPista("P-1-2");
+        $manager->persist($pista1);
+
+        $pista1 = new Pista();
+        $pista1->setNombrePista("Pista de padel");
+        $pista1->setPrecioHora(10);
+        $pista1->setDisponible(1);
+        $pista1->setIdDeporte($padel);
+        $pista1->setIdInstalacion($instalacion_3);
+        $pista1->setNumPista("P-1-3");
+        $manager->persist($pista1);
+        //BALONCESTO
+        $pista2 = new Pista();
+        $pista2->setNombrePista("Pista de baloncesto");
+        $pista2->setPrecioHora(15);
+        $pista2->setDisponible(1);
+        $pista2->setIdDeporte($baloncesto);
+        $pista2->setIdInstalacion($instalacion_4);
+        $pista2->setNumPista("P-2-1");
+        $manager->persist($pista2);
+
+        $pista2 = new Pista();
+        $pista2->setNombrePista("Pista de baloncesto");
+        $pista2->setPrecioHora(15);
+        $pista2->setDisponible(1);
+        $pista2->setIdDeporte($baloncesto);
+        $pista2->setIdInstalacion($instalacion_5);
+        $pista2->setNumPista("P-2-2");
+        $manager->persist($pista2);
+
+        $pista2 = new Pista();
+        $pista2->setNombrePista("Pista de baloncesto");
+        $pista2->setPrecioHora(15);
+        $pista2->setDisponible(1);
+        $pista2->setIdDeporte($baloncesto);
+        $pista2->setIdInstalacion($instalacion_6);
+        $pista2->setNumPista("P-2-3");
+        $manager->persist($pista2);
+
+        //FUTBOL
+
+        $pista3 = new Pista();
+        $pista3->setNombrePista("Pista de futbol");
+        $pista3->setPrecioHora(20);
+        $pista3->setDisponible(1);
+        $pista3->setIdDeporte($futbol);
+        $pista3->setIdInstalacion($instalacion_7);
+        $pista3->setNumPista("P-3-1");
+        $manager->persist($pista3);
+
+        $pista3 = new Pista();
+        $pista3->setNombrePista("Pista de futbol");
+        $pista3->setPrecioHora(20);
+        $pista3->setDisponible(1);
+        $pista3->setIdDeporte($futbol);
+        $pista3->setIdInstalacion($instalacion_8);
+        $pista3->setNumPista("P-3-2");
+        $manager->persist($pista3);
+
+        $pista3 = new Pista();
+        $pista3->setNombrePista("Pista de futbol");
+        $pista3->setPrecioHora(20);
+        $pista3->setDisponible(1);
+        $pista3->setIdDeporte($futbol);
+        $pista3->setIdInstalacion($instalacion_9);
+        $pista3->setNumPista("P-3-3");
+        $manager->persist($pista3);
 //        FIN PISTA ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 

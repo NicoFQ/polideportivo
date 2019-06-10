@@ -7,6 +7,8 @@ use App\Repository\AsisteRepository;
 use App\Repository\ClaseRepository;
 use App\Repository\PagoRepository;
 use App\Repository\UsuarioRepository;
+use App\Repository\ReservaRepository;
+use App\Repository\PistaRepository;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -154,6 +156,30 @@ class AjaxController extends AbstractController
         }
         return new JsonResponse(["data" => $response]);
 
+    }
+
+     /**
+     * @Route("/ajax/validacionReserva", name="ajax_instalaciones")
+     * @param InstalacionRepository $insta
+     */
+    public function validacionReserva(ReservaRepository $reser, PistaRepository $pista)
+    {
+        $datosPista = $pista->getDatosPistaPorDeporte($_POST['nombre_deporte']);
+        echo "<pre>";
+        print_r($datosPista);
+        echo "</pre>";
+        $disponibilidad = $reser->getDisponibilidad($datosPista[0]['id'],$_POST);
+        echo "<pre>";
+        print_r($disponibilidad);
+        echo "</pre>";
+        die();
+        
+        return new JsonResponse(["datos" =>
+                [
+                    "horariosClase" => $data,
+                    "nUsuarios" => $nUsuarios
+                ]
+        ]);
     }
 
 }

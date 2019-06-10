@@ -12,6 +12,7 @@ use App\Repository\GustosUsuariosRepository;
 use App\Repository\UsuarioRepository;
 use App\Repository\ClaseRepository;
 use App\Repository\InstalacionRepository;
+use App\Repository\PistaRepository;
 
 class UsuarioController extends AbstractController
 {
@@ -110,11 +111,11 @@ class UsuarioController extends AbstractController
      /**
      * @Route("/usuario/reservaInstalaciones", name="reservarInsta")
      */
-    public function reservaInstalaciones(InstalacionRepository $insta)
+    public function reservaInstalaciones(PistaRepository $pista)
     {   
         $fecha = date("Y-m-d");
         return $this->render('usuario/reservaInstalaciones.html.twig', [
-            "nombreInsta" => $insta ->nombreInstalacion(),
+            "nombrePista" => $pista ->nombrePista(),
             "fechaNow" => $fecha,
         ]);
     }

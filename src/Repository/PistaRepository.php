@@ -47,4 +47,22 @@ class PistaRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function nombrePista()
+    {
+        $conn = $this->getEntityManager()->getConnection();
+        $query = 'select distinct nombre_pista from  pista';
+        $sts = $conn->prepare($query);
+        $sts->execute();
+        return $sts->fetchAll();
+    }
+
+    public function getDatosPistaPorDeporte($nombre)
+    {
+        $conn = $this->getEntityManager()->getConnection();
+        $query = 'select * from pista where nombre_pista= :nombre';
+        $stmnt = $conn->prepare($query);
+        $stmnt->execute(['nombre' => $nombre]);
+        return $stmnt->fetchAll();
+    }
 }
