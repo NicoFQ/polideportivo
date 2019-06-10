@@ -1,0 +1,28 @@
+{% extends 'usuario/nav_usuario.html.twig' %}
+{% block title %}Polideportivo{% endblock %}
+
+{% block main %}
+    {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="{{ asset('/css/nav_usuario.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('/css/reservaClases.css') }}">
+    {% endblock %}
+    <div class="container">
+        <h2>Reserva de clases</h2>
+        <div id="container-reservas">
+            <select name="nombre_clase" id="nombre_clase">
+                <option value="--">Seleciona una instalacion</option>
+
+                {% for i in nombreInsta %}
+                    <option value="{{ i.id }}">{{ i.nombre_instalacion }}</option>
+                {% endfor %}
+            </select>
+            <button value="Enviar" onclick="seleccionClase()" class="btn ok">Buscar instalacion</button>
+
+        </div>
+        <div id="datos-clase"></div>
+    </div>
+
+
+
+    <script src="{{ asset('/js/reservas.js') }}"></script>
+{% endblock %}

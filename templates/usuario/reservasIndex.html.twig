@@ -1,0 +1,32 @@
+{% extends 'usuario/nav_usuario.html.twig' %}
+{% block title %}Polideportivo{% endblock %}
+
+
+{% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="{{ asset('/css/nav_usuario.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('/css/reservaClases.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/list.css') }}"> 
+         <link rel="stylesheet" href="{{ asset('/css/tarjetas.css') }}"> 
+        
+{% endblock %}
+{% block body %}
+{% include '/usuario/nav_usuario.html.twig' %}
+<main>
+        <div class="contenedor-tarjeta">
+        
+            <div class="tarjeta">
+            <a href="{{ asset('/usuario/reservaInstalaciones') }}">
+                <h3>Reservar instalaciones</h3>
+             </a>   
+            </div>
+            
+            <a href="{{ asset('/usuario/reservas') }}">
+            <div class="tarjeta">
+                
+               <h3>Reservar clases</h3
+                
+            </div>
+            </a>
+        </div>
+</main>
+{% endblock %}

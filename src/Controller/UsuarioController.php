@@ -11,6 +11,7 @@ use App\Repository\AsisteRepository;
 use App\Repository\GustosUsuariosRepository;
 use App\Repository\UsuarioRepository;
 use App\Repository\ClaseRepository;
+use App\Repository\InstalacionRepository;
 
 class UsuarioController extends AbstractController
 {
@@ -94,5 +95,27 @@ class UsuarioController extends AbstractController
     {
         return new JsonResponse($_GET);
 
+    }
+
+      /**
+     * @Route("/usuario/reservasIndex", name="usuario_reserva")
+     */
+    public function reservasIndex()
+    {
+        return $this->render('usuario/reservasIndex.html.twig', [
+            "" => ""
+        ]);
+    }
+
+     /**
+     * @Route("/usuario/reservaInstalaciones", name="reservarInsta")
+     */
+    public function reservaInstalaciones(InstalacionRepository $insta)
+    {   
+        $fecha = date("Y-m-d");
+        return $this->render('usuario/reservaInstalaciones.html.twig', [
+            "nombreInsta" => $insta ->nombreInstalacion(),
+            "fechaNow" => $fecha,
+        ]);
     }
 }
