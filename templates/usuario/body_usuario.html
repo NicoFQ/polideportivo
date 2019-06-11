@@ -1,0 +1,24 @@
+<main>
+    <div id="box_perfil">
+	    <div id="box_img">
+	        <figcaption class="text-center">
+	            <figure>
+	                <img src="{{ img_user }}">
+	            </figure>
+	        </figcaption>
+	    </div>
+
+	    <div id="box_contenido">
+	        <h3>{{ user.getNombre }} {{ user.getApellido1 }} {{ user.getApellido2 }} </h3>
+	        <hr>
+	        <h4> Clases en las que estoy </h4>
+	        <span>{{ clases }}</span> 
+	        
+	        <h4> Mis deportes favoritos</h4>
+            <span>{{ gustos }}</span>
+            
+	        <h4> Sobre mi</h4>
+            <span>{{ comentarios }}</span>
+	    </div>
+	</div>
+</main>
