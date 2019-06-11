@@ -4,7 +4,7 @@
 {% block main %}
     {% block stylesheets %}
         <link rel="stylesheet" type="text/css" href="{{ asset('/css/nav_usuario.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('/css/reservaClases.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('/css/reservaInstalaciones.css') }}">
     {% endblock %}
     <div class="container">
         <h2>Reserva de clases</h2>
@@ -27,7 +27,9 @@
             <button value="Enviar" onclick="seleccionClase()" class="btn ok">Buscar instalacion</button>
 
         </div>
-        <div id="datos-clase"></div>
+        <div id="datos-intalacion">
+         <div></div>
+        </div>
     </div>
 
 

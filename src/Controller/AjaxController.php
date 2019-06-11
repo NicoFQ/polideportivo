@@ -9,6 +9,7 @@ use App\Repository\PagoRepository;
 use App\Repository\UsuarioRepository;
 use App\Repository\ReservaRepository;
 use App\Repository\PistaRepository;
+use App\Repository\InstalacionRepository;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -162,24 +163,95 @@ class AjaxController extends AbstractController
      * @Route("/ajax/validacionReserva", name="ajax_instalaciones")
      * @param InstalacionRepository $insta
      */
-    public function validacionReserva(ReservaRepository $reser, PistaRepository $pista)
+    public function validacionReserva(ReservaRepository $reser, PistaRepository $pista,InstalacionRepository $inst)
     {
         $datosPista = $pista->getDatosPistaPorDeporte($_POST['nombre_deporte']);
-        echo "<pre>";
-        print_r($datosPista);
-        echo "</pre>";
-        $disponibilidad = $reser->getDisponibilidad($datosPista[0]['id'],$_POST);
-        echo "<pre>";
-        print_r($disponibilidad);
-        echo "</pre>";
-        die();
+        $ocupadas =[];
+        for ($i=0; $i < sizeof($datosPista); $i++) { 
+            $aux = $datosPista[$i]['id'];
+            
+            $disponibilidad = $reser->getDisponibilidad($aux,$_POST); 
+            // echo "<pre>";
+            // print_r($disponibilidad);
+            // echo "</pre>";
+            // die();
+            if(!empty($disponibilidad)){
+           
+            array_push($ocupadas,$disponibilidad[0]);
+            }
+        }
         
-        return new JsonResponse(["datos" =>
-                [
-                    "horariosClase" => $data,
-                    "nUsuarios" => $nUsuarios
-                ]
-        ]);
+        if(sizeof($ocupadas) == 0){
+            
+            
+            $id = $datosPista[0]['id_instalacion_id'];
+            $precio = $datosPista[0]['precio_hora'];
+            $l = $inst -> nombreInstalacionPorId($id);
+            $lugar = $l[0]['nombre_instalacion'];
+           
+            $nombre = $_POST['nombre_deporte'];
+            $horaI = $_POST['horaInicio'];
+            $horaF = $_POST['horaFin'];
+            $fecha = $_POST['fecha'];
+            $id_pista = 1;
+            return new JsonResponse(["datos" =>
+                    [
+                        "nombre" => $nombre,
+                        "lugar" => $lugar,
+                        "fecha" => $fecha,
+                        "inicio" => $horaI,
+                        "fin" => $horaF,
+                        "precio" => $precio,
+                        "pista_id" => $id_pista,
+                    ]
+            ]);
+        }elseif(sizeof($ocupadas) == 3){
+            return new JsonResponse(["datos" =>
+                    [
+                        "error" => "Lo siento, las pistas estan ocupadas.Elige otra fecha o hora.Gracias"
+                    ]
+            ]);
+        }else{
+            // echo "<pre>";
+            // print_r($ocupadas);
+            // echo "</pre>";
+            // die();
+            $id_p=[1,2,3];
+            for ($i=0; $i < sizeof($ocupadas) ; $i++) { 
+                $key = array_search($ocupadas[$i]['pista_id'],$id_p);
+                
+                if($key >=0){
+                    unset($id_p[$key]);
+                    $id_p =array_values($id_p);
+                }
+            }
+            // echo "<pre>";
+            // print_r($id_p);
+            // echo "</pre>";
+            // die();
+            $id = $id_p[0];;
+            $precio = $datosPista[0]['precio_hora'];
+            $l = $inst -> nombreInstalacionPorId($id);
+            $lugar = $l[0]['nombre_instalacion'];
+           
+            $nombre = $_POST['nombre_deporte'];
+            $horaI = $_POST['horaInicio'];
+            $horaF = $_POST['horaFin'];
+            $fecha = $_POST['fecha'];
+            $id_pista = $id_p[0];
+            return new JsonResponse(["datos" =>
+                    [
+                        "nombre" => $nombre,
+                        "lugar" => $lugar,
+                        "fecha" => $fecha,
+                        "inicio" => $horaI,
+                        "fin" => $horaF,
+                        "precio" => $precio,
+                        "pista_id" => $id_pista,
+                    ]
+            ]);
+
+        }
     }
 
 }

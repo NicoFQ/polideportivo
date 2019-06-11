@@ -387,79 +387,79 @@ class DespliegueFixtures extends Fixture
         $pista1->setNumPista("P-1-1");
         $manager->persist($pista1);
 
-        $pista1 = new Pista();
-        $pista1->setNombrePista("Pista de padel");
-        $pista1->setPrecioHora(10);
-        $pista1->setDisponible(1);
-        $pista1->setIdDeporte($padel);
-        $pista1->setIdInstalacion($instalacion_2);
-        $pista1->setNumPista("P-1-2");
-        $manager->persist($pista1);
+        $pista2 = new Pista();
+        $pista2->setNombrePista("Pista de padel");
+        $pista2->setPrecioHora(10);
+        $pista2->setDisponible(1);
+        $pista2->setIdDeporte($padel);
+        $pista2->setIdInstalacion($instalacion_2);
+        $pista2->setNumPista("P-1-2");
+        $manager->persist($pista2);
 
-        $pista1 = new Pista();
-        $pista1->setNombrePista("Pista de padel");
-        $pista1->setPrecioHora(10);
-        $pista1->setDisponible(1);
-        $pista1->setIdDeporte($padel);
-        $pista1->setIdInstalacion($instalacion_3);
-        $pista1->setNumPista("P-1-3");
-        $manager->persist($pista1);
+        $pista3 = new Pista();
+        $pista3->setNombrePista("Pista de padel");
+        $pista3->setPrecioHora(10);
+        $pista3->setDisponible(1);
+        $pista3->setIdDeporte($padel);
+        $pista3->setIdInstalacion($instalacion_3);
+        $pista3->setNumPista("P-1-3");
+        $manager->persist($pista3);
         //BALONCESTO
-        $pista2 = new Pista();
-        $pista2->setNombrePista("Pista de baloncesto");
-        $pista2->setPrecioHora(15);
-        $pista2->setDisponible(1);
-        $pista2->setIdDeporte($baloncesto);
-        $pista2->setIdInstalacion($instalacion_4);
-        $pista2->setNumPista("P-2-1");
-        $manager->persist($pista2);
+        $pista4 = new Pista();
+        $pista4->setNombrePista("Pista de baloncesto");
+        $pista4->setPrecioHora(15);
+        $pista4->setDisponible(1);
+        $pista4->setIdDeporte($baloncesto);
+        $pista4->setIdInstalacion($instalacion_4);
+        $pista4->setNumPista("P-2-1");
+        $manager->persist($pista4);
 
-        $pista2 = new Pista();
-        $pista2->setNombrePista("Pista de baloncesto");
-        $pista2->setPrecioHora(15);
-        $pista2->setDisponible(1);
-        $pista2->setIdDeporte($baloncesto);
-        $pista2->setIdInstalacion($instalacion_5);
-        $pista2->setNumPista("P-2-2");
-        $manager->persist($pista2);
+        $pista5 = new Pista();
+        $pista5->setNombrePista("Pista de baloncesto");
+        $pista5->setPrecioHora(15);
+        $pista5->setDisponible(1);
+        $pista5->setIdDeporte($baloncesto);
+        $pista5->setIdInstalacion($instalacion_5);
+        $pista5->setNumPista("P-2-2");
+        $manager->persist($pista5);
 
-        $pista2 = new Pista();
-        $pista2->setNombrePista("Pista de baloncesto");
-        $pista2->setPrecioHora(15);
-        $pista2->setDisponible(1);
-        $pista2->setIdDeporte($baloncesto);
-        $pista2->setIdInstalacion($instalacion_6);
-        $pista2->setNumPista("P-2-3");
-        $manager->persist($pista2);
+        $pista6 = new Pista();
+        $pista6->setNombrePista("Pista de baloncesto");
+        $pista6->setPrecioHora(15);
+        $pista6->setDisponible(1);
+        $pista6->setIdDeporte($baloncesto);
+        $pista6->setIdInstalacion($instalacion_6);
+        $pista6->setNumPista("P-2-3");
+        $manager->persist($pista6);
 
         //FUTBOL
 
-        $pista3 = new Pista();
-        $pista3->setNombrePista("Pista de futbol");
-        $pista3->setPrecioHora(20);
-        $pista3->setDisponible(1);
-        $pista3->setIdDeporte($futbol);
-        $pista3->setIdInstalacion($instalacion_7);
-        $pista3->setNumPista("P-3-1");
-        $manager->persist($pista3);
+        $pista7 = new Pista();
+        $pista7->setNombrePista("Pista de futbol");
+        $pista7->setPrecioHora(20);
+        $pista7->setDisponible(1);
+        $pista7->setIdDeporte($futbol);
+        $pista7->setIdInstalacion($instalacion_7);
+        $pista7->setNumPista("P-3-1");
+        $manager->persist($pista7);
 
-        $pista3 = new Pista();
-        $pista3->setNombrePista("Pista de futbol");
-        $pista3->setPrecioHora(20);
-        $pista3->setDisponible(1);
-        $pista3->setIdDeporte($futbol);
-        $pista3->setIdInstalacion($instalacion_8);
-        $pista3->setNumPista("P-3-2");
-        $manager->persist($pista3);
+        $pista8 = new Pista();
+        $pista8->setNombrePista("Pista de futbol");
+        $pista8->setPrecioHora(20);
+        $pista8->setDisponible(1);
+        $pista8->setIdDeporte($futbol);
+        $pista8->setIdInstalacion($instalacion_8);
+        $pista8->setNumPista("P-3-2");
+        $manager->persist($pista8);
 
-        $pista3 = new Pista();
-        $pista3->setNombrePista("Pista de futbol");
-        $pista3->setPrecioHora(20);
-        $pista3->setDisponible(1);
-        $pista3->setIdDeporte($futbol);
-        $pista3->setIdInstalacion($instalacion_9);
-        $pista3->setNumPista("P-3-3");
-        $manager->persist($pista3);
+        $pista9 = new Pista();
+        $pista9->setNombrePista("Pista de futbol");
+        $pista9->setPrecioHora(20);
+        $pista9->setDisponible(1);
+        $pista9->setIdDeporte($futbol);
+        $pista9->setIdInstalacion($instalacion_9);
+        $pista9->setNumPista("P-3-3");
+        $manager->persist($pista9);
 //        FIN PISTA ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -635,9 +635,9 @@ class DespliegueFixtures extends Fixture
 
 //        RESERVA /////////////////////////////////////////////////////////////////////////////////////////////////////
         $reserva1 = new Reserva();
-        $reserva1->setPrecioReserva(12);
+        $reserva1->setPrecioReserva(10);
         $reserva1->setFechaDeReserva(new \DateTime('2019-04-14'));
-        $reserva1->setHoraInicio('12:00');
+        $reserva1->setHoraInicio('13:00');
         $reserva1->setHoraFin('14:00');
         $reserva1->setFechaCreacion(new \DateTime('@'.strtotime('now')));
         $reserva1->setUsuario($usuario3);
@@ -647,8 +647,8 @@ class DespliegueFixtures extends Fixture
         $reserva2 = new Reserva();
         $reserva2->setPrecioReserva(10);
         $reserva2->setFechaDeReserva(new \DateTime('2019-06-24'));
-        $reserva2->setHoraInicio('12:00');
-        $reserva2->setHoraFin('14:00');
+        $reserva2->setHoraInicio('11:00');
+        $reserva2->setHoraFin('12:00');
         $reserva2->setFechaCreacion(new \DateTime('@'.strtotime('now')));
         $reserva2->setUsuario($usuario5);
         $reserva2->setPista($pista1);

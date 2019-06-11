@@ -1,0 +1,77 @@
+:root{
+    --gris: #738598;
+    --verde: #12d3cf;
+    --azul: #0075f6;
+    --azul-2:#82acff;
+    --amarillo: #fcf9ec;
+    --idk: #fcfdd8;
+}
+.container{
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}
+.container > h2{
+    text-align: center;
+    text-transform: uppercase;
+}
+#container-reservas, #datos-intalacion{
+    outline:1px solid var(--gris);
+    margin:20px auto;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+}
+#container-reservas {
+    padding: 1em;
+}
+
+#container-reservas select{
+    margin:0 10px;
+    text-transform: uppercase;
+}
+#datos-intalacion{
+    box-shadow: 0px 0px 15px var(--gris);
+    outline:none;
+}
+#datos-intalacion > div{
+    padding: 1em;
+}
+#datos-intalacion h2{
+    outline: 1px solid var(--gris);
+    padding: .5em;
+    text-align: center;
+    text-transform: uppercase;
+}
+#datos-intalacion > div > h3 > span{
+    text-transform: uppercase;
+    color:var(--verde);
+}
+#datos-intalacion div > p > span{
+    font-weight: 700;
+}
+.btn{
+    border:none;
+    border-radius: 3px;
+    background-color: rgba(255,255,255, .3);
+    font-family: 'Poppins', sans-serif;
+    cursor:pointer;
+    padding: .8em;
+    transition: 200ms ease-in-out;
+    color:white;
+    text-transform: uppercase;
+}
+.ok{
+    background-color: var(--azul);
+}
+.ok:hover{
+    background-color: var(--azul-2);
+}
+#datos-intalacion > div > div {
+    margin-left: 1.5em;
+}
+#datos-intalacion > div  button:last-child{
+    display: block;
+    margin:10px auto;
+    width:10em;
+}

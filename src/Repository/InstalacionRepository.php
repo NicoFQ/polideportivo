@@ -59,4 +59,13 @@ class InstalacionRepository extends ServiceEntityRepository
         $sts->execute();
         return $sts->fetchAll();
     }
+
+    public function nombreInstalacionPorId($id)
+    {
+        $conn = $this->getEntityManager()->getConnection();
+        $query = 'select nombre_instalacion from instalacion  where id = :id';
+        $sts = $conn->prepare($query);
+        $sts->execute(['id' => $id]);
+        return $sts->fetchAll();
+    }
 }
