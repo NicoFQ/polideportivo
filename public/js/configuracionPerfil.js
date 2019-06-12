@@ -54,7 +54,7 @@ new Vue({
             const datos = new FormData();
             let user = this.user[0];
             datos.append("id",user.id)
-            datos.append("nombre_usuario",(this.getInputData("nombre_usuario") || user.nombre_usuario));
+            //datos.append("nombre_usuario",(this.getInputData("nombre_usuario") || user.nombre_usuario));
             datos.append("email",(this.getInputData('email') || user.email));
             datos.append("direccion",(this.getInputData('direccion') || user.direccion));
             datos.append("n_portal",(this.getInputData('n_portal') || user.n_portal));
@@ -64,7 +64,8 @@ new Vue({
             datos.append("comentarios",(this.getInputData('comentarios') || user.comentarios));
             datos.append("imagen",document.getElementById('imagen').files[0]);
 
-            user.nombre_usuario = this.getInputData("nombre_usuario") || user.nombre_usuario;
+
+            //user.nombre_usuario = this.getInputData("nombre_usuario") || user.nombre_usuario;
             user.email = this.getInputData('email') || user.email;
             user.direccion = this.getInputData('direccion') || user.direccion;
             user.n_portal = this.getInputData('n_portal') || user.n_portal;
@@ -72,6 +73,7 @@ new Vue({
             user.num_telf = this.getInputData('num_telf') || user.num_telf;
             user.deportes_favoritos = this.getInputData('deportes_favoritos') || user.deportes_favoritos;
             user.comentarios = this.getInputData('comentarios') || user.comentarios;
+
 
             this.enviarDatos(datos)
             if (e.target.parentElement.tagName == "DIV")

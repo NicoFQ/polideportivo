@@ -6,7 +6,8 @@
     <p v-if="message" id="message">Se han actualizado tus datos correctamente.</p>
     <form action="#" enctype="multipart/form-data" method="post">
         <div v-for="u in user">
-            <div>
+
+             <div>
                 <div>
                     <h3>Imagen de perfil</h3>
                     <figure>
@@ -20,19 +21,6 @@
                     <button class="fas fa-check-circle none ok" @click="saveData"></button>
                     <input type="file" name="imagen" id="imagen" class="none"
                            onchange="document.getElementById('img').src = window.URL.createObjectURL(this.files[0])"/>
-                </div>
-
-            </div>
-            <div>
-                <div>
-                    <p><span>Nombre usuario: </span>$¿u.nombre_usuario?</p>
-                    <p v-if="form.nombre_usuario"><span>Nuevo nombre de usuario: </span>$¿form.nombre_usuario?</p>
-                </div>
-                <div>
-                    <button class="fas fa-edit" @click="edit"></button>
-                    <button class="fas fa-window-close none cancel " @click="unsetOptions"></button>
-                    <button class="fas fa-check-circle none ok" @click="saveData"></button>
-                    <input type="text" name="nombre_usuario" id="nombre_usuario" v-model="form.nombre_usuario" class="none">
                 </div>
 
             </div>
@@ -94,7 +82,7 @@
 
             <div>
                 <div>
-                    <p v-if="u.num_telf != null && u.num_telf != 'null'"><span>Teléfono: </span>$¿u.num_telf?</p>
+                    <p v-if="u.num_telf.length > 6"><span>Teléfono: </span>$¿u.num_telf?</p>
                     <p v-else><span>Teléfono: </span>Agregar número de teléfono.</p>
                     <p v-if="form.num_telf"><span>Nuevo telefono: </span>$¿form.num_telf?</p>
                 </div>
@@ -112,6 +100,7 @@
                     <p v-if="u.deportes_favoritos != null && u.deportes_favoritos != 'null'"><span>Deportes favoritos: </span>$¿u.deportes_favoritos?</p>
                     <p v-else><span>Deportes favoritos: </span>Añade tus deportes favoritos.</p>
                     <p v-if="form.deportes_favoritos"><span>Nuevos deportes favoritos: </span>$¿form.deportes_favoritos?</p>
+
                 </div>
                 <div>
                     <button class="fas fa-edit" @click="edit"></button>

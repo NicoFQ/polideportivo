@@ -14,7 +14,7 @@
     text-align: center;
     text-transform: uppercase;
 }
-#container-reservas, #datos-clase{
+#container-reservas, #datos-intalacion{
     outline:1px solid var(--gris);
     margin:20px auto;
     width: 40%;
@@ -30,24 +30,24 @@
     margin:0 10px;
     text-transform: uppercase;
 }
-#datos-clase{
+#datos-intalacion{
     box-shadow: 0px 0px 15px var(--gris);
     outline:none;
 }
-#datos-clase > div > div{
+#datos-intalacion > div > div{
     padding: 1em;
 }
-#datos-clase h2{
+#datos-intalacion h2{
     outline: 1px solid var(--gris);
     padding: .5em;
     text-align: center;
     text-transform: uppercase;
 }
-#datos-clase > div h3 > span{
+#datos-intalacion > div h3 > span{
     text-transform: uppercase;
     color:var(--verde);
 }
-#datos-clase div p > span{
+#datos-intalacion div p > span{
     font-weight: 700;
 }
 .btn{
@@ -67,10 +67,10 @@
 .ok:hover{
     background-color: var(--azul-2);
 }
-#datos-clase > div div:last-child{
+#datos-intalacion > div div:last-child{
     margin-left: 1.5em;
 }
-#datos-clase > div  button:last-child{
+#datos-intalacion > div  button:last-child{
     display: block;
     margin:10px auto;
     width:10em;

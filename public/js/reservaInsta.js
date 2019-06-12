@@ -18,8 +18,11 @@ const sendData = (url, metodo, data) => {
         .then(noData => noData.json())
         .then(data => {
             // console.table(data.horariosClase)
-            //crearEstruscturaClase(data.datos)
-            consoloe.log(data);
+            if(data.datos.error){
+                alert(data.datos.error);
+            }
+            crearEstruscturaInsta(data.datos)
+            //console.log(data.datos);
         })
 
 }//sendData
@@ -33,10 +36,8 @@ const seleccionClase = () => {
     horaI = hora.substr(0, 2) + ":00";
     horaF  = hora.substr((hora.length - 2),hora.length ) + ":00";
 
-    console.log(horaF);
-    console.log(horaI);
     const fecha =  document.getElementById("date").value;
-    console.log(fecha);
+    
 
         /**
          * data: Para enviarle datos al server se crea un form con los ids y sus valores.
@@ -60,79 +61,71 @@ const seleccionClase = () => {
  * la agregara al contenedor para mostrarlo por pantalla
  * @param obj: Objeto JSON con los datos esperados
  */
-function crearEstruscturaClase(obj){
-    const contenedor = document.getElementById("datos-clase")
-    obj.horariosClase.forEach((v,i) => {
-        let estado = (v.disponible == 1) ? "Disponible": "No disponible";
-        let diasSemana = formatDias(v.dias_semana.split(","));
-        let alumnosApuntados = Object.values(obj.nUsuarios[i])
+function crearEstruscturaInsta(obj){
+
+    const contenedor = document.getElementById("datos-intalacion");
+    contenedor.removeChild(contenedor.childNodes[0]);
+    // console.log('obj pid', obj)
         let template = `
             <div>
-                <h2>${v.nombre_clase}</h2>
-                <h3>Dias de la semana en los que se imparte la clase: <span>${diasSemana}</span></h3>
+                <h2>${obj.nombre}</h2>
+                
                     <div>
-                        <p><span>Estado:</span> ${estado}</p>
-                        <p><span>Hora inicio:</span> ${v.hora_inicio}</p>
-                        <p><span>Hora fin:</span> ${v.hora_fin}</p>
-                        <p><span>Nº máximo de alumnos: </span> ${v.max_alumnos}</p>
-                        <p><span>Alumnos apuntados:</span> ${alumnosApuntados}</p>
+                        <p><span>Lugar:</span> ${obj.lugar}</p>
+                        <p><span>Hora inicio:</span> ${obj.inicio}</p>
+                        <p><span>Hora fin:</span> ${obj.fin}</p>
+                        <p><span>Fecha: </span> ${obj.fecha}</p>
+                        <p><span>Precio:</span> <span id="precio">${obj.precio}</span></p>
+                        <input type="hidden" value="${obj.pista_id}" id="id_pista">
                         <button onclick="hacerReserva()" class="btn ok">Reservar</button>
                     </div>
             </div>
         `;
         contenedor.innerHTML = template;
-    })
+        console.log(obj.pista_id);
+   
 
 }//crearEstructura
 
 function hacerReserva(){
-    const select = document.getElementById("nombre_clase")
-    const id_clase = select.options[select.selectedIndex].getAttribute("value")
+    console.log("hacer reserva")
+    // const select = document.getElementById("nombre_clase")
+    // const id_clase = select.options[select.selectedIndex].getAttribute("value")
+
+    const select = document.getElementById("nombreDeporte");
+    const nombre_deporte = select.options[select.selectedIndex].value;
+    const select2 = document.getElementById("hora");
+    let  hora = select2.options[select2.selectedIndex].value;
+    horaI = hora.substr(0, 2) + ":00";
+    horaF  = hora.substr((hora.length - 2),hora.length ) + ":00";
+
+    const fecha =  document.getElementById("date").value;
+    const id_pista = document.getElementById("id_pista").value;
+    const precio = document.getElementById("precio").textContent
 
     const formReserva = new FormData()
-    formReserva.append("clase_id", id_clase)
+    formReserva.append("id_pista", id_pista)
+    // formReserva.append("nombre_deporte",nombre_deporte)
+    formReserva.append("horaInicio", horaI)
+    formReserva.append("precio", precio)
+    formReserva.append("horaFin", horaF)
+    formReserva.append("fecha", fecha)
 
-    fetch(URL + "setReservaClase",{
+    fetch(URL + "setReservaInstalacion",{
         method: "post",
         body:formReserva
     })
         .then(noData => noData.json())
         .then(data => {
-             if(data.data == "noAbonado"){
-                 alert("Para poder continuar debes comprar uno de nuestros bonos.");
-                 window.location = "/pago/planes";
-             }else{
-                 alert("Te has apuntado a la clase correctamente.");
-                 window.location = "/usuario"
+             if(data.data == "pendientePago"){
+                 alert("Procederá a ver la factura.");
+                 window.location = "/pago/pagoInstalacion";
              }
+             // else{
+             //     alert("Te has apuntado a la clase correctamente.");
+             //     window.location = "/pago/pagoInstalacion";
+             // }
+            console.log(data)
         })
 }//hacerReserva
-function formatDias(arr){
-    let diasCompletos = [];
-    arr.forEach(v => {
-        switch (v) {
-            case "L":
-                diasCompletos.push("lunes")
-                break;
-            case "M":
-                diasCompletos.push("martes")
-                break;
-            case "X":
-                diasCompletos.push("miércoles")
-                break;
-            case "J":
-                diasCompletos.push("jueves")
-                break;
-            case "V":
-                diasCompletos.push("viernes")
-                break;
-            case "S":
-                diasCompletos.push("sábado")
-                break;
-            case "D":
-                diasCompletos.push("domingo")
-                break;
-        }
-    })
-    return diasCompletos.join(", ");
-}
+

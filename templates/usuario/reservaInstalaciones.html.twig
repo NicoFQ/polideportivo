@@ -4,7 +4,7 @@
 {% block main %}
     {% block stylesheets %}
         <link rel="stylesheet" type="text/css" href="{{ asset('/css/nav_usuario.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('/css/reservaClases.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('/css/reservaIntalacion.css') }}">
     {% endblock %}
     <div class="container">
         <h2>Reserva de clases</h2>
@@ -13,21 +13,23 @@
                 <option value="--">Seleciona una instalacion</option>
 
                 {% for i in nombrePista %}
-                    <option value="{{ i.nombre_pista }}">{{ i.nombre_pista }}</option>
+                    <option value="{{ i.nombre_pista }}" required>{{ i.nombre_pista }}</option>
                 {% endfor %}
             </select>
             <select name="hora" id="hora" required>
                 <option value="--">Seleciona un horario</option>
                 {% for i in 10..22 %}
-                    <option value="{{i}} -- {{i + 1 }}"> {{i}}:00 -- {{i + 1 }}:00</option>
+                    <option value="{{ i }} -- {{ i + 1 }}"> {{ i }}:00 -- {{ i + 1 }}:00</option>
                 {% endfor %}
             </select>
-            
-            <input id="date" type="date" value="{{fechaNow}}" required>
+
+            <input id="date" type="date" value="{{ fechaNow }}" required min="{{ fechaNow }}">
             <button value="Enviar" onclick="seleccionClase()" class="btn ok">Buscar instalacion</button>
 
         </div>
-        <div id="datos-clase"></div>
+        <div id="datos-intalacion">
+            <div></div>
+        </div>
     </div>
 
 

@@ -135,9 +135,8 @@ class UsuarioRepository extends ServiceEntityRepository
     public function getDataUser($id)
     {
         return $this->createQueryBuilder('u')
-            ->select('u.id, 
-                            u.email, 
-                            u.nombre_usuario, 
+            ->select('u.id,
+                            u.email,
                             u.imagen_perfil,
                             u.direccion,
                             u.n_portal,
@@ -158,7 +157,6 @@ class UsuarioRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('u')
             ->select('u.id, 
                             u.email, 
-                            u.nombre_usuario, 
                             u.imagen_perfil,
                             u.direccion,
                             u.n_portal,
@@ -169,7 +167,17 @@ class UsuarioRepository extends ServiceEntityRepository
             ->setParameter('id',$id)
             ->getQuery()
             ->getResult();
+//        $conn = $this->getEntityManager()->getConnection();
+//        $query = 'SELECT email, nombre_usuario,
+//                        imagen_perfil, direccion,
+//                        n_portal, piso, num_telf
+//                    FROM usuario
+//                   WHERE id = :id';
+//        $stmnt = $conn->prepare($query);
+//        $stmnt->execute(['id' => $id]);
+//        return $stmnt->fetchAll();
     }
+
 
 //    Para una futura version, pasar un array con todos los valores
 //    y prepararlos dentro de la query
@@ -197,8 +205,7 @@ class UsuarioRepository extends ServiceEntityRepository
                         gustos_usuarios
                         ON
                         usuario.id = gustos_usuarios.id_usuario_id
-                        SET usuario.nombre_usuario = :nombre_usuario,
-                            usuario.email = :email,
+                        SET usuario.email = :email,
                             usuario.direccion = :direccion,
                             usuario.n_portal = :n_portal,
                             usuario.piso = :piso,
@@ -208,7 +215,6 @@ class UsuarioRepository extends ServiceEntityRepository
                             WHERE usuario.id = :id';
             $stmnt = $conn->prepare($query);
             return $stmnt->execute(['id' => $id,
-                                    'nombre_usuario' => $arr["nombre_usuario"],
                                     'email' => $arr["email"],
                                     'direccion' => $arr["direccion"],
                                     'n_portal' => $arr["n_portal"],
@@ -218,7 +224,7 @@ class UsuarioRepository extends ServiceEntityRepository
                                     'comentarios' => $arr["comentarios"]
                                     ]);
         }
-//        return $stmnt->fetchAll();
+
     }
     
     public function updateIMG($id, $nombreIMG)
