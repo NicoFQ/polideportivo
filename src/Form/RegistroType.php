@@ -38,17 +38,23 @@ class RegistroType extends AbstractType
                 ],
                 'constraints' => [
                     new NotBlank([
-                        "message" =>  "Introduce un email valido."
+                        "message" => "Introduce un email valido."
                     ])
                 ]
             ])
             ->add('nombre_usuario', TextType::class, [
                 "label" => "nombre de usuario (*)",
+                "attr" => [
+                    "pattern" => "[A-Za-z0-9\-\_]{2,}",
+                    "title" => "Este campo sólo puede contener letras."
+
+                ]
             ])
             ->add('contrasena', PasswordType::class, [
                 "label" => "Contraseña (*)",
                 'attr' => [
-//                    'pattern' => '[0-9][a-z]',
+                    'pattern' => '^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$',
+                    "title" => "Debe introducir números, minúsculas y mayúsculas.",
                     'placeholder' => 'Introduzca la contraseña.'
                 ],
                 'constraints' => [
@@ -61,23 +67,60 @@ class RegistroType extends AbstractType
                     ])
                 ]
             ])
-            ->add('num_documento',TextType::class,[
+            ->add('num_documento', TextType::class, [
                 "label" => "D.N.I (*)",
                 "attr" => [
-                    "placeholder" => "D.N.I / N.I.E"
+                    "placeholder" => "D.N.I / N.I.E",
+                    "pattern" => "[0-9]{8}[A-Za-z]{1}",
+                    "title" => "Solo puede introducir 8 numeros y 1 letra"
                 ]
             ])
-            ->add('nombre',TextType::class,[
-                "label" => "Nombre (*)"
+            ->add('nombre', TextType::class, [
+                "label" => "Nombre (*)",
+                "attr" =>[
+                    "pattern" => "[A-Za-z]{1,}",
+                    "title" => "Solo puedes introducir letras."
+                ]
             ])
-            ->add('apellido_1', TextType::class, ['label' => 'Primer apellido (*)'])
-            ->add('apellido_2', TextType::class, ['label' => 'Segundo apellido ', 'required' => false])
-            ->add("direccion",TextType::class,["label" => "Dirección (*)"])
-            ->add("n_portal", NumberType::class,["label" => "Nº portal (*)"])
-            ->add("piso",TextType::class,["label" => "Piso / Puerta (*)"])
+            ->add('apellido_1', TextType::class, [
+                'label' => 'Primer apellido (*)',
+                "attr" =>[
+                    "pattern" => "[A-Za-z]{1,}",
+                    "title" => "Solo puedes introducir letras."
+                ]
+            ])
+            ->add('apellido_2', TextType::class, [
+                'label' => 'Segundo apellido ', 'required' => false,
+                "attr" =>[
+                    "pattern" => "[A-Za-z]{1,}",
+                    "title" => "Solo puedes introducir letras."
+                ]
+            ])
+            ->add("direccion", TextType::class, [
+                "label" => "Dirección (*)",
+                "attr" =>[
+                    "pattern" => "[A-Za-z0-9\\]{1,}",
+                    "title" => "Solo puedes introducir numeros y letras."
+                ]
+            ])
+            ->add("n_portal", NumberType::class, [
+                "label" => "Nº portal (*)",
+                "attr" =>[
+                    "pattern" => "[A-Za-z0-9]{1,}",
+                    "title" => "Solo puedes introducir numeros o letras"
+                ]
+            ])
+            ->add("piso", TextType::class, [
+                "label" => "Piso / Puerta (*)",
+                "attr" =>[
+                    "pattern" => "[A-Za-z0-9]{1,}",
+                    "title" => "Solo puedes introducir numeros o letras"
+                ]
+
+            ])
 //            ->add('numero_telf', NumberType::class, ['label' => 'Numero de telefono'])
 //            ->add('imagen_perfil', FileType::class, ['mapped' => false,'required' =>  false])
-            ->add('sexo', ChoiceType::class,[
+            ->add('sexo', ChoiceType::class, [
                 "label" => "Sexo (*)",
                 'choices' => [
                     'hombre' => 0,
@@ -85,27 +128,25 @@ class RegistroType extends AbstractType
 
                 ]
             ])
-            ->add('fecha_alta', HiddenType::class,[
+            ->add('fecha_alta', HiddenType::class, [
                 'mapped' => false
             ])
-            ->add('usuario_activo',HiddenType::class,[
+            ->add('usuario_activo', HiddenType::class, [
                 'data' => 1,
 //                'mapped' => false,
 
             ])
-            ->add('tipo_usuario', HiddenType::class,[
+            ->add('tipo_usuario', HiddenType::class, [
                 'mapped' => false
             ])
             ->add('clases', HiddenType::class, [
                 'mapped' => false
             ])
-
-            ->add('Registrar',SubmitType::class, [
+            ->add('Registrar', SubmitType::class, [
                 "attr" => [
                     "class" => "link link-button"
                 ]
-            ])
-        ;
+            ]);
 //        $builder
 //            ->add('email')
 //            ->add('nombre_usuario')

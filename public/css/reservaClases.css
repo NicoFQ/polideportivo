@@ -34,7 +34,7 @@
     box-shadow: 0px 0px 15px var(--gris);
     outline:none;
 }
-#datos-clase > div{
+#datos-clase > div > div{
     padding: 1em;
 }
 #datos-clase h2{
@@ -43,11 +43,11 @@
     text-align: center;
     text-transform: uppercase;
 }
-#datos-clase > div > h3 > span{
+#datos-clase > div h3 > span{
     text-transform: uppercase;
     color:var(--verde);
 }
-#datos-clase div > p > span{
+#datos-clase div p > span{
     font-weight: 700;
 }
 .btn{
@@ -67,7 +67,7 @@
 .ok:hover{
     background-color: var(--azul-2);
 }
-#datos-clase > div > div {
+#datos-clase > div div:last-child{
     margin-left: 1.5em;
 }
 #datos-clase > div  button:last-child{
