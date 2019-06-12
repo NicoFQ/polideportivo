@@ -278,7 +278,7 @@ class UsuarioRepository extends ServiceEntityRepository
         $query = 'select a.clase_id "clase", c.nombre_clase "titulo", a.fecha_asiste_clase "fecha", c.hora_inicio "inicio", c.hora_fin "fin" from asiste a, clase c where a.usuario_id = :id and a.clase_id = c.id';
         $stmnt = $conn->prepare($query);
         $stmnt->execute(['id' => $id]);
-        return self::getNumeroDeAlumnos($stmnt->fetchAll());
+        return $stmnt->fetchAll();
     }
 
     private function getNumeroDeAlumnos($clases){

@@ -6,18 +6,22 @@
     <p v-if="message" id="message">Se han actualizado tus datos correctamente.</p>
     <form action="#" enctype="multipart/form-data" method="post">
         <div v-for="u in user">
-            <div>
+             <div>
+
                 <div>
-                    <p><span>Nombre usuario: </span>$¿u.nombre_usuario?</p>
-                    <p v-if="form.nombre_usuario"><span>Nuevo nombre: </span>$¿form.nombre_usuario?</p>
+                    <h3>Imagen de perfil</h3>
+                    <figure>
+                        <img :src="u.imagen_perfil" :alt="u.nombre" id="img">
+                        <figcaption>Imagen de perfil: $¿u.nombre_usuario?</figcaption>
+                    </figure>
                 </div>
                 <div>
                     <button class="fas fa-edit" @click="edit"></button>
-                    <button class="fas fa-window-close none cancel " @click="unsetOptions"></button>
+                    <button class="fas fa-window-close none cancel" @click="unsetOptions"></button>
                     <button class="fas fa-check-circle none ok" @click="saveData"></button>
-                    <input type="text" name="nombre_usuario" id="nombre_usuario" v-model="form.nombre_usuario" class="none">
+                    <input type="file" name="imagen" id="imagen" class="none"
+                           onchange="document.getElementById('img').src = window.URL.createObjectURL(this.files[0])"/>
                 </div>
-
             </div>
 
             <div id="divEmail">
@@ -89,24 +93,7 @@
                 </div>
 
             </div>
-            <div>
-
-                <div>
-                    <h3>Imagen de perfil</h3>
-                    <figure>
-                        <img :src="u.imagen_perfil" :alt="u.nombre" id="img">
-                        <figcaption>Imagen de perfil: $¿u.nombre_usuario?</figcaption>
-                    </figure>
-                </div>
-                <div>
-                    <button class="fas fa-edit" @click="edit"></button>
-                    <button class="fas fa-window-close none cancel" @click="unsetOptions"></button>
-                    <button class="fas fa-check-circle none ok" @click="saveData"></button>
-                    <input type="file" name="imagen" id="imagen" class="none"
-                           onchange="document.getElementById('img').src = window.URL.createObjectURL(this.files[0])"/>
-                </div>
-
-            </div>
+           
         </div>
     </form>
 
