@@ -123,6 +123,7 @@ class AjaxController extends AbstractController
     public function getClasesByName(ClaseRepository $clase, AsisteRepository $asiste)
     {
         $data = $clase->getDatosClaseByName($_POST["nombre_clase"]);
+//        dump($data);die;
         $nUsuarios = $asiste->getUsuApuntados($_POST["id"]);
         return new JsonResponse(["datos" =>
                 [

@@ -26,7 +26,7 @@ const sendData = (url, metodo, data) => {
     })
         .then(noData => noData.json())
         .then(data => {
-            // console.table(data.horariosClase)
+            // console.table(data.datos.horariosClase)
             crearEstruscturaClase(data.datos)
         })
 
@@ -36,6 +36,8 @@ const sendData = (url, metodo, data) => {
 const seleccionClase = () => {
     const select = document.getElementById("nombre_clase")
     const nombre_deporte = select.options[select.selectedIndex].value;
+    const clase_id = Object.values(select.options[select.selectedIndex].dataset)[0]
+
     const id_deporte = select.options[select.selectedIndex].getAttribute("value")
 
     if (id_deporte == "--") {
@@ -48,6 +50,7 @@ const seleccionClase = () => {
          */
         const data = new FormData();
         data.append("nombre_clase",nombre_deporte)
+        // data.append("clase_id", clase_id)
         data.append("id", id_deporte)
 
         //Envio de datos al servidor
@@ -63,10 +66,13 @@ const seleccionClase = () => {
  */
 function crearEstruscturaClase(obj){
     const contenedor = document.getElementById("datos-clase")
+    // console.log('horarios clase' ,obj.horariosClase)
+    contenedor.removeChild(contenedor.children[0])
+    let divPadre = document.createElement('div')
     obj.horariosClase.forEach((v,i) => {
+
         let estado = (v.disponible == 1) ? "Disponible": "No disponible";
         let diasSemana = formatDias(v.dias_semana.split(","));
-        let alumnosApuntados = Object.values(obj.nUsuarios[i])
         let template = `
             <div>
                 <h2>${v.nombre_clase}</h2>
@@ -76,22 +82,27 @@ function crearEstruscturaClase(obj){
                         <p><span>Hora inicio:</span> ${v.hora_inicio}</p>
                         <p><span>Hora fin:</span> ${v.hora_fin}</p>
                         <p><span>Nº máximo de alumnos: </span> ${v.max_alumnos}</p>
-                        <p><span>Alumnos apuntados:</span> ${alumnosApuntados}</p>
                         <button onclick="hacerReserva()" class="btn ok">Reservar</button>
                     </div>
             </div>
         `;
-        contenedor.innerHTML = template;
+        // console.log(template)
+        let divSec = document.createElement('div')
+        divSec.innerHTML = template
+        divPadre.appendChild(divSec)
+
+
     })
+    contenedor.appendChild(divPadre)
 
 }//crearEstructura
 
 function hacerReserva(){
     const select = document.getElementById("nombre_clase")
-    const id_clase = select.options[select.selectedIndex].getAttribute("value")
-
+    // const id_clase = select.options[select.selectedIndex].getAttribute("value")
+    const clase_id = Object.values(select.options[select.selectedIndex].dataset)[0]
     const formReserva = new FormData()
-    formReserva.append("clase_id", id_clase)
+    formReserva.append("clase_id", clase_id)
 
     fetch(URL + "setReservaClase",{
         method: "post",

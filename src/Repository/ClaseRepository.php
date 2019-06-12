@@ -88,10 +88,11 @@ class ClaseRepository extends ServiceEntityRepository
         $conn = $this->getEntityManager()->getConnection();
         $query = 'SELECT nombre_clase, dias_semana, hora_inicio, hora_fin, max_alumnos, disponible
                 FROM clase 
-                WHERE id = :id
+                WHERE nombre_clase = :nombre_clase
                 AND disponible = 1';
         $stmnt = $conn->prepare($query);
-        $stmnt->execute(['id' => $id]);
+        $stmnt->execute(['nombre_clase' => $id]);
+
         return $stmnt->fetchAll();
     }
 

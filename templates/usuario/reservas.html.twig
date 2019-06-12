@@ -13,13 +13,15 @@
                 <option value="--">Seleciona una clase</option>
 
                 {% for c in nombreClases %}
-                    <option value="{{ c.id_deporte_id }}">{{ c.nombre_clase }}</option>
+                    <option value="{{ c.nombre_clase }}" data-id = "{{ c.id_deporte_id }}">{{ c.nombre_clase }}</option>
                 {% endfor %}
             </select>
             <button value="Enviar" onclick="seleccionClase()" class="btn ok">Buscar clase</button>
 
         </div>
-        <div id="datos-clase"></div>
+        <div id="datos-clase">
+            <div></div>
+        </div>
     </div>
 
 

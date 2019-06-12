@@ -134,29 +134,34 @@ class UsuarioRepository extends ServiceEntityRepository
     public function getDataUser($id)
     {
         return $this->createQueryBuilder('u')
-            ->select('u.id, 
-                            u.email, 
-                            u.nombre_usuario, 
+            ->select('u.id,
+                            u.email,
                             u.imagen_perfil,
                             u.direccion,
                             u.n_portal,
                             u.piso,
-                            u.num_telf 
+                            u.num_telf
                             ')
             ->where('u.id = :id')
             ->setParameter('id',$id)
             ->getQuery()
             ->getResult();
+//        $conn = $this->getEntityManager()->getConnection();
+//        $query = 'SELECT email, nombre_usuario,
+//                        imagen_perfil, direccion,
+//                        n_portal, piso, num_telf
+//                    FROM usuario
+//                   WHERE id = :id';
+//        $stmnt = $conn->prepare($query);
+//        $stmnt->execute(['id' => $id]);
+//        return $stmnt->fetchAll();
     }
 
-//    Para una futura version, pasar un array con todos los valores
-//    y prepararlos dentro de la query
     public function updateUser($id,$arr)
     {
         $conn = $this->getEntityManager()->getConnection();
         $query = 'UPDATE usuario
-                   SET nombre_usuario = :nombre_usuario,
-                        email = :email,
+                   SET email = :email,
                         direccion = :direccion,
                         n_portal = :n_portal,
                         piso = :piso,
@@ -164,7 +169,7 @@ class UsuarioRepository extends ServiceEntityRepository
                    WHERE id = :id';
         $stmnt = $conn->prepare($query);
         return $stmnt->execute(['id' => $id,
-                                'nombre_usuario' => $arr["nombre_usuario"],
+//                                'nombre_usuario' => $arr["nombre_usuario"],
                                 'email' => $arr["email"],
                                 'direccion' => $arr["direccion"],
                                 'n_portal' => $arr["n_portal"],
