@@ -248,7 +248,11 @@ class Usuario implements UserInterface
     public function setSexo(?int $sexo): self
     {
         $this->sexo = $sexo;
-
+        if ($sexo) {
+            $this->setImagenPerfil("/img/default_female.png");
+        }else{
+            $this->setImagenPerfil("/img/default_male.png");
+        }
         return $this;
     }
 

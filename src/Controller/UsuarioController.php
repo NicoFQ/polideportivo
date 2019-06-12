@@ -46,16 +46,43 @@ class UsuarioController extends AbstractController
 
         $userSesion = new Session();
         $userSesion = $userSesion->getUser();
-        $asistencias = $asiste->usuarioAsiste($userSesion->getId());
-        $misGustos = $gustos->findById(1);
-        $data = $em->getUserActivity(6);
-       
+        $id = $userSesion->getId();
+        $misGustos = $gustos->findById($id);
+
+        $clasesString = array_map(function($arr){
+            return $arr["titulo"];
+        }, $em->getClasesUsuario($id));
+
+        if (empty($clasesString)) {
+            $sexo =  ($userSesion->getSexo() == 1) ? "a" : "o";
+            $clasesString = "Aun no estas apuntad" . $sexo . " a ninguna de nuestras clases.";
+        }else{
+            $clasesString = implode(",", $clasesString); 
+        }
+        $gustos = "";
+        if (!empty($misGustos[0]->getDeportesFavoritos())) {
+            $gustos = str_replace("#", ", ", $misGustos[0]->getDeportesFavoritos());
+        }else{
+            $gustos = "Configura tu perfil para decirnos que deportes te gustan.";
+        }
+
+        $comentarios = "";
+        if (!empty($misGustos[0]->getComentarios())) {
+            $comentarios = $misGustos[0]->getComentarios();
+        }else{
+            $comentarios = "Configura tu perfil para contarnos algo sobre ti.";
+        }
+
+
+
+
         //$asistencias = $asiste->usuarioAsiste(6);
         return $this->render('usuario/index.html.twig', [
-            'fullUser' => $userSesion,
-            'asistencias' => $asistencias,
+            'user' => $userSesion,
+            'img_user' => $userSesion->getImagenPerfil(),
             'gustos' => $gustos,
-            'data' => $data,
+            'comentarios' => $comentarios,
+            'clases' => $clasesString,
         ]);
     }
 

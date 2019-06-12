@@ -61,7 +61,6 @@ class DespliegueFixtures extends Fixture
         $usuario->setNPortal(23);
         $usuario->setPiso("2ºD");
         $usuario->setRoles(['ROLE_ADMIN']);
-        $usuario->setImagenPerfil("/img/default.png");
 
         $manager->persist($usuario);
 
@@ -80,7 +79,6 @@ class DespliegueFixtures extends Fixture
         $usuario1->setNPortal(43);
         $usuario1->setPiso("4ºB");
         $usuario1->setRoles(['ROLE_ADMIN']);
-        $usuario1->setImagenPerfil("/img/default.png");
 
         $manager->persist($usuario1);
 
@@ -99,7 +97,6 @@ class DespliegueFixtures extends Fixture
         $usuario2->setNPortal(52);
         $usuario2->setPiso("1ºD");
         $usuario2->setRoles(['ROLE_ADMIN']);
-        $usuario2->setImagenPerfil("/img/default.png");
 
         $manager->persist($usuario2);
 
@@ -118,7 +115,6 @@ class DespliegueFixtures extends Fixture
         $usuario3->setNPortal(75);
         $usuario3->setPiso("Bajo I");
         $usuario3->setRoles(['ROLE_CLIENTE']);
-        $usuario3->setImagenPerfil("/img/default.png");
 
         $manager->persist($usuario3);
 
@@ -137,7 +133,6 @@ class DespliegueFixtures extends Fixture
         $usuario4->setNPortal(121);
         $usuario4->setPiso("5ºC");
         $usuario4->setRoles(['ROLE_PROFESOR']);
-        $usuario4->setImagenPerfil("/img/default.png");
 
         $manager->persist($usuario4);
 
@@ -156,7 +151,6 @@ class DespliegueFixtures extends Fixture
         $usuario5->setNPortal(321);
         $usuario5->setPiso("3ºA");
         $usuario5->setRoles(['ROLE_CLIENTE']);
-        $usuario5->setImagenPerfil("/img/default.png");
 
         $manager->persist($usuario5);
 
@@ -175,7 +169,6 @@ class DespliegueFixtures extends Fixture
         $usuario6->setNPortal(72);
         $usuario6->setPiso("SN");
         $usuario6->setRoles(['ROLE_CLIENTE']);
-        $usuario6->setImagenPerfil("/img/default.png");
         // $usuario6->addAsiste()
 
         $manager->persist($usuario6);
@@ -197,7 +190,6 @@ class DespliegueFixtures extends Fixture
         $usuario7->setNPortal(234);
         $usuario7->setPiso("3ºA");
         $usuario7->setRoles(['ROLE_PROFESOR']);
-        $usuario7->setImagenPerfil("/img/default.png");
 
         $manager->persist($usuario7);
 
@@ -217,7 +209,6 @@ class DespliegueFixtures extends Fixture
         $usuario8->setNPortal(42);
         $usuario8->setPiso("1ºI");
         $usuario8->setRoles(['ROLE_PROFESOR']);
-        $usuario8->setImagenPerfil("/img/default.png");
 
         $manager->persist($usuario8);
 
@@ -239,7 +230,6 @@ class DespliegueFixtures extends Fixture
         $usuarioAdmin->setNPortal(01);
         $usuarioAdmin->setPiso("1ºD");
         $usuarioAdmin->setRoles(['ROLE_ADMIN']);
-        $usuarioAdmin->setImagenPerfil("/img/default.png");
 
         $manager->persist($usuarioAdmin);
 
@@ -258,7 +248,6 @@ class DespliegueFixtures extends Fixture
         $usuarioProfesor->setNPortal(01);
         $usuarioProfesor->setPiso("1ºD");
         $usuarioProfesor->setRoles(['ROLE_PROFESOR']);
-        $usuarioProfesor->setImagenPerfil("/img/default.png");
 
         $manager->persist($usuarioProfesor);
 
@@ -277,7 +266,6 @@ class DespliegueFixtures extends Fixture
         $usuarioCliente->setNPortal(01);
         $usuarioCliente->setPiso("1ºD");
         $usuarioCliente->setRoles(['ROLE_CLIENTE']);
-        $usuarioCliente->setImagenPerfil("/img/default.png");
 
         $manager->persist($usuarioCliente);
 
@@ -289,14 +277,14 @@ class DespliegueFixtures extends Fixture
 //        GUSTOS USUARIO //////////////////////////////////////////////////////////////////////////////////////////////
         $futbol = new GustosUsuarios();
         $futbol->setIdUsuario($usuario);
-        $futbol->setDeportesFavoritos("futbol");
+        $futbol->setDeportesFavoritos("Futbol");
         $futbol->setComentarios("");
 
         $manager->persist($futbol);
 
         $baloncesto = new GustosUsuarios();
         $baloncesto->setIdUsuario($usuario1);
-        $baloncesto->setDeportesFavoritos("baloncesto");
+        $baloncesto->setDeportesFavoritos("Baloncesto");
         $baloncesto->setComentarios("");
 
         $manager->persist($baloncesto);
@@ -304,18 +292,11 @@ class DespliegueFixtures extends Fixture
 
         $baloncesto = new GustosUsuarios();
         $baloncesto->setIdUsuario($usuario5);
-        $baloncesto->setDeportesFavoritos("baloncesto");
-        $baloncesto->setComentarios("");
+        $baloncesto->setDeportesFavoritos("Baloncesto#Futbol#Padel");
+        $baloncesto->setComentarios("Soy muy deportista, me encanta mucho hacer deporte.");
 
         $manager->persist($baloncesto);
 
-
-        $baloncesto = new GustosUsuarios();
-        $baloncesto->setIdUsuario($usuario5);
-        $baloncesto->setDeportesFavoritos("futbol");
-        $baloncesto->setComentarios("");
-
-        $manager->persist($baloncesto);
 
 
 //        FIN GUSTOS USUARIO //////////////////////////////////////////////////////////////////////////////////////////

@@ -192,7 +192,7 @@ class UsuarioRepository extends ServiceEntityRepository
 
     public function getUserActivity($id){
       $reservas = self::getReservasUsuario($id);
-      $clases = self::getClasesUsuario($id);
+      $clases = $this->getClasesUsuario($id);
       $activity = array_merge($reservas, $clases);
       return $activity;
     }
@@ -212,7 +212,7 @@ class UsuarioRepository extends ServiceEntityRepository
         return $stmnt->fetchAll();
     }
 
-    private function getClasesUsuario($id){
+    public function getClasesUsuario($id){
         $conn = $this->getEntityManager()->getConnection();
         $query = 'select c.nombre_clase "titulo", a.fecha_asiste_clase "fecha", c.hora_inicio "inicio", c.hora_fin "fin" from asiste a, clase c where a.usuario_id = :id and a.clase_id = c.id';
         $stmnt = $conn->prepare($query);
