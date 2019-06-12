@@ -82,7 +82,7 @@
 
             <div>
                 <div>
-                    <p v-if="u.num_telf.length > 6"><span>Teléfono: </span>$¿u.num_telf?</p>
+                    <p v-if="u.num_telf != null || u.num_telf == 'null'"><span>Teléfono: </span>$¿u.num_telf?</p>
                     <p v-else><span>Teléfono: </span>Agregar número de teléfono.</p>
                     <p v-if="form.num_telf"><span>Nuevo telefono: </span>$¿form.num_telf?</p>
                 </div>
