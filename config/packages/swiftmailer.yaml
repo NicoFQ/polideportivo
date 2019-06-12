@@ -5,5 +5,5 @@ swiftmailer:
     # port: 587
     host: smtp.gmail.com
     username: 'taccdev44@gmail.com'
-    password: #TODO 't4'
+    password: 't4p4$Dm3'
     spool: { type: 'memory' }

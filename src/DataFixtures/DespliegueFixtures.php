@@ -525,26 +525,26 @@ class DespliegueFixtures extends Fixture
         $manager->persist($asiste1);
 
         $asiste2 = new Asiste();
-        $asiste2->setFechaAsisteClase(new \DateTime('2019-06-01'));
+        $asiste2->setFechaAsisteClase(new \DateTime('2019-06-24'));
         $asiste2->setUsuario($usuario4);
         $asiste2->setClase($clase6);
         $manager->persist($asiste2);
 
         $asiste3 = new Asiste();
-        $asiste3->setFechaAsisteClase(new \DateTime('2019-06-12'));
+        $asiste3->setFechaAsisteClase(new \DateTime('2019-06-22'));
         $asiste3->setUsuario($usuario2);
         $asiste3->setClase($clase1);
         $manager->persist($asiste3);
 
         $asiste4 = new Asiste();
-        $asiste4->setFechaAsisteClase(new \DateTime('2019-04-16'));
+        $asiste4->setFechaAsisteClase(new \DateTime('2019-06-22'));
         $asiste3->setUsuario($usuario2);
         $asiste3->setClase($clase1);
 
         $manager->persist($asiste3);
 
         $asiste4 = new Asiste();
-        $asiste4->setFechaAsisteClase(new \DateTime('2019-04-01'));
+        $asiste4->setFechaAsisteClase(new \DateTime('2019-06-22'));
         $asiste4->setUsuario($usuario1);
         $asiste4->setClase($clase6);
 
@@ -565,21 +565,21 @@ class DespliegueFixtures extends Fixture
         $manager->persist($asiste5);
 
         $asiste6 = new Asiste();
-        $asiste6->setFechaAsisteClase(new \DateTime('2019-04-12'));
+        $asiste6->setFechaAsisteClase(new \DateTime('2019-04-22'));
         $asiste6->setUsuario($usuario3);    
         $asiste6->setClase($clase1);
 
         $manager->persist($asiste6);
 
         $asiste7 = new Asiste();
-        $asiste7->setFechaAsisteClase(new \DateTime('2019-06-12'));
+        $asiste7->setFechaAsisteClase(new \DateTime('2019-06-22'));
         $asiste7->setUsuario($usuario3);
         $asiste7->setClase($clase2);
 
         $manager->persist($asiste7);
 
         $asiste8 = new Asiste();
-        $asiste8->setFechaAsisteClase(new \DateTime('2019-06-12'));
+        $asiste8->setFechaAsisteClase(new \DateTime('2019-06-24'));
         $asiste8->setUsuario($usuario5);
         $asiste8->setClase($clase2);
 
@@ -591,14 +591,14 @@ class DespliegueFixtures extends Fixture
         //Jorge ->profesor en clase de futbol
         //      -> Profesor en clase de baloncesto
         $asiste7 = new Asiste();
-        $asiste7->setFechaAsisteClase(new \DateTime('2019-06-10'));
+        $asiste7->setFechaAsisteClase(new \DateTime('2019-06-22'));
         $asiste7->setUsuario($usuario8);
         $asiste7->setClase($clase1);
 
         $manager->persist($asiste7);
         //En este asiste asignamos al profesor Jorge(usuario8) la de baloncesto(clase6) L,J de 16:00 a 18:00
         $asiste7 = new Asiste();
-        $asiste7->setFechaAsisteClase(new \DateTime('2019-06-12'));
+        $asiste7->setFechaAsisteClase(new \DateTime('2019-06-22'));
         $asiste7->setUsuario($usuario8);
         $asiste7->setClase($clase6);
 
@@ -606,7 +606,7 @@ class DespliegueFixtures extends Fixture
 
         //En este asiste asignamos al profesor Jose Maria(usuario7) la de baloncesto(clase3) L,X de 16:00 a 18:00
         $asiste8 = new Asiste();
-        $asiste8->setFechaAsisteClase(new \DateTime('2019-04-12'));
+        $asiste8->setFechaAsisteClase(new \DateTime('2019-04-22'));
         $asiste8->setUsuario($usuario7);
         $asiste8->setClase($clase3);
 

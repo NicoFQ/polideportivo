@@ -120,11 +120,12 @@ class AdminController extends AbstractController
                 if (empty($destinatario)){
                     $data["Para"] = $emailsCompletos;
                 }
+//                dump($data["Para"]);die;
                 $message = (new \Swift_Message('Swiftmailer'))
                     ->setCharset('iso-8859-2')
                     ->setFrom('taccdev44@gmail.com')
 
-                    ->setTo($emails)
+                    ->setTo($data["Para"])
                     ->setBody(
 
                         $this->render(
