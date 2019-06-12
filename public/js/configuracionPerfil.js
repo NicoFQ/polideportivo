@@ -17,7 +17,10 @@ new Vue({
             email: "",
             direccion: "",
             num_telf:"",
-            img:""
+            img:"",
+            n_portal:"",
+            deportes_favoritos:"",
+            comentarios:"",
         },
         editElements:[],
         message: false
@@ -48,21 +51,35 @@ new Vue({
             this.editElements = []
         },
         saveData (e){
+            const datos = new FormData();
+            let user = this.user[0];
+            datos.append("id",user.id)
+            datos.append("nombre_usuario",(this.getInputData("nombre_usuario") || user.nombre_usuario));
+            datos.append("email",(this.getInputData('email') || user.email));
+            datos.append("direccion",(this.getInputData('direccion') || user.direccion));
+            datos.append("n_portal",(this.getInputData('n_portal') || user.n_portal));
+            datos.append("piso",(this.getInputData('piso') || user.piso));
+            datos.append("num_telf",(this.getInputData('num_telf') || user.num_telf));
+            datos.append("deportes_favoritos",(this.getInputData('deportes_favoritos') || user.deportes_favoritos));
+            datos.append("comentarios",(this.getInputData('comentarios') || user.comentarios));
+            datos.append("imagen",document.getElementById('imagen').files[0]);
 
-            const datos = new FormData()
-            datos.append("id",this.user[0].id)
-            datos.append("nombre_usuario",(this.getInputData("nombre_usuario") || this.user[0].nombre_usuario))
-            datos.append("email",(this.getInputData('email') || this.user[0].email))
-            datos.append("direccion",(this.getInputData('direccion') || this.user[0].direccion))
-            datos.append("n_portal",(this.getInputData('n_portal') || this.user[0].n_portal))
-            datos.append("piso",(this.getInputData('piso') || this.user[0].piso))
-            datos.append("num_telf",(this.getInputData('num_telf') || this.user[0].num_telf))
-            datos.append("imagen",document.getElementById('imagen').files[0])
+            user.nombre_usuario = this.getInputData("nombre_usuario") || user.nombre_usuario;
+            user.email = this.getInputData('email') || user.email;
+            user.direccion = this.getInputData('direccion') || user.direccion;
+            user.n_portal = this.getInputData('n_portal') || user.n_portal;
+            user.piso = this.getInputData('piso') || user.piso;
+            user.num_telf = this.getInputData('num_telf') || user.num_telf;
+            user.deportes_favoritos = this.getInputData('deportes_favoritos') || user.deportes_favoritos;
+            user.comentarios = this.getInputData('comentarios') || user.comentarios;
 
             this.enviarDatos(datos)
             if (e.target.parentElement.tagName == "DIV")
                 this.unsetOptions(e)
             this.form = {}
+
+        },
+        _linkData(){
 
         },
         enviarDatos(data){
@@ -73,7 +90,7 @@ new Vue({
             };
             // xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
             xhr.send(data);
-            this.fetchAll();
+            //this.fetchAll();
             this.message = true;
             this.deleteMessage()
         },

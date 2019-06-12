@@ -28,7 +28,9 @@ let calendario = (function(){
         }
       }
         ,
-         
+         created(){
+          this.setDate(NOW.getDate());
+         },
       computed: {
         
         currYear() {

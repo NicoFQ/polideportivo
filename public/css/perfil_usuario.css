@@ -4,10 +4,14 @@
 	margin: 0 auto;
 	display: flex;
 	margin-bottom: 2em;
+	justify-content: center;
+	flex-wrap: wrap;
+	
 }
 
-#box_img{
-
+#box_img figcaption{
+	text-align: center;
+	font-weight: bold;
 }
 
 #box_contenido{
@@ -15,4 +19,11 @@
 }
 #box_contenido h4{
 	margin: 1em 0 0 0;
+}
+figure{
+    width: auto !important;
+    height: auto;
+}
+figure > img{
+    width: auto !important;
 }

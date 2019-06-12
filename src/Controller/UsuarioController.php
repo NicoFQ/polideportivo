@@ -60,14 +60,14 @@ class UsuarioController extends AbstractController
             $clasesString = implode(",", $clasesString); 
         }
         $gustos = "";
-        if (!empty($misGustos[0]->getDeportesFavoritos())) {
+        if (!empty($misGustos) && !empty($misGustos[0]->getDeportesFavoritos()) && $misGustos[0]->getDeportesFavoritos() != 'null' && $misGustos[0]->getDeportesFavoritos() != 'undefined') {
             $gustos = str_replace("#", ", ", $misGustos[0]->getDeportesFavoritos());
         }else{
             $gustos = "Configura tu perfil para decirnos que deportes te gustan.";
         }
 
         $comentarios = "";
-        if (!empty($misGustos[0]->getComentarios())) {
+        if (!empty($misGustos) && !empty($misGustos[0]->getComentarios()) && $misGustos[0]->getComentarios() != 'null' && $misGustos[0]->getComentarios() != 'null') {
             $comentarios = $misGustos[0]->getComentarios();
         }else{
             $comentarios = "Configura tu perfil para contarnos algo sobre ti.";

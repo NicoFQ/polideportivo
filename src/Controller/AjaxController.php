@@ -7,6 +7,7 @@ use App\Repository\AsisteRepository;
 use App\Repository\ClaseRepository;
 use App\Repository\PagoRepository;
 use App\Repository\UsuarioRepository;
+use App\Repository\GustosUsuariosRepository;
 use App\Repository\ReservaRepository;
 use App\Repository\PistaRepository;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -21,20 +22,25 @@ class AjaxController extends AbstractController
     /**
      * @Route("/ajax", name="ajax")
      */
-    public function index(UsuarioRepository $em)
+    public function index(UsuarioRepository $em, GustosUsuariosRepository $gu )
     {
 //        Obtener el ID de la sesion de nico
         $userSesion = new Session();
         $userSesion = $userSesion->getUser();
-        $data = $em->getDataUser($userSesion->getId());
-        return new JsonResponse(["user" => $data]);
+        
+        $datosUsuario = $em->getDataUser($userSesion->getId());
+        if (empty($datosUsuario)) {
+            $datosUsuario = $em->getDataUserOnly($userSesion->getId());
+        }
+        $data = ($datosUsuario) ? $datosUsuario : "";
+        return new JsonResponse( [ "user" => $datosUsuario ] );
     }
 
     /**
      * Funcion que recibira datos por POST desde una pagina html (ConfiguracionPerfil)
      * @Route("/ajax/data", name="ajax_data")
      */
-    public function data(UsuarioRepository $em)
+    public function data(UsuarioRepository $em,  GustosUsuariosRepository $gu)
     {
         $data = "";
         if (count($_FILES) > 0){
@@ -46,7 +52,7 @@ class AjaxController extends AbstractController
         }
         if (count($_POST) > 2){
 //            Modificar la query para que solo admita los valores que se entregan en getDataUser
-            $em->updateUser($_POST["id"],$_POST);
+            $data = $em->updateUser($_POST["id"],$_POST, $gu);
         }
         return new JsonResponse(['res' => $data]);
     }//data

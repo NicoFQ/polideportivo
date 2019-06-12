@@ -64,6 +64,40 @@ figure{
     width: 400px;
     height: auto;
 }
+
 figure > img{
     width: 100%;
 }
+
+footer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-top: 5px solid var(--rojo);
+}
+
+footer .literals{
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+footer .literals div{
+    margin-left: 2em; 
+    min-width: 95px;
+}
+
+footer .icons{
+    display: flex;
+    width: 30%;
+    justify-content: space-evenly;
+    min-width: 200px;
+}
+footer .icons i{
+    font-size: 1.8em;
+    margin-top: .4em;
+}
+.fab{
+    color:#477dca;
+}
+

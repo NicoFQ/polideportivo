@@ -4,9 +4,10 @@ namespace App\Repository;
 
 use App\Entity\Usuario;
 use App\Entity\TipoUsuario;
+use App\Entity\GustosUsuarios;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Bundle\DoctrineBundle\Repository\Entity;
-
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -141,7 +142,28 @@ class UsuarioRepository extends ServiceEntityRepository
                             u.direccion,
                             u.n_portal,
                             u.piso,
-                            u.num_telf 
+                            u.num_telf,
+                            g.deportes_favoritos,
+                            g.comentarios
+                            ')
+            ->innerJoin('App\Entity\GustosUsuarios','g', 'WITH', 'u.id = g.id_usuario')
+            ->andWhere('u.id = :id')
+            //->where('u.id = :id')
+            ->setParameter('id',$id)
+            ->getQuery()
+            ->getResult();
+    }
+    public function getDataUserOnly($id)
+    {
+        return $this->createQueryBuilder('u')
+            ->select('u.id, 
+                            u.email, 
+                            u.nombre_usuario, 
+                            u.imagen_perfil,
+                            u.direccion,
+                            u.n_portal,
+                            u.piso,
+                            u.num_telf
                             ')
             ->where('u.id = :id')
             ->setParameter('id',$id)
@@ -151,26 +173,51 @@ class UsuarioRepository extends ServiceEntityRepository
 
 //    Para una futura version, pasar un array con todos los valores
 //    y prepararlos dentro de la query
-    public function updateUser($id,$arr)
+    public function updateUser($id,$arr, $gu = null)
     {
         $conn = $this->getEntityManager()->getConnection();
-        $query = 'UPDATE usuario
-                   SET nombre_usuario = :nombre_usuario,
-                        email = :email,
-                        direccion = :direccion,
-                        n_portal = :n_portal,
-                        piso = :piso,
-                        num_telf = :num_telf
-                   WHERE id = :id';
-        $stmnt = $conn->prepare($query);
-        return $stmnt->execute(['id' => $id,
-                                'nombre_usuario' => $arr["nombre_usuario"],
-                                'email' => $arr["email"],
-                                'direccion' => $arr["direccion"],
-                                'n_portal' => $arr["n_portal"],
-                                'piso' => $arr["piso"],
-                                'num_telf' => $arr["num_telf"]
-                                ]);
+        $conn2 = $this->getEntityManager();
+
+        $gustos = $gu->findById($id);
+        if (empty($gustos)) {
+            $dataGustos["id"] = intval($id);
+            $dataGustos["deportes_favoritos"] = ($arr["deportes_favoritos"] && $arr["deportes_favoritos"] != "undefined") ? $arr["deportes_favoritos"] : "null";
+            $dataGustos["comentarios"] = ($arr["comentarios"] && $arr["comentarios"] != "undefined") ? $arr["comentarios"] : "null";
+            $query = 'INSERT INTO  gustos_usuarios(id_usuario_id, deportes_favoritos, comentarios)
+                        VALUES(:id, :deportes_favoritos, :comentarios)';
+            $stmnt = $conn->prepare($query);
+            return $stmnt->execute(["id" => $id, 
+                                    "deportes_favoritos" => $dataGustos["deportes_favoritos"],
+                                    "comentarios" => $dataGustos["comentarios"], 
+                                    ]);
+            return "GustosUsuario creado";
+        }else{
+            $query = 'UPDATE usuario
+                        INNER JOIN
+                        gustos_usuarios
+                        ON
+                        usuario.id = gustos_usuarios.id_usuario_id
+                        SET usuario.nombre_usuario = :nombre_usuario,
+                            usuario.email = :email,
+                            usuario.direccion = :direccion,
+                            usuario.n_portal = :n_portal,
+                            usuario.piso = :piso,
+                            usuario.num_telf = :num_telf,
+                            gustos_usuarios.deportes_favoritos = :deportes_favoritos,
+                            gustos_usuarios.comentarios = :comentarios
+                            WHERE usuario.id = :id';
+            $stmnt = $conn->prepare($query);
+            return $stmnt->execute(['id' => $id,
+                                    'nombre_usuario' => $arr["nombre_usuario"],
+                                    'email' => $arr["email"],
+                                    'direccion' => $arr["direccion"],
+                                    'n_portal' => $arr["n_portal"],
+                                    'piso' => $arr["piso"],
+                                    'num_telf' => $arr["num_telf"],
+                                    'deportes_favoritos' => $arr["deportes_favoritos"],
+                                    'comentarios' => $arr["comentarios"]
+                                    ]);
+        }
 //        return $stmnt->fetchAll();
     }
     
