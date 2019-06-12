@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\PagoRepository;
+use App\Repository\ReservaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -47,6 +48,26 @@ class PaypalController extends AbstractController
 
         }
 //        return new RedirectResponse("/usuario");
+        return new JsonResponse(['res' => $response]);
+    }
+
+    /**
+     * @Route("/paypal/pagoInstalacion", name="paypal-pagoInstalacion")
+     */
+    public function pagoInstalacion(ReservaRepository $reserva)
+    {
+        $data = json_encode($_POST);
+        $this->sess = new Session();
+        $response = "";
+        if (!empty($data)){
+            $dataInsert = $this->sess->get("datosPago");
+            if ($reserva->setReserva($this->sess->get("datosReservaInstalacion"))){
+                $response = "pagado";
+            }else{
+                $response = "noPagado";
+            }
+
+        }
         return new JsonResponse(['res' => $response]);
     }
 

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PaypalController!{% endblock %}
+{% block title %}Paypal{% endblock %}
 
 {% block body %}
         {#        Implementacion de credenciales y render del button#}
@@ -9,12 +9,6 @@
         </script>
 
         <div id="paypal-button-container"></div>
-
-        {#        <script>#}
-        {#            paypal.Buttons().render('#paypal-button-container');#}
-        {#        </script>#}
-
-        {#        Se establece el precio que pagara#}
         <script>
             const URL = "http://"+window.location.host+"/paypal";
 

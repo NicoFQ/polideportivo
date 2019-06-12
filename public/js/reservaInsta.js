@@ -62,9 +62,10 @@ const seleccionClase = () => {
  * @param obj: Objeto JSON con los datos esperados
  */
 function crearEstruscturaInsta(obj){
-   
+
     const contenedor = document.getElementById("datos-intalacion");
     contenedor.removeChild(contenedor.childNodes[0]);
+    // console.log('obj pid', obj)
         let template = `
             <div>
                 <h2>${obj.nombre}</h2>
@@ -73,9 +74,9 @@ function crearEstruscturaInsta(obj){
                         <p><span>Lugar:</span> ${obj.lugar}</p>
                         <p><span>Hora inicio:</span> ${obj.inicio}</p>
                         <p><span>Hora fin:</span> ${obj.fin}</p>
-                        <p><span>Fechaa: </span> ${obj.fecha}</p>
-                        <p><span>Precio:</span> ${obj.precio}</p>
-                        <input type="hidden" value="${obj.pista_id}">
+                        <p><span>Fecha: </span> ${obj.fecha}</p>
+                        <p><span>Precio:</span> <span id="precio">${obj.precio}</span></p>
+                        <input type="hidden" value="${obj.pista_id}" id="id_pista">
                         <button onclick="hacerReserva()" class="btn ok">Reservar</button>
                     </div>
             </div>
@@ -87,25 +88,44 @@ function crearEstruscturaInsta(obj){
 }//crearEstructura
 
 function hacerReserva(){
-    const select = document.getElementById("nombre_clase")
-    const id_clase = select.options[select.selectedIndex].getAttribute("value")
+    console.log("hacer reserva")
+    // const select = document.getElementById("nombre_clase")
+    // const id_clase = select.options[select.selectedIndex].getAttribute("value")
+
+    const select = document.getElementById("nombreDeporte");
+    const nombre_deporte = select.options[select.selectedIndex].value;
+    const select2 = document.getElementById("hora");
+    let  hora = select2.options[select2.selectedIndex].value;
+    horaI = hora.substr(0, 2) + ":00";
+    horaF  = hora.substr((hora.length - 2),hora.length ) + ":00";
+
+    const fecha =  document.getElementById("date").value;
+    const id_pista = document.getElementById("id_pista").value;
+    const precio = document.getElementById("precio").textContent
 
     const formReserva = new FormData()
-    formReserva.append("clase_id", id_clase)
+    formReserva.append("id_pista", id_pista)
+    // formReserva.append("nombre_deporte",nombre_deporte)
+    formReserva.append("horaInicio", horaI)
+    formReserva.append("precio", precio)
+    formReserva.append("horaFin", horaF)
+    formReserva.append("fecha", fecha)
 
-    fetch(URL + "setReservaClase",{
+    fetch(URL + "setReservaInstalacion",{
         method: "post",
         body:formReserva
     })
         .then(noData => noData.json())
         .then(data => {
-             if(data.data == "noAbonado"){
-                 alert("Para poder continuar debes comprar uno de nuestros bonos.");
-                 window.location = "/pago/planes";
-             }else{
-                 alert("Te has apuntado a la clase correctamente.");
-                 window.location = "/usuario"
+             if(data.data == "pendientePago"){
+                 alert("Procederá a ver la factura.");
+                 window.location = "/pago/pagoInstalacion";
              }
+             // else{
+             //     alert("Te has apuntado a la clase correctamente.");
+             //     window.location = "/pago/pagoInstalacion";
+             // }
+            console.log(data)
         })
 }//hacerReserva
 

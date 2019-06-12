@@ -37,7 +37,7 @@ class Reserva
     private $hora_fin;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      */
     private $fecha_creacion;
 
@@ -105,6 +105,7 @@ class Reserva
 
         return $this;
     }
+
 
     public function getFechaCreacion(): ?\DateTimeInterface
     {

@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ELEGIR PAGO{% endblock %}
+
+{% block body %}
+    {% block stylesheets %}
+        {#        <link rel="stylesheet" href="{{ asset('/css/general.css') }}">#}
+        <link rel="stylesheet" href="{{ asset('/css/nav.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/pago.css') }}">
+    {% endblock %}
+    {% include '/usuario/nav_usuario.html.twig' %}
+
+    <div class="container">
+        <h2>Datos de reserva de la instalación.</h2>
+{#        {{ form_row(form_view.nombre) }}#}
+        {{ form(form_view) }}
+
+
+{#    {{ render(controller('App\\Controller\\PaypalController:index')) }}#}
+
+    <script
+            src="https://www.paypal.com/sdk/js?client-id={{ id }}&currency=EUR">
+    </script>
+
+    <div id="paypal-button-container"></div>
+    <script>
+        const URL = "http://"+window.location.host+"/paypal";
+
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                // Set up the transaction
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: {{ precio }},
+                        }
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    const data = new FormData();
+                    data.append("res", "All good, insert")
+                    alert('Pago realizado. Gracias');
+                    // Call your server to save the transaction
+                    return fetch(URL+"/pagoInstalacion", {
+                        method: 'post',
+                        body: data
+                    })
+                        .then(res => res.json())
+                        .then(body => {
+                            if(body.res == "pagado"){
+                                window.location = "/usuario"
+                            }
+                        })
+
+                });
+            }
+        }).render('#paypal-button-container');
+    </script>
+    </div>
+{% endblock %}

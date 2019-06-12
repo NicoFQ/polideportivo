@@ -64,4 +64,23 @@ class ReservaRepository extends ServiceEntityRepository
 
         return $sts->fetchAll();
     }
+
+    public function setReserva($arr)
+    {
+        $time = strtotime($arr["fecha"]);
+        $newformat = date('Y-m-d',$time);
+        $pista = (int)$arr["id_pista"];
+        $conn = $this->getEntityManager()->getConnection();
+        $query = "INSERT INTO reserva (usuario_id, pista_id, precio_reserva, fecha_de_reserva, hora_inicio, hora_fin, fecha_creacion) 
+                  VALUES (:usuario,:pista_id,:precio,:fechaRes,:horaInicio, :horaFin, now());";
+        $stmnt = $conn->prepare($query);
+        return $stmnt->execute([
+            'usuario' => $arr["id"],
+            'pista_id' => $pista,
+            'precio' => $arr["precio"],
+            'fechaRes' => $arr["fecha"],
+            'horaInicio' => $arr["horaInicio"],
+            'horaFin' => $arr["horaFin"],
+        ]);
+    }
 }
