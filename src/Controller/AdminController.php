@@ -125,7 +125,7 @@ class AdminController extends AbstractController
                     ->setCharset('iso-8859-2')
                     ->setFrom('taccdev44@gmail.com')
 
-                    ->setTo($data["Para"])
+                    ->setTo($destinatario)
                     ->setBody(
 
                         $this->render(
@@ -141,7 +141,9 @@ class AdminController extends AbstractController
 
                 $mailer->send($message);
 
-
+                if ($mailer->send($message)){
+                    dump($mailer);die;
+                }
                 return new RedirectResponse('/admin');
 
         }
