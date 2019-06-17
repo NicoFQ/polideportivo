@@ -29,6 +29,7 @@
 
 #contenedor{
     display: none;
+    margin-top: 20px;
 }
 
 #inp:checked ~ #contenedor{

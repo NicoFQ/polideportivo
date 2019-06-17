@@ -17,7 +17,7 @@
 #container-reservas, #datos-clase{
     outline:1px solid var(--gris);
     margin:20px auto;
-    width: 40%;
+    width: 30%;
     display: flex;
     justify-content: center;
     box-sizing: border-box;
