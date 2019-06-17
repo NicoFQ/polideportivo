@@ -141,9 +141,6 @@ class AdminController extends AbstractController
 
                 $mailer->send($message);
 
-                if ($mailer->send($message)){
-                    dump($mailer);die;
-                }
                 return new RedirectResponse('/admin');
 
         }
