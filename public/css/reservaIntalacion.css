@@ -17,9 +17,9 @@
 #container-reservas, #datos-intalacion{
     outline:1px solid var(--gris);
     margin:20px auto;
-    width: 40%;
+    width: 45%;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     box-sizing: border-box;
 }
 #container-reservas {
